@@ -5,15 +5,15 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 
 
 ## Features
-* FOV calculation using RPAS algorithm
-* Raycasting using Bresenham's lines
-* Pathfinding using Godot built-in A* class
-* "Memorizing" cells that have been visible at least once
-* Various draw and fill functions for drawing primitives (lines, ellipse, rects, circles, arcs)
-* Custom RGTileset class to store data about all tiles in a game
-* Placing one RGMap inside the other map
-* Saving and loading data as a flat array
-* Written in GDNative, C++
+* **FOV** calculation using RPAS algorithm
+* **Raycasting** using Bresenham's lines
+* **Pathfinding** using Godot built-in A* class
+* **"Memorizing" cells** that have been visible at least once
+* **Draw and fill** functions for drawing primitives (lines, ellipse, rects, circles, arcs)
+* **Custom RGTileset** class to store data about all tiles in a game
+* **Merging maps.** Placing one RGMap inside the other map
+* **Saving and loading** data as a flat array
+* **C++, GDNative**
 
 ## Why?
 
@@ -64,11 +64,33 @@ You can read more about each function and variable available in RGMap here:
 
 <https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
 
+## Compilation
+1. Generate and compile bindings:
+
+```
+cd godot-cpp
+scons platform=<platform> generate_bindings=yes
+cd ..
+```
+
+2. Compile project
+
+```
+mkdir bin
+scons platform=<platform>
+```
+
+3. Copy everything from /bin directory to your godot project
+4. Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory
+
+See more about using GDNative modules here: <https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module>
+
 ## Example
 You can find a short example of usage in demo-project directory
 
 ## TODO
 - [ ] Create demo project
+- [ ] Add gifs and images to README
 - [ ] Cutting and resizing map
 - [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
 - [ ] Better error handling

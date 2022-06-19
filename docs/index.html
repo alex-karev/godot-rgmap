@@ -89,15 +89,15 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md1"></a>
 Features</h1>
 <ul>
-<li>FOV calculation using RPAS algorithm</li>
-<li>Raycasting using Bresenham's lines</li>
-<li>Pathfinding using Godot built-in A* class</li>
-<li>"Memorizing" cells that have been visible at least once</li>
-<li>Various draw and fill functions for drawing primitives (lines, ellipse, rects, circles, arcs)</li>
-<li>Custom RGTileset class to store data about all tiles in a game</li>
-<li>Placing one RGMap inside the other map</li>
-<li>Saving and loading data as a flat array</li>
-<li>Written in GDNative, C++</li>
+<li><b>FOV</b> calculation using RPAS algorithm</li>
+<li><b>Raycasting</b> using Bresenham's lines</li>
+<li><b>Pathfinding</b> using Godot built-in A* class</li>
+<li>**"Memorizing" cells** that have been visible at least once</li>
+<li><b>Draw and fill</b> functions for drawing primitives (lines, ellipse, rects, circles, arcs)</li>
+<li><b>Custom RGTileset</b> class to store data about all tiles in a game</li>
+<li><b>Merging maps.</b> Placing one RGMap inside the other map</li>
+<li><b>Saving and loading</b> data as a flat array</li>
+<li><b>C++, GDNative</b></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Why?</h1>
@@ -132,15 +132,36 @@ RGMap</h2>
 </div><!-- fragment --><p >You can read more about each function and variable available in RGMap here:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
 <h1><a class="anchor" id="autotoc_md6"></a>
+Compilation</h1>
+<ol type="1">
+<li>Generate and compile bindings:</li>
+</ol>
+<div class="fragment"><div class="line">cd godot-cpp</div>
+<div class="line">scons platform=&lt;platform&gt; generate_bindings=yes</div>
+<div class="line">cd ..</div>
+</div><!-- fragment --><ol type="1">
+<li>Compile project</li>
+</ol>
+<div class="fragment"><div class="line">mkdir bin</div>
+<div class="line">scons platform=&lt;platform&gt;</div>
+</div><!-- fragment --><ol type="1">
+<li>Copy everything from /bin directory to your godot project</li>
+<li>Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory</li>
+</ol>
+<p >See more about using GDNative modules here: <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module</a></p>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Example</h1>
 <p >You can find a short example of usage in demo-project directory</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
-TODO</h1>
-<p >[ ] Create demo project</p>
-<p >[ ] Cutting and resizing map</p>
-<p >[ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset</p>
-<p >[ ] Better error handling</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
+TODO</h1>
+<ul>
+<li>[ ] Create demo project</li>
+<li>[ ] Add gifs and images to README</li>
+<li>[ ] Cutting and resizing map</li>
+<li>[ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset</li>
+<li>[ ] Better error handling</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
 License</h1>
 <p >Distributed under the MIT License. See LICENSE for more information </p>
 </div></div><!-- PageDoc -->
