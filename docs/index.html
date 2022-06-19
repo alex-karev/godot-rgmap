@@ -115,12 +115,12 @@ RGTileset</h2>
 <div class="line"># Note: First 2 strings are &#39;name&#39; and &#39;display name&#39;. Other 2 booleans are &#39;passability&#39; and &#39;transparency&#39;</div>
 </div><!-- fragment --><p >It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles to RGTileset like this:</p>
 <div class="fragment"><div class="line">var file = File.new()</div>
-<div class="line">    file.open(&quot;res://db.json&quot;, File.READ)</div>
-<div class="line">    var txt = file.get_as_text()</div>
-<div class="line">    var json = parse_json(txt)</div>
-<div class="line">    for tile_name in json[&quot;tiles&quot;].keys():</div>
-<div class="line">        var data = json[&quot;tiles&quot;][tile_name]</div>
-<div class="line">        tileset.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
+<div class="line">file.open(&quot;res://db.json&quot;, File.READ)</div>
+<div class="line">var txt = file.get_as_text()</div>
+<div class="line">var json = parse_json(txt)</div>
+<div class="line">for tile_name in json[&quot;tiles&quot;].keys():</div>
+<div class="line">var data = json[&quot;tiles&quot;][tile_name]</div>
+<div class="line">    tileset.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
 </div><!-- fragment --><p >Here you can find all functions available inside in RGTileset:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html</a></p>
 <h2><a class="anchor" id="autotoc_md5"></a>
