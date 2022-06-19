@@ -2,7 +2,7 @@
 
 A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV
 
-[image]
+
 
 ## Features
 * FOV calculation using RPAS algorithm
@@ -48,6 +48,8 @@ var file = File.new()
 
 Here you can find all functions available inside in RGTileset: 
 
+<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html>
+
 ### RGMap
 A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.
 
@@ -55,18 +57,23 @@ Should be initialized before usage like this:
 ```
 var map = RGMap.new()
 map.size = Vector2(100,100)
-map.initialize(tileset)
+map.initialize(tileset) # RGTileset object created earlier
 ```
 
 You can read more about each function and variable available in RGMap here:
+
+<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
 
 ## Example
 You can find a short example of usage in demo-project directory
 
 ## TODO
 [ ] Create demo project
+
 [ ] Cutting and resizing map
+
 [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
+
 [ ] Better error handling
 
 ## License
