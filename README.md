@@ -68,13 +68,10 @@ You can read more about each function and variable available in RGMap here:
 You can find a short example of usage in demo-project directory
 
 ## TODO
-[ ] Create demo project
-
-[ ] Cutting and resizing map
-
-[ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
-
-[ ] Better error handling
+- [ ] Create demo project
+- [ ] Cutting and resizing map
+- [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
+- [ ] Better error handling
 
 ## License
 Distributed under the MIT License. See LICENSE for more information
