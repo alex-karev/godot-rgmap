@@ -8,7 +8,7 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **FOV** calculation using RPAS algorithm
 * **Raycasting** using Bresenham's lines
 * **Pathfinding** using Godot built-in A* class
-* **"Memorizing" cells** that have been visible at least once
+* **Memorizing cells** that have been visible at least once
 * **Draw and fill** functions for drawing primitives (lines, ellipse, rects, circles, arcs)
 * **Custom RGTileset** class to store data about all tiles in a game
 * **Merging maps.** Placing one RGMap inside the other map
