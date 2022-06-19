@@ -42,7 +42,7 @@ file.open("res://db.json", File.READ)
 var txt = file.get_as_text()
 var json = parse_json(txt)
 for tile_name in json["tiles"].keys():
-	var data = json["tiles"][tile_name]
+    var data = json["tiles"][tile_name]
     tileset.add_tile(tile_name, data["name"], data["passable"], data["transparent"])
 ```
 
