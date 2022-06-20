@@ -48,7 +48,7 @@ for tile_name in json["tiles"].keys():
 
 Here you can find all functions available inside in RGTileset: 
 
-<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html>
+<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html>
 
 ### RGMap
 A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.
@@ -65,6 +65,8 @@ You can read more about each function and variable available in RGMap here:
 <https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
 
 ## Compilation
+You will need: C++ compiler and SCons installed in your system
+
 1. Generate and compile bindings:
 
 ```
@@ -89,11 +91,19 @@ See more about using GDNative modules here: <https://docs.godotengine.org/en/sta
 You can find a short example of usage in demo-project directory
 
 ## TODO
-- [ ] Create demo project
+- [X] Create demo project
 - [ ] Add gifs and images to README
 - [ ] Cutting and resizing map
 - [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
 - [ ] Better error handling
+
+## References
+The code for some parts of this projects was inspired by/copied from these resources:
+* RPAS implementation written in Python: <https://github.com/MoyTW/roguebasin_rpas>
+* Bresenham's line: <http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm>
+* Midpoint ellipse: <https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/>
+* Doxygen theme: <https://jothepro.github.io/doxygen-awesome-css/>
+* Godot cpp API: <https://github.com/godotengine/godot-cpp>
 
 ## License
 Distributed under the MIT License. See LICENSE for more information

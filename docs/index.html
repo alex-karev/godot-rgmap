@@ -92,7 +92,7 @@ Features</h1>
 <li><b>FOV</b> calculation using RPAS algorithm</li>
 <li><b>Raycasting</b> using Bresenham's lines</li>
 <li><b>Pathfinding</b> using Godot built-in A* class</li>
-<li>**"Memorizing" cells** that have been visible at least once</li>
+<li><b>Memorizing cells</b> that have been visible at least once</li>
 <li><b>Draw and fill</b> functions for drawing primitives (lines, ellipse, rects, circles, arcs)</li>
 <li><b>Custom RGTileset</b> class to store data about all tiles in a game</li>
 <li><b>Merging maps.</b> Placing one RGMap inside the other map</li>
@@ -122,7 +122,7 @@ RGTileset</h2>
 <div class="line">    var data = json[&quot;tiles&quot;][tile_name]</div>
 <div class="line">    tileset.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
 </div><!-- fragment --><p >Here you can find all functions available inside in RGTileset:</p>
-<p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileSet.html</a></p>
+<p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html</a></p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 RGMap</h2>
 <p >A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
@@ -133,6 +133,7 @@ RGMap</h2>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 Compilation</h1>
+<p >You will need: C++ compiler and SCons installed in your system</p>
 <ol type="1">
 <li>Generate and compile bindings:</li>
 </ol>
@@ -155,13 +156,22 @@ Example</h1>
 <h1><a class="anchor" id="autotoc_md8"></a>
 TODO</h1>
 <ul>
-<li>[ ] Create demo project</li>
+<li>[X] Create demo project</li>
 <li>[ ] Add gifs and images to README</li>
 <li>[ ] Cutting and resizing map</li>
 <li>[ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset</li>
 <li>[ ] Better error handling</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md9"></a>
+References</h1>
+<p >The code for some parts of this projects was inspired by/copied from these resources:</p><ul>
+<li>RPAS implementation written in Python: <a href="https://github.com/MoyTW/roguebasin_rpas">https://github.com/MoyTW/roguebasin_rpas</a></li>
+<li>Bresenham's line: <a href="http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm">http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm</a></li>
+<li>Midpoint ellipse: <a href="https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/">https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/</a></li>
+<li>Doxygen theme: <a href="https://jothepro.github.io/doxygen-awesome-css/">https://jothepro.github.io/doxygen-awesome-css/</a></li>
+<li>Godot cpp API: <a href="https://github.com/godotengine/godot-cpp">https://github.com/godotengine/godot-cpp</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
 License</h1>
 <p >Distributed under the MIT License. See LICENSE for more information </p>
 </div></div><!-- PageDoc -->

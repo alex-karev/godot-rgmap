@@ -50,9 +50,9 @@ public:
     //! Size of the matrix
     Vector2 size;
     //! Allow/Disallow diagonal pathfinding
-    bool allowDiagonalPathfinding;
-    //! RGTileSet with information about all tiles
-    RGTileSet* tileset;
+    bool allowDiagonalPathfinding = true;
+    //! RGTileset with information about all tiles
+    RGTileset* tileset;
     
     /** @name Matrices
     * Flat arrays that contain all data about the cells
@@ -94,7 +94,7 @@ public:
     ///@}
 
     //! Fill all cells with 0s using a predefined tileset
-    void initialize(RGTileSet* _tileset);
+    void initialize(RGTileset* _tileset);
 
     /** @name Data getters */
     ///@{

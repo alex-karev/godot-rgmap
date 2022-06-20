@@ -13,6 +13,7 @@ opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'rgmap', PathVariable.PathAccept))
+opts.Add(BoolVariable('use_mingw', 'Use GCC on Windows or Linux', 'no'))
 
 # Local dependency paths, adapt them to your setup
 godot_headers_path = "godot-cpp/godot-headers/"
@@ -21,6 +22,8 @@ cpp_library = "libgodot-cpp"
 
 # only support 64 at this time..
 bits = 64
+# Compile dlls on linux using mingw
+target_extension = ".dll"
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -58,6 +61,7 @@ if env['platform'] == "osx":
         env.Append(CCFLAGS=['-g', '-O3'])
 
 elif env['platform'] in ('x11', 'linux'):
+    target_extension = ".so"
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     env.Append(CCFLAGS=['-fPIC'])
@@ -72,18 +76,27 @@ elif env['platform'] == "windows":
     cpp_library += '.windows'
     # This makes sure to keep the session environment variables on windows,
     # that way you can run scons in a vs 2017 prompt and it will find all the required tools
-    env.Append(ENV=os.environ)
-
-    env.Append(CPPDEFINES=['WIN32', '_WIN32', '_WINDOWS', '_CRT_SECURE_NO_WARNINGS'])
-    env.Append(CCFLAGS=['-W3', '-GR'])
-    env.Append(CXXFLAGS='/std:c++17')
-    if env['target'] in ('debug', 'd'):
-        env.Append(CPPDEFINES=['_DEBUG'])
-        env.Append(CCFLAGS=['-EHsc', '-MDd', '-ZI'])
-        env.Append(LINKFLAGS=['-DEBUG'])
+    if env['use_mingw']:
+        env["CXX"] = "x86_64-w64-mingw32-g++"
+        env["AR"] = "x86_64-w64-mingw32-ar"
+        env["RANLIB"] = "x86_64-w64-mingw32-ranlib"
+        env["LINK"] = "x86_64-w64-mingw32-g++"
+        #env['CXX'] = 'g++'
+        env.Append(CCFLAGS=['-g', '-O3', '-std=c++17', '-Wwrite-strings'])
+        env.Append(LINKFLAGS=['--static', '-Wl,--no-undefined', '-static-libgcc', '-static-libstdc++'])
     else:
-        env.Append(CPPDEFINES=['NDEBUG'])
-        env.Append(CCFLAGS=['-O2', '-EHsc', '-MD'])
+        env.Append(ENV=os.environ)
+
+        env.Append(CPPDEFINES=['WIN32', '_WIN32', '_WINDOWS', '_CRT_SECURE_NO_WARNINGS'])
+        env.Append(CCFLAGS=['-W3', '-GR'])
+        env.Append(CXXFLAGS='/std:c++17')
+        if env['target'] in ('debug', 'd'):
+            env.Append(CPPDEFINES=['_DEBUG'])
+            env.Append(CCFLAGS=['-EHsc', '-MDd', '-ZI'])
+            env.Append(LINKFLAGS=['-DEBUG'])
+        else:
+            env.Append(CPPDEFINES=['NDEBUG'])
+            env.Append(CCFLAGS=['-O2', '-EHsc', '-MD'])
 
 if env['target'] in ('debug', 'd'):
     cpp_library += '.debug'
@@ -101,7 +114,7 @@ env.Append(LIBS=[cpp_library])
 env.Append(CPPPATH=['src/'])
 sources = Glob('src/*.cpp')
 
-library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
+library = env.SharedLibrary(target=env['target_path'] + env['target_name'] + target_extension, source=sources)
 
 Default(library)
 

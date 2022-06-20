@@ -8,8 +8,8 @@
 namespace godot {
 
 //! Class that stores a library of tiles for a RGMap
-class RGTileSet: public Reference {
-    GODOT_CLASS(RGTileSet, Reference)
+class RGTileset: public Reference {
+    GODOT_CLASS(RGTileset, Reference)
     
     // Structure that stores data about one type of tile
     struct RGTile {
@@ -28,8 +28,8 @@ public:
     /** @name Standard methods */
     ///@{
     static void _register_methods();
-    RGTileSet();
-    ~RGTileSet();
+    RGTileset();
+    ~RGTileset();
     void _init();
     ///@}
 
@@ -37,6 +37,8 @@ public:
     void add_tile(String name, String display_name, bool passable, bool transparent);
     //! Get number of tiles
     int get_tiles_count();
+    //! Get tile index by name
+    int get_index(String name);
     //! Get tile name (unique)
     String get_name(int index);
     //! Get tile display name

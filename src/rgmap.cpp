@@ -9,7 +9,7 @@ using namespace godot;
 void RGMap::_register_methods() {
     register_property<RGMap, Vector2>("size", &RGMap::size, Vector2(1,1));
     register_property<RGMap, bool>("allowDiagonalPathfinding", &RGMap::allowDiagonalPathfinding, true);
-    register_property<RGMap, RGTileSet*>("tileset", &RGMap::tileset, nullptr);
+    register_property<RGMap, RGTileset*>("tileset", &RGMap::tileset, nullptr);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
     register_property<RGMap, bool>("RPAS_NOT_VISIBLE_BLOCKS_VISION", &RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION, true);
     register_property<RGMap, int>("RPAS_RESTRICTIVENESS", &RGMap::RPAS_RESTRICTIVENESS, 1);
@@ -68,7 +68,7 @@ void RGMap::_init() {
     astar.instance();
 }
 
-void RGMap::initialize(RGTileSet* _tileset) {
+void RGMap::initialize(RGTileset* _tileset) {
     // Apply new tileset
     tileset = _tileset;
     clean_map_data();
@@ -106,9 +106,17 @@ void RGMap::generate_astar() {
         if (y != 0) {
             astar->connect_points(i,i-size.x);
         }
-        // Connect with top left neighbor (if diagonal pathfinding is allowed)
-        if (x != 0 && y != 0 && allowDiagonalPathfinding) {
-            astar->connect_points(i,i-size.x-1);
+        // If diagonal pathfinding is allowed
+        if (y != 0 && allowDiagonalPathfinding) {
+            // Connect with top left neighbor
+            if (x != 0) {
+                astar->connect_points(i,i-size.x-1);
+            }
+            // Connect with top right neighbor
+            if (x != size.x-1) {
+                astar->connect_points(i,i-size.x+1);
+            }
+            
         }
         // Set pathfinding
         astar->set_point_disabled(i, !tileset->is_passable(values[i]));
