@@ -150,6 +150,8 @@ public:
     Vector2 raycast_vision(Vector2 start, Vector2 end);
     //! Cast ray from start to end and return position where path is blocked by an obstacle
     Vector2 raycast_path(Vector2 start, Vector2 end);
+    //! Check if end point is visisble from start point
+    bool visibility_between(Vector2 start, Vector2 end);
     ///@}
 
     /** @name Editing*/

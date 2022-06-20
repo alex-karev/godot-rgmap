@@ -33,6 +33,7 @@ var classgodot_1_1RGMap =
     [ "set_pathfinding", "classgodot_1_1RGMap.html#ab84dba0b79056b578e8fb32d621d1fad", null ],
     [ "set_value", "classgodot_1_1RGMap.html#abf819377354f5deaf670605175243442", null ],
     [ "set_visibility", "classgodot_1_1RGMap.html#a0aad3be6e33070ebedb8ea3eb81789cf", null ],
+    [ "visibility_between", "classgodot_1_1RGMap.html#a9f419103f3db363ea7c8eff451502f49", null ],
     [ "allowDiagonalPathfinding", "classgodot_1_1RGMap.html#a5f0a2c078403ce4ff341449289ac238f", null ],
     [ "RPAS_NOT_VISIBLE_BLOCKS_VISION", "classgodot_1_1RGMap.html#abfab661cb4533aee01402a3a7b1acb7b", null ],
     [ "RPAS_RADIUS_FUDGE", "classgodot_1_1RGMap.html#ad6b261d97c61db7c511faa45905eea3d", null ],

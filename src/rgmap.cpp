@@ -38,6 +38,7 @@ void RGMap::_register_methods() {
     register_method("get_line", &RGMap::get_line);
     register_method("raycast_vision", &RGMap::raycast_vision);
     register_method("raycast_path", &RGMap::raycast_path);
+    register_method("visibility_between", &RGMap::visibility_between);
 
     register_method("place_map", &RGMap::place_map);
     register_method("draw_line", &RGMap::draw_line);
@@ -284,6 +285,16 @@ Vector2 RGMap::raycast_path(Vector2 start, Vector2 end) {
     }
     return end;
 }
+
+bool RGMap::visibility_between(Vector2 start, Vector2 end) {
+    Vector2 raycast = raycast_vision(start,end);
+    if (raycast == end) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 /*
     Editing
