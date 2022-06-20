@@ -93,7 +93,7 @@ You can find a short example of usage in demo-project directory
 
 ## TODO
 - [X] Create demo project
-- [ ] Add gifs and images to README
+- [X] Add gifs and images to README
 - [ ] Cutting and resizing map
 - [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
 - [ ] Better error handling
