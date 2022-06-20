@@ -2,7 +2,7 @@
 
 A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV
 
-
+<img src="https://github.com/alex-karev/godot-rgmap/raw/main/screenshots/demo.gif">
 
 ## Features
 * **FOV** calculation using RPAS algorithm
@@ -16,8 +16,9 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **C++, GDNative**
 
 ## Why?
-
 To make managing maps for roguelikes easier by uniting all useful functions and properties in one class.
+
+<img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/screenshots/code.png">
 
 ## Usage
 There are some new classes inherited from Reference:
