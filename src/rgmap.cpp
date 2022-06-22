@@ -79,7 +79,6 @@ void RGMap::_init() {
     chunk_size = Vector2(50,50);
     size_cells = Vector2(150,150);
     allowDiagonalPathfinding = true;
-    astar.instance();
 }
 
 void RGMap::initialize(RGTileset* _tileset) {
@@ -198,41 +197,8 @@ void RGMap::clean_map_data() {
         values.remove(0);
         memory.remove(0);
     }
-    astar->clear();
+    //astar->clear();
 }
-
-void RGMap::generate_astar() {
-    for (int i=0; i<size.x*size.y; ++i) {
-        // Add astar point
-        int y = floor(i/size.x);
-        int x = i - y*size.x;
-        Vector2 point = Vector2(x,y);
-        astar->add_point(i,point);
-        // Connect with left neighbor
-        if (x != 0) {
-            astar->connect_points(i,i-1);
-        }
-        // Connect with top neighbor
-        if (y != 0) {
-            astar->connect_points(i,i-size.x);
-        }
-        // If diagonal pathfinding is allowed
-        if (y != 0 && allowDiagonalPathfinding) {
-            // Connect with top left neighbor
-            if (x != 0) {
-                astar->connect_points(i,i-size.x-1);
-            }
-            // Connect with top right neighbor
-            if (x != size.x-1) {
-                astar->connect_points(i,i-size.x+1);
-            }
-            
-        }
-        // Set pathfinding
-        astar->set_point_disabled(i, !tileset->is_passable(values[i]));
-    }
-}
-
 
 
 
@@ -259,7 +225,7 @@ bool RGMap::is_in_bounds(Vector2 position) {
 }
 int RGMap::get_value(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), 0);
+    if (chunk_index >= chunks.size()) {return 0;}
     Chunk& chunk = chunks[chunk_index];
     if (!chunk.loaded) {return 0;}
     int index = get_local_index(position);
@@ -281,12 +247,11 @@ bool RGMap::is_visible(Vector2 position) {
     if (!fov_zone.has_point(position)) {return false;}
     Vector2 local_position = position - fov_zone.position;
     int index = int(local_position.x + local_position.y*fov_zone.size.x);
-    ERR_FAIL_INDEX_V(index, visibility.size(), false);
     return visibility[index];
     }
 bool RGMap::is_memorized(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), false);
+    if (chunk_index >= chunks.size()) {return false;}
     Chunk& chunk = chunks[chunk_index];
     if (!chunk.loaded) {return false;}
     int index = get_local_index(position);
@@ -326,7 +291,8 @@ void RGMap::set_memorized(Vector2 position, bool value) {
 }
 
 void RGMap::set_pathfinding(Vector2 position, bool value) {
-    astar->set_point_disabled(get_index(position), !value);
+    return;
+    //astar->set_point_disabled(get_index(position), !value);
 }
 
 
@@ -346,35 +312,53 @@ void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
         set_memorized(visible_cells[i], true);
     }
 }
-PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end) {
-    if (is_in_bounds(start) && is_in_bounds(end)) {
-        // Define indexes
-        int start_index = start.y*size.x+start.x;
-        int end_index = end.y*size.x+end.x;
-        // Define if start and end points are disabled
-        bool start_disabled = astar->is_point_disabled(start_index);
-        bool end_disabled = astar->is_point_disabled(end_index);
-        // Temporarily unlock start and end points
-        astar->set_point_disabled(start_index, false);
-        astar->set_point_disabled(end_index, false);
-        // Calculate path
-        // PoolVector2Array path = astar->get_point_path(start_index, end_index); // not thread-safe
-        PoolIntArray id_path = astar->get_id_path(start_index, end_index);
-        // Set points disabled back to original values
-        astar->set_point_disabled(start_index, start_disabled);
-        astar->set_point_disabled(end_index, end_disabled);
-        // Get PoolVector2Array path
-        PoolVector2Array path;
-        for (int i=0; i<id_path.size(); ++i) {
-            Vector2 point = get_position(id_path[i]);
-            path.append(point);
+
+PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
+    PoolVector2Array path;
+    // Return empty path if out of pathfinding zone
+    if (!pathfinding_zone.has_point(start) || !pathfinding_zone.has_point(end)) {return path;}
+    // Generate new Astar
+    Ref<AStar2D> astar;
+    astar.instance();
+    for(int i=0; i < pathfinding_zone.size.x*pathfinding_zone.size.y; ++i) {
+        int y = floor(i/pathfinding_zone.size.x);
+        int x = i - y*pathfinding_zone.size.x;
+        Vector2 point = Vector2(x,y) + pathfinding_zone.position;
+        astar->add_point(i,point);
+        // Connect with left neighbor
+        if (x != 0) {
+            astar->connect_points(i,i-1);
         }
-        return path;
+        // Connect with top neighbor
+        if (y != 0) {
+            astar->connect_points(i,i-pathfinding_zone.size.x);
+        }
+        // If diagonal pathfinding is allowed
+        if (y != 0 && allowDiagonalPathfinding) {
+            // Connect with top left neighbor
+            if (x != 0) {
+                astar->connect_points(i,i-pathfinding_zone.size.x-1);
+            }
+            // Connect with top right neighbor
+            if (x != pathfinding_zone.size.x-1) {
+                astar->connect_points(i,i-pathfinding_zone.size.x+1);
+            }       
+        }
+        // Disable point
+        if (!is_passable(point)) {astar->set_point_disabled(i, true);}
     }
-    else {
-        PoolVector2Array empty;
-        return empty;
+    // Find path
+    Vector2 local_start = start - pathfinding_zone.position;
+    Vector2 local_end = end - pathfinding_zone.position;
+    int start_index = local_start.y*pathfinding_zone.size.x+local_start.x;
+    int end_index = local_end.y*pathfinding_zone.size.x+local_end.x;
+    PoolIntArray id_path = astar->get_id_path(start_index, end_index);
+    // Convert path from ints to Vector2
+    for (int i=0; i<id_path.size(); ++i) {
+        Vector2 point = astar->get_point_position(id_path[i])+pathfinding_zone.position;
+        path.append(point);
     }
+    return path;
 }
 
 PoolVector2Array RGMap::get_line(Vector2 start, Vector2 end, bool allow_diagonal) {
@@ -640,5 +624,5 @@ void RGMap::load_map_data(PoolIntArray map_data) {
         values.append(map_data[i+2]);
         memory.append(map_data[i+2+size.x*size.y]);
     }
-    generate_astar();
+    //generate_astar();
 }

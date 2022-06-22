@@ -44,8 +44,6 @@ private:
     std::vector<Chunk> chunks;
     // Size of the map in cells
     Vector2 size_cells = Vector2(150,150);
-    // Astar2d instance used for pathfinding
-    Ref<AStar2D> astar;
     // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
     // Visibility of cells within fov radius
@@ -64,8 +62,6 @@ private:
     bool rpas_combine_obstructions(CellAngles &old_o, CellAngles &new_o);
     // Draw points based on 4-way symmetry (for Bresenham's ellipse algorithm)
     void draw_4_way_symmetry(int xc, int yc, int x, int y, int value, float start_angle, float end_angle);
-    // Generate astar system based on current size and values
-    void generate_astar();
     // Clean map data (used initialization and loading)
     void clean_map_data();
 
@@ -187,8 +183,14 @@ public:
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
     //! Calculate visibility from given position and distance
     void calculate_fov(Vector2 view_position, int max_distance);
-    //! TODO: Find path from start to end using A* algorithm. Returns Array of Vector2 points
-    PoolVector2Array find_path(Vector2 start, Vector2 end);
+    //! TODO: Find path from start to end using A* algorithm
+    /*!
+    Returns PoolVector2Array
+    @param start Start point
+    @param end Target point
+    @param pathfinding_zone Rect2 zone where pathfinding is calculated
+    */
+    PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */
     PoolVector2Array get_line(Vector2 start, Vector2 end, bool allow_diagonal = true);
@@ -196,7 +198,7 @@ public:
     Vector2 raycast_vision(Vector2 start, Vector2 end);
     //! Cast ray from start to end and return position where path is blocked by an obstacle
     Vector2 raycast_path(Vector2 start, Vector2 end);
-    //! Check if end point is visisble from start point
+    //! TODO: Check if end point is visisble from start point
     bool visibility_between(Vector2 start, Vector2 end);
     ///@}
 
