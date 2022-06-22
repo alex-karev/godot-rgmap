@@ -126,21 +126,18 @@ void RGMap::load_chunk(int index, PoolIntArray data) {
             for (int i=0; i < cells_number; ++i) {
                 chunk.values.push_back(data[i]);
                 chunk.memory.push_back(data[i+cells_number]);
-                chunk.visibility.push_back(0);
             }
         // Apply data to existing chunk
         } else {
             for (int i=0; i < cells_number; ++i) {
                 chunk.values[i] = data[i];
                 chunk.memory[i] = data[i+cells_number];
-                chunk.visibility[i] = 0;
             }
         }    
     // Generate new chunk
     } else if (!chunk.loaded) {
         chunk.values.resize(cells_number, 0);
         chunk.memory.resize(cells_number, 0);
-        chunk.visibility.resize(cells_number, 0);
     }
     chunk.loaded = true;
 }
@@ -168,8 +165,6 @@ void RGMap::free_chunk(int index) {
         chunk.values.shrink_to_fit();
         chunk.memory.clear();
         chunk.memory.shrink_to_fit();
-        chunk.visibility.clear();
-        chunk.visibility.shrink_to_fit();
         chunk.loaded = false;
     }
 }
@@ -181,7 +176,6 @@ void RGMap::reset_chunk(int index) {
         for (int i=0; i < chunk_size.x*chunk_size.y; ++i) {
             chunk.values[i] = 0;
             chunk.memory[i] = 0;
-            chunk.visibility[i] = 0;
         } 
     }
 }
@@ -202,7 +196,6 @@ void RGMap::clean_map_data() {
     // Clear map arrays and astar
     for (int i=0; i<values.size(); ++i) {
         values.remove(0);
-        visibility.remove(0);
         memory.remove(0);
     }
     astar->clear();
@@ -285,12 +278,11 @@ bool RGMap::is_passable(Vector2 position) {
     return tileset->is_passable(get_value(position));
 }
 bool RGMap::is_visible(Vector2 position) {
-    int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), false);
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {return false;}
-    int index = get_local_index(position);
-    return chunk.visibility[index] == 1;
+    if (!fov_zone.has_point(position)) {return false;}
+    Vector2 local_position = position - fov_zone.position;
+    int index = int(local_position.x + local_position.y*fov_zone.size.x);
+    ERR_FAIL_INDEX_V(index, visibility.size(), false);
+    return visibility[index];
     }
 bool RGMap::is_memorized(Vector2 position) {
     int chunk_index = get_chunk_index(position);
@@ -312,18 +304,15 @@ void RGMap::set_value(Vector2 position, int value) {
     if (!chunk.loaded) {load_chunk(chunk_index);}
     int index = get_local_index(position);
     chunk.values[index] = value;
-    chunk.visibility[index] = 0;
     chunk.memory[index] = 0;
 }
 
 void RGMap::set_visibility(Vector2 position, bool value) {
-    int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX(chunk_index, chunks.size());
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {load_chunk(chunk_index);}
-    int index = get_local_index(position);
-    int int_value = (value) ? 1 : 0;
-    chunk.visibility[index] = int_value;
+    if (!fov_zone.has_point(position)) {return;}
+    Vector2 local_position = position - fov_zone.position;
+    int index = int(local_position.x + local_position.y*fov_zone.size.x);
+    ERR_FAIL_INDEX(index, visibility.size());
+    visibility[index] = (value) ? 1 : 0;
 }
 
 void RGMap::set_memorized(Vector2 position, bool value) {
@@ -345,8 +334,11 @@ void RGMap::set_pathfinding(Vector2 position, bool value) {
     View and pathfinding
 */
 void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
+    fov_zone.size = Vector2(1,1)*(max_distance*2+2);
+    fov_zone.position = view_position - Vector2(1,1)*max_distance - Vector2(1,1);
+    visibility.resize(fov_zone.size.x*fov_zone.size.y);
     for (int i=0; i<visibility.size(); ++i){
-        visibility.set(i,0);
+        visibility[i] = 0;
     }
     PoolVector2Array visible_cells = rpas_calc_visible_cells_from(view_position, max_distance);
     for (int i=0; i < visible_cells.size(); ++i) {
@@ -647,7 +639,6 @@ void RGMap::load_map_data(PoolIntArray map_data) {
     for (int i = 0; i < size.x*size.y; ++i) {
         values.append(map_data[i+2]);
         memory.append(map_data[i+2+size.x*size.y]);
-        visibility.append(0);
     }
     generate_astar();
 }

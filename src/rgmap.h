@@ -36,7 +36,6 @@ class RGMap : public Reference {
         bool loaded = false;
         // Flat arrays that contain all data about the cells
         std::vector<int> values;
-        std::vector<int> visibility; // Do I really need this thing to be here?
         std::vector<int> memory;
     };
 
@@ -49,6 +48,10 @@ private:
     Ref<AStar2D> astar;
     // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
+    // Visibility of cells within fov radius
+    std::vector<int> visibility;
+    // Current fov zone
+    Rect2 fov_zone = Rect2(Vector2(0,0), Vector2(0,0));
 
     
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
@@ -65,8 +68,6 @@ private:
     void generate_astar();
     // Clean map data (used initialization and loading)
     void clean_map_data();
-    // Errors
-    void error_chunk_out_of_bounds(int index);
 
 public:
     //! Size of one chunk (Default: 50x50)
@@ -109,7 +110,7 @@ public:
 
     // (Deprecated)
  	    PoolIntArray values;
-	    PoolIntArray visibility;
+	    
 	    PoolIntArray memory;
 
     //! Fill all cells with 0s using a predefined tileset
@@ -182,13 +183,11 @@ public:
     /** @name View and pathfinding */
     ///@{
 
-    //! TODO: Needs major rework!
-
     //! Get list of cells visible from position within radius using RPAS algorithm
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
     //! Calculate visibility from given position and distance
     void calculate_fov(Vector2 view_position, int max_distance);
-    //! Find path from start to end using A* algorithm. Returns Array of Vector2 points
+    //! TODO: Find path from start to end using A* algorithm. Returns Array of Vector2 points
     PoolVector2Array find_path(Vector2 start, Vector2 end);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */
