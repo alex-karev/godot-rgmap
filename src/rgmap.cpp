@@ -7,7 +7,8 @@ using namespace godot;
 */
 
 void RGMap::_register_methods() {
-    register_property<RGMap, Vector2>("size", &RGMap::size, Vector2(1,1));
+    register_property<RGMap, Vector2>("size", &RGMap::size, Vector2(3,3));
+    register_property<RGMap, Vector2>("chunk_size", &RGMap::chunk_size, Vector2(50,50));
     register_property<RGMap, bool>("allowDiagonalPathfinding", &RGMap::allowDiagonalPathfinding, true);
     register_property<RGMap, RGTileset*>("tileset", &RGMap::tileset, nullptr);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
@@ -17,8 +18,18 @@ void RGMap::_register_methods() {
 
     register_method("initialize", &RGMap::initialize);
 
-    register_method("get_index", &RGMap::get_index);
-    register_method("get_position", &RGMap::get_position);
+    register_method("get_chunk_index", &RGMap::get_chunk_index);
+    register_method("chunk_index_v2", &RGMap::chunk_index_v2);
+    register_method("is_chunk_in_bounds", &RGMap::is_chunk_in_bounds);
+    register_method("is_chunk_loaded", &RGMap::is_chunk_loaded);
+    register_method("load_chunk", &RGMap::load_chunk);
+    register_method("dump_chunk_data", &RGMap::dump_chunk_data);
+    register_method("free_chunk", &RGMap::free_chunk);
+    register_method("reset_chunk", &RGMap::reset_chunk);
+    register_method("count_chunks", &RGMap::count_chunks);
+    register_method("count_loaded_chunks", &RGMap::count_loaded_chunks);
+
+    register_method("get_local_index", &RGMap::get_local_index);
     register_method("get_value", &RGMap::get_value);
     register_method("get_name", &RGMap::get_name);
     register_method("get_display_name", &RGMap::get_display_name);
@@ -64,7 +75,9 @@ RGMap::RGMap() {}
 RGMap::~RGMap() {}
 
 void RGMap::_init() {
-    size = Vector2(50,50);
+    size = Vector2(3,3);
+    chunk_size = Vector2(50,50);
+    size_cells = Vector2(150,150);
     allowDiagonalPathfinding = true;
     astar.instance();
 }
@@ -72,15 +85,118 @@ void RGMap::_init() {
 void RGMap::initialize(RGTileset* _tileset) {
     // Apply new tileset
     tileset = _tileset;
-    clean_map_data();
-    // Generate empty map arrays and astar points
-    for (int i=0; i<size.x*size.y; ++i) {
-        values.append(0);
-        visibility.append(0);
-        memory.append(0);
+    // Generate empty chunks
+    for (int i=0; i < size.x*size.y; ++i) {
+        Chunk chunk;
+        int chunk_y = floor(i/size.x);
+        int chunk_x = i - chunk_y*size.x;
+        chunk.index = Vector2(chunk_x, chunk_y);
+        chunk.loaded = false;
+        chunks.push_back(chunk);
     }
-    generate_astar();
+    // Define size (in cells)
+    size_cells = size*chunk_size;
 }
+
+int RGMap::get_chunk_index(Vector2 position) {
+    int y = floor(position.y/chunk_size.y);
+    int x = floor(position.x/chunk_size.x);
+    int index = x + y*size.x;
+    return index;
+}
+Vector2 RGMap::chunk_index_v2(int index) {
+    int y = floor(index/size.x);
+    int x = index - y*size.x;
+    return Vector2(x,y);
+}
+bool RGMap::is_chunk_in_bounds(int index){return index < chunks.size();}
+bool RGMap::is_chunk_loaded(int index){
+    ERR_FAIL_INDEX_V(index, chunks.size(), false);
+    return chunks[index].loaded;
+}
+void RGMap::load_chunk(int index, PoolIntArray data) {
+    // Trow out of bounds error
+    ERR_FAIL_INDEX(index, chunks.size());
+    int cells_number = chunk_size.x*chunk_size.y;
+    Chunk& chunk = chunks[index];
+    // Load chunk from data
+    if (data.size() > 0) {
+        // New chunk from data
+        if (!chunk.loaded) {
+            for (int i=0; i < cells_number; ++i) {
+                chunk.values.push_back(data[i]);
+                chunk.memory.push_back(data[i+cells_number]);
+                chunk.visibility.push_back(0);
+            }
+        // Apply data to existing chunk
+        } else {
+            for (int i=0; i < cells_number; ++i) {
+                chunk.values[i] = data[i];
+                chunk.memory[i] = data[i+cells_number];
+                chunk.visibility[i] = 0;
+            }
+        }    
+    // Generate new chunk
+    } else if (!chunk.loaded) {
+        chunk.values.resize(cells_number, 0);
+        chunk.memory.resize(cells_number, 0);
+        chunk.visibility.resize(cells_number, 0);
+    }
+    chunk.loaded = true;
+}
+PoolIntArray RGMap::dump_chunk_data(int index) {
+    PoolIntArray data;
+    // Trow out of bounds error
+    ERR_FAIL_INDEX_V(index, chunks.size(), data);
+    Chunk& chunk = chunks[index];
+    // Return empty if chunk is not loaded
+    if (!chunk.loaded) {return data;}
+    // Dump data
+    for (int i=0; i < chunk_size.x*chunk_size.y; ++i) {
+        data.append(chunk.values[i]);
+        data.append(chunk.memory[i]);
+    }
+    return data;
+}
+void RGMap::free_chunk(int index) {
+    // Trow out of bounds error
+    ERR_FAIL_INDEX(index, chunks.size());
+    Chunk& chunk = chunks[index];
+    // Clear arrays
+    if (chunk.loaded) {
+        chunk.values.clear();
+        chunk.values.shrink_to_fit();
+        chunk.memory.clear();
+        chunk.memory.shrink_to_fit();
+        chunk.visibility.clear();
+        chunk.visibility.shrink_to_fit();
+        chunk.loaded = false;
+    }
+}
+void RGMap::reset_chunk(int index) {
+    ERR_FAIL_INDEX(index, chunks.size());
+    Chunk& chunk = chunks[index];
+    if (!is_chunk_loaded(index)) {load_chunk(index);}
+    else {
+        for (int i=0; i < chunk_size.x*chunk_size.y; ++i) {
+            chunk.values[i] = 0;
+            chunk.memory[i] = 0;
+            chunk.visibility[i] = 0;
+        } 
+    }
+}
+int RGMap::count_chunks(){return size.x*size.y;}
+int RGMap::count_loaded_chunks() {
+    int loaded = 0;
+    for (Chunk chunk : chunks){
+        if (chunk.loaded) {loaded++;}
+    }
+    return loaded;
+}
+
+
+
+
 
 void RGMap::clean_map_data() {
     // Clear map arrays and astar
@@ -124,49 +240,100 @@ void RGMap::generate_astar() {
     }
 }
 
+
+
+
+
+
+
 /*
     Cell data getters
 */
-
+int RGMap::get_index(Vector2 position){return 0;}
+Vector2 RGMap::get_position(int index){return Vector2(0,0);}
+int RGMap::get_local_index(Vector2 position) {
+    int chunk_pos_y = floor(position.y/chunk_size.y);
+    int chunk_pos_x = floor(position.x/chunk_size.x);
+    Vector2 chunk_pos = Vector2(chunk_pos_x, chunk_pos_y);
+    Vector2 local_position = position - chunk_pos*chunk_size;
+    int index = local_position.x + local_position.y*chunk_size.x;
+    return index;
+}
 bool RGMap::is_in_bounds(Vector2 position) {
-    bool x_in_bounds = position.x < size.x && position.x >= 0;
-    bool y_in_bounds = position.y < size.y && position.y >= 0;
+    bool x_in_bounds = position.x < size_cells.x && position.x >= 0;
+    bool y_in_bounds = position.y < size_cells.y && position.y >= 0;
     return x_in_bounds && y_in_bounds;
 }
-
-int RGMap::get_index(Vector2 position) {return position.y*size.x + position.x;}
-Vector2 RGMap::get_position(int index) {
-    int y = floor(index/size.x);
-    int x = index - y*size.x;
-    return Vector2(x,y);
+int RGMap::get_value(Vector2 position) {
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), 0);
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {return 0;}
+    int index = get_local_index(position);
+    return chunk.values[index];
 }
-int RGMap::get_value(Vector2 position) {return values[get_index(position)];}
-String RGMap::get_name(Vector2 position) {return tileset->get_name(get_value(position));}
-String RGMap::get_display_name(Vector2 position) {return tileset->get_display_name(get_value(position));}
-bool RGMap::is_transparent(Vector2 position) {return tileset->is_transparent(get_value(position));}
-bool RGMap::is_passable(Vector2 position) {return tileset->is_passable(get_value(position));}
-bool RGMap::is_visible(Vector2 position) {return visibility[get_index(position)] == 1;}
-bool RGMap::is_memorized(Vector2 position) {return memory[get_index(position)] == 1;}
+String RGMap::get_name(Vector2 position) {
+    return tileset->get_name(get_value(position));
+}
+String RGMap::get_display_name(Vector2 position) {
+    return tileset->get_display_name(get_value(position));
+}
+bool RGMap::is_transparent(Vector2 position) {
+    return tileset->is_transparent(get_value(position));
+}
+bool RGMap::is_passable(Vector2 position) {
+    return tileset->is_passable(get_value(position));
+}
+bool RGMap::is_visible(Vector2 position) {
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), false);
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {return false;}
+    int index = get_local_index(position);
+    return chunk.visibility[index] == 1;
+    }
+bool RGMap::is_memorized(Vector2 position) {
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX_V(chunk_index, chunks.size(), false);
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {return false;}
+    int index = get_local_index(position);
+    return chunk.memory[index] == 1;
+    }
 
 /*
     Cell data setters
 */
 
 void RGMap::set_value(Vector2 position, int value) {
-    values.set(get_index(position), value);
-    set_pathfinding(position, tileset->is_passable(value));
-    set_visibility(position, false);
-    set_memorized(position, false);
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX(chunk_index, chunks.size());
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {load_chunk(chunk_index);}
+    int index = get_local_index(position);
+    chunk.values[index] = value;
+    chunk.visibility[index] = 0;
+    chunk.memory[index] = 0;
 }
 
 void RGMap::set_visibility(Vector2 position, bool value) {
-    int valueInt = (value) ? 1 : 0;
-    visibility.set(get_index(position), valueInt);
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX(chunk_index, chunks.size());
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {load_chunk(chunk_index);}
+    int index = get_local_index(position);
+    int int_value = (value) ? 1 : 0;
+    chunk.visibility[index] = int_value;
 }
 
 void RGMap::set_memorized(Vector2 position, bool value) {
-    int valueInt = (value) ? 1 : 0;
-    memory.set(get_index(position), valueInt);
+    int chunk_index = get_chunk_index(position);
+    ERR_FAIL_INDEX(chunk_index, chunks.size());
+    Chunk& chunk = chunks[chunk_index];
+    if (!chunk.loaded) {load_chunk(chunk_index);}
+    int index = get_local_index(position);
+    int int_value = (value) ? 1 : 0;
+    chunk.memory[index] = int_value;
 }
 
 void RGMap::set_pathfinding(Vector2 position, bool value) {

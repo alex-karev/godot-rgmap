@@ -12,6 +12,7 @@
 #include <cmath>
 #include <vector>
 
+
 #include "rgtileset.h"
 
 namespace godot {
@@ -27,9 +28,28 @@ class RGMap : public Reference {
         float far;
     };
 
+    // Structure of one chunk
+    struct Chunk {
+        // Index of chunk (as Vector2)
+        Vector2 index;
+        // Load status of chunk
+        bool loaded = false;
+        // Flat arrays that contain all data about the cells
+        std::vector<int> values;
+        std::vector<int> visibility; // Do I really need this thing to be here?
+        std::vector<int> memory;
+    };
+
 private:
+    // Store all chunks
+    std::vector<Chunk> chunks;
+    // Size of the map in cells
+    Vector2 size_cells = Vector2(150,150);
+    // Astar2d instance used for pathfinding
     Ref<AStar2D> astar;
+    // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
+
     
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -45,24 +65,18 @@ private:
     void generate_astar();
     // Clean map data (used initialization and loading)
     void clean_map_data();
+    // Errors
+    void error_chunk_out_of_bounds(int index);
 
 public:
-    //! Size of the matrix
-    Vector2 size;
+    //! Size of one chunk (Default: 50x50)
+    Vector2 chunk_size = Vector2(50,50);
+    //! Size of the whole map in chunks (Default: 3x3)
+    Vector2 size = Vector2(3,3);
     //! Allow/Disallow diagonal pathfinding
     bool allowDiagonalPathfinding = true;
     //! RGTileset with information about all tiles
     RGTileset* tileset;
-    
-    /** @name Matrices
-    * Flat arrays that contain all data about the cells
-    */
-
-    ///@{
-    PoolIntArray values;
-    PoolIntArray visibility;
-    PoolIntArray memory;
-    ///@}
 
     /** @name FOV
     * Variables related to FOV calculation using RPAS algorithm
@@ -93,16 +107,47 @@ public:
     void _init();
     ///@}
 
+    // (Deprecated)
+ 	    PoolIntArray values;
+	    PoolIntArray visibility;
+	    PoolIntArray memory;
+
     //! Fill all cells with 0s using a predefined tileset
     void initialize(RGTileset* _tileset);
+
+    /** @name Managing chunks */
+    ///@{
+    
+    //! Get index of chunk which contains a given position
+    int get_chunk_index(Vector2 position);
+    //! Get index of chunk in Vector2 format
+    Vector2 chunk_index_v2(int index);
+    //! Check if chunk is in bounds
+    bool is_chunk_in_bounds(int index);
+    //! Check if chunk is loaded
+    bool is_chunk_loaded(int index);
+    //! Load saved chunk to memory or generate a new chunk. "data" argument is optional
+    void load_chunk(int index, PoolIntArray data = PoolIntArray());
+    //! Returns all cell data for chunk as PoolIntArray
+    PoolIntArray dump_chunk_data(int index);
+    //! Free chunk from memory
+    void free_chunk(int index);
+    //! Clear all cell data in chunk
+    void reset_chunk(int index);
+    //! Get overall number of chunks
+    int count_chunks();
+    //! Get number of loaded chunks
+    int count_loaded_chunks();
+    ///@}
+
 
     /** @name Data getters */
     ///@{
 
-    //! Get index of cell by Vector2 position
-    int get_index(Vector2 position);
-    //! Get Vector2 position of cell by index
-    Vector2 get_position(int index);
+    int get_index(Vector2 position); // (Deprecated)
+    Vector2 get_position(int index); // (Deprecated)
+    //! Get local index of cell within a chunk
+    int get_local_index(Vector2 position);
     //! Get value of cell
     int get_value(Vector2 position);
     //! Get name of cell
@@ -130,12 +175,14 @@ public:
     void set_visibility(Vector2 position, bool value);
     //! Set memory state of cell
     void set_memorized(Vector2 position, bool value);
-    //! Allow/disallow pathfinding through this position
+    //! TODO: Allow/disallow pathfinding through this position
     void set_pathfinding(Vector2 position, bool value);
     ///@}
 
     /** @name View and pathfinding */
     ///@{
+
+    //! TODO: Needs major rework!
 
     //! Get list of cells visible from position within radius using RPAS algorithm
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
@@ -157,7 +204,7 @@ public:
     /** @name Editing*/
     ///@{
 
-    //! Place another map inside this map
+    //! TODO: Place another map inside this map
     void place_map(RGMap* another_map, Vector2 start);
     //! Draw straight line using Bresenham's line algorithm
     void draw_line(Vector2 start, Vector2 end, int value, bool allow_diagonal = true);
@@ -182,6 +229,8 @@ public:
 
     /** @name Saving and Loading*/
     ///@{
+
+    //! TODO: Needs fixes
 
     //! Save map data
     PoolIntArray save_map_data();
