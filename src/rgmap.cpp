@@ -44,7 +44,7 @@ void RGMap::_register_methods() {
 
     register_method("rpas_calc_visible_cells_from", &RGMap::rpas_calc_visible_cells_from);
     register_method("calculate_fov", &RGMap::calculate_fov);
-    register_method("set_pathfinding", &RGMap::set_pathfinding);
+    register_method("allow_pathfinding", &RGMap::allow_pathfinding);
     register_method("find_path", &RGMap::find_path);
     register_method("get_line", &RGMap::get_line);
     register_method("raycast_vision", &RGMap::raycast_vision);
@@ -96,6 +96,13 @@ void RGMap::initialize(RGTileset* _tileset) {
     // Define size (in cells)
     size_cells = size*chunk_size;
 }
+
+void RGMap::clean_map_data() { return;
+}
+
+/*
+    Chunks
+*/
 
 int RGMap::get_chunk_index(Vector2 position) {
     int y = floor(position.y/chunk_size.y);
@@ -187,29 +194,10 @@ int RGMap::count_loaded_chunks() {
     return loaded;
 }
 
-
-
-
-
-void RGMap::clean_map_data() {
-    // Clear map arrays and astar
-    for (int i=0; i<values.size(); ++i) {
-        values.remove(0);
-        memory.remove(0);
-    }
-    //astar->clear();
-}
-
-
-
-
-
-
 /*
     Cell data getters
 */
-int RGMap::get_index(Vector2 position){return 0;}
-Vector2 RGMap::get_position(int index){return Vector2(0,0);}
+
 int RGMap::get_local_index(Vector2 position) {
     int chunk_pos_y = floor(position.y/chunk_size.y);
     int chunk_pos_x = floor(position.x/chunk_size.x);
@@ -290,15 +278,10 @@ void RGMap::set_memorized(Vector2 position, bool value) {
     chunk.memory[index] = int_value;
 }
 
-void RGMap::set_pathfinding(Vector2 position, bool value) {
-    return;
-    //astar->set_point_disabled(get_index(position), !value);
-}
-
-
 /*
     View and pathfinding
 */
+
 void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
     fov_zone.size = Vector2(1,1)*(max_distance*2+2);
     fov_zone.position = view_position - Vector2(1,1)*max_distance - Vector2(1,1);
@@ -311,6 +294,11 @@ void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
         set_visibility(visible_cells[i], true);
         set_memorized(visible_cells[i], true);
     }
+}
+
+void RGMap::allow_pathfinding(Vector2 position, bool value) {
+    return;
+    //astar->set_point_disabled(get_index(position), !value);
 }
 
 PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
@@ -437,7 +425,6 @@ bool RGMap::visibility_between(Vector2 start, Vector2 end) {
         return false;
     }
 }
-
 
 /*
     Editing
@@ -609,15 +596,16 @@ void RGMap::fill_arc(Vector2 center, float radius, float start_angle, float end_
 
 PoolIntArray RGMap::save_map_data() {
     PoolIntArray map_data;
-    map_data.append(size.x);
+    /*map_data.append(size.x);
     map_data.append(size.y);
     map_data.append_array(values);
-    map_data.append_array(memory);
+    map_data.append_array(memory);*/
     return map_data;
 }
 
 void RGMap::load_map_data(PoolIntArray map_data) {
     clean_map_data();
+    /*
     size.x = map_data[0];
     size.y = map_data[1];
     for (int i = 0; i < size.x*size.y; ++i) {
@@ -625,4 +613,5 @@ void RGMap::load_map_data(PoolIntArray map_data) {
         memory.append(map_data[i+2+size.x*size.y]);
     }
     //generate_astar();
+    */
 }

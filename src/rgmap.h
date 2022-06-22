@@ -51,7 +51,6 @@ private:
     // Current fov zone
     Rect2 fov_zone = Rect2(Vector2(0,0), Vector2(0,0));
 
-    
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
     PoolVector2Array rpas_visible_cells_in_octant_from(Vector2 center, Vector2 quad, int radius, bool is_vertical);
@@ -103,11 +102,6 @@ public:
     ~RGMap();
     void _init();
     ///@}
-
-    // (Deprecated)
- 	    PoolIntArray values;
-	    
-	    PoolIntArray memory;
 
     //! Fill all cells with 0s using a predefined tileset
     void initialize(RGTileset* _tileset);
@@ -172,8 +166,6 @@ public:
     void set_visibility(Vector2 position, bool value);
     //! Set memory state of cell
     void set_memorized(Vector2 position, bool value);
-    //! TODO: Allow/disallow pathfinding through this position
-    void set_pathfinding(Vector2 position, bool value);
     ///@}
 
     /** @name View and pathfinding */
@@ -183,6 +175,8 @@ public:
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
     //! Calculate visibility from given position and distance
     void calculate_fov(Vector2 view_position, int max_distance);
+    //! TODO: Allow/disallow pathfinding through this position
+    void allow_pathfinding(Vector2 position, bool value);
     //! TODO: Find path from start to end using A* algorithm
     /*!
     Returns PoolVector2Array
