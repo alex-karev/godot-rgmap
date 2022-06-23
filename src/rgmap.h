@@ -11,9 +11,14 @@
 #include <Rect2.hpp>
 #include <cmath>
 #include <vector>
+#include <algorithm>
+#include <typeinfo>
+#include <string>
 
 
 #include "rgtileset.h"
+
+
 
 namespace godot {
 
@@ -42,14 +47,17 @@ class RGMap : public Reference {
 private:
     // Store all chunks
     std::vector<Chunk> chunks;
-    // Size of the map in cells
-    Vector2 size_cells = Vector2(150,150);
+    // Total size of the map
+    Vector2 total_size = Vector2(150,150);
     // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
     // Visibility of cells within fov radius
     std::vector<int> visibility;
     // Current fov zone
     Rect2 fov_zone = Rect2(Vector2(0,0), Vector2(0,0));
+    std::vector<Vector2> pathfinding_exception_allowed;
+    std::vector<Vector2> pathfinding_exception_disallowed;
+
 
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -61,8 +69,9 @@ private:
     bool rpas_combine_obstructions(CellAngles &old_o, CellAngles &new_o);
     // Draw points based on 4-way symmetry (for Bresenham's ellipse algorithm)
     void draw_4_way_symmetry(int xc, int yc, int x, int y, int value, float start_angle, float end_angle);
-    // Clean map data (used initialization and loading)
-    void clean_map_data();
+
+    // Generate array with empty chunks
+    void generate_empty_chunks();
 
 public:
     //! Size of one chunk (Default: 50x50)
@@ -70,7 +79,7 @@ public:
     //! Size of the whole map in chunks (Default: 3x3)
     Vector2 size = Vector2(3,3);
     //! Allow/Disallow diagonal pathfinding
-    bool allowDiagonalPathfinding = true;
+    bool allow_diagonal_pathfinding = true;
     //! RGTileset with information about all tiles
     RGTileset* tileset;
 
@@ -105,6 +114,9 @@ public:
 
     //! Fill all cells with 0s using a predefined tileset
     void initialize(RGTileset* _tileset);
+    //! Unload all chunks
+    void clean_map();
+
 
     /** @name Managing chunks */
     ///@{
@@ -135,8 +147,6 @@ public:
     /** @name Data getters */
     ///@{
 
-    int get_index(Vector2 position); // (Deprecated)
-    Vector2 get_position(int index); // (Deprecated)
     //! Get local index of cell within a chunk
     int get_local_index(Vector2 position);
     //! Get value of cell
@@ -155,6 +165,8 @@ public:
     bool is_visible(Vector2 position);
     //! Check if cell is memorized
     bool is_memorized(Vector2 position);
+    //! Check if pathfinding on this cell is allowed
+    bool is_pathfinding_allowed(Vector2 position);
     ///@}
 
     /** @name Data setters */
@@ -175,15 +187,25 @@ public:
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
     //! Calculate visibility from given position and distance
     void calculate_fov(Vector2 view_position, int max_distance);
-    //! TODO: Allow/disallow pathfinding through this position
-    void allow_pathfinding(Vector2 position, bool value);
-    //! TODO: Find path from start to end using A* algorithm
+    //! Allow/disallow patfinding for this cell ignoring passability
+    void add_pathfinding_exception(Vector2 position, bool value);
+    //! Remove all pathfinding exceptions for this cell if they exist
+    void remove_pathfinding_exception(Vector2 position);
+    //! Show all pathfinding exceptions of a type
+    /*!
+    @param exception_type true for allowed cells, false for disallowed cells
+    */
+    PoolVector2Array show_pathfinding_exceptions(bool exception_type);
+    //! Show all pathfinding exceptions with disallowed cells
+    
+    //! Find path from start to end using A* algorithm
     /*!
     Returns PoolVector2Array
     @param start Start point
     @param end Target point
     @param pathfinding_zone Rect2 zone where pathfinding is calculated
     */
+
     PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */
@@ -192,14 +214,19 @@ public:
     Vector2 raycast_vision(Vector2 start, Vector2 end);
     //! Cast ray from start to end and return position where path is blocked by an obstacle
     Vector2 raycast_path(Vector2 start, Vector2 end);
-    //! TODO: Check if end point is visisble from start point
-    bool visibility_between(Vector2 start, Vector2 end);
+    //! Check if end point is visisble from start point
+    /*!
+    @param start Start point
+    @param end Target point
+    @param max_distance Maximum distance at which points are visible
+    */
+    bool visibility_between(Vector2 start, Vector2 end, int max_distance);
     ///@}
 
     /** @name Editing*/
     ///@{
 
-    //! TODO: Place another map inside this map
+    //! Place another map inside this map
     void place_map(RGMap* another_map, Vector2 start);
     //! Draw straight line using Bresenham's line algorithm
     void draw_line(Vector2 start, Vector2 end, int value, bool allow_diagonal = true);
@@ -225,10 +252,8 @@ public:
     /** @name Saving and Loading*/
     ///@{
 
-    //! TODO: Needs fixes
-
     //! Save map data
-    PoolIntArray save_map_data();
+    PoolIntArray dump_map_data();
     //! Load map data
     void load_map_data(PoolIntArray map_data);
     ///@}
