@@ -20,7 +20,8 @@ void RGMap::_register_methods() {
     register_method("clean_map", &RGMap::clean_map);
 
     register_method("get_chunk_index", &RGMap::get_chunk_index);
-    register_method("chunk_index_v2", &RGMap::chunk_index_v2);
+    register_method("chunk_index_int_to_v2", &RGMap::chunk_index_int_to_v2);
+    register_method("chunk_index_v2_to_int", &RGMap::chunk_index_v2_to_int);
     register_method("is_chunk_in_bounds", &RGMap::is_chunk_in_bounds);
     register_method("is_chunk_loaded", &RGMap::is_chunk_loaded);
     register_method("load_chunk", &RGMap::load_chunk);
@@ -29,6 +30,7 @@ void RGMap::_register_methods() {
     register_method("reset_chunk", &RGMap::reset_chunk);
     register_method("count_chunks", &RGMap::count_chunks);
     register_method("count_loaded_chunks", &RGMap::count_loaded_chunks);
+    register_method("get_loaded_chunks", &RGMap::get_loaded_chunks);
 
     register_method("get_local_index", &RGMap::get_local_index);
     register_method("get_value", &RGMap::get_value);
@@ -85,30 +87,15 @@ void RGMap::_init() {
     allow_diagonal_pathfinding = true;
 }
 
-
-void RGMap::generate_empty_chunks() {
-    for (int i=0; i < size.x*size.y; ++i) {
-        Chunk chunk;
-        int chunk_y = floor(i/size.x);
-        int chunk_x = i - chunk_y*size.x;
-        chunk.index = Vector2(chunk_x, chunk_y);
-        chunk.loaded = false;
-        chunks.push_back(chunk);
-    }
-}
-
 void RGMap::initialize(RGTileset* _tileset) {
     // Apply new tileset
     tileset = _tileset;
-    // Generate empty chunks
-    generate_empty_chunks();
     // Define size (in cells)
     total_size = size*chunk_size;
 }
 void RGMap::clean_map() {
-    for (int i=0; i < chunks.size(); ++i) {
-        free_chunk(i);
-    }
+    chunks.clear();
+    chunks.shrink_to_fit();
     pathfinding_exception_allowed.clear();
     pathfinding_exception_allowed.shrink_to_fit();
     pathfinding_exception_disallowed.clear();
@@ -119,56 +106,70 @@ void RGMap::clean_map() {
     Chunks
 */
 
+RGMap::Chunk& RGMap::get_chunk(int index) {
+    for (int i=0; i< chunks.size();++i) {
+        if (chunks[i].index == index) {return chunks[i];}
+    }
+}
 int RGMap::get_chunk_index(Vector2 position) {
     int y = floor(position.y/chunk_size.y);
     int x = floor(position.x/chunk_size.x);
     int index = x + y*size.x;
     return index;
 }
-Vector2 RGMap::chunk_index_v2(int index) {
+Vector2 RGMap::chunk_index_int_to_v2(int index) {
     int y = floor(index/size.x);
     int x = index - y*size.x;
     return Vector2(x,y);
 }
+int RGMap::chunk_index_v2_to_int(Vector2 index) {return index.x+index.y*size.x;}
+
 bool RGMap::is_chunk_in_bounds(int index){return index < chunks.size();}
 bool RGMap::is_chunk_loaded(int index){
-    ERR_FAIL_INDEX_V(index, chunks.size(), false);
-    return chunks[index].loaded;
+    ERR_FAIL_INDEX_V(index, size.x*size.y, false);
+    for (Chunk chunk : chunks) {
+        if (chunk.index == index) {return true;}
+    }
+    return false;
 }
 void RGMap::load_chunk(int index, PoolIntArray data) {
     // Trow out of bounds error
-    ERR_FAIL_INDEX(index, chunks.size());
+    ERR_FAIL_INDEX(index, size.x*size.y);
     int cells_number = chunk_size.x*chunk_size.y;
-    Chunk& chunk = chunks[index];
-    // Load chunk from data
-    if (data.size() > 0) {
-        // New chunk from data
-        if (!chunk.loaded) {
-            for (int i=0; i < cells_number; ++i) {
-                chunk.values.push_back(data[i]);
-                chunk.memory.push_back(data[i+cells_number]);
-            }
-        // Apply data to existing chunk
-        } else {
+    if (is_chunk_loaded(index)) {
+        Chunk& chunk = get_chunk(index);
+        if (data.size() > 0) {
             for (int i=0; i < cells_number; ++i) {
                 chunk.values[i] = data[i];
                 chunk.memory[i] = data[i+cells_number];
             }
-        }    
-    // Generate new chunk
-    } else if (!chunk.loaded) {
-        chunk.values.resize(cells_number, 0);
-        chunk.memory.resize(cells_number, 0);
+        } else {
+            for (int i=0; i < cells_number; ++i) {
+                chunk.values[i] = 0;
+                chunk.memory[i] = 0;
+            }
+        }
+    } else {
+        Chunk chunk;
+        chunk.index = index;
+        if (data.size() > 0) {
+            for (int i=0; i < cells_number; ++i) {
+                chunk.values.push_back(data[i]);
+                chunk.memory.push_back(data[i+cells_number]);
+            }
+        } else {
+            chunk.values.resize(cells_number, 0);
+            chunk.memory.resize(cells_number, 0);
+        }
+        chunks.push_back(chunk);
     }
-    chunk.loaded = true;
 }
 PoolIntArray RGMap::dump_chunk_data(int index) {
     PoolIntArray data;
     // Trow out of bounds error
-    ERR_FAIL_INDEX_V(index, chunks.size(), data);
-    Chunk& chunk = chunks[index];
-    // Return empty if chunk is not loaded
-    if (!chunk.loaded) {return data;}
+    ERR_FAIL_INDEX_V(index, size.x*size.y, data);
+    if (!is_chunk_loaded(index)) {ERR_PRINT("Chunk not loaded. Can't dump data"); return data; }
+    Chunk& chunk = get_chunk(index);
     // Dump data
     for (int i=0; i < chunk_size.x*chunk_size.y; ++i) {
         data.append(chunk.values[i]);
@@ -180,22 +181,22 @@ PoolIntArray RGMap::dump_chunk_data(int index) {
 }
 void RGMap::free_chunk(int index) {
     // Trow out of bounds error
-    ERR_FAIL_INDEX(index, chunks.size());
-    Chunk& chunk = chunks[index];
-    // Clear arrays
-    if (chunk.loaded) {
-        chunk.values.clear();
-        chunk.values.shrink_to_fit();
-        chunk.memory.clear();
-        chunk.memory.shrink_to_fit();
-        chunk.loaded = false;
+    ERR_FAIL_INDEX(index, size.x*size.y);
+    if (!is_chunk_loaded(index)) {return; }
+    for (int i=0; i<chunks.size(); ++i) {
+        Chunk& chunk = chunks[i];
+        if (chunk.index == index) {
+            chunks.erase(chunks.begin() + i);
+            chunks.shrink_to_fit();
+            return;
+        }
     }
 }
 void RGMap::reset_chunk(int index) {
-    ERR_FAIL_INDEX(index, chunks.size());
-    Chunk& chunk = chunks[index];
+    ERR_FAIL_INDEX(index, size.x*size.y);
     if (!is_chunk_loaded(index)) {load_chunk(index);}
     else {
+        Chunk& chunk = get_chunk(index);
         for (int i=0; i < chunk_size.x*chunk_size.y; ++i) {
             chunk.values[i] = 0;
             chunk.memory[i] = 0;
@@ -203,10 +204,11 @@ void RGMap::reset_chunk(int index) {
     }
 }
 int RGMap::count_chunks(){return size.x*size.y;}
-int RGMap::count_loaded_chunks() {
-    int loaded = 0;
-    for (Chunk chunk : chunks){
-        if (chunk.loaded) {loaded++;}
+int RGMap::count_loaded_chunks() { return chunks.size();}
+PoolIntArray RGMap::get_loaded_chunks() {
+    PoolIntArray loaded;
+    for (Chunk chunk : chunks) {
+        loaded.append(chunk.index);
     }
     return loaded;
 }
@@ -230,9 +232,8 @@ bool RGMap::is_in_bounds(Vector2 position) {
 }
 int RGMap::get_value(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    if (chunk_index >= chunks.size()) {return 0;}
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {return 0;}
+    if (!is_chunk_loaded(chunk_index)) {return 0;}
+    Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
     return chunk.values[index];
 }
@@ -256,15 +257,14 @@ bool RGMap::is_visible(Vector2 position) {
     }
 bool RGMap::is_memorized(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    if (chunk_index >= chunks.size()) {return false;}
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {return false;}
+    if (!is_chunk_loaded(chunk_index)) {return 0;}
+    Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
     return chunk.memory[index] == 1;
     }
 bool RGMap::is_pathfinding_allowed(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    if (chunk_index >= chunks.size()) {return false;}
+    if (chunk_index >= size.x*size.y || chunk_index < 0) {return false;}
     // Check exceptions
     if(std::find(pathfinding_exception_allowed.begin(), pathfinding_exception_allowed.end(), position) != pathfinding_exception_allowed.end()) {
         return true;
@@ -282,9 +282,9 @@ bool RGMap::is_pathfinding_allowed(Vector2 position) {
 
 void RGMap::set_value(Vector2 position, int value) {
     int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX(chunk_index, chunks.size());
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {load_chunk(chunk_index);}
+    ERR_FAIL_INDEX(chunk_index, size.x*size.y);
+    if (!is_chunk_loaded(chunk_index)) {load_chunk(chunk_index);}
+    Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
     chunk.values[index] = value;
     chunk.memory[index] = 0;
@@ -300,9 +300,9 @@ void RGMap::set_visibility(Vector2 position, bool value) {
 
 void RGMap::set_memorized(Vector2 position, bool value) {
     int chunk_index = get_chunk_index(position);
-    ERR_FAIL_INDEX(chunk_index, chunks.size());
-    Chunk& chunk = chunks[chunk_index];
-    if (!chunk.loaded) {load_chunk(chunk_index);}
+    ERR_FAIL_INDEX(chunk_index, size.x*size.y);
+    if (!is_chunk_loaded(chunk_index)) {return;}
+    Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
     int int_value = (value) ? 1 : 0;
     chunk.memory[index] = int_value;
@@ -346,6 +346,9 @@ PoolVector2Array RGMap::show_pathfinding_exceptions(bool exception_type) {
 }
 PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
     PoolVector2Array path;
+    // Convert Rect2 values to integers
+    pathfinding_zone.position = Vector2(floor(pathfinding_zone.position.x), floor(pathfinding_zone.position.y));
+    pathfinding_zone.size = Vector2(floor(pathfinding_zone.size.x), floor(pathfinding_zone.size.y));
     // Return empty path if out of pathfinding zone
     if (!pathfinding_zone.has_point(start) || !pathfinding_zone.has_point(end)) {return path;}
     // Generate new Astar
@@ -386,7 +389,7 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
     PoolIntArray id_path = astar->get_id_path(start_index, end_index);
     // Convert path from ints to Vector2
     for (int i=0; i<id_path.size(); ++i) {
-        Vector2 point = astar->get_point_position(id_path[i])+pathfinding_zone.position;
+        Vector2 point = astar->get_point_position(id_path[i]);
         path.append(point);
     }
     return path;
@@ -645,16 +648,10 @@ PoolIntArray RGMap::dump_map_data() {
     map_data.append(size.y);
     map_data.append(chunk_size.x);
     map_data.append(chunk_size.y);
-    // Define which chunks are loaded
+    // Dump chunk data
     for (Chunk chunk : chunks) {
-        if (chunk.loaded) { map_data.append(1);}
-        else { map_data.append(0); }
-    }
-    // Write data about each loaded chunk
-    for (int i = 0; i < size.x*size.y; ++i) {
-        if (is_chunk_loaded(i)) {
-            map_data.append_array(dump_chunk_data(i));
-        }
+        map_data.append(chunk.index);
+        map_data.append_array(dump_chunk_data(chunk.index));
     }
     return map_data;
 }
@@ -662,25 +659,26 @@ PoolIntArray RGMap::dump_map_data() {
 void RGMap::load_map_data(PoolIntArray map_data) {
     // Clean loaded data
     clean_map();
-    chunks.clear();
-    chunks.shrink_to_fit();
-    generate_empty_chunks();
     // Reset size
     size.x = map_data[0];
     size.y = map_data[1];
     chunk_size.x = map_data[2];
     chunk_size.y = map_data[3];
     total_size = size*chunk_size;
-    // Load needed chunks
-    for (int i = 0,loaded_i = 0; i < size.x*size.y; ++i) {
-        if (map_data[i+4] == 1) {
-            PoolIntArray chunk_data;
-            int start_index = 4 + size.x*size.y + chunk_size.x*chunk_size.y*2*loaded_i;
-            for (int k = 0; k < chunk_size.x*chunk_size.y*2; ++k) {
-                chunk_data.append(map_data[start_index+k]);
-            }
-            load_chunk(i, chunk_data);
-            loaded_i++;
+    // Calculate number of chunks
+    int chunks_number = (map_data.size()-4)/(chunk_size.x*chunk_size.y*NUM_CHUNK_ARRAYS+1);
+    // Load chunks
+    for (int i = 0; i < chunks_number; ++i) {
+        // Get index
+        PoolIntArray chunk_data;
+        int start = 4 + i*(1+chunk_size.x*chunk_size.y*NUM_CHUNK_ARRAYS);
+        // Add chunk data
+        for (int k=0; k < chunk_size.x*chunk_size.y*NUM_CHUNK_ARRAYS; ++k) {
+            int value = map_data[start + k + 1];
+            chunk_data.append(value);
         }
+        // Load chunk
+        int index = map_data[start];
+        load_chunk(index, chunk_data);
     }
 }

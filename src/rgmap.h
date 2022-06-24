@@ -15,10 +15,7 @@
 #include <typeinfo>
 #include <string>
 
-
 #include "rgtileset.h"
-
-
 
 namespace godot {
 
@@ -35,10 +32,8 @@ class RGMap : public Reference {
 
     // Structure of one chunk
     struct Chunk {
-        // Index of chunk (as Vector2)
-        Vector2 index;
-        // Load status of chunk
-        bool loaded = false;
+        // Index of chunk
+        int index = -1;
         // Flat arrays that contain all data about the cells
         std::vector<int> values;
         std::vector<int> memory;
@@ -57,7 +52,8 @@ private:
     Rect2 fov_zone = Rect2(Vector2(0,0), Vector2(0,0));
     std::vector<Vector2> pathfinding_exception_allowed;
     std::vector<Vector2> pathfinding_exception_disallowed;
-
+    // Number of Arrays stored in Chunk structure
+    const int NUM_CHUNK_ARRAYS = 2;
 
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -70,8 +66,8 @@ private:
     // Draw points based on 4-way symmetry (for Bresenham's ellipse algorithm)
     void draw_4_way_symmetry(int xc, int yc, int x, int y, int value, float start_angle, float end_angle);
 
-    // Generate array with empty chunks
-    void generate_empty_chunks();
+    // Get loaded chunk
+    Chunk& get_chunk(int index);
 
 public:
     //! Size of one chunk (Default: 50x50)
@@ -114,7 +110,7 @@ public:
 
     //! Fill all cells with 0s using a predefined tileset
     void initialize(RGTileset* _tileset);
-    //! Unload all chunks
+    //! Free all chunks and forget pathfinding exceptions
     void clean_map();
 
 
@@ -123,8 +119,10 @@ public:
     
     //! Get index of chunk which contains a given position
     int get_chunk_index(Vector2 position);
-    //! Get index of chunk in Vector2 format
-    Vector2 chunk_index_v2(int index);
+    //! Convert index of chunk from int to Vector2 format
+    Vector2 chunk_index_int_to_v2(int index);
+    //! Convert index of chunk from Vector2 to int format
+    int chunk_index_v2_to_int(Vector2 index);
     //! Check if chunk is in bounds
     bool is_chunk_in_bounds(int index);
     //! Check if chunk is loaded
@@ -141,6 +139,8 @@ public:
     int count_chunks();
     //! Get number of loaded chunks
     int count_loaded_chunks();
+    //! Get ids of loaded chunks
+    PoolIntArray get_loaded_chunks();
     ///@}
 
 

@@ -2,7 +2,8 @@ var classgodot_1_1RGMap =
 [
     [ "add_pathfinding_exception", "classgodot_1_1RGMap.html#a4a4b116053d6722cbb2bd325db94327e", null ],
     [ "calculate_fov", "classgodot_1_1RGMap.html#a449daffbdf681516e8a340e060edd0ef", null ],
-    [ "chunk_index_v2", "classgodot_1_1RGMap.html#a5dc9ec5caea18d10b45e79e467dc6255", null ],
+    [ "chunk_index_int_to_v2", "classgodot_1_1RGMap.html#aa042aaa2c6cbc4f67473574c4861cbf2", null ],
+    [ "chunk_index_v2_to_int", "classgodot_1_1RGMap.html#a3ede385c9811d5c189943e42416af746", null ],
     [ "clean_map", "classgodot_1_1RGMap.html#a831fb561ec538f9dd241174079927b62", null ],
     [ "count_chunks", "classgodot_1_1RGMap.html#a96273484a6bd68b7c82d45ecd5e9d349", null ],
     [ "count_loaded_chunks", "classgodot_1_1RGMap.html#a5d74a6bf089b0d8287e9915211ea8a21", null ],
@@ -22,6 +23,7 @@ var classgodot_1_1RGMap =
     [ "get_chunk_index", "classgodot_1_1RGMap.html#a17d00e1acf01120ad1324704960ea528", null ],
     [ "get_display_name", "classgodot_1_1RGMap.html#a4016e0965171c95fd867bd7eb01b65d9", null ],
     [ "get_line", "classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09", null ],
+    [ "get_loaded_chunks", "classgodot_1_1RGMap.html#aaff3bdcfb3484ab4807bf536aa126e11", null ],
     [ "get_local_index", "classgodot_1_1RGMap.html#ab201f09297e368756c390a122a94fc97", null ],
     [ "get_name", "classgodot_1_1RGMap.html#a4113d609f2d8b8ae8986b5261d72589a", null ],
     [ "get_value", "classgodot_1_1RGMap.html#a0608386ad66cec9e4257808022da5038", null ],

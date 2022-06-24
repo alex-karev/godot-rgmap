@@ -111,17 +111,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (<a cl
 <tr class="separator:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
-<tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unload all chunks. <br /></td></tr>
+<tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
 <tr class="separator:a831fb561ec538f9dd241174079927b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Managing chunks</div></td></tr>
 <tr class="memitem:a17d00e1acf01120ad1324704960ea528"><td class="memItemLeft" align="right" valign="top"><a id="a17d00e1acf01120ad1324704960ea528" name="a17d00e1acf01120ad1324704960ea528"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_chunk_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a17d00e1acf01120ad1324704960ea528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of chunk which contains a given position. <br /></td></tr>
 <tr class="separator:a17d00e1acf01120ad1324704960ea528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dc9ec5caea18d10b45e79e467dc6255"><td class="memItemLeft" align="right" valign="top"><a id="a5dc9ec5caea18d10b45e79e467dc6255" name="a5dc9ec5caea18d10b45e79e467dc6255"></a>
-Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_index_v2</b> (int index)</td></tr>
-<tr class="memdesc:a5dc9ec5caea18d10b45e79e467dc6255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of chunk in Vector2 format. <br /></td></tr>
-<tr class="separator:a5dc9ec5caea18d10b45e79e467dc6255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="memItemLeft" align="right" valign="top"><a id="aa042aaa2c6cbc4f67473574c4861cbf2" name="aa042aaa2c6cbc4f67473574c4861cbf2"></a>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_index_int_to_v2</b> (int index)</td></tr>
+<tr class="memdesc:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert index of chunk from int to Vector2 format. <br /></td></tr>
+<tr class="separator:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ede385c9811d5c189943e42416af746"><td class="memItemLeft" align="right" valign="top"><a id="a3ede385c9811d5c189943e42416af746" name="a3ede385c9811d5c189943e42416af746"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_index_v2_to_int</b> (Vector2 index)</td></tr>
+<tr class="memdesc:a3ede385c9811d5c189943e42416af746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert index of chunk from Vector2 to int format. <br /></td></tr>
+<tr class="separator:a3ede385c9811d5c189943e42416af746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47d550255055871d8b15ea21ccd7227"><td class="memItemLeft" align="right" valign="top"><a id="ac47d550255055871d8b15ea21ccd7227" name="ac47d550255055871d8b15ea21ccd7227"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_chunk_in_bounds</b> (int index)</td></tr>
 <tr class="memdesc:ac47d550255055871d8b15ea21ccd7227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if chunk is in bounds. <br /></td></tr>
@@ -154,13 +158,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>count_chunks</b> ()</t
 int&#160;</td><td class="memItemRight" valign="bottom"><b>count_loaded_chunks</b> ()</td></tr>
 <tr class="memdesc:a5d74a6bf089b0d8287e9915211ea8a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of loaded chunks. <br /></td></tr>
 <tr class="separator:a5d74a6bf089b0d8287e9915211ea8a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaff3bdcfb3484ab4807bf536aa126e11"><td class="memItemLeft" align="right" valign="top"><a id="aaff3bdcfb3484ab4807bf536aa126e11" name="aaff3bdcfb3484ab4807bf536aa126e11"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_loaded_chunks</b> ()</td></tr>
+<tr class="memdesc:aaff3bdcfb3484ab4807bf536aa126e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of loaded chunks. <br /></td></tr>
+<tr class="separator:aaff3bdcfb3484ab4807bf536aa126e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data getters</div></td></tr>
-<tr class="memitem:a7c786e1d114628ce3ff9c13c123be438"><td class="memItemLeft" align="right" valign="top"><a id="a7c786e1d114628ce3ff9c13c123be438" name="a7c786e1d114628ce3ff9c13c123be438"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_index</b> (Vector2 position)</td></tr>
-<tr class="separator:a7c786e1d114628ce3ff9c13c123be438"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37140a020667398aed047ace1775b34b"><td class="memItemLeft" align="right" valign="top"><a id="a37140a020667398aed047ace1775b34b" name="a37140a020667398aed047ace1775b34b"></a>
-Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>get_position</b> (int index)</td></tr>
-<tr class="separator:a37140a020667398aed047ace1775b34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:ab201f09297e368756c390a122a94fc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local index of cell within a chunk. <br /></td></tr>
@@ -254,7 +256,7 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_path</b> (
 <tr><td colspan="2"><div class="groupHeader">Editing</div></td></tr>
 <tr class="memitem:a6e4b777d25b43065a5e2092d084099ee"><td class="memItemLeft" align="right" valign="top"><a id="a6e4b777d25b43065a5e2092d084099ee" name="a6e4b777d25b43065a5e2092d084099ee"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>place_map</b> (<a class="el" href="classgodot_1_1RGMap.html">RGMap</a> *another_map, Vector2 start)</td></tr>
-<tr class="memdesc:a6e4b777d25b43065a5e2092d084099ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO: Place another map inside this map. <br /></td></tr>
+<tr class="memdesc:a6e4b777d25b43065a5e2092d084099ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place another map inside this map. <br /></td></tr>
 <tr class="separator:a6e4b777d25b43065a5e2092d084099ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d1f6508a2ad834c7050d12759342fd"><td class="memItemLeft" align="right" valign="top"><a id="af9d1f6508a2ad834c7050d12759342fd" name="af9d1f6508a2ad834c7050d12759342fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_line</b> (Vector2 start, Vector2 end, int value, bool allow_diagonal=true)</td></tr>
@@ -292,8 +294,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_arc</b> (Vector2
 <tr class="memdesc:ae51cf8952917fd840f67d62ce129df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill arc. <br /></td></tr>
 <tr class="separator:ae51cf8952917fd840f67d62ce129df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Saving and Loading</div></td></tr>
-<tr class="memitem:a673f7f9e37f280588ccff46b1f46d38e"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a673f7f9e37f280588ccff46b1f46d38e">dump_map_data</a> ()</td></tr>
-<tr class="memdesc:a673f7f9e37f280588ccff46b1f46d38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO: Needs fixes.  <a href="classgodot_1_1RGMap.html#a673f7f9e37f280588ccff46b1f46d38e">More...</a><br /></td></tr>
+<tr class="memitem:a673f7f9e37f280588ccff46b1f46d38e"><td class="memItemLeft" align="right" valign="top"><a id="a673f7f9e37f280588ccff46b1f46d38e" name="a673f7f9e37f280588ccff46b1f46d38e"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>dump_map_data</b> ()</td></tr>
+<tr class="memdesc:a673f7f9e37f280588ccff46b1f46d38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save map data. <br /></td></tr>
 <tr class="separator:a673f7f9e37f280588ccff46b1f46d38e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2accf67955f8a3fb5fb30a649e6132d"><td class="memItemLeft" align="right" valign="top"><a id="aa2accf67955f8a3fb5fb30a649e6132d" name="aa2accf67955f8a3fb5fb30a649e6132d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load_map_data</b> (PoolIntArray map_data)</td></tr>
@@ -406,26 +409,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 
 <p>Draw ellipse using Bresenham's midpoint algorithm. </p>
 <p >Tweaked version of code from here: <a href="https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/">https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/</a> </p>
-
-</div>
-</div>
-<a id="a673f7f9e37f280588ccff46b1f46d38e" name="a673f7f9e37f280588ccff46b1f46d38e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a673f7f9e37f280588ccff46b1f46d38e">&#9670;&nbsp;</a></span>dump_map_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PoolIntArray RGMap::dump_map_data </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>TODO: Needs fixes. </p>
-<p >Save map data </p>
 
 </div>
 </div>
