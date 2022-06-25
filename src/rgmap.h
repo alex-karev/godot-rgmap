@@ -12,8 +12,6 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
-#include <typeinfo>
-#include <string>
 
 #include "rgtileset.h"
 
@@ -74,6 +72,12 @@ public:
     Vector2 chunk_size = Vector2(50,50);
     //! Size of the whole map in chunks (Default: 3x3)
     Vector2 size = Vector2(3,3);
+    //! Number of chunks loaded around the player 
+    /*! 
+    Excluding the chunk where player stands
+    Default: 1 (3x3 grid)
+    */
+    int render_distance = 1;
     //! Allow/Disallow diagonal pathfinding
     bool allow_diagonal_pathfinding = true;
     //! RGTileset with information about all tiles
@@ -113,7 +117,6 @@ public:
     //! Free all chunks and forget pathfinding exceptions
     void clean_map();
 
-
     /** @name Managing chunks */
     ///@{
     
@@ -141,6 +144,19 @@ public:
     int count_loaded_chunks();
     //! Get ids of loaded chunks
     PoolIntArray get_loaded_chunks();
+    //! Get ids of chunks around player that needs to be loaded 
+    /*!
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    Skips chunks that were already loaded
+    */
+    PoolIntArray get_chunks_to_load(Vector2 player_position);
+    //! Get ids of chunks that are loaded, but not needed anymore because player is too far
+    /*!
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    */
+    PoolIntArray get_chunks_to_free(Vector2 player_position);
     ///@}
 
 

@@ -9,6 +9,7 @@ using namespace godot;
 void RGMap::_register_methods() {
     register_property<RGMap, Vector2>("size", &RGMap::size, Vector2(3,3));
     register_property<RGMap, Vector2>("chunk_size", &RGMap::chunk_size, Vector2(50,50));
+    register_property<RGMap, int>("render_distance", &RGMap::render_distance, 1);
     register_property<RGMap, bool>("allow_diagonal_pathfinding", &RGMap::allow_diagonal_pathfinding, true);
     register_property<RGMap, RGTileset*>("tileset", &RGMap::tileset, nullptr);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
@@ -31,6 +32,8 @@ void RGMap::_register_methods() {
     register_method("count_chunks", &RGMap::count_chunks);
     register_method("count_loaded_chunks", &RGMap::count_loaded_chunks);
     register_method("get_loaded_chunks", &RGMap::get_loaded_chunks);
+    register_method("get_chunks_to_load", &RGMap::get_chunks_to_load);
+    register_method("get_chunks_to_free", &RGMap::get_chunks_to_free);
 
     register_method("get_local_index", &RGMap::get_local_index);
     register_method("get_value", &RGMap::get_value);
@@ -211,6 +214,34 @@ PoolIntArray RGMap::get_loaded_chunks() {
         loaded.append(chunk.index);
     }
     return loaded;
+}
+PoolIntArray RGMap::get_chunks_to_load(Vector2 player_position) {
+    PoolIntArray to_load;
+    int center_index = get_chunk_index(player_position);
+    for (int x = -render_distance; x < render_distance+1; ++x) {
+        for (int y = -render_distance; y < render_distance+1; ++y) {
+            int index = center_index + x + y*size.x;
+            if (index >= 0 && index < size.x*size.y && !is_chunk_loaded(index)) {
+                to_load.append(index);
+            }
+        }
+    }
+    return to_load;
+}
+PoolIntArray RGMap::get_chunks_to_free(Vector2 player_position) {
+    PoolIntArray to_free;
+    int center_index = get_chunk_index(player_position);
+    Vector2 center_index_v2 = chunk_index_int_to_v2(center_index);
+    PoolIntArray loaded = get_loaded_chunks();
+    for (int i = 0; i < loaded.size(); ++i) {
+        int index = loaded[i];
+        Vector2 index_v2 = chunk_index_int_to_v2(index);
+        if (index_v2.x < center_index_v2.x-render_distance || index_v2.y < center_index_v2.y-render_distance
+        || index_v2.x > center_index_v2.x+render_distance || index_v2.y > center_index_v2.y+render_distance) {
+            to_free.append(index);
+        }
+    }
+    return to_free;
 }
 
 /*

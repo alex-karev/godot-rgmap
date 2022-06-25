@@ -10,6 +10,7 @@ void RGTileset::_register_methods() {
     register_method("get_display_name", &RGTileset::get_display_name);
     register_method("is_passable", &RGTileset::is_passable);
     register_method("is_transparent", &RGTileset::is_transparent);
+    register_method("generate_tileset", &RGTileset::generate_tileset);
 }
 
 void RGTileset::_init() {
@@ -44,3 +45,15 @@ String RGTileset::get_name(int index) { return tiles[index].name; }
 String RGTileset::get_display_name(int index) { return tiles[index].display_name; }
 bool RGTileset::is_passable(int index) { return tiles[index].passable; }
 bool RGTileset::is_transparent(int index) { return tiles[index].transparent; }
+Ref<TileSet> RGTileset::generate_tileset(String texture_path, String texture_format){
+    ResourceLoader* res_loader = ResourceLoader::get_singleton();
+    Ref<TileSet> new_tileset;
+    new_tileset.instance();
+    for (int i=0; i < get_tiles_count(); ++i) {
+        new_tileset->create_tile(i);
+        String tile_name = get_name(i);
+        Ref<Texture> texture = res_loader->load(texture_path+tile_name+texture_format);
+        new_tileset->tile_set_texture(i, texture);
+    }
+    return new_tileset;
+}

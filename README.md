@@ -4,13 +4,17 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 
 <img src="https://github.com/alex-karev/godot-rgmap/raw/main/screenshots/demo.gif">
 
+<img src="https://github.com/alex-karev/godot-rgmap/raw/main/screenshots/demo2.gif">
+
 ## Features
 * **FOV** calculation using RPAS algorithm
 * **Raycasting** using Bresenham's lines
 * **Pathfinding** using Godot built-in A* class
 * **Memorizing cells** that have been visible at least once
+* **Chunk system** loadind/freeing chunks, dumping and restoring chunk data
 * **Draw and fill** functions for drawing primitives (lines, ellipse, rects, circles, arcs)
 * **Custom RGTileset** class to store data about all tiles in a game
+* **TileSet generator** for Tilemaps based on data from RGTileset
 * **Merging maps.** Placing one RGMap inside the other map
 * **Saving and loading** data as a flat array
 * **C++, GDNative**
@@ -57,13 +61,19 @@ A class for managing map. Use it for editing maps, calculating for, pathfinding,
 Should be initialized before usage like this:
 ```
 var map = RGMap.new()
-map.size = Vector2(100,100)
+map.size = Vector2(100,100) # How many chunks are there?
+map.chunk_size = Vector2(50,50) # The size of each chunk
 map.initialize(tileset) # RGTileset object created earlier
 ```
 
 You can read more about each function and variable available in RGMap here:
 
 <https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
+
+Also, you can learn more from demo-project
+
+## Example
+You can find an example of usage in demo-project directory
 
 ## Compilation
 You will need: C++ compiler and SCons installed in your system
@@ -88,15 +98,13 @@ scons platform=<platform>
 
 See more about using GDNative modules here: <https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module>
 
-## Example
-You can find a short example of usage in demo-project directory
-
 ## TODO
 - [X] Create demo project
 - [X] Add gifs and images to README
+- [X] Automatic generation of 2D Tileset and Tilemap based on RGTileset
+- [X] Better error handling
+- [X] Chunk system
 - [ ] Cutting and resizing map
-- [ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset
-- [ ] Better error handling
 
 ## References
 The code for some parts of this projects was inspired by/copied from these resources:
@@ -105,6 +113,9 @@ The code for some parts of this projects was inspired by/copied from these resou
 * Midpoint ellipse: <https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/>
 * Doxygen theme: <https://jothepro.github.io/doxygen-awesome-css/>
 * Godot cpp API: <https://github.com/godotengine/godot-cpp>
+
+## Contributing
+You are welcome to fork this repo and to create pull requests
 
 ## License
 Distributed under the MIT License. See LICENSE for more information

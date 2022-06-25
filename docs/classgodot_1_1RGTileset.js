@@ -1,6 +1,7 @@
 var classgodot_1_1RGTileset =
 [
     [ "add_tile", "classgodot_1_1RGTileset.html#aa5b92c6b72b40222b9f73d92d6fb8500", null ],
+    [ "generate_tileset", "classgodot_1_1RGTileset.html#aa50a691cbdf9d1e4d726b5b31b6b418b", null ],
     [ "get_display_name", "classgodot_1_1RGTileset.html#a3cdc64c5bb22b19874edf5d9976f0dee", null ],
     [ "get_index", "classgodot_1_1RGTileset.html#a1b3c551562afc0e9372aadd853273293", null ],
     [ "get_name", "classgodot_1_1RGTileset.html#a3073336afb0daa60f6af96b4c9d3ba64", null ],

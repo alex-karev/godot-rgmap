@@ -162,6 +162,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>count_loaded_chunks</b
 PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_loaded_chunks</b> ()</td></tr>
 <tr class="memdesc:aaff3bdcfb3484ab4807bf536aa126e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of loaded chunks. <br /></td></tr>
 <tr class="separator:aaff3bdcfb3484ab4807bf536aa126e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81558e0a4b18590aea6f385f6fa345f"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f">get_chunks_to_load</a> (Vector2 player_position)</td></tr>
+<tr class="memdesc:af81558e0a4b18590aea6f385f6fa345f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of chunks around player that needs to be loaded.  <a href="classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f">More...</a><br /></td></tr>
+<tr class="separator:af81558e0a4b18590aea6f385f6fa345f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad292a1d8e79b597004643fbcf2e588f8"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">get_chunks_to_free</a> (Vector2 player_position)</td></tr>
+<tr class="memdesc:ad292a1d8e79b597004643fbcf2e588f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of chunks that are loaded, but not needed anymore because player is too far.  <a href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">More...</a><br /></td></tr>
+<tr class="separator:ad292a1d8e79b597004643fbcf2e588f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data getters</div></td></tr>
 <tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
@@ -313,6 +319,9 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_size</b> = V
 Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = Vector2(3,3)</td></tr>
 <tr class="memdesc:a4a8e96884242e6b83b2417d127a814a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the whole map in chunks (Default: 3x3) <br /></td></tr>
 <tr class="separator:a4a8e96884242e6b83b2417d127a814a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef65b060d5dbda0c47f00d2431921b49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#aef65b060d5dbda0c47f00d2431921b49">render_distance</a> = 1</td></tr>
+<tr class="memdesc:aef65b060d5dbda0c47f00d2431921b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of chunks loaded around the player.  <a href="classgodot_1_1RGMap.html#aef65b060d5dbda0c47f00d2431921b49">More...</a><br /></td></tr>
+<tr class="separator:aef65b060d5dbda0c47f00d2431921b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a092151ec6eda7be42513f17eb9ebfe1f"><td class="memItemLeft" align="right" valign="top"><a id="a092151ec6eda7be42513f17eb9ebfe1f" name="a092151ec6eda7be42513f17eb9ebfe1f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>allow_diagonal_pathfinding</b> = true</td></tr>
 <tr class="memdesc:a092151ec6eda7be42513f17eb9ebfe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/Disallow diagonal pathfinding. <br /></td></tr>
@@ -457,6 +466,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 
 </div>
 </div>
+<a id="ad292a1d8e79b597004643fbcf2e588f8" name="ad292a1d8e79b597004643fbcf2e588f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad292a1d8e79b597004643fbcf2e588f8">&#9670;&nbsp;</a></span>get_chunks_to_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolIntArray RGMap::get_chunks_to_free </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>player_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get ids of chunks that are loaded, but not needed anymore because player is too far. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_position</td><td>Vector2 position of the player Uses render_distance parameter to define the radius </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af81558e0a4b18590aea6f385f6fa345f" name="af81558e0a4b18590aea6f385f6fa345f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af81558e0a4b18590aea6f385f6fa345f">&#9670;&nbsp;</a></span>get_chunks_to_load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolIntArray RGMap::get_chunks_to_load </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>player_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get ids of chunks around player that needs to be loaded. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_position</td><td>Vector2 position of the player Uses render_distance parameter to define the radius Skips chunks that were already loaded </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af5df74ee697c11151876e230fcfc2c09" name="af5df74ee697c11151876e230fcfc2c09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5df74ee697c11151876e230fcfc2c09">&#9670;&nbsp;</a></span>get_line()</h2>
 
@@ -565,6 +626,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aef65b060d5dbda0c47f00d2431921b49" name="aef65b060d5dbda0c47f00d2431921b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef65b060d5dbda0c47f00d2431921b49">&#9670;&nbsp;</a></span>render_distance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int godot::RGMap::render_distance = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of chunks loaded around the player. </p>
+<p >Excluding the chunk where player stands Default: 1 (3x3 grid) </p>
+
+</div>
+</div>
 <a id="a98a2a7a44cf00487360159e89be37401" name="a98a2a7a44cf00487360159e89be37401"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98a2a7a44cf00487360159e89be37401">&#9670;&nbsp;</a></span>RPAS_RESTRICTIVENESS</h2>
 
