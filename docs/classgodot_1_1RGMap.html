@@ -109,15 +109,70 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (<a class="el" href="classgodot_1_1RGTileset.html">RGTileset</a> *_tileset)</td></tr>
 <tr class="memdesc:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill all cells with 0s using a predefined tileset. <br /></td></tr>
 <tr class="separator:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
+<tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
+<tr class="separator:a831fb561ec538f9dd241174079927b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Managing chunks</div></td></tr>
+<tr class="memitem:a17d00e1acf01120ad1324704960ea528"><td class="memItemLeft" align="right" valign="top"><a id="a17d00e1acf01120ad1324704960ea528" name="a17d00e1acf01120ad1324704960ea528"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_chunk_index</b> (Vector2 position)</td></tr>
+<tr class="memdesc:a17d00e1acf01120ad1324704960ea528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of chunk which contains a given position. <br /></td></tr>
+<tr class="separator:a17d00e1acf01120ad1324704960ea528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="memItemLeft" align="right" valign="top"><a id="aa042aaa2c6cbc4f67473574c4861cbf2" name="aa042aaa2c6cbc4f67473574c4861cbf2"></a>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_index_int_to_v2</b> (int index)</td></tr>
+<tr class="memdesc:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert index of chunk from int to Vector2 format. <br /></td></tr>
+<tr class="separator:aa042aaa2c6cbc4f67473574c4861cbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ede385c9811d5c189943e42416af746"><td class="memItemLeft" align="right" valign="top"><a id="a3ede385c9811d5c189943e42416af746" name="a3ede385c9811d5c189943e42416af746"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_index_v2_to_int</b> (Vector2 index)</td></tr>
+<tr class="memdesc:a3ede385c9811d5c189943e42416af746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert index of chunk from Vector2 to int format. <br /></td></tr>
+<tr class="separator:a3ede385c9811d5c189943e42416af746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47d550255055871d8b15ea21ccd7227"><td class="memItemLeft" align="right" valign="top"><a id="ac47d550255055871d8b15ea21ccd7227" name="ac47d550255055871d8b15ea21ccd7227"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_chunk_in_bounds</b> (int index)</td></tr>
+<tr class="memdesc:ac47d550255055871d8b15ea21ccd7227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if chunk is in bounds. <br /></td></tr>
+<tr class="separator:ac47d550255055871d8b15ea21ccd7227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9b781ce0c7fe4ccefa66fdcace66a0f"><td class="memItemLeft" align="right" valign="top"><a id="af9b781ce0c7fe4ccefa66fdcace66a0f" name="af9b781ce0c7fe4ccefa66fdcace66a0f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_chunk_loaded</b> (int index)</td></tr>
+<tr class="memdesc:af9b781ce0c7fe4ccefa66fdcace66a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if chunk is loaded. <br /></td></tr>
+<tr class="separator:af9b781ce0c7fe4ccefa66fdcace66a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff48c6694c9a7229c7603ec56fa19e8e"><td class="memItemLeft" align="right" valign="top"><a id="aff48c6694c9a7229c7603ec56fa19e8e" name="aff48c6694c9a7229c7603ec56fa19e8e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load_chunk</b> (int index, PoolIntArray data=PoolIntArray())</td></tr>
+<tr class="memdesc:aff48c6694c9a7229c7603ec56fa19e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load saved chunk to memory or generate a new chunk. "data" argument is optional. <br /></td></tr>
+<tr class="separator:aff48c6694c9a7229c7603ec56fa19e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f17a76987156e6694a858d3dee1c49"><td class="memItemLeft" align="right" valign="top"><a id="a05f17a76987156e6694a858d3dee1c49" name="a05f17a76987156e6694a858d3dee1c49"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>dump_chunk_data</b> (int index)</td></tr>
+<tr class="memdesc:a05f17a76987156e6694a858d3dee1c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all cell data for chunk as PoolIntArray. <br /></td></tr>
+<tr class="separator:a05f17a76987156e6694a858d3dee1c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e1bbbce76aca2a37e08db6d793907e"><td class="memItemLeft" align="right" valign="top"><a id="a97e1bbbce76aca2a37e08db6d793907e" name="a97e1bbbce76aca2a37e08db6d793907e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free_chunk</b> (int index)</td></tr>
+<tr class="memdesc:a97e1bbbce76aca2a37e08db6d793907e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free chunk from memory. <br /></td></tr>
+<tr class="separator:a97e1bbbce76aca2a37e08db6d793907e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af16dce1ae917a6a42c237d7e7eebda92"><td class="memItemLeft" align="right" valign="top"><a id="af16dce1ae917a6a42c237d7e7eebda92" name="af16dce1ae917a6a42c237d7e7eebda92"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_chunk</b> (int index)</td></tr>
+<tr class="memdesc:af16dce1ae917a6a42c237d7e7eebda92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all cell data in chunk. <br /></td></tr>
+<tr class="separator:af16dce1ae917a6a42c237d7e7eebda92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96273484a6bd68b7c82d45ecd5e9d349"><td class="memItemLeft" align="right" valign="top"><a id="a96273484a6bd68b7c82d45ecd5e9d349" name="a96273484a6bd68b7c82d45ecd5e9d349"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count_chunks</b> ()</td></tr>
+<tr class="memdesc:a96273484a6bd68b7c82d45ecd5e9d349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get overall number of chunks. <br /></td></tr>
+<tr class="separator:a96273484a6bd68b7c82d45ecd5e9d349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d74a6bf089b0d8287e9915211ea8a21"><td class="memItemLeft" align="right" valign="top"><a id="a5d74a6bf089b0d8287e9915211ea8a21" name="a5d74a6bf089b0d8287e9915211ea8a21"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count_loaded_chunks</b> ()</td></tr>
+<tr class="memdesc:a5d74a6bf089b0d8287e9915211ea8a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of loaded chunks. <br /></td></tr>
+<tr class="separator:a5d74a6bf089b0d8287e9915211ea8a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaff3bdcfb3484ab4807bf536aa126e11"><td class="memItemLeft" align="right" valign="top"><a id="aaff3bdcfb3484ab4807bf536aa126e11" name="aaff3bdcfb3484ab4807bf536aa126e11"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_loaded_chunks</b> ()</td></tr>
+<tr class="memdesc:aaff3bdcfb3484ab4807bf536aa126e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of loaded chunks. <br /></td></tr>
+<tr class="separator:aaff3bdcfb3484ab4807bf536aa126e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81558e0a4b18590aea6f385f6fa345f"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f">get_chunks_to_load</a> (Vector2 player_position)</td></tr>
+<tr class="memdesc:af81558e0a4b18590aea6f385f6fa345f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of chunks around player that needs to be loaded.  <a href="classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f">More...</a><br /></td></tr>
+<tr class="separator:af81558e0a4b18590aea6f385f6fa345f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad292a1d8e79b597004643fbcf2e588f8"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">get_chunks_to_free</a> (Vector2 player_position)</td></tr>
+<tr class="memdesc:ad292a1d8e79b597004643fbcf2e588f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of chunks that are loaded, but not needed anymore because player is too far.  <a href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">More...</a><br /></td></tr>
+<tr class="separator:ad292a1d8e79b597004643fbcf2e588f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data getters</div></td></tr>
-<tr class="memitem:a13b39d1ff67fd2af77638b2043a96eff"><td class="memItemLeft" align="right" valign="top"><a id="a13b39d1ff67fd2af77638b2043a96eff" name="a13b39d1ff67fd2af77638b2043a96eff"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_index</b> (Vector2 position)</td></tr>
-<tr class="memdesc:a13b39d1ff67fd2af77638b2043a96eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of cell by Vector2 position. <br /></td></tr>
-<tr class="separator:a13b39d1ff67fd2af77638b2043a96eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fedc30296d3b80585501ee221bae9a0"><td class="memItemLeft" align="right" valign="top"><a id="a1fedc30296d3b80585501ee221bae9a0" name="a1fedc30296d3b80585501ee221bae9a0"></a>
-Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>get_position</b> (int index)</td></tr>
-<tr class="memdesc:a1fedc30296d3b80585501ee221bae9a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Vector2 position of cell by index. <br /></td></tr>
-<tr class="separator:a1fedc30296d3b80585501ee221bae9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
+<tr class="memdesc:ab201f09297e368756c390a122a94fc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local index of cell within a chunk. <br /></td></tr>
+<tr class="separator:ab201f09297e368756c390a122a94fc97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0608386ad66cec9e4257808022da5038"><td class="memItemLeft" align="right" valign="top"><a id="a0608386ad66cec9e4257808022da5038" name="a0608386ad66cec9e4257808022da5038"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_value</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a0608386ad66cec9e4257808022da5038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get value of cell. <br /></td></tr>
@@ -150,6 +205,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_visible</b> (Vecto
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_memorized</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a735635c94c0913ffb0198dd51681986f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell is memorized. <br /></td></tr>
 <tr class="separator:a735635c94c0913ffb0198dd51681986f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90bbf21a0a0084bc3cada939c5b84848"><td class="memItemLeft" align="right" valign="top"><a id="a90bbf21a0a0084bc3cada939c5b84848" name="a90bbf21a0a0084bc3cada939c5b84848"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_pathfinding_allowed</b> (Vector2 position)</td></tr>
+<tr class="memdesc:a90bbf21a0a0084bc3cada939c5b84848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if pathfinding on this cell is allowed. <br /></td></tr>
+<tr class="separator:a90bbf21a0a0084bc3cada939c5b84848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data setters</div></td></tr>
 <tr class="memitem:abf819377354f5deaf670605175243442"><td class="memItemLeft" align="right" valign="top"><a id="abf819377354f5deaf670605175243442" name="abf819377354f5deaf670605175243442"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_value</b> (Vector2 position, int value)</td></tr>
@@ -163,10 +222,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_visibility</b> (V
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_memorized</b> (Vector2 position, bool value)</td></tr>
 <tr class="memdesc:ad15eb7048c2b0bdefcc22a6215e4eb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set memory state of cell. <br /></td></tr>
 <tr class="separator:ad15eb7048c2b0bdefcc22a6215e4eb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab84dba0b79056b578e8fb32d621d1fad"><td class="memItemLeft" align="right" valign="top"><a id="ab84dba0b79056b578e8fb32d621d1fad" name="ab84dba0b79056b578e8fb32d621d1fad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_pathfinding</b> (Vector2 position, bool value)</td></tr>
-<tr class="memdesc:ab84dba0b79056b578e8fb32d621d1fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/disallow pathfinding through this position. <br /></td></tr>
-<tr class="separator:ab84dba0b79056b578e8fb32d621d1fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">View and pathfinding</div></td></tr>
 <tr class="memitem:abc95ec5b234f69d9f372483f22b8f602"><td class="memItemLeft" align="right" valign="top"><a id="abc95ec5b234f69d9f372483f22b8f602" name="abc95ec5b234f69d9f372483f22b8f602"></a>
 PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>rpas_calc_visible_cells_from</b> (Vector2 center, int radius)</td></tr>
@@ -176,10 +231,20 @@ PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>rpas_calc
 void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_fov</b> (Vector2 view_position, int max_distance)</td></tr>
 <tr class="memdesc:a449daffbdf681516e8a340e060edd0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate visibility from given position and distance. <br /></td></tr>
 <tr class="separator:a449daffbdf681516e8a340e060edd0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9ebdea8360bb7d2dd855dc04463ed91"><td class="memItemLeft" align="right" valign="top"><a id="ad9ebdea8360bb7d2dd855dc04463ed91" name="ad9ebdea8360bb7d2dd855dc04463ed91"></a>
-PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>find_path</b> (Vector2 start, Vector2 end)</td></tr>
-<tr class="memdesc:ad9ebdea8360bb7d2dd855dc04463ed91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm. Returns Array of Vector2 points. <br /></td></tr>
-<tr class="separator:ad9ebdea8360bb7d2dd855dc04463ed91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4b116053d6722cbb2bd325db94327e"><td class="memItemLeft" align="right" valign="top"><a id="a4a4b116053d6722cbb2bd325db94327e" name="a4a4b116053d6722cbb2bd325db94327e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_pathfinding_exception</b> (Vector2 position, bool value)</td></tr>
+<tr class="memdesc:a4a4b116053d6722cbb2bd325db94327e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/disallow patfinding for this cell ignoring passability. <br /></td></tr>
+<tr class="separator:a4a4b116053d6722cbb2bd325db94327e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ec099f81053cdd7782a9ccac45ea54d"><td class="memItemLeft" align="right" valign="top"><a id="a6ec099f81053cdd7782a9ccac45ea54d" name="a6ec099f81053cdd7782a9ccac45ea54d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_pathfinding_exception</b> (Vector2 position)</td></tr>
+<tr class="memdesc:a6ec099f81053cdd7782a9ccac45ea54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all pathfinding exceptions for this cell if they exist. <br /></td></tr>
+<tr class="separator:a6ec099f81053cdd7782a9ccac45ea54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637933f2b9bb946f4a7b295fddaaf452"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">show_pathfinding_exceptions</a> (bool exception_type)</td></tr>
+<tr class="memdesc:a637933f2b9bb946f4a7b295fddaaf452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show all pathfinding exceptions of a type.  <a href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">More...</a><br /></td></tr>
+<tr class="separator:a637933f2b9bb946f4a7b295fddaaf452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">find_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone)</td></tr>
+<tr class="memdesc:ad98a2a51e8c3662659ece5ed13ddd073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show all pathfinding exceptions with disallowed cells.  <a href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">More...</a><br /></td></tr>
+<tr class="separator:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5df74ee697c11151876e230fcfc2c09"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">get_line</a> (Vector2 start, Vector2 end, bool allow_diagonal=true)</td></tr>
 <tr class="memdesc:af5df74ee697c11151876e230fcfc2c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of points in Bresenham's line.  <a href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">More...</a><br /></td></tr>
 <tr class="separator:af5df74ee697c11151876e230fcfc2c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,10 +256,9 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_vision</b>
 Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_path</b> (Vector2 start, Vector2 end)</td></tr>
 <tr class="memdesc:a71f82c2deaa4c5ea9ec5ca0e43176d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast ray from start to end and return position where path is blocked by an obstacle. <br /></td></tr>
 <tr class="separator:a71f82c2deaa4c5ea9ec5ca0e43176d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f419103f3db363ea7c8eff451502f49"><td class="memItemLeft" align="right" valign="top"><a id="a9f419103f3db363ea7c8eff451502f49" name="a9f419103f3db363ea7c8eff451502f49"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>visibility_between</b> (Vector2 start, Vector2 end)</td></tr>
-<tr class="memdesc:a9f419103f3db363ea7c8eff451502f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if end point is visisble from start point. <br /></td></tr>
-<tr class="separator:a9f419103f3db363ea7c8eff451502f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e99aed1a2d145536439b9a88b9ae30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#aa0e99aed1a2d145536439b9a88b9ae30">visibility_between</a> (Vector2 start, Vector2 end, int max_distance)</td></tr>
+<tr class="memdesc:aa0e99aed1a2d145536439b9a88b9ae30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if end point is visisble from start point.  <a href="classgodot_1_1RGMap.html#aa0e99aed1a2d145536439b9a88b9ae30">More...</a><br /></td></tr>
+<tr class="separator:aa0e99aed1a2d145536439b9a88b9ae30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Editing</div></td></tr>
 <tr class="memitem:a6e4b777d25b43065a5e2092d084099ee"><td class="memItemLeft" align="right" valign="top"><a id="a6e4b777d25b43065a5e2092d084099ee" name="a6e4b777d25b43065a5e2092d084099ee"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>place_map</b> (<a class="el" href="classgodot_1_1RGMap.html">RGMap</a> *another_map, Vector2 start)</td></tr>
@@ -236,10 +300,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_arc</b> (Vector2
 <tr class="memdesc:ae51cf8952917fd840f67d62ce129df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill arc. <br /></td></tr>
 <tr class="separator:ae51cf8952917fd840f67d62ce129df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Saving and Loading</div></td></tr>
-<tr class="memitem:aebadbd9a5d2f7498eb095093e57465e5"><td class="memItemLeft" align="right" valign="top"><a id="aebadbd9a5d2f7498eb095093e57465e5" name="aebadbd9a5d2f7498eb095093e57465e5"></a>
-PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>save_map_data</b> ()</td></tr>
-<tr class="memdesc:aebadbd9a5d2f7498eb095093e57465e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save map data. <br /></td></tr>
-<tr class="separator:aebadbd9a5d2f7498eb095093e57465e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a673f7f9e37f280588ccff46b1f46d38e"><td class="memItemLeft" align="right" valign="top"><a id="a673f7f9e37f280588ccff46b1f46d38e" name="a673f7f9e37f280588ccff46b1f46d38e"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>dump_map_data</b> ()</td></tr>
+<tr class="memdesc:a673f7f9e37f280588ccff46b1f46d38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save map data. <br /></td></tr>
+<tr class="separator:a673f7f9e37f280588ccff46b1f46d38e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2accf67955f8a3fb5fb30a649e6132d"><td class="memItemLeft" align="right" valign="top"><a id="aa2accf67955f8a3fb5fb30a649e6132d" name="aa2accf67955f8a3fb5fb30a649e6132d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load_map_data</b> (PoolIntArray map_data)</td></tr>
 <tr class="memdesc:aa2accf67955f8a3fb5fb30a649e6132d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load map data. <br /></td></tr>
@@ -247,30 +311,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>load_map_data</b> (Po
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a3fba15a031ad1bd976b281cefe90bc79"><td class="memItemLeft" align="right" valign="top"><a id="a3fba15a031ad1bd976b281cefe90bc79" name="a3fba15a031ad1bd976b281cefe90bc79"></a>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_size</b> = Vector2(50,50)</td></tr>
+<tr class="memdesc:a3fba15a031ad1bd976b281cefe90bc79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of one chunk (Default: 50x50) <br /></td></tr>
+<tr class="separator:a3fba15a031ad1bd976b281cefe90bc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a8e96884242e6b83b2417d127a814a8"><td class="memItemLeft" align="right" valign="top"><a id="a4a8e96884242e6b83b2417d127a814a8" name="a4a8e96884242e6b83b2417d127a814a8"></a>
-Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
-<tr class="memdesc:a4a8e96884242e6b83b2417d127a814a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the matrix. <br /></td></tr>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = Vector2(3,3)</td></tr>
+<tr class="memdesc:a4a8e96884242e6b83b2417d127a814a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the whole map in chunks (Default: 3x3) <br /></td></tr>
 <tr class="separator:a4a8e96884242e6b83b2417d127a814a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f0a2c078403ce4ff341449289ac238f"><td class="memItemLeft" align="right" valign="top"><a id="a5f0a2c078403ce4ff341449289ac238f" name="a5f0a2c078403ce4ff341449289ac238f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>allowDiagonalPathfinding</b> = true</td></tr>
-<tr class="memdesc:a5f0a2c078403ce4ff341449289ac238f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/Disallow diagonal pathfinding. <br /></td></tr>
-<tr class="separator:a5f0a2c078403ce4ff341449289ac238f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef65b060d5dbda0c47f00d2431921b49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#aef65b060d5dbda0c47f00d2431921b49">render_distance</a> = 1</td></tr>
+<tr class="memdesc:aef65b060d5dbda0c47f00d2431921b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of chunks loaded around the player.  <a href="classgodot_1_1RGMap.html#aef65b060d5dbda0c47f00d2431921b49">More...</a><br /></td></tr>
+<tr class="separator:aef65b060d5dbda0c47f00d2431921b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a092151ec6eda7be42513f17eb9ebfe1f"><td class="memItemLeft" align="right" valign="top"><a id="a092151ec6eda7be42513f17eb9ebfe1f" name="a092151ec6eda7be42513f17eb9ebfe1f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>allow_diagonal_pathfinding</b> = true</td></tr>
+<tr class="memdesc:a092151ec6eda7be42513f17eb9ebfe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/Disallow diagonal pathfinding. <br /></td></tr>
+<tr class="separator:a092151ec6eda7be42513f17eb9ebfe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a873aa75264c7d3f6f0e1d36370de6218"><td class="memItemLeft" align="right" valign="top"><a id="a873aa75264c7d3f6f0e1d36370de6218" name="a873aa75264c7d3f6f0e1d36370de6218"></a>
 <a class="el" href="classgodot_1_1RGTileset.html">RGTileset</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>tileset</b></td></tr>
 <tr class="memdesc:a873aa75264c7d3f6f0e1d36370de6218"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgodot_1_1RGTileset.html" title="Class that stores a library of tiles for a RGMap.">RGTileset</a> with information about all tiles. <br /></td></tr>
 <tr class="separator:a873aa75264c7d3f6f0e1d36370de6218"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Matrices</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Flat arrays that contain all data about the cells </p>
-</div></td></tr>
-<tr class="memitem:a2bfa2ba344a84f0b91cb41c6fd1a6d12"><td class="memItemLeft" align="right" valign="top"><a id="a2bfa2ba344a84f0b91cb41c6fd1a6d12" name="a2bfa2ba344a84f0b91cb41c6fd1a6d12"></a>
-PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>values</b></td></tr>
-<tr class="separator:a2bfa2ba344a84f0b91cb41c6fd1a6d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb1ce5e92813617ff14a4eb20298b097"><td class="memItemLeft" align="right" valign="top"><a id="adb1ce5e92813617ff14a4eb20298b097" name="adb1ce5e92813617ff14a4eb20298b097"></a>
-PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>visibility</b></td></tr>
-<tr class="separator:adb1ce5e92813617ff14a4eb20298b097"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac523d1e5c3de2f5c48ef6431a3026a48"><td class="memItemLeft" align="right" valign="top"><a id="ac523d1e5c3de2f5c48ef6431a3026a48" name="ac523d1e5c3de2f5c48ef6431a3026a48"></a>
-PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>memory</b></td></tr>
-<tr class="separator:ac523d1e5c3de2f5c48ef6431a3026a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">FOV</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Variables related to FOV calculation using RPAS algorithm </p>
 </div></td></tr>
@@ -362,6 +421,103 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 
 </div>
 </div>
+<a id="ad98a2a51e8c3662659ece5ed13ddd073" name="ad98a2a51e8c3662659ece5ed13ddd073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98a2a51e8c3662659ece5ed13ddd073">&#9670;&nbsp;</a></span>find_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolVector2Array RGMap::find_path </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rect2&#160;</td>
+          <td class="paramname"><em>pathfinding_zone</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Show all pathfinding exceptions with disallowed cells. </p>
+<p >Find path from start to end using A* algorithm</p>
+<p >Returns PoolVector2Array </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start point </td></tr>
+    <tr><td class="paramname">end</td><td>Target point </td></tr>
+    <tr><td class="paramname">pathfinding_zone</td><td>Rect2 zone where pathfinding is calculated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad292a1d8e79b597004643fbcf2e588f8" name="ad292a1d8e79b597004643fbcf2e588f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad292a1d8e79b597004643fbcf2e588f8">&#9670;&nbsp;</a></span>get_chunks_to_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolIntArray RGMap::get_chunks_to_free </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>player_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get ids of chunks that are loaded, but not needed anymore because player is too far. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_position</td><td>Vector2 position of the player Uses render_distance parameter to define the radius </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af81558e0a4b18590aea6f385f6fa345f" name="af81558e0a4b18590aea6f385f6fa345f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af81558e0a4b18590aea6f385f6fa345f">&#9670;&nbsp;</a></span>get_chunks_to_load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolIntArray RGMap::get_chunks_to_load </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>player_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get ids of chunks around player that needs to be loaded. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_position</td><td>Vector2 position of the player Uses render_distance parameter to define the radius Skips chunks that were already loaded </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af5df74ee697c11151876e230fcfc2c09" name="af5df74ee697c11151876e230fcfc2c09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5df74ee697c11151876e230fcfc2c09">&#9670;&nbsp;</a></span>get_line()</h2>
 
@@ -399,7 +555,94 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 
 </div>
 </div>
+<a id="a637933f2b9bb946f4a7b295fddaaf452" name="a637933f2b9bb946f4a7b295fddaaf452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637933f2b9bb946f4a7b295fddaaf452">&#9670;&nbsp;</a></span>show_pathfinding_exceptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolVector2Array RGMap::show_pathfinding_exceptions </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exception_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Show all pathfinding exceptions of a type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exception_type</td><td>true for allowed cells, false for disallowed cells </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa0e99aed1a2d145536439b9a88b9ae30" name="aa0e99aed1a2d145536439b9a88b9ae30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e99aed1a2d145536439b9a88b9ae30">&#9670;&nbsp;</a></span>visibility_between()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RGMap::visibility_between </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if end point is visisble from start point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start point </td></tr>
+    <tr><td class="paramname">end</td><td>Target point </td></tr>
+    <tr><td class="paramname">max_distance</td><td>Maximum distance at which points are visible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aef65b060d5dbda0c47f00d2431921b49" name="aef65b060d5dbda0c47f00d2431921b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef65b060d5dbda0c47f00d2431921b49">&#9670;&nbsp;</a></span>render_distance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int godot::RGMap::render_distance = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of chunks loaded around the player. </p>
+<p >Excluding the chunk where player stands Default: 1 (3x3 grid) </p>
+
+</div>
+</div>
 <a id="a98a2a7a44cf00487360159e89be37401" name="a98a2a7a44cf00487360159e89be37401"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98a2a7a44cf00487360159e89be37401">&#9670;&nbsp;</a></span>RPAS_RESTRICTIVENESS</h2>
 

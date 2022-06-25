@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV</p>
 <p ><img src="https://github.com/alex-karev/godot-rgmap/raw/main/screenshots/demo.gif" alt="" class="inline"/></p>
+<p ><img src="https://github.com/alex-karev/godot-rgmap/raw/main/screenshots/demo2.gif" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Features</h1>
 <ul>
@@ -95,8 +96,10 @@ Features</h1>
 <li><b>Raycasting</b> using Bresenham's lines</li>
 <li><b>Pathfinding</b> using Godot built-in A* class</li>
 <li><b>Memorizing cells</b> that have been visible at least once</li>
+<li><b>Chunk system</b> loadind/freeing chunks, dumping and restoring chunk data</li>
 <li><b>Draw and fill</b> functions for drawing primitives (lines, ellipse, rects, circles, arcs)</li>
 <li><b>Custom RGTileset</b> class to store data about all tiles in a game</li>
+<li><b>TileSet generator</b> for Tilemaps based on data from RGTileset</li>
 <li><b>Merging maps.</b> Placing one RGMap inside the other map</li>
 <li><b>Saving and loading</b> data as a flat array</li>
 <li><b>C++, GDNative</b></li>
@@ -130,11 +133,16 @@ RGTileset</h2>
 RGMap</h2>
 <p >A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
 <p >Should be initialized before usage like this: </p><div class="fragment"><div class="line">var map = RGMap.new()</div>
-<div class="line">map.size = Vector2(100,100)</div>
+<div class="line">map.size = Vector2(100,100) # How many chunks are there?</div>
+<div class="line">map.chunk_size = Vector2(50,50) # The size of each chunk</div>
 <div class="line">map.initialize(tileset) # RGTileset object created earlier</div>
 </div><!-- fragment --><p >You can read more about each function and variable available in RGMap here:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
+<p >Also, you can learn more from demo-project</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
+Example</h1>
+<p >You can find an example of usage in demo-project directory</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Compilation</h1>
 <p >You will need: C++ compiler and SCons installed in your system</p>
 <ol type="1">
@@ -153,17 +161,15 @@ Compilation</h1>
 <li>Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory</li>
 </ol>
 <p >See more about using GDNative modules here: <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module</a></p>
-<h1><a class="anchor" id="autotoc_md7"></a>
-Example</h1>
-<p >You can find a short example of usage in demo-project directory</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 TODO</h1>
 <ul>
 <li>[X] Create demo project</li>
 <li>[X] Add gifs and images to README</li>
+<li>[X] Automatic generation of 2D Tileset and Tilemap based on RGTileset</li>
+<li>[X] Better error handling</li>
+<li>[X] Chunk system</li>
 <li>[ ] Cutting and resizing map</li>
-<li>[ ] Automatic generation of 2D Tileset and Tilemap based on RGTileset</li>
-<li>[ ] Better error handling</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md9"></a>
 References</h1>
@@ -175,6 +181,9 @@ References</h1>
 <li>Godot cpp API: <a href="https://github.com/godotengine/godot-cpp">https://github.com/godotengine/godot-cpp</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md10"></a>
+Contributing</h1>
+<p >You are welcome to fork this repo and to create pull requests</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
 License</h1>
 <p >Distributed under the MIT License. See LICENSE for more information </p>
 </div></div><!-- PageDoc -->

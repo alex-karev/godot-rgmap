@@ -4,6 +4,9 @@
 #include <vector>
 #include <Godot.hpp>
 #include <Reference.hpp>
+#include <TileSet.hpp>
+#include <Texture.hpp>
+#include <ResourceLoader.hpp>
 
 namespace godot {
 
@@ -47,6 +50,13 @@ public:
     bool is_passable(int index);
     //! Check if tile is transparent
     bool is_transparent(int index);
+
+    //! Generate Tileset for using with 2d Tilemap
+    /*!
+    @param texture_path A directory within the project where textures are stored (e.g "res://Textures/")
+    @param texture_format A format of textures (e.g ".png")
+    */
+    Ref<TileSet> generate_tileset(String texture_path, String texture_format);
 
 };
 
