@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Godot RGMap: Godot Roguelike Map System (RGMap)</title>
+<title>Godot RGMap: Godot &lt;ins&gt;R&lt;/ins&gt;oguelike &lt;ins&gt;G&lt;/ins&gt;ame &lt;ins&gt;M&lt;/ins&gt;ap System (RGMap)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Godot Roguelike Map System (RGMap) </div></div>
+  <div class="headertitle"><div class="title">Godot <ins>R</ins>oguelike <ins>G</ins>ame <ins>M</ins>ap System (RGMap) </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV</p>
@@ -98,8 +98,8 @@ Features</h1>
 <li><b>Memorizing cells</b> that have been visible at least once</li>
 <li><b>Chunk system</b> loadind/freeing chunks, dumping and restoring chunk data</li>
 <li><b>Draw and fill</b> functions for drawing primitives (lines, ellipse, rects, circles, arcs)</li>
-<li><b>Custom RGTileset</b> class to store data about all tiles in a game</li>
-<li><b>TileSet generator</b> for Tilemaps based on data from RGTileset</li>
+<li><b>Managing tiles</b> in RGMap class</li>
+<li><b>TileSet generator</b> for Tilemaps based on data from RGMap</li>
 <li><b>Merging maps.</b> Placing one RGMap inside the other map</li>
 <li><b>Saving and loading</b> data as a flat array</li>
 <li><b>C++, GDNative</b></li>
@@ -129,7 +129,7 @@ RGMap</h2>
 </div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</p>
 <div class="fragment"><div class="line">var tileset = rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
 <div class="line">myTilemap.tile_set = tileset # Assign new TileSet to Tilemap</div>
-</div><!-- fragment --><p >RGMap 2 signals that can be helpful for drawing and generating map:</p>
+</div><!-- fragment --><p >RGMap has 2 signals that can be helpful for drawing and generating map:</p>
 <div class="fragment"><div class="line">chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded</div>
 <div class="line">chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed</div>
 </div><!-- fragment --><p >To emit these 2 signals call this function</p>

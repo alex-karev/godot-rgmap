@@ -265,8 +265,6 @@ public:
     @param exception_type true for allowed cells, false for disallowed cells
     */
     PoolVector2Array show_pathfinding_exceptions(bool exception_type);
-    //! Show all pathfinding exceptions with disallowed cells
-    
     //! Find path from start to end using A* algorithm
     /*!
     Returns PoolVector2Array
@@ -274,7 +272,6 @@ public:
     @param end Target point
     @param pathfinding_zone Rect2 zone where pathfinding is calculated
     */
-
     PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */

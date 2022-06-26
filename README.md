@@ -1,4 +1,4 @@
-# Godot Roguelike Map System (RGMap)
+# Godot <ins>R</ins>oguelike <ins>G</ins>ame <ins>M</ins>ap System (RGMap)
 
 A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV
 
@@ -58,7 +58,7 @@ var tileset = rgmap.generate_tileset("res://Textures/",".png") # Generate new Ti
 myTilemap.tile_set = tileset # Assign new TileSet to Tilemap
 ```
 
-RGMap 2 signals that can be helpful for drawing and generating map:
+RGMap has 2 signals that can be helpful for drawing and generating map:
 
 ```
 chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded

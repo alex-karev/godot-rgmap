@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Godot RGMap", "index.html", [
-    [ "Godot Roguelike Map System (RGMap)", "index.html", [
+    [ "Godot <ins>R</ins>oguelike <ins>G</ins>ame <ins>M</ins>ap System (RGMap)", "index.html", [
       [ "Features", "index.html#autotoc_md1", null ],
       [ "Why?", "index.html#autotoc_md2", null ],
       [ "Usage", "index.html#autotoc_md3", [

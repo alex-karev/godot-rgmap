@@ -14,5 +14,5 @@ var searchData=
   ['get_5ftile_5fname_11',['get_tile_name',['../classgodot_1_1RGMap.html#a9d0347ce24c61097eaca4292816b7ce3',1,'godot::RGMap']]],
   ['get_5ftiles_5fcount_12',['get_tiles_count',['../classgodot_1_1RGMap.html#a0a6742a8d89a003db699ba02cd2f965a',1,'godot::RGMap']]],
   ['get_5fvalue_13',['get_value',['../classgodot_1_1RGMap.html#a0608386ad66cec9e4257808022da5038',1,'godot::RGMap']]],
-  ['godot_20roguelike_20map_20system_20_28rgmap_29_14',['Godot Roguelike Map System (RGMap)',['../index.html',1,'']]]
+  ['godot_20_3cins_3er_3c_2fins_3eoguelike_20_3cins_3eg_3c_2fins_3eame_20_3cins_3em_3c_2fins_3eap_20system_20_28rgmap_29_14',['Godot &lt;ins&gt;R&lt;/ins&gt;oguelike &lt;ins&gt;G&lt;/ins&gt;ame &lt;ins&gt;M&lt;/ins&gt;ap System (RGMap)',['../index.html',1,'']]]
 ];
