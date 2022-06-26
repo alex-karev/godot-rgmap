@@ -13,8 +13,8 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **Memorizing cells** that have been visible at least once
 * **Chunk system** loadind/freeing chunks, dumping and restoring chunk data
 * **Draw and fill** functions for drawing primitives (lines, ellipse, rects, circles, arcs)
-* **Custom RGTileset** class to store data about all tiles in a game
-* **TileSet generator** for Tilemaps based on data from RGTileset
+* **Managing tiles** in RGMap class
+* **TileSet generator** for Tilemaps based on data from RGMap
 * **Merging maps.** Placing one RGMap inside the other map
 * **Saving and loading** data as a flat array
 * **C++, GDNative**
