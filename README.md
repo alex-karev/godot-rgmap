@@ -25,15 +25,13 @@ To make managing maps for roguelikes easier by uniting all useful functions and 
 <img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/screenshots/code.png">
 
 ## Usage
-There are some new classes inherited from Reference:
+Some new nodes are added:
 
 ### RGTileset
-A class for storing data about tiles. A proper RGTileset object should be created before creating a new map, as it stores all necessary data about tiles used in-game.
-
-Should be created like this:
+A node for storing data about tiles. RGTiseset should be created and tiles should be added before creating a new map, as it stores all necessary data about tiles used in game.
 
 ```
-var tileset = RGTileset.new()
+var tileset: RGTileset = get_node("path/to/rgtileset")
 # Add tiles:
 # tileset.add_tile("core.game.ground", "Ground", true, true)
 # Note: First 2 strings are 'name' and 'display name'. Other 2 booleans are 'passability' and 'transparency'
@@ -51,22 +49,52 @@ for tile_name in json["tiles"].keys():
     tileset.add_tile(tile_name, data["name"], data["passable"], data["transparent"])
 ```
 
-Here you can find all functions available inside in RGTileset: 
+If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. 
+It searches for images named as your tiles in a specified directory:
+
+```
+var tileset = rgtileset.generate_tileset("res://Textures/",".png") # Generate new TileSet
+myTilemap.tile_set = tileset # Assign new TileSet to Tilemap
+```
+
+Here you can find all functions available in RGTileset: 
 
 <https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html>
 
 ### RGMap
-A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.
+A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.
 
 Should be initialized before usage like this:
+
 ```
-var map = RGMap.new()
-map.size = Vector2(100,100) # How many chunks are there?
-map.chunk_size = Vector2(50,50) # The size of each chunk
 map.initialize(tileset) # RGTileset object created earlier
 ```
 
-You can read more about each function and variable available in RGMap here:
+Has 2 signals that can be helpful for drawing and generating map:
+
+```
+chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded
+chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed
+```
+
+To emit these 2 signals call this function
+
+```
+request_chunks_update(player_position: Vector2) # Player_position is position of the player on RGMap grid
+```
+
+Don't forget to calculate FOV. It is better to do this in the end of the function connected to chunks_load_requested(PoolIntArray ids) signal:
+
+```
+func _on_RGMap_chunks_load_requested(ids):
+    ...
+    rgmap.calculate_fov(controller.player_position, 30) # 30 is a radius
+```
+
+Please see [Generator.gd](https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd) 
+for more detailed example
+
+There are a lot of functions available in RGMap node. You can read more about each function and variable  here:
 
 <https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
 

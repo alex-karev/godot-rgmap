@@ -110,12 +110,11 @@ Why?</h1>
 <p ><img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/screenshots/code.png" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Usage</h1>
-<p >There are some new classes inherited from Reference:</p>
+<p >Some new nodes are added:</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 RGTileset</h2>
-<p >A class for storing data about tiles. A proper RGTileset object should be created before creating a new map, as it stores all necessary data about tiles used in-game.</p>
-<p >Should be created like this:</p>
-<div class="fragment"><div class="line">var tileset = RGTileset.new()</div>
+<p >A node for storing data about tiles. RGTiseset should be created and tiles should be added before creating a new map, as it stores all necessary data about tiles used in game.</p>
+<div class="fragment"><div class="line">var tileset: RGTileset = get_node(&quot;path/to/rgtileset&quot;)</div>
 <div class="line"># Add tiles:</div>
 <div class="line"># tileset.add_tile(&quot;core.game.ground&quot;, &quot;Ground&quot;, true, true)</div>
 <div class="line"># Note: First 2 strings are &#39;name&#39; and &#39;display name&#39;. Other 2 booleans are &#39;passability&#39; and &#39;transparency&#39;</div>
@@ -127,16 +126,27 @@ RGTileset</h2>
 <div class="line">for tile_name in json[&quot;tiles&quot;].keys():</div>
 <div class="line">    var data = json[&quot;tiles&quot;][tile_name]</div>
 <div class="line">    tileset.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
-</div><!-- fragment --><p >Here you can find all functions available inside in RGTileset:</p>
+</div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</p>
+<div class="fragment"><div class="line">var tileset = rgtileset.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
+<div class="line">myTilemap.tile_set = tileset # Assign new TileSet to Tilemap</div>
+</div><!-- fragment --><p >Here you can find all functions available in RGTileset:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html</a></p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 RGMap</h2>
-<p >A class for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
-<p >Should be initialized before usage like this: </p><div class="fragment"><div class="line">var map = RGMap.new()</div>
-<div class="line">map.size = Vector2(100,100) # How many chunks are there?</div>
-<div class="line">map.chunk_size = Vector2(50,50) # The size of each chunk</div>
-<div class="line">map.initialize(tileset) # RGTileset object created earlier</div>
-</div><!-- fragment --><p >You can read more about each function and variable available in RGMap here:</p>
+<p >A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
+<p >Should be initialized before usage like this:</p>
+<div class="fragment"><div class="line">map.initialize(tileset) # RGTileset object created earlier</div>
+</div><!-- fragment --><p >Has 2 signals that can be helpful for drawing and generating map:</p>
+<div class="fragment"><div class="line">chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded</div>
+<div class="line">chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed</div>
+</div><!-- fragment --><p >To emit these 2 signals call this function</p>
+<div class="fragment"><div class="line">request_chunks_update(player_position: Vector2) # Player_position is position of the player on RGMap grid</div>
+</div><!-- fragment --><p >Don't forget to calculate FOV. It is better to do this in the end of the function connected to chunks_load_requested(PoolIntArray ids) signal:</p>
+<div class="fragment"><div class="line">func _on_RGMap_chunks_load_requested(ids):</div>
+<div class="line">    ...</div>
+<div class="line">    rgmap.calculate_fov(controller.player_position, 30) # 30 is a radius</div>
+</div><!-- fragment --><p >Please see <a href="https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd">Generator.gd</a> for more detailed example</p>
+<p >There are a lot of functions available in RGMap node. You can read more about each function and variable here:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
 <p >Also, you can learn more from demo-project</p>
 <h1><a class="anchor" id="autotoc_md6"></a>

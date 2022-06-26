@@ -113,6 +113,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (<a cl
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
 <tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
 <tr class="separator:a831fb561ec538f9dd241174079927b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Signals</div></td></tr>
+<tr class="memitem:afd1aae74dc064d42ccf5b934472294cf"><td class="memItemLeft" align="right" valign="top"><a id="afd1aae74dc064d42ccf5b934472294cf" name="afd1aae74dc064d42ccf5b934472294cf"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>chunks_load_requested</b> ()</td></tr>
+<tr class="memdesc:afd1aae74dc064d42ccf5b934472294cf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk needs to be loaded. Emited on calling request_chunks_update function <br /></td></tr>
+<tr class="separator:afd1aae74dc064d42ccf5b934472294cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d061a66f56eb6392e41f4f9028d16fc"><td class="memItemLeft" align="right" valign="top"><a id="a2d061a66f56eb6392e41f4f9028d16fc" name="a2d061a66f56eb6392e41f4f9028d16fc"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>chunks_free_requested</b> ()</td></tr>
+<tr class="memdesc:a2d061a66f56eb6392e41f4f9028d16fc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk needs to be freed. Emited on calling request_chunks_update function <br /></td></tr>
+<tr class="separator:a2d061a66f56eb6392e41f4f9028d16fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3bb2de68b7d4a239516015a86db8db"><td class="memItemLeft" align="right" valign="top"><a id="a8f3bb2de68b7d4a239516015a86db8db" name="a8f3bb2de68b7d4a239516015a86db8db"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_loaded</b> ()</td></tr>
+<tr class="memdesc:a8f3bb2de68b7d4a239516015a86db8db"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when is loaded for the first time. Emited on calling load_chunk function <br /></td></tr>
+<tr class="separator:a8f3bb2de68b7d4a239516015a86db8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="memItemLeft" align="right" valign="top"><a id="a74f8456f280ddaa8a3f3b3161a6ad63f" name="a74f8456f280ddaa8a3f3b3161a6ad63f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_freed</b> ()</td></tr>
+<tr class="memdesc:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk is freed from memory. Emited on calling free_chunk function <br /></td></tr>
+<tr class="separator:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Managing chunks</div></td></tr>
 <tr class="memitem:a17d00e1acf01120ad1324704960ea528"><td class="memItemLeft" align="right" valign="top"><a id="a17d00e1acf01120ad1324704960ea528" name="a17d00e1acf01120ad1324704960ea528"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_chunk_index</b> (Vector2 position)</td></tr>
@@ -168,6 +185,9 @@ PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_loaded_ch
 <tr class="memitem:ad292a1d8e79b597004643fbcf2e588f8"><td class="memItemLeft" align="right" valign="top">PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">get_chunks_to_free</a> (Vector2 player_position)</td></tr>
 <tr class="memdesc:ad292a1d8e79b597004643fbcf2e588f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ids of chunks that are loaded, but not needed anymore because player is too far.  <a href="classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8">More...</a><br /></td></tr>
 <tr class="separator:ad292a1d8e79b597004643fbcf2e588f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c565c4b9124368ebdaae851afd13585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a2c565c4b9124368ebdaae851afd13585">request_chunks_update</a> (Vector2 player_position)</td></tr>
+<tr class="memdesc:a2c565c4b9124368ebdaae851afd13585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request chunk load/unload depending on player_position and render_distance.  <a href="classgodot_1_1RGMap.html#a2c565c4b9124368ebdaae851afd13585">More...</a><br /></td></tr>
+<tr class="separator:a2c565c4b9124368ebdaae851afd13585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data getters</div></td></tr>
 <tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
@@ -350,9 +370,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>RPAS_VISIBLE_ON_EQUAL
 <tr class="separator:ac743a18b1c2c2193e92aac307f1c1478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Standard methods</h2></td></tr>
-<tr class="memitem:af167d83fed1892421dd86f2089d45fef"><td class="memItemLeft" align="right" valign="top"><a id="af167d83fed1892421dd86f2089d45fef" name="af167d83fed1892421dd86f2089d45fef"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_methods</b> ()</td></tr>
-<tr class="separator:af167d83fed1892421dd86f2089d45fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07f1fef452ab37ad0bc6a5a46ed65834"><td class="memItemLeft" align="right" valign="top"><a id="a07f1fef452ab37ad0bc6a5a46ed65834" name="a07f1fef452ab37ad0bc6a5a46ed65834"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RGMap</b> ()</td></tr>
 <tr class="separator:a07f1fef452ab37ad0bc6a5a46ed65834"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -362,6 +379,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 <tr class="memitem:a6a124ddb92eb57514b32f106babd40eb"><td class="memItemLeft" align="right" valign="top"><a id="a6a124ddb92eb57514b32f106babd40eb" name="a6a124ddb92eb57514b32f106babd40eb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr>
 <tr class="separator:a6a124ddb92eb57514b32f106babd40eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af167d83fed1892421dd86f2089d45fef"><td class="memItemLeft" align="right" valign="top"><a id="af167d83fed1892421dd86f2089d45fef" name="af167d83fed1892421dd86f2089d45fef"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_methods</b> ()</td></tr>
+<tr class="separator:af167d83fed1892421dd86f2089d45fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class for managing maps for roguelike. </p>
@@ -552,6 +572,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> ()</td></tr
 
 <p>Get a set of points in Bresenham's line. </p>
 <p >Based on Python implementation from here: <a href="http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm">http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm</a> </p>
+
+</div>
+</div>
+<a id="a2c565c4b9124368ebdaae851afd13585" name="a2c565c4b9124368ebdaae851afd13585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c565c4b9124368ebdaae851afd13585">&#9670;&nbsp;</a></span>request_chunks_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RGMap::request_chunks_update </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>player_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Request chunk load/unload depending on player_position and render_distance. </p>
+<p >Emits several "chunk_load_requested" and "chunk_free_requested" signals Will produce the same result until chunks will be loaded/freed from other script Does nothing if all needed chunks are loaded and all unneeded chunks are freed </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_position</td><td>Vector2 position of the player Uses render_distance parameter to define the radius </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

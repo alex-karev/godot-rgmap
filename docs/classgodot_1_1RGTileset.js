@@ -7,5 +7,6 @@ var classgodot_1_1RGTileset =
     [ "get_name", "classgodot_1_1RGTileset.html#a3073336afb0daa60f6af96b4c9d3ba64", null ],
     [ "get_tiles_count", "classgodot_1_1RGTileset.html#a8bdcde882a7a66b60f819b7187b79c9b", null ],
     [ "is_passable", "classgodot_1_1RGTileset.html#ab196ccc0982354f30fdf0af0ec1ef92d", null ],
-    [ "is_transparent", "classgodot_1_1RGTileset.html#a62b71511b4f449fa2f8173b6b30030c4", null ]
+    [ "is_transparent", "classgodot_1_1RGTileset.html#a62b71511b4f449fa2f8173b6b30030c4", null ],
+    [ "tile_added", "classgodot_1_1RGTileset.html#a8f6a3b13cd09c943872d7aae7f0e7eab", null ]
 ];

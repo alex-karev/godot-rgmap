@@ -3,6 +3,8 @@
 using namespace godot;
 
 void RGTileset::_register_methods() {
+    register_signal<RGTileset>((char *)"tile_added", "index", GODOT_VARIANT_TYPE_INT);
+
     register_method("add_tile", &RGTileset::add_tile);
     register_method("get_tiles_count", &RGTileset::get_tiles_count);
     register_method("get_index", &RGTileset::get_index);
