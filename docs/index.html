@@ -110,33 +110,26 @@ Why?</h1>
 <p ><img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/screenshots/code.png" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Usage</h1>
-<p >Some new nodes are added:</p>
+<p >A new node is added:</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
-RGTileset</h2>
-<p >A node for storing data about tiles. RGTiseset should be created and tiles should be added before creating a new map, as it stores all necessary data about tiles used in game.</p>
-<div class="fragment"><div class="line">var tileset: RGTileset = get_node(&quot;path/to/rgtileset&quot;)</div>
-<div class="line"># Add tiles:</div>
-<div class="line"># tileset.add_tile(&quot;core.game.ground&quot;, &quot;Ground&quot;, true, true)</div>
+RGMap</h2>
+<p >A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
+<p >Tiles should be added before creating a new map</p>
+<div class="fragment"><div class="line"># Add tiles:</div>
+<div class="line"># rgmap.add_tile(&quot;core.game.ground&quot;, &quot;Ground&quot;, true, true)</div>
 <div class="line"># Note: First 2 strings are &#39;name&#39; and &#39;display name&#39;. Other 2 booleans are &#39;passability&#39; and &#39;transparency&#39;</div>
-</div><!-- fragment --><p >It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles to RGTileset like this:</p>
+</div><!-- fragment --><p >It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:</p>
 <div class="fragment"><div class="line">var file = File.new()</div>
 <div class="line">file.open(&quot;res://db.json&quot;, File.READ)</div>
 <div class="line">var txt = file.get_as_text()</div>
 <div class="line">var json = parse_json(txt)</div>
 <div class="line">for tile_name in json[&quot;tiles&quot;].keys():</div>
 <div class="line">    var data = json[&quot;tiles&quot;][tile_name]</div>
-<div class="line">    tileset.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
+<div class="line">    rgmap.add_tile(tile_name, data[&quot;name&quot;], data[&quot;passable&quot;], data[&quot;transparent&quot;])</div>
 </div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</p>
-<div class="fragment"><div class="line">var tileset = rgtileset.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
+<div class="fragment"><div class="line">var tileset = rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
 <div class="line">myTilemap.tile_set = tileset # Assign new TileSet to Tilemap</div>
-</div><!-- fragment --><p >Here you can find all functions available in RGTileset:</p>
-<p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html</a></p>
-<h2><a class="anchor" id="autotoc_md5"></a>
-RGMap</h2>
-<p >A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.</p>
-<p >Should be initialized before usage like this:</p>
-<div class="fragment"><div class="line">map.initialize(tileset) # RGTileset object created earlier</div>
-</div><!-- fragment --><p >Has 2 signals that can be helpful for drawing and generating map:</p>
+</div><!-- fragment --><p >RGMap 2 signals that can be helpful for drawing and generating map:</p>
 <div class="fragment"><div class="line">chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded</div>
 <div class="line">chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed</div>
 </div><!-- fragment --><p >To emit these 2 signals call this function</p>
@@ -149,10 +142,10 @@ RGMap</h2>
 <p >There are a lot of functions available in RGMap node. You can read more about each function and variable here:</p>
 <p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
 <p >Also, you can learn more from demo-project</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Example</h1>
 <p >You can find an example of usage in demo-project directory</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Compilation</h1>
 <p >You will need: C++ compiler and SCons installed in your system</p>
 <ol type="1">
@@ -171,7 +164,7 @@ Compilation</h1>
 <li>Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory</li>
 </ol>
 <p >See more about using GDNative modules here: <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module</a></p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 TODO</h1>
 <ul>
 <li>[X] Create demo project</li>
@@ -181,7 +174,7 @@ TODO</h1>
 <li>[X] Chunk system</li>
 <li>[ ] Cutting and resizing map</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 References</h1>
 <p >The code for some parts of this projects was inspired by/copied from these resources:</p><ul>
 <li>RPAS implementation written in Python: <a href="https://github.com/MoyTW/roguebasin_rpas">https://github.com/MoyTW/roguebasin_rpas</a></li>
@@ -190,10 +183,10 @@ References</h1>
 <li>Doxygen theme: <a href="https://jothepro.github.io/doxygen-awesome-css/">https://jothepro.github.io/doxygen-awesome-css/</a></li>
 <li>Godot cpp API: <a href="https://github.com/godotengine/godot-cpp">https://github.com/godotengine/godot-cpp</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Contributing</h1>
 <p >You are welcome to fork this repo and to create pull requests</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 License</h1>
 <p >Distributed under the MIT License. See LICENSE for more information </p>
 </div></div><!-- PageDoc -->

@@ -29,15 +29,14 @@ var NAVTREE =
       [ "Features", "index.html#autotoc_md1", null ],
       [ "Why?", "index.html#autotoc_md2", null ],
       [ "Usage", "index.html#autotoc_md3", [
-        [ "RGTileset", "index.html#autotoc_md4", null ],
-        [ "RGMap", "index.html#autotoc_md5", null ]
+        [ "RGMap", "index.html#autotoc_md4", null ]
       ] ],
-      [ "Example", "index.html#autotoc_md6", null ],
-      [ "Compilation", "index.html#autotoc_md7", null ],
-      [ "TODO", "index.html#autotoc_md8", null ],
-      [ "References", "index.html#autotoc_md9", null ],
-      [ "Contributing", "index.html#autotoc_md10", null ],
-      [ "License", "index.html#autotoc_md11", null ]
+      [ "Example", "index.html#autotoc_md5", null ],
+      [ "Compilation", "index.html#autotoc_md6", null ],
+      [ "TODO", "index.html#autotoc_md7", null ],
+      [ "References", "index.html#autotoc_md8", null ],
+      [ "Contributing", "index.html#autotoc_md9", null ],
+      [ "License", "index.html#autotoc_md10", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
