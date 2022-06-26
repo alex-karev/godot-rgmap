@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <Godot.hpp>
-#include <Reference.hpp>
+#include <Node.hpp>
 #include <TileSet.hpp>
 #include <Texture.hpp>
 #include <ResourceLoader.hpp>
@@ -11,8 +11,8 @@
 namespace godot {
 
 //! Class that stores a library of tiles for a RGMap
-class RGTileset: public Reference {
-    GODOT_CLASS(RGTileset, Reference)
+class RGTileset: public Node {
+    GODOT_CLASS(RGTileset, Node)
     
     // Structure that stores data about one type of tile
     struct RGTile {
@@ -25,9 +25,16 @@ class RGTileset: public Reference {
 private:
     std::vector<RGTile> tiles;
 
-
-
 public:
+    // Note: these functions placed here to ease documentation generation with Doxygen
+    // Tell me if you know a better way to do so
+    /** @name Signals */
+    ///@{
+
+    //! **Signal.** Emited when new tile is added
+    int tile_added() {return 0;}
+    ///@}
+
     /** @name Standard methods */
     ///@{
     static void _register_methods();

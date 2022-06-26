@@ -17,6 +17,11 @@ void RGMap::_register_methods() {
     register_property<RGMap, int>("RPAS_RESTRICTIVENESS", &RGMap::RPAS_RESTRICTIVENESS, 1);
     register_property<RGMap, bool>("RPAS_VISIBLE_ON_EQUAL", &RGMap::RPAS_VISIBLE_ON_EQUAL, true);
 
+    register_signal<RGMap>((char *)"chunks_load_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
+    register_signal<RGMap>((char *)"chunks_free_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
+    register_signal<RGMap>((char *)"chunk_loaded", "index", GODOT_VARIANT_TYPE_INT);
+    register_signal<RGMap>((char *)"chunk_freed", "index", GODOT_VARIANT_TYPE_INT);
+
     register_method("initialize", &RGMap::initialize);
     register_method("clean_map", &RGMap::clean_map);
 
@@ -34,7 +39,8 @@ void RGMap::_register_methods() {
     register_method("get_loaded_chunks", &RGMap::get_loaded_chunks);
     register_method("get_chunks_to_load", &RGMap::get_chunks_to_load);
     register_method("get_chunks_to_free", &RGMap::get_chunks_to_free);
-
+    register_method("request_chunks_update", &RGMap::request_chunks_update);
+    
     register_method("get_local_index", &RGMap::get_local_index);
     register_method("get_value", &RGMap::get_value);
     register_method("get_name", &RGMap::get_name);
@@ -165,6 +171,7 @@ void RGMap::load_chunk(int index, PoolIntArray data) {
             chunk.memory.resize(cells_number, 0);
         }
         chunks.push_back(chunk);
+        emit_signal("chunk_loaded", index);
     }
 }
 PoolIntArray RGMap::dump_chunk_data(int index) {
@@ -191,6 +198,7 @@ void RGMap::free_chunk(int index) {
         if (chunk.index == index) {
             chunks.erase(chunks.begin() + i);
             chunks.shrink_to_fit();
+            emit_signal("chunk_freed", index);
             return;
         }
     }
@@ -243,6 +251,12 @@ PoolIntArray RGMap::get_chunks_to_free(Vector2 player_position) {
     }
     return to_free;
 }
+void RGMap::request_chunks_update(Vector2 player_position) {
+    PoolIntArray to_load = get_chunks_to_load(player_position);
+    emit_signal("chunks_load_requested", to_load);
+    PoolIntArray to_free = get_chunks_to_free(player_position);
+    emit_signal("chunks_free_requested", to_free);
+}
 
 /*
     Cell data getters
@@ -263,6 +277,7 @@ bool RGMap::is_in_bounds(Vector2 position) {
 }
 int RGMap::get_value(Vector2 position) {
     int chunk_index = get_chunk_index(position);
+    if (chunk_index < 0 || chunk_index > size.x*size.y) {return 0;}
     if (!is_chunk_loaded(chunk_index)) {return 0;}
     Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
@@ -288,7 +303,8 @@ bool RGMap::is_visible(Vector2 position) {
     }
 bool RGMap::is_memorized(Vector2 position) {
     int chunk_index = get_chunk_index(position);
-    if (!is_chunk_loaded(chunk_index)) {return 0;}
+    if (chunk_index < 0 || chunk_index > size.x*size.y) {return false;}
+    if (!is_chunk_loaded(chunk_index)) {return false;}
     Chunk& chunk = get_chunk(chunk_index);
     int index = get_local_index(position);
     return chunk.memory[index] == 1;

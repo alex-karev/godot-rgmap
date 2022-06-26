@@ -4,7 +4,7 @@
 #define _USE_MATH_DEFINES
 
 #include <Godot.hpp>
-#include <Reference.hpp>
+#include <Node.hpp>
 #include <Vector2.hpp>
 #include <Array.hpp>
 #include <AStar2D.hpp>
@@ -19,7 +19,7 @@ namespace godot {
 
 //! Class for managing maps for roguelike
 class RGMap : public Reference {
-    GODOT_CLASS(RGMap, Reference)
+    GODOT_CLASS(RGMap, Node)
 
     // Structure needed for RPAS algorithm
     struct CellAngles{
@@ -103,6 +103,21 @@ public:
     bool RPAS_VISIBLE_ON_EQUAL = true; 
     ///@}
 
+    // Note: these functions placed here to ease documentation generation with Doxygen
+    // Tell me if you know a better way to do so
+    /** @name Signals */
+    ///@{
+
+    //! **Signal.** Emited when chunk needs to be loaded. Emited on calling request_chunks_update function
+    PoolIntArray chunks_load_requested() {return PoolIntArray();}
+    //! **Signal.** Emited when chunk needs to be freed. Emited on calling request_chunks_update function
+    PoolIntArray chunks_free_requested() {return PoolIntArray();}
+    //! **Signal.** Emited when is loaded for the first time. Emited on calling load_chunk function
+    int chunk_loaded() {return 0;}
+    //! **Signal.** Emited when chunk is freed from memory. Emited on calling free_chunk function
+    int chunk_freed() {return 0;}
+    ///@}
+
     /** @name Standard methods */
     ///@{
 
@@ -157,6 +172,14 @@ public:
     Uses render_distance parameter to define the radius
     */
     PoolIntArray get_chunks_to_free(Vector2 player_position);
+    //! Request chunk load/unload depending on player_position and render_distance
+    /*! Emits several "chunk_load_requested" and "chunk_free_requested" signals
+    Will produce the same result until chunks will be loaded/freed from other script
+    Does nothing if all needed chunks are loaded and all unneeded chunks are freed
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    */
+    void request_chunks_update(Vector2 player_position);
     ///@}
 
 

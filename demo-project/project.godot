@@ -9,19 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "Node",
 "class": "RGMap",
 "language": "NativeScript",
 "path": "res://GDNative/RGMap.gdns"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "RGTileset",
 "language": "NativeScript",
 "path": "res://GDNative/RGTileset.gdns"
 } ]
 _global_script_class_icons={
-"RGMap": "",
-"RGTileset": ""
+"RGMap": "res://GDNative/rgmap.png",
+"RGTileset": "res://GDNative/rgtileset.png"
 }
 
 [application]

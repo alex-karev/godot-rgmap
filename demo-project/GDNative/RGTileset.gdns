@@ -7,3 +7,4 @@ resource_name = "RGTileset"
 class_name = "RGTileset"
 library = ExtResource( 1 )
 script_class_name = "RGTileset"
+script_class_icon_path = "res://GDNative/rgtileset.png"
