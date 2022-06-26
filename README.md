@@ -25,19 +25,20 @@ To make managing maps for roguelikes easier by uniting all useful functions and 
 <img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/screenshots/code.png">
 
 ## Usage
-Some new nodes are added:
+A new node is added:
 
-### RGTileset
-A node for storing data about tiles. RGTiseset should be created and tiles should be added before creating a new map, as it stores all necessary data about tiles used in game.
+### RGMap
+A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.
+
+Tiles should be added before creating a new map
 
 ```
-var tileset: RGTileset = get_node("path/to/rgtileset")
 # Add tiles:
-# tileset.add_tile("core.game.ground", "Ground", true, true)
+# rgmap.add_tile("core.game.ground", "Ground", true, true)
 # Note: First 2 strings are 'name' and 'display name'. Other 2 booleans are 'passability' and 'transparency'
 ```
 
-It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles to RGTileset like this:
+It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:
 
 ```
 var file = File.new()
@@ -46,31 +47,18 @@ var txt = file.get_as_text()
 var json = parse_json(txt)
 for tile_name in json["tiles"].keys():
     var data = json["tiles"][tile_name]
-    tileset.add_tile(tile_name, data["name"], data["passable"], data["transparent"])
+    rgmap.add_tile(tile_name, data["name"], data["passable"], data["transparent"])
 ```
 
 If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. 
 It searches for images named as your tiles in a specified directory:
 
 ```
-var tileset = rgtileset.generate_tileset("res://Textures/",".png") # Generate new TileSet
+var tileset = rgmap.generate_tileset("res://Textures/",".png") # Generate new TileSet
 myTilemap.tile_set = tileset # Assign new TileSet to Tilemap
 ```
 
-Here you can find all functions available in RGTileset: 
-
-<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGTileset.html>
-
-### RGMap
-A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.
-
-Should be initialized before usage like this:
-
-```
-map.initialize(tileset) # RGTileset object created earlier
-```
-
-Has 2 signals that can be helpful for drawing and generating map:
+RGMap 2 signals that can be helpful for drawing and generating map:
 
 ```
 chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded
