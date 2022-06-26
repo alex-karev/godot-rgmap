@@ -11,7 +11,6 @@ void RGMap::_register_methods() {
     register_property<RGMap, Vector2>("chunk_size", &RGMap::chunk_size, Vector2(50,50));
     register_property<RGMap, int>("render_distance", &RGMap::render_distance, 1);
     register_property<RGMap, bool>("allow_diagonal_pathfinding", &RGMap::allow_diagonal_pathfinding, true);
-    register_property<RGMap, RGTileset*>("tileset", &RGMap::tileset, nullptr);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
     register_property<RGMap, bool>("RPAS_NOT_VISIBLE_BLOCKS_VISION", &RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION, true);
     register_property<RGMap, int>("RPAS_RESTRICTIVENESS", &RGMap::RPAS_RESTRICTIVENESS, 1);
@@ -22,8 +21,16 @@ void RGMap::_register_methods() {
     register_signal<RGMap>((char *)"chunk_loaded", "index", GODOT_VARIANT_TYPE_INT);
     register_signal<RGMap>((char *)"chunk_freed", "index", GODOT_VARIANT_TYPE_INT);
 
-    register_method("initialize", &RGMap::initialize);
     register_method("clean_map", &RGMap::clean_map);
+
+    register_method("add_tile", &RGMap::add_tile);
+    register_method("get_tiles_count", &RGMap::get_tiles_count);
+    register_method("get_tile_index", &RGMap::get_tile_index);
+    register_method("get_tile_name", &RGMap::get_tile_name);
+    register_method("get_tile_display_name", &RGMap::get_tile_display_name);
+    register_method("is_tile_passable", &RGMap::is_tile_passable);
+    register_method("is_tile_transparent", &RGMap::is_tile_transparent);
+    register_method("generate_tileset", &RGMap::generate_tileset);
 
     register_method("get_chunk_index", &RGMap::get_chunk_index);
     register_method("chunk_index_int_to_v2", &RGMap::chunk_index_int_to_v2);
@@ -92,16 +99,9 @@ RGMap::~RGMap() {}
 void RGMap::_init() {
     size = Vector2(3,3);
     chunk_size = Vector2(50,50);
-    total_size = Vector2(150,150);
     allow_diagonal_pathfinding = true;
 }
 
-void RGMap::initialize(RGTileset* _tileset) {
-    // Apply new tileset
-    tileset = _tileset;
-    // Define size (in cells)
-    total_size = size*chunk_size;
-}
 void RGMap::clean_map() {
     chunks.clear();
     chunks.shrink_to_fit();
@@ -109,6 +109,48 @@ void RGMap::clean_map() {
     pathfinding_exception_allowed.shrink_to_fit();
     pathfinding_exception_disallowed.clear();
     pathfinding_exception_disallowed.shrink_to_fit();
+}
+
+/*
+    Tiles
+*/
+
+void RGMap::add_tile(String name, String display_name, bool passable, bool transparent) {
+    RGTile tile;
+    tile.name = name;
+    tile.display_name = display_name;
+    tile.passable = passable;
+    tile.transparent = transparent;
+    tiles.push_back(tile);
+}
+int RGMap::get_tiles_count() {
+    return tiles.size();
+}
+
+int RGMap::get_tile_index(String name) { 
+    for (int i=0; i < tiles.size(); ++i) {
+        RGTile tile = tiles[i];
+        if (tile.name == name) {
+            return i;
+        }
+    }
+    return -1; 
+}
+String RGMap::get_tile_name(int index) { return tiles[index].name; }
+String RGMap::get_tile_display_name(int index) { return tiles[index].display_name; }
+bool RGMap::is_tile_passable(int index) { return tiles[index].passable; }
+bool RGMap::is_tile_transparent(int index) { return tiles[index].transparent; }
+Ref<TileSet> RGMap::generate_tileset(String texture_path, String texture_format){
+    ResourceLoader* res_loader = ResourceLoader::get_singleton();
+    Ref<TileSet> new_tileset;
+    new_tileset.instance();
+    for (int i=0; i < get_tiles_count(); ++i) {
+        new_tileset->create_tile(i);
+        String tile_name = get_tile_name(i);
+        Ref<Texture> texture = res_loader->load(texture_path+tile_name+texture_format);
+        new_tileset->tile_set_texture(i, texture);
+    }
+    return new_tileset;
 }
 
 /*
@@ -271,8 +313,8 @@ int RGMap::get_local_index(Vector2 position) {
     return index;
 }
 bool RGMap::is_in_bounds(Vector2 position) {
-    bool x_in_bounds = position.x < total_size.x && position.x >= 0;
-    bool y_in_bounds = position.y < total_size.y && position.y >= 0;
+    bool x_in_bounds = position.x < size.x*chunk_size.x && position.x >= 0;
+    bool y_in_bounds = position.y < size.y*chunk_size.y && position.y >= 0;
     return x_in_bounds && y_in_bounds;
 }
 int RGMap::get_value(Vector2 position) {
@@ -284,16 +326,16 @@ int RGMap::get_value(Vector2 position) {
     return chunk.values[index];
 }
 String RGMap::get_name(Vector2 position) {
-    return tileset->get_name(get_value(position));
+    return get_tile_name(get_value(position));
 }
 String RGMap::get_display_name(Vector2 position) {
-    return tileset->get_display_name(get_value(position));
+    return get_tile_display_name(get_value(position));
 }
 bool RGMap::is_transparent(Vector2 position) {
-    return tileset->is_transparent(get_value(position));
+    return is_tile_transparent(get_value(position));
 }
 bool RGMap::is_passable(Vector2 position) {
-    return tileset->is_passable(get_value(position));
+    return is_tile_passable(get_value(position));
 }
 bool RGMap::is_visible(Vector2 position) {
     if (!fov_zone.has_point(position)) {return false;}
@@ -525,8 +567,8 @@ bool RGMap::visibility_between(Vector2 start, Vector2 end, int max_distance) {
 */
 
 void RGMap::place_map(RGMap* another_map, Vector2 start) {
-    for (int x=0; x < another_map->total_size.x; ++x) {
-        for (int y=0; y < another_map->total_size.y; ++y) {
+    for (int x=0; x < another_map->size.x*another_map->chunk_size.x; ++x) {
+        for (int y=0; y < another_map->size.y*another_map->chunk_size.y; ++y) {
             Vector2 cell = start + Vector2(x,y);
             if  (!is_in_bounds(cell)) { continue; }
             set_value(cell, another_map->get_value(Vector2(x,y)));
@@ -711,7 +753,6 @@ void RGMap::load_map_data(PoolIntArray map_data) {
     size.y = map_data[1];
     chunk_size.x = map_data[2];
     chunk_size.y = map_data[3];
-    total_size = size*chunk_size;
     // Calculate number of chunks
     int chunks_number = (map_data.size()-4)/(chunk_size.x*chunk_size.y*NUM_CHUNK_ARRAYS+1);
     // Load chunks

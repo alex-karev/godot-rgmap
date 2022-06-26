@@ -4,7 +4,6 @@ export(NodePath) var rgmap_path
 export(NodePath) var rgtileset_path
 export(NodePath) var controller_path
 var rgmap: RGMap
-var rgtileset: RGTileset
 var noise: OpenSimplexNoise
 var controller
 
@@ -12,7 +11,6 @@ func _ready():
 	# Connect nodes
 	controller = get_node(controller_path)
 	rgmap = get_node(rgmap_path)
-	rgtileset = get_node(rgtileset_path)
 	
 	# Connect signals
 	# Note: Signals are already connected in editor
@@ -21,16 +19,13 @@ func _ready():
 	#rgmap.connect("chunk_free_requested", self, "_on_RGMap_chunk_load_requested")
 	
 	# Add tiles to RGTileset
-	rgtileset.add_tile("ocean", "Ocean", false, true)
-	rgtileset.add_tile("grass", "Grass", true, true) # true for passable and true for transparent
-	rgtileset.add_tile("wall", "Wall", false, false)
+	rgmap.add_tile("ocean", "Ocean", false, true)
+	rgmap.add_tile("grass", "Grass", true, true) # true for passable and true for transparent
+	rgmap.add_tile("wall", "Wall", false, false)
 	# Generate 2d TileSet for Tilemaps
-	var tileset = rgtileset.generate_tileset("res://Textures/",".png")
+	var tileset = rgmap.generate_tileset("res://Textures/",".png")
 	$Memorized.tile_set = tileset
 	$Visible.tile_set = tileset
-
-	# Initialize RGMap with RGTileset
-	rgmap.initialize(rgtileset)
 
 	# Generate noize
 	noise = OpenSimplexNoise.new()
@@ -40,9 +35,9 @@ func _ready():
 # Generate new chunks. Emited after request_chunks_update of RGMap function was called
 func _on_RGMap_chunks_load_requested(ids):
 	# Define tile ids
-	var ocean_index = rgtileset.get_index("ocean")
-	var wall_index = rgtileset.get_index("wall")
-	var grass_index = rgtileset.get_index("grass")
+	var ocean_index = rgmap.get_tile_index("ocean")
+	var wall_index = rgmap.get_tile_index("wall")
+	var grass_index = rgmap.get_tile_index("grass")
 	# Loop through all chunks
 	for id in ids:
 		# Find top left corner of chunk

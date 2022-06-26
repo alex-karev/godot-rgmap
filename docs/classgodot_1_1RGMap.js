@@ -1,6 +1,7 @@
 var classgodot_1_1RGMap =
 [
     [ "add_pathfinding_exception", "classgodot_1_1RGMap.html#a4a4b116053d6722cbb2bd325db94327e", null ],
+    [ "add_tile", "classgodot_1_1RGMap.html#a55c55e1a5e1386093860a634c33cee3d", null ],
     [ "calculate_fov", "classgodot_1_1RGMap.html#a449daffbdf681516e8a340e060edd0ef", null ],
     [ "chunk_freed", "classgodot_1_1RGMap.html#a74f8456f280ddaa8a3f3b3161a6ad63f", null ],
     [ "chunk_index_int_to_v2", "classgodot_1_1RGMap.html#aa042aaa2c6cbc4f67473574c4861cbf2", null ],
@@ -24,6 +25,7 @@ var classgodot_1_1RGMap =
     [ "fill_rect", "classgodot_1_1RGMap.html#a04245c368f06c61fad83c181b91592a6", null ],
     [ "find_path", "classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073", null ],
     [ "free_chunk", "classgodot_1_1RGMap.html#a97e1bbbce76aca2a37e08db6d793907e", null ],
+    [ "generate_tileset", "classgodot_1_1RGMap.html#a3885bdc8b68a844075dc1dfdf6e29877", null ],
     [ "get_chunk_index", "classgodot_1_1RGMap.html#a17d00e1acf01120ad1324704960ea528", null ],
     [ "get_chunks_to_free", "classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8", null ],
     [ "get_chunks_to_load", "classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f", null ],
@@ -32,14 +34,19 @@ var classgodot_1_1RGMap =
     [ "get_loaded_chunks", "classgodot_1_1RGMap.html#aaff3bdcfb3484ab4807bf536aa126e11", null ],
     [ "get_local_index", "classgodot_1_1RGMap.html#ab201f09297e368756c390a122a94fc97", null ],
     [ "get_name", "classgodot_1_1RGMap.html#a4113d609f2d8b8ae8986b5261d72589a", null ],
+    [ "get_tile_display_name", "classgodot_1_1RGMap.html#aced3189ba814ef247e3ad3a0eb407e0d", null ],
+    [ "get_tile_index", "classgodot_1_1RGMap.html#a0ee73a2d9de0be13d0d0a9d2707cb796", null ],
+    [ "get_tile_name", "classgodot_1_1RGMap.html#aea0ef4fbb27f0a51ce5b68cbf49fa5d9", null ],
+    [ "get_tiles_count", "classgodot_1_1RGMap.html#a0a6742a8d89a003db699ba02cd2f965a", null ],
     [ "get_value", "classgodot_1_1RGMap.html#a0608386ad66cec9e4257808022da5038", null ],
-    [ "initialize", "classgodot_1_1RGMap.html#a9d04a4a2d6abad80aa63ba0f60a13963", null ],
     [ "is_chunk_in_bounds", "classgodot_1_1RGMap.html#ac47d550255055871d8b15ea21ccd7227", null ],
     [ "is_chunk_loaded", "classgodot_1_1RGMap.html#af9b781ce0c7fe4ccefa66fdcace66a0f", null ],
     [ "is_in_bounds", "classgodot_1_1RGMap.html#a37429fe0e0426653916667725477e01b", null ],
     [ "is_memorized", "classgodot_1_1RGMap.html#a735635c94c0913ffb0198dd51681986f", null ],
     [ "is_passable", "classgodot_1_1RGMap.html#a6bc13a61c915adcfcd1c74d75b9a786a", null ],
     [ "is_pathfinding_allowed", "classgodot_1_1RGMap.html#a90bbf21a0a0084bc3cada939c5b84848", null ],
+    [ "is_tile_passable", "classgodot_1_1RGMap.html#ab2643a0c27a86fe3c944bd889fcfa512", null ],
+    [ "is_tile_transparent", "classgodot_1_1RGMap.html#a2eaf142c045bddc4f9a93145787fb7ba", null ],
     [ "is_transparent", "classgodot_1_1RGMap.html#a9722afa05ac0d4efe1146a9f8b70908b", null ],
     [ "is_visible", "classgodot_1_1RGMap.html#a2ae7a1232b97d00c21a38a1073cb7b53", null ],
     [ "load_chunk", "classgodot_1_1RGMap.html#aff48c6694c9a7229c7603ec56fa19e8e", null ],
@@ -63,6 +70,5 @@ var classgodot_1_1RGMap =
     [ "RPAS_RADIUS_FUDGE", "classgodot_1_1RGMap.html#ad6b261d97c61db7c511faa45905eea3d", null ],
     [ "RPAS_RESTRICTIVENESS", "classgodot_1_1RGMap.html#a98a2a7a44cf00487360159e89be37401", null ],
     [ "RPAS_VISIBLE_ON_EQUAL", "classgodot_1_1RGMap.html#ac743a18b1c2c2193e92aac307f1c1478", null ],
-    [ "size", "classgodot_1_1RGMap.html#a4a8e96884242e6b83b2417d127a814a8", null ],
-    [ "tileset", "classgodot_1_1RGMap.html#a873aa75264c7d3f6f0e1d36370de6218", null ]
+    [ "size", "classgodot_1_1RGMap.html#a4a8e96884242e6b83b2417d127a814a8", null ]
 ];

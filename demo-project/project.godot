@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "RGMap",
 "language": "NativeScript",
 "path": "res://GDNative/RGMap.gdns"
-}, {
-"base": "Node",
-"class": "RGTileset",
-"language": "NativeScript",
-"path": "res://GDNative/RGTileset.gdns"
 } ]
 _global_script_class_icons={
-"RGMap": "res://GDNative/rgmap.png",
-"RGTileset": "res://GDNative/rgtileset.png"
+"RGMap": "res://GDNative/rgmap.png"
 }
 
 [application]

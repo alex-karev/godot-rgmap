@@ -9,11 +9,12 @@
 #include <Array.hpp>
 #include <AStar2D.hpp>
 #include <Rect2.hpp>
+#include <TileSet.hpp>
+#include <Texture.hpp>
+#include <ResourceLoader.hpp>
 #include <cmath>
 #include <vector>
 #include <algorithm>
-
-#include "rgtileset.h"
 
 namespace godot {
 
@@ -28,6 +29,14 @@ class RGMap : public Reference {
         float far;
     };
 
+    // Structure that stores data about one type of tile
+    struct RGTile {
+        String name;
+        String display_name;
+        bool passable;
+        bool transparent;
+    };
+
     // Structure of one chunk
     struct Chunk {
         // Index of chunk
@@ -38,10 +47,10 @@ class RGMap : public Reference {
     };
 
 private:
+    // All tiles in a game
+    std::vector<RGTile> tiles;
     // Store all chunks
     std::vector<Chunk> chunks;
-    // Total size of the map
-    Vector2 total_size = Vector2(150,150);
     // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
     // Visibility of cells within fov radius
@@ -80,8 +89,6 @@ public:
     int render_distance = 1;
     //! Allow/Disallow diagonal pathfinding
     bool allow_diagonal_pathfinding = true;
-    //! RGTileset with information about all tiles
-    RGTileset* tileset;
 
     /** @name FOV
     * Variables related to FOV calculation using RPAS algorithm
@@ -127,12 +134,35 @@ public:
     void _init();
     ///@}
 
-    //! Fill all cells with 0s using a predefined tileset
-    void initialize(RGTileset* _tileset);
     //! Free all chunks and forget pathfinding exceptions
     void clean_map();
 
-    /** @name Managing chunks */
+    /** @name Tiles */
+    ///@{
+
+    //! Add new tile
+    void add_tile(String name, String display_name, bool passable, bool transparent);
+    //! Get number of tiles
+    int get_tiles_count();
+    //! Get tile index by name
+    int get_tile_index(String name);
+    //! Get tile name (unique)
+    String get_tile_name(int index);
+    //! Get tile display name
+    String get_tile_display_name(int index);
+    //! Check if tile is passable
+    bool is_tile_passable(int index);
+    //! Check if tile is transparent
+    bool is_tile_transparent(int index);
+    //! Generate Tileset for using with 2d Tilemap
+    /*!
+    @param texture_path A directory within the project where textures are stored (e.g "res://Textures/")
+    @param texture_format A format of textures (e.g ".png")
+    */
+    Ref<TileSet> generate_tileset(String texture_path, String texture_format);
+    ///@{
+
+    /** @name Chunks */
     ///@{
     
     //! Get index of chunk which contains a given position

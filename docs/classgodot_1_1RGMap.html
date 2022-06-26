@@ -105,10 +105,6 @@ Inheritance diagram for godot::RGMap:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="memItemLeft" align="right" valign="top"><a id="a9d04a4a2d6abad80aa63ba0f60a13963" name="a9d04a4a2d6abad80aa63ba0f60a13963"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (<a class="el" href="classgodot_1_1RGTileset.html">RGTileset</a> *_tileset)</td></tr>
-<tr class="memdesc:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill all cells with 0s using a predefined tileset. <br /></td></tr>
-<tr class="separator:a9d04a4a2d6abad80aa63ba0f60a13963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
 <tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
@@ -130,7 +126,39 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_loaded</b> ()</t
 int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_freed</b> ()</td></tr>
 <tr class="memdesc:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk is freed from memory. Emited on calling free_chunk function <br /></td></tr>
 <tr class="separator:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Managing chunks</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Tiles</div></td></tr>
+<tr class="memitem:a55c55e1a5e1386093860a634c33cee3d"><td class="memItemLeft" align="right" valign="top"><a id="a55c55e1a5e1386093860a634c33cee3d" name="a55c55e1a5e1386093860a634c33cee3d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_tile</b> (String name, String display_name, bool passable, bool transparent)</td></tr>
+<tr class="memdesc:a55c55e1a5e1386093860a634c33cee3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new tile. <br /></td></tr>
+<tr class="separator:a55c55e1a5e1386093860a634c33cee3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6742a8d89a003db699ba02cd2f965a"><td class="memItemLeft" align="right" valign="top"><a id="a0a6742a8d89a003db699ba02cd2f965a" name="a0a6742a8d89a003db699ba02cd2f965a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_tiles_count</b> ()</td></tr>
+<tr class="memdesc:a0a6742a8d89a003db699ba02cd2f965a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of tiles. <br /></td></tr>
+<tr class="separator:a0a6742a8d89a003db699ba02cd2f965a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee73a2d9de0be13d0d0a9d2707cb796"><td class="memItemLeft" align="right" valign="top"><a id="a0ee73a2d9de0be13d0d0a9d2707cb796" name="a0ee73a2d9de0be13d0d0a9d2707cb796"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_tile_index</b> (String name)</td></tr>
+<tr class="memdesc:a0ee73a2d9de0be13d0d0a9d2707cb796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get tile index by name. <br /></td></tr>
+<tr class="separator:a0ee73a2d9de0be13d0d0a9d2707cb796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0ef4fbb27f0a51ce5b68cbf49fa5d9"><td class="memItemLeft" align="right" valign="top"><a id="aea0ef4fbb27f0a51ce5b68cbf49fa5d9" name="aea0ef4fbb27f0a51ce5b68cbf49fa5d9"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>get_tile_name</b> (int index)</td></tr>
+<tr class="memdesc:aea0ef4fbb27f0a51ce5b68cbf49fa5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get tile name (unique) <br /></td></tr>
+<tr class="separator:aea0ef4fbb27f0a51ce5b68cbf49fa5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced3189ba814ef247e3ad3a0eb407e0d"><td class="memItemLeft" align="right" valign="top"><a id="aced3189ba814ef247e3ad3a0eb407e0d" name="aced3189ba814ef247e3ad3a0eb407e0d"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>get_tile_display_name</b> (int index)</td></tr>
+<tr class="memdesc:aced3189ba814ef247e3ad3a0eb407e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get tile display name. <br /></td></tr>
+<tr class="separator:aced3189ba814ef247e3ad3a0eb407e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2643a0c27a86fe3c944bd889fcfa512"><td class="memItemLeft" align="right" valign="top"><a id="ab2643a0c27a86fe3c944bd889fcfa512" name="ab2643a0c27a86fe3c944bd889fcfa512"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_tile_passable</b> (int index)</td></tr>
+<tr class="memdesc:ab2643a0c27a86fe3c944bd889fcfa512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if tile is passable. <br /></td></tr>
+<tr class="separator:ab2643a0c27a86fe3c944bd889fcfa512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eaf142c045bddc4f9a93145787fb7ba"><td class="memItemLeft" align="right" valign="top"><a id="a2eaf142c045bddc4f9a93145787fb7ba" name="a2eaf142c045bddc4f9a93145787fb7ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_tile_transparent</b> (int index)</td></tr>
+<tr class="memdesc:a2eaf142c045bddc4f9a93145787fb7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if tile is transparent. <br /></td></tr>
+<tr class="separator:a2eaf142c045bddc4f9a93145787fb7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3885bdc8b68a844075dc1dfdf6e29877"><td class="memItemLeft" align="right" valign="top">Ref&lt; TileSet &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a3885bdc8b68a844075dc1dfdf6e29877">generate_tileset</a> (String texture_path, String texture_format)</td></tr>
+<tr class="memdesc:a3885bdc8b68a844075dc1dfdf6e29877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Tileset for using with 2d Tilemap.  <a href="classgodot_1_1RGMap.html#a3885bdc8b68a844075dc1dfdf6e29877">More...</a><br /></td></tr>
+<tr class="separator:a3885bdc8b68a844075dc1dfdf6e29877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Chunks</div></td></tr>
 <tr class="memitem:a17d00e1acf01120ad1324704960ea528"><td class="memItemLeft" align="right" valign="top"><a id="a17d00e1acf01120ad1324704960ea528" name="a17d00e1acf01120ad1324704960ea528"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_chunk_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a17d00e1acf01120ad1324704960ea528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of chunk which contains a given position. <br /></td></tr>
@@ -346,10 +374,6 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = Vector2
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>allow_diagonal_pathfinding</b> = true</td></tr>
 <tr class="memdesc:a092151ec6eda7be42513f17eb9ebfe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/Disallow diagonal pathfinding. <br /></td></tr>
 <tr class="separator:a092151ec6eda7be42513f17eb9ebfe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a873aa75264c7d3f6f0e1d36370de6218"><td class="memItemLeft" align="right" valign="top"><a id="a873aa75264c7d3f6f0e1d36370de6218" name="a873aa75264c7d3f6f0e1d36370de6218"></a>
-<a class="el" href="classgodot_1_1RGTileset.html">RGTileset</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>tileset</b></td></tr>
-<tr class="memdesc:a873aa75264c7d3f6f0e1d36370de6218"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgodot_1_1RGTileset.html" title="Class that stores a library of tiles for a RGMap.">RGTileset</a> with information about all tiles. <br /></td></tr>
-<tr class="separator:a873aa75264c7d3f6f0e1d36370de6218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">FOV</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Variables related to FOV calculation using RPAS algorithm </p>
 </div></td></tr>
@@ -480,6 +504,43 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
     <tr><td class="paramname">start</td><td>Start point </td></tr>
     <tr><td class="paramname">end</td><td>Target point </td></tr>
     <tr><td class="paramname">pathfinding_zone</td><td>Rect2 zone where pathfinding is calculated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3885bdc8b68a844075dc1dfdf6e29877" name="a3885bdc8b68a844075dc1dfdf6e29877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3885bdc8b68a844075dc1dfdf6e29877">&#9670;&nbsp;</a></span>generate_tileset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ref&lt; TileSet &gt; godot::RGMap::generate_tileset </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>texture_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>texture_format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate Tileset for using with 2d Tilemap. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture_path</td><td>A directory within the project where textures are stored (e.g "res://Textures/") </td></tr>
+    <tr><td class="paramname">texture_format</td><td>A format of textures (e.g ".png") </td></tr>
   </table>
   </dd>
 </dl>
