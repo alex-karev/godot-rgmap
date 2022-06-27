@@ -147,9 +147,7 @@ public:
     void _init();
     ///@}
 
-    //! Free all chunks and forget pathfinding exceptions
-    void clean_map();
-
+    // tiles.cpp
     /** @name Tiles */
     ///@{
 
@@ -175,6 +173,7 @@ public:
     Ref<TileSet> generate_tileset(String texture_path, String texture_format);
     ///@{
 
+    // chunks.cpp
     /** @name Chunks */
     ///@{
     
@@ -225,7 +224,7 @@ public:
     void request_chunks_update(Vector2 player_position);
     ///@}
 
-
+    // cells.cpp
     /** @name Cells */
     ///@{
 
@@ -257,6 +256,7 @@ public:
     void set_memorized(Vector2 position, bool value);
     ///@}
 
+    // view.cpp
     /** @name View and pathfinding */
     ///@{
 
@@ -297,9 +297,12 @@ public:
     bool visibility_between(Vector2 start, Vector2 end, int max_distance);
     ///@}
 
+    // editing.cpp
     /** @name Editing*/
     ///@{
 
+    //! Free all chunks and forget pathfinding exceptions
+    void clean_map();
     //! Place another map inside this map
     void place_map(RGMap* another_map, Vector2 start);
     //! Draw straight line using Bresenham's line algorithm
@@ -323,6 +326,7 @@ public:
     void fill_arc(Vector2 center, float radius, float start_angle, float end_angle, int value);
     ///@}
 
+    // entities.cpp
     /** @name Entities*/
     ///@{
 

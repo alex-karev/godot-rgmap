@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('classgodot_1_1RGMap.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classgodot_1_1RGMap-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">godot::RGMap Class Reference</div></div>
@@ -105,10 +104,6 @@ Inheritance diagram for godot::RGMap:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
-<tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
-<tr class="separator:a831fb561ec538f9dd241174079927b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Signals</div></td></tr>
 <tr class="memitem:afd1aae74dc064d42ccf5b934472294cf"><td class="memItemLeft" align="right" valign="top"><a id="afd1aae74dc064d42ccf5b934472294cf" name="afd1aae74dc064d42ccf5b934472294cf"></a>
 PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>chunks_load_requested</b> ()</td></tr>
@@ -307,6 +302,10 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_path</b> (
 <tr class="memdesc:aa0e99aed1a2d145536439b9a88b9ae30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if end point is visisble from start point.  <a href="classgodot_1_1RGMap.html#aa0e99aed1a2d145536439b9a88b9ae30">More...</a><br /></td></tr>
 <tr class="separator:aa0e99aed1a2d145536439b9a88b9ae30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Editing</div></td></tr>
+<tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
+<tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
+<tr class="separator:a831fb561ec538f9dd241174079927b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4b777d25b43065a5e2092d084099ee"><td class="memItemLeft" align="right" valign="top"><a id="a6e4b777d25b43065a5e2092d084099ee" name="a6e4b777d25b43065a5e2092d084099ee"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>place_map</b> (<a class="el" href="classgodot_1_1RGMap.html">RGMap</a> *another_map, Vector2 start)</td></tr>
 <tr class="memdesc:a6e4b777d25b43065a5e2092d084099ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place another map inside this map. <br /></td></tr>
@@ -834,8 +833,14 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="rgmap_8h_source.html">rgmap.h</a></li>
+<li>src/cells.cpp</li>
+<li>src/chunks.cpp</li>
+<li>src/editing.cpp</li>
+<li>src/entities.cpp</li>
 <li>src/rgmap.cpp</li>
 <li>src/rpas.cpp</li>
+<li>src/tiles.cpp</li>
+<li>src/view.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
