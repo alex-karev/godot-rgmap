@@ -84,6 +84,23 @@ void RGMap::_register_methods() {
     register_method("draw_arc", &RGMap::draw_arc);
     register_method("fill_arc", &RGMap::fill_arc);
 
+    register_method("add_entity", &RGMap::add_entity);
+    register_method("remove_entity", &RGMap::remove_entity);
+    register_method("move_entity", &RGMap::move_entity);
+    register_method("set_entity_transparency", &RGMap::set_entity_transparency);
+    register_method("set_entity_passability", &RGMap::set_entity_passability);
+    register_method("set_entity_memorized", &RGMap::set_entity_memorized);
+    register_method("is_entity_visible", &RGMap::is_entity_visible);
+    register_method("is_entity_transparent", &RGMap::is_entity_transparent);
+    register_method("is_entity_passable", &RGMap::is_entity_passable);
+    register_method("is_entity_memorized", &RGMap::is_entity_memorized);
+    register_method("is_entity_chunk_loaded", &RGMap::is_entity_chunk_loaded);
+    register_method("get_entity_position", &RGMap::get_entity_position);
+    register_method("get_entities_in_position", &RGMap::get_entities_in_position);
+    register_method("get_entities_in_rect", &RGMap::get_entities_in_rect);
+    register_method("get_entities_in_radius", &RGMap::get_entities_in_radius);
+    register_method("get_entities_in_chunk", &RGMap::get_entities_in_chunk);
+
     register_method("dump_map_data", &RGMap::dump_map_data);
     register_method("load_map_data", &RGMap::load_map_data);
 
@@ -175,7 +192,7 @@ Vector2 RGMap::chunk_index_int_to_v2(int index) {
 }
 int RGMap::chunk_index_v2_to_int(Vector2 index) {return index.x+index.y*size.x;}
 
-bool RGMap::is_chunk_in_bounds(int index){return index < chunks.size();}
+bool RGMap::is_chunk_in_bounds(int index){return index < chunks.size() && index >= 0;}
 bool RGMap::is_chunk_loaded(int index){
     ERR_FAIL_INDEX_V(index, size.x*size.y, false);
     for (Chunk chunk : chunks) {
@@ -301,7 +318,7 @@ void RGMap::request_chunks_update(Vector2 player_position) {
 }
 
 /*
-    Cell data getters
+    Cells
 */
 
 int RGMap::get_local_index(Vector2 position) {
@@ -332,6 +349,11 @@ String RGMap::get_display_name(Vector2 position) {
     return get_tile_display_name(get_value(position));
 }
 bool RGMap::is_transparent(Vector2 position) {
+    if (fov_zone.has_point(position)) {
+        Vector2 local_position = position - fov_zone.position;
+        int index = int(local_position.x + local_position.y*fov_zone.size.x);
+        if (fov_obstacles[index] == 1) { return false;}
+    }
     return is_tile_transparent(get_value(position));
 }
 bool RGMap::is_passable(Vector2 position) {
@@ -365,10 +387,6 @@ bool RGMap::is_pathfinding_allowed(Vector2 position) {
     if (is_passable(position)) {return true;}
     return false;
 }
-/*
-    Cell data setters
-*/
-
 void RGMap::set_value(Vector2 position, int value) {
     int chunk_index = get_chunk_index(position);
     ERR_FAIL_INDEX(chunk_index, size.x*size.y);
@@ -402,16 +420,43 @@ void RGMap::set_memorized(Vector2 position, bool value) {
 */
 
 void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
+    // Define fov zone and resize visibility array
     fov_zone.size = Vector2(1,1)*(max_distance*2+2);
     fov_zone.position = view_position - Vector2(1,1)*max_distance - Vector2(1,1);
     visibility.resize(fov_zone.size.x*fov_zone.size.y);
+    // Clear visibility values
     for (int i=0; i<visibility.size(); ++i){
         visibility[i] = 0;
     }
+    // Get entities in fov zone
+    PoolIntArray fov_entities = get_entities_in_rect(fov_zone);
+    // Generate FOV obstacles
+    fov_obstacles.resize(fov_zone.size.x*fov_zone.size.y);
+    for (int i=0; i<fov_obstacles.size(); ++i){
+        fov_obstacles[i] = 0;
+    }
+    for (int i = 0; i < fov_entities.size(); ++i) {
+            Entity& entity = entities[fov_entities[i]];
+            if (!entity.transparency) {
+                Vector2 local_position = entity.position-fov_zone.position;
+                int cell_index = local_position.x+local_position.y*fov_zone.size.x;
+                fov_obstacles[cell_index] = 1;
+            }
+    }
+    // Get visible cells
     PoolVector2Array visible_cells = rpas_calc_visible_cells_from(view_position, max_distance);
     for (int i=0; i < visible_cells.size(); ++i) {
         set_visibility(visible_cells[i], true);
         set_memorized(visible_cells[i], true);
+    }
+    // Memorize entities
+    for (int i = 0; i < fov_entities.size(); ++i) {
+        Entity& entity = entities[fov_entities[i]];
+        Vector2 local_position = entity.position-fov_zone.position;
+        int cell_index = local_position.x+local_position.y*fov_zone.size.x;
+        if (visibility[cell_index] == 1) {
+            entity.memorized = true;
+        }
     }
 }
 void RGMap::add_pathfinding_exception(Vector2 position, bool value) {
@@ -467,8 +512,19 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
                 astar->connect_points(i,i-pathfinding_zone.size.x+1);
             }       
         }
-        // Disable point
+        // Disable point if pathfinding not allowed
         if (!is_pathfinding_allowed(point)) {astar->set_point_disabled(i, true);}
+    }
+    // Get entities in pathfinding zone
+    PoolIntArray pathfinding_entities = get_entities_in_rect(pathfinding_zone);
+    // Disable points if entities are on the way
+    for (int k = 0; k < pathfinding_entities.size(); ++k) {
+        Entity& entity = entities[pathfinding_entities[k]];
+        if (!entity.passability) {
+            Vector2 local_position = entity.position-pathfinding_zone.position;
+            int point_index = local_position.x+local_position.y*pathfinding_zone.size.x;
+            astar->set_point_disabled(point_index, true);
+        }
     }
     // Find path
     Vector2 local_start = start - pathfinding_zone.position;
@@ -726,6 +782,123 @@ void RGMap::draw_arc(Vector2 center, float radius, float start_angle, float end_
 void RGMap::fill_arc(Vector2 center, float radius, float start_angle, float end_angle, int value) {
     fill_ellipse(center, Vector2(radius,radius), start_angle, end_angle, value);
 }
+
+/*
+    Entities
+*/
+
+int RGMap::add_entity(Vector2 position, bool passability, bool transparency) {
+    // Rewrite data for entities marked as rewrite
+    for (int i = 0; i < entities.size(); ++i) {
+        Entity& entity = entities[i];
+        if (entity.rewrite) {
+            entity.position = position;
+            entity.passability = passability;
+            entity.transparency = transparency;
+            entity.memorized = false;
+            entity.rewrite = false;
+            return i;
+        }
+    }
+    // Create new entity
+    Entity entity;
+    entity.position = position;
+    entity.passability = passability;
+    entity.transparency = transparency;
+    entity.memorized = false;
+    entities.push_back(entity);
+    return entities.size()-1;
+}
+void RGMap::remove_entity(int id) {
+    ERR_FAIL_INDEX(id, entities.size());
+    entities[id].rewrite = true;
+}
+void RGMap::move_entity(int id, Vector2 position) {
+    ERR_FAIL_INDEX(id, entities.size());
+    entities[id].position = position;
+}
+void RGMap::set_entity_transparency(int id, bool value) {
+    ERR_FAIL_INDEX(id, entities.size());
+    entities[id].transparency = value;
+}
+void RGMap::set_entity_passability(int id, bool value) {
+    ERR_FAIL_INDEX(id, entities.size());
+    entities[id].passability = value;
+}
+void RGMap::set_entity_memorized(int id, bool value) {
+    ERR_FAIL_INDEX(id, entities.size());
+    entities[id].memorized = value;
+}
+bool RGMap::is_entity_visible(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), false);
+    Vector2 position = get_entity_position(id);
+    return is_visible(position);
+}
+bool RGMap::is_entity_transparent(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), true);
+    return entities[id].transparency;
+}
+bool RGMap::is_entity_passable(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), true);
+    return entities[id].passability;
+}
+bool RGMap::is_entity_memorized(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), false);
+    return entities[id].memorized;
+}
+bool RGMap::is_entity_chunk_loaded(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), false);
+    int chunk_index = get_chunk_index(entities[id].position);
+    return is_chunk_loaded(chunk_index);
+}
+Vector2 RGMap::get_entity_position(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), Vector2(0,0));
+    return entities[id].position;
+}
+PoolIntArray RGMap::get_entities_in_position(Vector2 position) {
+    PoolIntArray ids;
+    for (int i = 0; i < entities.size(); ++i) {
+        Entity& entity = entities[i];
+        if (!entity.rewrite && entity.position == position) {
+            ids.append(i);
+        }
+    }
+    return ids;
+}
+PoolIntArray RGMap::get_entities_in_rect(Rect2 rect) {
+    PoolIntArray ids;
+    for (int i = 0; i < entities.size(); ++i) {
+        Entity& entity = entities[i];
+        if (!entity.rewrite && rect.has_point(entity.position)) {
+            ids.append(i);
+        }
+    }
+    return ids;
+}
+PoolIntArray RGMap::get_entities_in_radius(Vector2 position, int radius) {
+    PoolIntArray ids;
+    for (int i = 0; i < entities.size(); ++i) {
+        Entity& entity = entities[i];
+        if (!entity.rewrite && entity.position.distance_to(position) <= radius) {
+            ids.append(i);
+        }
+    }
+    return ids;
+}
+PoolIntArray RGMap::get_entities_in_chunk(int chunk_index) {
+    PoolIntArray ids;
+    Vector2 start = chunk_index_int_to_v2(chunk_index)*chunk_size;
+    Vector2 end = start+chunk_size;
+    for (int i = 0; i < entities.size(); ++i) {
+        Entity& entity = entities[i];
+        Vector2 position = entity.position;
+        if (!entity.rewrite && position.x >= start.x && position.x < end.x && position.y >= start.x && position.y < end.y) {
+            ids.append(i);
+        }
+    }
+    return ids;
+}
+
 /*
     Saving and Loading
 */

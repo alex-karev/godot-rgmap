@@ -16,6 +16,7 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **Managing tiles** in RGMap class
 * **TileSet generator** for Tilemaps based on data from RGMap
 * **Merging maps.** Placing one RGMap inside the other map
+* **Entity tracking.** Entities and their properties can also be considered while using FOV and pathfinding 
 * **Saving and loading** data as a flat array
 * **C++, GDNative**
 
@@ -120,6 +121,7 @@ See more about using GDNative modules here: <https://docs.godotengine.org/en/sta
 - [X] Automatic generation of 2D Tileset and Tilemap based on RGTileset
 - [X] Better error handling
 - [X] Chunk system
+- [X] Entity tracking system
 - [ ] Cutting and resizing map
 
 ## References

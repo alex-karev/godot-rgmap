@@ -216,7 +216,7 @@ PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_loaded_ch
 <tr class="memitem:a2c565c4b9124368ebdaae851afd13585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a2c565c4b9124368ebdaae851afd13585">request_chunks_update</a> (Vector2 player_position)</td></tr>
 <tr class="memdesc:a2c565c4b9124368ebdaae851afd13585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request chunk load/unload depending on player_position and render_distance.  <a href="classgodot_1_1RGMap.html#a2c565c4b9124368ebdaae851afd13585">More...</a><br /></td></tr>
 <tr class="separator:a2c565c4b9124368ebdaae851afd13585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Data getters</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Cells</div></td></tr>
 <tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:ab201f09297e368756c390a122a94fc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local index of cell within a chunk. <br /></td></tr>
@@ -257,7 +257,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_memorized</b> (Vec
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_pathfinding_allowed</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a90bbf21a0a0084bc3cada939c5b84848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if pathfinding on this cell is allowed. <br /></td></tr>
 <tr class="separator:a90bbf21a0a0084bc3cada939c5b84848"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Data setters</div></td></tr>
 <tr class="memitem:abf819377354f5deaf670605175243442"><td class="memItemLeft" align="right" valign="top"><a id="abf819377354f5deaf670605175243442" name="abf819377354f5deaf670605175243442"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_value</b> (Vector2 position, int value)</td></tr>
 <tr class="memdesc:abf819377354f5deaf670605175243442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set value of cell. <br /></td></tr>
@@ -347,6 +346,71 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_arc</b> (Vector2
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_arc</b> (Vector2 center, float radius, float start_angle, float end_angle, int value)</td></tr>
 <tr class="memdesc:ae51cf8952917fd840f67d62ce129df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill arc. <br /></td></tr>
 <tr class="separator:ae51cf8952917fd840f67d62ce129df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Entities</div></td></tr>
+<tr class="memitem:ae7a3643c8a808a0860b62dbd672d9311"><td class="memItemLeft" align="right" valign="top"><a id="ae7a3643c8a808a0860b62dbd672d9311" name="ae7a3643c8a808a0860b62dbd672d9311"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>add_entity</b> (Vector2 position, bool passability, bool transparency)</td></tr>
+<tr class="memdesc:ae7a3643c8a808a0860b62dbd672d9311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new entity to the map. Returns id given to a new entity. <br /></td></tr>
+<tr class="separator:ae7a3643c8a808a0860b62dbd672d9311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf896538adc5e7bcd5f8cb584fe0cf5c"><td class="memItemLeft" align="right" valign="top"><a id="adf896538adc5e7bcd5f8cb584fe0cf5c" name="adf896538adc5e7bcd5f8cb584fe0cf5c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_entity</b> (int id)</td></tr>
+<tr class="memdesc:adf896538adc5e7bcd5f8cb584fe0cf5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove entity from memory. The id of this entity will also be given to a new entity. <br /></td></tr>
+<tr class="separator:adf896538adc5e7bcd5f8cb584fe0cf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8108573f1cf887b3f8263102ae2a3e39"><td class="memItemLeft" align="right" valign="top"><a id="a8108573f1cf887b3f8263102ae2a3e39" name="a8108573f1cf887b3f8263102ae2a3e39"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>move_entity</b> (int id, Vector2 position)</td></tr>
+<tr class="memdesc:a8108573f1cf887b3f8263102ae2a3e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move entity to a new position. <br /></td></tr>
+<tr class="separator:a8108573f1cf887b3f8263102ae2a3e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c399e3eecf2729291e145b8f330b18b"><td class="memItemLeft" align="right" valign="top"><a id="a9c399e3eecf2729291e145b8f330b18b" name="a9c399e3eecf2729291e145b8f330b18b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_transparency</b> (int id, bool value)</td></tr>
+<tr class="memdesc:a9c399e3eecf2729291e145b8f330b18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change entity transparency. <br /></td></tr>
+<tr class="separator:a9c399e3eecf2729291e145b8f330b18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30bc4ade51798b8208d17a33d890422d"><td class="memItemLeft" align="right" valign="top"><a id="a30bc4ade51798b8208d17a33d890422d" name="a30bc4ade51798b8208d17a33d890422d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_passability</b> (int id, bool value)</td></tr>
+<tr class="memdesc:a30bc4ade51798b8208d17a33d890422d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change entity passability. <br /></td></tr>
+<tr class="separator:a30bc4ade51798b8208d17a33d890422d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="memItemLeft" align="right" valign="top"><a id="a4dff79eace0ca3c3468429d71bf7b1b0" name="a4dff79eace0ca3c3468429d71bf7b1b0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_memorized</b> (int id, bool value)</td></tr>
+<tr class="memdesc:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change memory status of entity. <br /></td></tr>
+<tr class="separator:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d853a154fb9288f0eaa051cfd5c27f"><td class="memItemLeft" align="right" valign="top"><a id="a06d853a154fb9288f0eaa051cfd5c27f" name="a06d853a154fb9288f0eaa051cfd5c27f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_visible</b> (int id)</td></tr>
+<tr class="memdesc:a06d853a154fb9288f0eaa051cfd5c27f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is visible. <br /></td></tr>
+<tr class="separator:a06d853a154fb9288f0eaa051cfd5c27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca51c1b240ff80577646ddbe74edf31b"><td class="memItemLeft" align="right" valign="top"><a id="aca51c1b240ff80577646ddbe74edf31b" name="aca51c1b240ff80577646ddbe74edf31b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_transparent</b> (int id)</td></tr>
+<tr class="memdesc:aca51c1b240ff80577646ddbe74edf31b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is transparent;. <br /></td></tr>
+<tr class="separator:aca51c1b240ff80577646ddbe74edf31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a712b3f1d95d44c000949829def9b6e91"><td class="memItemLeft" align="right" valign="top"><a id="a712b3f1d95d44c000949829def9b6e91" name="a712b3f1d95d44c000949829def9b6e91"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_passable</b> (int id)</td></tr>
+<tr class="memdesc:a712b3f1d95d44c000949829def9b6e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is passable. <br /></td></tr>
+<tr class="separator:a712b3f1d95d44c000949829def9b6e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe18e0c06bc081071a56d9d216186421"><td class="memItemLeft" align="right" valign="top"><a id="abe18e0c06bc081071a56d9d216186421" name="abe18e0c06bc081071a56d9d216186421"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_memorized</b> (int id)</td></tr>
+<tr class="memdesc:abe18e0c06bc081071a56d9d216186421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is memorized. <br /></td></tr>
+<tr class="separator:abe18e0c06bc081071a56d9d216186421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97be562b35c3daf51f49e134b93dbc9d"><td class="memItemLeft" align="right" valign="top"><a id="a97be562b35c3daf51f49e134b93dbc9d" name="a97be562b35c3daf51f49e134b93dbc9d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_chunk_loaded</b> (int id)</td></tr>
+<tr class="memdesc:a97be562b35c3daf51f49e134b93dbc9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is on loaded chunk. <br /></td></tr>
+<tr class="separator:a97be562b35c3daf51f49e134b93dbc9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000af6feda1d67bcc014fc52a5871e50"><td class="memItemLeft" align="right" valign="top"><a id="a000af6feda1d67bcc014fc52a5871e50" name="a000af6feda1d67bcc014fc52a5871e50"></a>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>get_entity_position</b> (int id)</td></tr>
+<tr class="memdesc:a000af6feda1d67bcc014fc52a5871e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get position of the entity. <br /></td></tr>
+<tr class="separator:a000af6feda1d67bcc014fc52a5871e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1030a2d395f2773dba6950096d60fdf9"><td class="memItemLeft" align="right" valign="top"><a id="a1030a2d395f2773dba6950096d60fdf9" name="a1030a2d395f2773dba6950096d60fdf9"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_entities_in_position</b> (Vector2 position)</td></tr>
+<tr class="memdesc:a1030a2d395f2773dba6950096d60fdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find ids of all entities in position. <br /></td></tr>
+<tr class="separator:a1030a2d395f2773dba6950096d60fdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2742fb3f44caa25d078abe67feec9d77"><td class="memItemLeft" align="right" valign="top"><a id="a2742fb3f44caa25d078abe67feec9d77" name="a2742fb3f44caa25d078abe67feec9d77"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_entities_in_rect</b> (Rect2 rect)</td></tr>
+<tr class="memdesc:a2742fb3f44caa25d078abe67feec9d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find ids of all entities in rect. <br /></td></tr>
+<tr class="separator:a2742fb3f44caa25d078abe67feec9d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c42c8fc68967a33b970c27457e9abf"><td class="memItemLeft" align="right" valign="top"><a id="a74c42c8fc68967a33b970c27457e9abf" name="a74c42c8fc68967a33b970c27457e9abf"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_entities_in_radius</b> (Vector2 position, int radius)</td></tr>
+<tr class="memdesc:a74c42c8fc68967a33b970c27457e9abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find ids of all entities in radius. <br /></td></tr>
+<tr class="separator:a74c42c8fc68967a33b970c27457e9abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3101593907cf4928bbffc94a1e5f950f"><td class="memItemLeft" align="right" valign="top"><a id="a3101593907cf4928bbffc94a1e5f950f" name="a3101593907cf4928bbffc94a1e5f950f"></a>
+PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_entities_in_chunk</b> (int chunk_index)</td></tr>
+<tr class="memdesc:a3101593907cf4928bbffc94a1e5f950f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find ids of all entities in chunk. <br /></td></tr>
+<tr class="separator:a3101593907cf4928bbffc94a1e5f950f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Saving and Loading</div></td></tr>
 <tr class="memitem:a673f7f9e37f280588ccff46b1f46d38e"><td class="memItemLeft" align="right" valign="top"><a id="a673f7f9e37f280588ccff46b1f46d38e" name="a673f7f9e37f280588ccff46b1f46d38e"></a>
 PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>dump_map_data</b> ()</td></tr>

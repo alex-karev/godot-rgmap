@@ -6,6 +6,7 @@ export(NodePath) var controller_path
 var rgmap: RGMap
 var noise: OpenSimplexNoise
 var controller
+var trees = PoolIntArray([])
 
 func _ready():
 	# Connect nodes
@@ -22,6 +23,7 @@ func _ready():
 	rgmap.add_tile("ocean", "Ocean", false, true)
 	rgmap.add_tile("grass", "Grass", true, true) # true for passable and true for transparent
 	rgmap.add_tile("wall", "Wall", false, false)
+	
 	# Generate 2d TileSet for Tilemaps
 	var tileset = rgmap.generate_tileset("res://Textures/",".png")
 	$Memorized.tile_set = tileset
@@ -31,6 +33,35 @@ func _ready():
 	noise = OpenSimplexNoise.new()
 	noise.seed = 1
 	noise.period = 10
+	
+	# Set player position
+	controller.player_position = (rgmap.size*rgmap.chunk_size/2).floor()
+	# Add some trees
+	var rng = RandomNumberGenerator.new()
+	for i in range(50):
+		var x = rng.randi_range(-50,50)
+		var y = rng.randi_range(-50,50)
+		var tree_pos = controller.player_position+Vector2(x,y)
+		if noise.get_noise_2dv(tree_pos) > -0.3 \
+		and noise.get_noise_2dv(tree_pos) < 0.2:
+			# Add entity to rgmap
+			# So it will be considered while calculating FOV and pathfinding
+			# Unlike tiles, there can be multiple entities in one place
+			# Entities can move, change transparency and passability
+			var tree_id = rgmap.add_entity(tree_pos, false, false) # false for passability and false for transparency
+			trees.append(tree_id)
+			# Note: add_entity creates an entity and returns its unique id
+			# Save this id if you want to access it later
+			# For example: rgmap.move_entity(4, Vector2(0,0)) 
+			# Will move entity with id 4 to Vector2(0,0)
+			# ---
+			# Create new sprite
+			var tree = Sprite.new()
+			tree.name = "Tree"+str(tree_id)
+			tree.texture = load("res://Textures/tree.png")
+			tree.position = tree_pos*16+Vector2.ONE*8
+			add_child(tree)
+			tree.hide()
 
 # Generate new chunks. Emited after request_chunks_update of RGMap function was called
 func _on_RGMap_chunks_load_requested(ids):
@@ -78,6 +109,14 @@ func draw():
 					$Visible.set_cellv(pos, value)
 				elif rgmap.is_memorized(pos):
 					$Memorized.set_cellv(pos, value)
+	# Show/hide entities
+	for id in trees:
+		var tree = get_node("Tree"+str(id))
+		if rgmap.is_entity_chunk_loaded(id) \
+		and rgmap.is_entity_memorized(id):
+			tree.show()
+		else: 
+			tree.hide()
 
 
 # Remove unneeded chunks. Emited after request_chunks_update of RGMap function was called

@@ -46,6 +46,15 @@ class RGMap : public Reference {
         std::vector<int> memory;
     };
 
+    // Structure of entity
+    struct Entity {
+        Vector2 position = Vector2(0,0);
+        bool passability = true;
+        bool transparency = true;
+        bool memorized = false;
+        bool rewrite = false;
+    };
+
 private:
     // All tiles in a game
     std::vector<RGTile> tiles;
@@ -53,14 +62,18 @@ private:
     std::vector<Chunk> chunks;
     // Epsilon for float error calculation
     const float FLOAT_EPSILON = 0.00001;
-    // Visibility of cells within fov radius
+    // Visibility of cells within fov radius. Temporary variable
     std::vector<int> visibility;
+    // Opaque obstacles for FOV. Temporary variable
+    std::vector<int> fov_obstacles;
     // Current fov zone
     Rect2 fov_zone = Rect2(Vector2(0,0), Vector2(0,0));
     std::vector<Vector2> pathfinding_exception_allowed;
     std::vector<Vector2> pathfinding_exception_disallowed;
     // Number of Arrays stored in Chunk structure
     const int NUM_CHUNK_ARRAYS = 2;
+    // Array with all registered entities
+    std::vector<Entity> entities;
 
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -213,7 +226,7 @@ public:
     ///@}
 
 
-    /** @name Data getters */
+    /** @name Cells */
     ///@{
 
     //! Get local index of cell within a chunk
@@ -236,11 +249,6 @@ public:
     bool is_memorized(Vector2 position);
     //! Check if pathfinding on this cell is allowed
     bool is_pathfinding_allowed(Vector2 position);
-    ///@}
-
-    /** @name Data setters */
-    ///@{
-        
     //! Set value of cell
     void set_value(Vector2 position, int value);
     //! Set visibility of cell
@@ -313,6 +321,43 @@ public:
     void draw_arc(Vector2 center, float radius, float start_angle, float end_angle, int value, bool allow_diagonal = true);
     //! Fill arc
     void fill_arc(Vector2 center, float radius, float start_angle, float end_angle, int value);
+    ///@}
+
+    /** @name Entities*/
+    ///@{
+
+    //! Add new entity to the map. Returns id given to a new entity
+    int add_entity(Vector2 position, bool passability, bool transparency);
+    //! Remove entity from memory. The id of this entity will also be given to a new entity
+    void remove_entity(int id);
+    //! Move entity to a new position
+    void move_entity(int id, Vector2 position);
+    //! Change entity transparency
+    void set_entity_transparency(int id, bool value);
+    //! Change entity passability
+    void set_entity_passability(int id, bool value);
+    //! Change memory status of entity
+    void set_entity_memorized(int id, bool value);
+    //! Check if entity is visible
+    bool is_entity_visible(int id);
+    //! Check if entity is transparent;
+    bool is_entity_transparent(int id);
+    //! Check if entity is passable
+    bool is_entity_passable(int id);
+    //! Check if entity is memorized
+    bool is_entity_memorized(int id);
+    //! Check if entity is on loaded chunk
+    bool is_entity_chunk_loaded(int id);
+    //! Get position of the entity
+    Vector2 get_entity_position(int id);
+    //! Find ids of all entities in position
+    PoolIntArray get_entities_in_position(Vector2 position);
+    //! Find ids of all entities in rect
+    PoolIntArray get_entities_in_rect(Rect2 rect);
+    //! Find ids of all entities in radius
+    PoolIntArray get_entities_in_radius(Vector2 position, int radius);
+    //! Find ids of all entities in chunk
+    PoolIntArray get_entities_in_chunk(int chunk_index);
     ///@}
 
     /** @name Saving and Loading*/

@@ -26,7 +26,7 @@ anchor_bottom = 1.0
 
 [node name="RGMap" type="Node" parent="."]
 script = ExtResource( 5 )
-size = Vector2( 3000, 3000 )
+size = Vector2( 1000, 1000 )
 chunk_size = Vector2( 15, 15 )
 
 [node name="Generator" type="Node2D" parent="."]
