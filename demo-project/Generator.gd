@@ -24,10 +24,9 @@ func _ready():
 	rgmap.add_tile("grass", "Grass", true, true) # true for passable and true for transparent
 	rgmap.add_tile("wall", "Wall", false, false)
 	
-	# Generate 2d TileSet for Tilemaps
+	# Generate 2d TileSet for Tilemap
 	var tileset = rgmap.generate_tileset("res://Textures/",".png")
-	$Memorized.tile_set = tileset
-	$Visible.tile_set = tileset
+	$Tilemap.tile_set = tileset
 
 	# Generate noize
 	noise = OpenSimplexNoise.new()
@@ -38,9 +37,9 @@ func _ready():
 	controller.player_position = (rgmap.size*rgmap.chunk_size/2).floor()
 	# Add some trees
 	var rng = RandomNumberGenerator.new()
-	for i in range(50):
-		var x = rng.randi_range(-50,50)
-		var y = rng.randi_range(-50,50)
+	for i in range(500):
+		var x = rng.randi_range(-100,100)
+		var y = rng.randi_range(-100,100)
 		var tree_pos = controller.player_position+Vector2(x,y)
 		if noise.get_noise_2dv(tree_pos) > -0.3 \
 		and noise.get_noise_2dv(tree_pos) < 0.2:
@@ -85,12 +84,15 @@ func _on_RGMap_chunks_load_requested(ids):
 					rgmap.set_value(pos, grass_index)
 				else:
 					rgmap.set_value(pos, wall_index)
+				# Draw on tilemap
+				var value = rgmap.get_value(pos)
+				$Tilemap.set_cellv(pos, value)
 	# Recalculate FOV after loading all chunks
 	rgmap.calculate_fov(controller.player_position, 60)
-	# Draw tiles
+	# Draw fog and sprites
 	draw()
 
-# Draw tiles
+# Draw fog and sprites
 func draw():
 	# Draw tiles
 	for id in rgmap.get_loaded_chunks():
@@ -100,15 +102,13 @@ func draw():
 		for x in rgmap.chunk_size.x:
 			for y in rgmap.chunk_size.y:
 				var pos = Vector2(x,y)+start
-				# Clear previous values
-				$Memorized.set_cellv(pos, -1)
-				$Visible.set_cellv(pos, -1)
 				# Set values
-				var value = rgmap.get_value(pos)
 				if rgmap.is_visible(pos):
-					$Visible.set_cellv(pos, value)
+					$Fog.set_cellv(pos, -1)
 				elif rgmap.is_memorized(pos):
-					$Memorized.set_cellv(pos, value)
+					$Fog.set_cellv(pos, 1)
+				else:
+					$Fog.set_cellv(pos, 0)
 	# Show/hide entities
 	for id in trees:
 		var tree = get_node("Tree"+str(id))
@@ -133,5 +133,5 @@ func _on_RGMap_chunks_free_requested(ids):
 		for x in rgmap.chunk_size.x:
 			for y in rgmap.chunk_size.y:
 				var pos = Vector2(x,y)+start
-				$Memorized.set_cellv(pos, -1)
-				$Visible.set_cellv(pos, -1)
+				$Tilemap.set_cellv(pos, -1)
+				$Fog.set_cellv(pos, -1)

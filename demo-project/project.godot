@@ -24,6 +24,11 @@ config/name="RGMap - demo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+fps=false
+fpsn=false
+
 [input]
 
 move={
@@ -35,6 +40,7 @@ move={
 [physics]
 
 common/enable_pause_aware_picking=true
+common/fps=false
 
 [rendering]
 
