@@ -284,9 +284,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_pathfinding_ex
 <tr class="memitem:a637933f2b9bb946f4a7b295fddaaf452"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">show_pathfinding_exceptions</a> (bool exception_type)</td></tr>
 <tr class="memdesc:a637933f2b9bb946f4a7b295fddaaf452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show all pathfinding exceptions of a type.  <a href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">More...</a><br /></td></tr>
 <tr class="separator:a637933f2b9bb946f4a7b295fddaaf452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">find_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone)</td></tr>
-<tr class="memdesc:ad98a2a51e8c3662659ece5ed13ddd073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm.  <a href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">More...</a><br /></td></tr>
-<tr class="separator:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a0c87b9c381e59d241c298bbc7efd65"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a0a0c87b9c381e59d241c298bbc7efd65">find_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false)</td></tr>
+<tr class="memdesc:a0a0c87b9c381e59d241c298bbc7efd65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm.  <a href="classgodot_1_1RGMap.html#a0a0c87b9c381e59d241c298bbc7efd65">More...</a><br /></td></tr>
+<tr class="separator:a0a0c87b9c381e59d241c298bbc7efd65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5df74ee697c11151876e230fcfc2c09"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">get_line</a> (Vector2 start, Vector2 end, bool allow_diagonal=true)</td></tr>
 <tr class="memdesc:af5df74ee697c11151876e230fcfc2c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of points in Bresenham's line.  <a href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">More...</a><br /></td></tr>
 <tr class="separator:af5df74ee697c11151876e230fcfc2c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -528,8 +528,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 
 </div>
 </div>
-<a id="ad98a2a51e8c3662659ece5ed13ddd073" name="ad98a2a51e8c3662659ece5ed13ddd073"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad98a2a51e8c3662659ece5ed13ddd073">&#9670;&nbsp;</a></span>find_path()</h2>
+<a id="a0a0c87b9c381e59d241c298bbc7efd65" name="a0a0c87b9c381e59d241c298bbc7efd65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0c87b9c381e59d241c298bbc7efd65">&#9670;&nbsp;</a></span>find_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -550,7 +550,13 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Rect2&#160;</td>
-          <td class="paramname"><em>pathfinding_zone</em>&#160;</td>
+          <td class="paramname"><em>pathfinding_zone</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exclude_undiscovered</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -566,6 +572,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
     <tr><td class="paramname">start</td><td>Start point </td></tr>
     <tr><td class="paramname">end</td><td>Target point </td></tr>
     <tr><td class="paramname">pathfinding_zone</td><td>Rect2 zone where pathfinding is calculated </td></tr>
+    <tr><td class="paramname">exclude_undiscovered</td><td>True to exclude undiscovered cells (Fefault: False) </td></tr>
   </table>
   </dd>
 </dl>

@@ -24,7 +24,7 @@ var classgodot_1_1RGMap =
     [ "fill_circle", "classgodot_1_1RGMap.html#ade7a912c5bbcc60f398f16fd264dc464", null ],
     [ "fill_ellipse", "classgodot_1_1RGMap.html#acc0515cfaf9bbe8d65c9c374899fd8f8", null ],
     [ "fill_rect", "classgodot_1_1RGMap.html#a04245c368f06c61fad83c181b91592a6", null ],
-    [ "find_path", "classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073", null ],
+    [ "find_path", "classgodot_1_1RGMap.html#a0a0c87b9c381e59d241c298bbc7efd65", null ],
     [ "free_chunk", "classgodot_1_1RGMap.html#a97e1bbbce76aca2a37e08db6d793907e", null ],
     [ "generate_tileset", "classgodot_1_1RGMap.html#a819587d899569b840a3f417aa9fd0c2f", null ],
     [ "get_chunk_index", "classgodot_1_1RGMap.html#a17d00e1acf01120ad1324704960ea528", null ],

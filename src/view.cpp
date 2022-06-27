@@ -62,7 +62,7 @@ PoolVector2Array RGMap::show_pathfinding_exceptions(bool exception_type) {
     }
     return exceptions;
 }
-PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
+PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered) {
     PoolVector2Array path;
     // Convert Rect2 values to integers
     pathfinding_zone.position = Vector2(floor(pathfinding_zone.position.x), floor(pathfinding_zone.position.y));
@@ -98,6 +98,8 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
         }
         // Disable point if pathfinding not allowed
         if (!is_pathfinding_allowed(point)) {astar->set_point_disabled(i, true);}
+        // Disable undiscovered points
+        if (exclude_undiscovered == true && !is_memorized(point)) {astar->set_point_disabled(i, true);}
     }
     // Get entities in pathfinding zone
     PoolIntArray pathfinding_entities = get_entities_in_rect(pathfinding_zone);
@@ -110,12 +112,20 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
             astar->set_point_disabled(point_index, true);
         }
     }
-    // Find path
+    // Define start and end index
     Vector2 local_start = start - pathfinding_zone.position;
     Vector2 local_end = end - pathfinding_zone.position;
     int start_index = local_start.y*pathfinding_zone.size.x+local_start.x;
     int end_index = local_end.y*pathfinding_zone.size.x+local_end.x;
+    // Enable end point if it is disabled
+    bool end_disabled = astar->is_point_disabled(end_index);
+    astar->set_point_disabled(end_index, false);
+    // Find path
     PoolIntArray id_path = astar->get_id_path(start_index, end_index);
+    // Remove the last point of path if end was disabled
+    if (id_path.size() > 0 && end_disabled) {
+        id_path.remove(id_path.size()-1);
+    }
     // Convert path from ints to Vector2
     for (int i=0; i<id_path.size(); ++i) {
         Vector2 point = astar->get_point_position(id_path[i]);

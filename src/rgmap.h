@@ -279,8 +279,9 @@ public:
     @param start Start point
     @param end Target point
     @param pathfinding_zone Rect2 zone where pathfinding is calculated
+    @param exclude_undiscovered True to exclude undiscovered cells (Fefault: False)
     */
-    PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
+    PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */
     PoolVector2Array get_line(Vector2 start, Vector2 end, bool allow_diagonal = true);
