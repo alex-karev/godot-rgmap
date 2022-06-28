@@ -59,17 +59,22 @@ var tileset = rgmap.generate_tileset("res://Textures/",".png") # Generate new Ti
 myTilemap.tile_set = tileset # Assign new TileSet to Tilemap
 ```
 
-RGMap has 2 signals that can be helpful for drawing and generating map:
+RGMap has 4 signals that can be helpful for drawing and generating map:
 
 ```
 chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded
 chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed
+chunks_render_requested(PoolIntArray ids) # Returns ids of chunks that needs to be rendered
+chunks_hide_requested(PoolIntArray ids) # Returns ids of rendered chunks that needs to be hidden
 ```
 
-To emit these 2 signals call this function
+The distances for loading and rendering chunks can be set as load_distance and render_distance variables of RGMap node. 
+To emit these 4 signals call these functions:
 
 ```
-request_chunks_update(player_position: Vector2) # Player_position is position of the player on RGMap grid
+# player_position is position of the player on RGMap grid
+request_chunks_update(player_position: Vector2) # For chunks load/free signals
+request_chunks_render(player_position: Vector2) # For chunks render/hide signals
 ```
 
 Don't forget to calculate FOV. It is better to do this in the end of the function connected to chunks_load_requested(PoolIntArray ids) signal:
@@ -122,6 +127,11 @@ See more about using GDNative modules here: <https://docs.godotengine.org/en/sta
 - [X] Better error handling
 - [X] Chunk system
 - [X] Entity tracking system
+- [ ] Write bash script for batch compiling binaries for Linux/Windows/Mac
+- [ ] Change project structure and convert it to plugin (add plugin.gd)
+- [ ] Custom properties of tiles
+- [ ] Tutorial
+- [ ] Add node for rendering RGMap in 2d
 - [ ] Cutting and resizing map
 
 ## References

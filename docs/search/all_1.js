@@ -7,8 +7,8 @@ var searchData=
   ['chunk_5floaded_4',['chunk_loaded',['../classgodot_1_1RGMap.html#a8f3bb2de68b7d4a239516015a86db8db',1,'godot::RGMap']]],
   ['chunk_5fsize_5',['chunk_size',['../classgodot_1_1RGMap.html#a3fba15a031ad1bd976b281cefe90bc79',1,'godot::RGMap']]],
   ['chunks_5ffree_5frequested_6',['chunks_free_requested',['../classgodot_1_1RGMap.html#a2d061a66f56eb6392e41f4f9028d16fc',1,'godot::RGMap']]],
-  ['chunks_5fload_5frequested_7',['chunks_load_requested',['../classgodot_1_1RGMap.html#afd1aae74dc064d42ccf5b934472294cf',1,'godot::RGMap']]],
-  ['clean_5fmap_8',['clean_map',['../classgodot_1_1RGMap.html#a831fb561ec538f9dd241174079927b62',1,'godot::RGMap']]],
-  ['count_5fchunks_9',['count_chunks',['../classgodot_1_1RGMap.html#a96273484a6bd68b7c82d45ecd5e9d349',1,'godot::RGMap']]],
-  ['count_5floaded_5fchunks_10',['count_loaded_chunks',['../classgodot_1_1RGMap.html#a5d74a6bf089b0d8287e9915211ea8a21',1,'godot::RGMap']]]
+  ['chunks_5fhide_5frequested_7',['chunks_hide_requested',['../classgodot_1_1RGMap.html#ab011bf3701f536742a9b37530c327312',1,'godot::RGMap']]],
+  ['chunks_5fload_5frequested_8',['chunks_load_requested',['../classgodot_1_1RGMap.html#afd1aae74dc064d42ccf5b934472294cf',1,'godot::RGMap']]],
+  ['chunks_5frender_5frequested_9',['chunks_render_requested',['../classgodot_1_1RGMap.html#abf1c8ce2971af113a8513d1b018e07cc',1,'godot::RGMap']]],
+  ['clean_5fmap_10',['clean_map',['../classgodot_1_1RGMap.html#a831fb561ec538f9dd241174079927b62',1,'godot::RGMap']]]
 ];

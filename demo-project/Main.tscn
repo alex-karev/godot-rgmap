@@ -74,6 +74,7 @@ anchor_bottom = 1.0
 script = ExtResource( 5 )
 size = Vector2( 1000, 1000 )
 chunk_size = Vector2( 15, 15 )
+load_distance = 0
 
 [node name="Generator" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -106,5 +107,7 @@ texture = ExtResource( 3 )
 wait_time = 0.05
 
 [connection signal="chunks_free_requested" from="RGMap" to="Generator" method="_on_RGMap_chunks_free_requested"]
+[connection signal="chunks_hide_requested" from="RGMap" to="Generator" method="_on_RGMap_chunks_hide_requested"]
 [connection signal="chunks_load_requested" from="RGMap" to="Generator" method="_on_RGMap_chunks_load_requested"]
+[connection signal="chunks_render_requested" from="RGMap" to="Generator" method="_on_RGMap_chunks_render_requested"]
 [connection signal="timeout" from="Controller/Update" to="Controller" method="_on_Update_timeout"]

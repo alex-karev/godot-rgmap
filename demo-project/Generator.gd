@@ -84,18 +84,39 @@ func _on_RGMap_chunks_load_requested(ids):
 					rgmap.set_value(pos, grass_index)
 				else:
 					rgmap.set_value(pos, wall_index)
-				# Draw on tilemap
-				var value = rgmap.get_value(pos)
-				$Tilemap.set_cellv(pos, value)
 	# Recalculate FOV after loading all chunks
 	rgmap.calculate_fov(controller.player_position, 60)
+	# Request chunk rendering
+	rgmap.request_chunks_render(controller.player_position)
+
+# Remove unneeded chunks. Emited after request_chunks_update of RGMap function was called
+func _on_RGMap_chunks_free_requested(ids):
+	for id in ids:
+		# Free chunk
+		rgmap.free_chunk(id)
+		# Note: Additionaly you can save chunk's data using dump_chunk_data
+		# And later restore it using load_chunk(index,data) in chunks_load_requested
+
+# Render chunks. Emited after request_chunks_render of RGMap function was called
+func _on_RGMap_chunks_render_requested(ids):
+	for id in ids:
+		# Find top left corner of chunk
+		var start = rgmap.chunk_index_int_to_v2(id)*rgmap.chunk_size
+		# Loop through each cell
+		for x in rgmap.chunk_size.x:
+			for y in rgmap.chunk_size.y:
+				var pos = Vector2(x,y)+start
+				var value = rgmap.get_value(pos)
+				$Tilemap.set_cellv(pos, value)
+		# Update rendering status
+		rgmap.set_chunk_rendered(id, true)
 	# Draw fog and sprites
 	draw()
 
 # Draw fog and sprites
 func draw():
 	# Draw tiles
-	for id in rgmap.get_loaded_chunks():
+	for id in rgmap.get_rendered_chunks():
 		# Find top left corner of chunk
 		var start = rgmap.chunk_index_int_to_v2(id)*rgmap.chunk_size
 		# Loop through each cell
@@ -112,26 +133,23 @@ func draw():
 	# Show/hide entities
 	for id in trees:
 		var tree = get_node("Tree"+str(id))
-		if rgmap.is_entity_chunk_loaded(id) \
+		if rgmap.is_entity_chunk_rendered(id) \
 		and rgmap.is_entity_memorized(id):
 			tree.show()
 		else: 
 			tree.hide()
-
-
-# Remove unneeded chunks. Emited after request_chunks_update of RGMap function was called
-func _on_RGMap_chunks_free_requested(ids):
+			
+# Hide chunks that are not needed to be rendered. Emited after request_chunks_render of RGMap function was called
+func _on_RGMap_chunks_hide_requested(ids):
 	for id in ids:
-		# Free chunk
-		rgmap.free_chunk(id)
-		# Note: Additionaly you can save chunk's data using dump_chunk_data
-		# And later restore it using load_chunk(index,data) in chunks_load_requested
-		
-		# Clear cells
+		# Find top left corner of chunk
 		var start = rgmap.chunk_index_int_to_v2(id)*rgmap.chunk_size
 		# Loop through each cell
 		for x in rgmap.chunk_size.x:
 			for y in rgmap.chunk_size.y:
 				var pos = Vector2(x,y)+start
+				# Clear cell
 				$Tilemap.set_cellv(pos, -1)
 				$Fog.set_cellv(pos, -1)
+		# Update rendering status
+		rgmap.set_chunk_rendered(id, false)

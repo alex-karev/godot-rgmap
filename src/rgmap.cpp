@@ -10,6 +10,7 @@ void RGMap::_register_methods() {
     // Properties
     register_property<RGMap, Vector2>("size", &RGMap::size, Vector2(3,3));
     register_property<RGMap, Vector2>("chunk_size", &RGMap::chunk_size, Vector2(50,50));
+    register_property<RGMap, int>("load_distance", &RGMap::load_distance, 1);
     register_property<RGMap, int>("render_distance", &RGMap::render_distance, 1);
     register_property<RGMap, bool>("allow_diagonal_pathfinding", &RGMap::allow_diagonal_pathfinding, true);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
@@ -20,6 +21,8 @@ void RGMap::_register_methods() {
     // Signals
     register_signal<RGMap>((char *)"chunks_load_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
     register_signal<RGMap>((char *)"chunks_free_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
+    register_signal<RGMap>((char *)"chunks_render_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
+    register_signal<RGMap>((char *)"chunks_hide_requested", "ids", GODOT_VARIANT_TYPE_POOL_INT_ARRAY);
     register_signal<RGMap>((char *)"chunk_loaded", "index", GODOT_VARIANT_TYPE_INT);
     register_signal<RGMap>((char *)"chunk_freed", "index", GODOT_VARIANT_TYPE_INT);
 
@@ -43,12 +46,16 @@ void RGMap::_register_methods() {
     register_method("dump_chunk_data", &RGMap::dump_chunk_data);
     register_method("free_chunk", &RGMap::free_chunk);
     register_method("reset_chunk", &RGMap::reset_chunk);
-    register_method("count_chunks", &RGMap::count_chunks);
-    register_method("count_loaded_chunks", &RGMap::count_loaded_chunks);
+    register_method("is_chunk_rendered", &RGMap::is_chunk_rendered);
+    register_method("set_chunk_rendered", &RGMap::set_chunk_rendered);
     register_method("get_loaded_chunks", &RGMap::get_loaded_chunks);
     register_method("get_chunks_to_load", &RGMap::get_chunks_to_load);
     register_method("get_chunks_to_free", &RGMap::get_chunks_to_free);
     register_method("request_chunks_update", &RGMap::request_chunks_update);
+    register_method("get_rendered_chunks", &RGMap::get_rendered_chunks);
+    register_method("get_chunks_to_render", &RGMap::get_chunks_to_render);
+    register_method("get_chunks_to_hide", &RGMap::get_chunks_to_hide);
+    register_method("request_chunks_render", &RGMap::request_chunks_render);
     // Cells
     register_method("get_local_index", &RGMap::get_local_index);
     register_method("get_value", &RGMap::get_value);
@@ -98,6 +105,7 @@ void RGMap::_register_methods() {
     register_method("is_entity_passable", &RGMap::is_entity_passable);
     register_method("is_entity_memorized", &RGMap::is_entity_memorized);
     register_method("is_entity_chunk_loaded", &RGMap::is_entity_chunk_loaded);
+    register_method("is_entity_chunk_rendered", &RGMap::is_entity_chunk_rendered);
     register_method("get_entity_position", &RGMap::get_entity_position);
     register_method("get_entities_in_position", &RGMap::get_entities_in_position);
     register_method("get_entities_in_rect", &RGMap::get_entities_in_rect);

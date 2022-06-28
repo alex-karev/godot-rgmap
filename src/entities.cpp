@@ -67,6 +67,11 @@ bool RGMap::is_entity_chunk_loaded(int id) {
     int chunk_index = get_chunk_index(entities[id].position);
     return is_chunk_loaded(chunk_index);
 }
+bool RGMap::is_entity_chunk_rendered(int id) {
+    ERR_FAIL_INDEX_V(id, entities.size(), false);
+    int chunk_index = get_chunk_index(entities[id].position);
+    return is_chunk_rendered(chunk_index);
+}
 Vector2 RGMap::get_entity_position(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), Vector2(0,0));
     return entities[id].position;

@@ -44,6 +44,7 @@ class RGMap : public Reference {
         // Flat arrays that contain all data about the cells
         std::vector<int> values;
         std::vector<int> memory;
+        bool rendered = false;
     };
 
     // Structure of entity
@@ -88,6 +89,8 @@ private:
 
     // Get loaded chunk
     Chunk& get_chunk(int index);
+    // Get indexes of chunks forming a square grid with a given point in its center
+    PoolIntArray get_chunks_in_distance(Vector2 point, int distance);
 
 public:
     //! Size of one chunk (Default: 50x50)
@@ -95,6 +98,12 @@ public:
     //! Size of the whole map in chunks (Default: 3x3)
     Vector2 size = Vector2(3,3);
     //! Number of chunks loaded around the player 
+    /*! 
+    Excluding the chunk where player stands
+    Default: 1 (3x3 grid)
+    */
+    int load_distance = 1;
+    //! Number of chunks rendered around the player 
     /*! 
     Excluding the chunk where player stands
     Default: 1 (3x3 grid)
@@ -128,10 +137,14 @@ public:
     /** @name Signals */
     ///@{
 
-    //! **Signal.** Emited when chunk needs to be loaded. Emited on calling request_chunks_update function
+    //! **Signal.** Emited when chunks need to be loaded. Emited on calling request_chunks_update function
     PoolIntArray chunks_load_requested() {return PoolIntArray();}
-    //! **Signal.** Emited when chunk needs to be freed. Emited on calling request_chunks_update function
+    //! **Signal.** Emited when chunks need to be freed. Emited on calling request_chunks_update function
     PoolIntArray chunks_free_requested() {return PoolIntArray();}
+    //! **Signal.** Emited when chunks need to be rendered. Emited on calling request_chunks_render function
+    PoolIntArray chunks_render_requested() {return PoolIntArray();}
+    //! **Signal.** Emited when rendered chunks need to be hidden. Emited on calling request_chunks_render function
+    PoolIntArray chunks_hide_requested() {return PoolIntArray();}
     //! **Signal.** Emited when is loaded for the first time. Emited on calling load_chunk function
     int chunk_loaded() {return 0;}
     //! **Signal.** Emited when chunk is freed from memory. Emited on calling free_chunk function
@@ -195,33 +208,56 @@ public:
     void free_chunk(int index);
     //! Clear all cell data in chunk
     void reset_chunk(int index);
-    //! Get overall number of chunks
-    int count_chunks();
-    //! Get number of loaded chunks
-    int count_loaded_chunks();
+    //! Check if chunk is rendered
+    bool is_chunk_rendered(int index);
+    //! Set rendering status of chunk
+    void set_chunk_rendered(int index, bool value);
     //! Get ids of loaded chunks
     PoolIntArray get_loaded_chunks();
     //! Get ids of chunks around player that needs to be loaded 
     /*!
     @param player_position Vector2 position of the player
-    Uses render_distance parameter to define the radius
+    Uses load_distance parameter to define the radius
     Skips chunks that were already loaded
     */
     PoolIntArray get_chunks_to_load(Vector2 player_position);
     //! Get ids of chunks that are loaded, but not needed anymore because player is too far
     /*!
     @param player_position Vector2 position of the player
-    Uses render_distance parameter to define the radius
+    Uses load_distance parameter to define the radius
     */
     PoolIntArray get_chunks_to_free(Vector2 player_position);
-    //! Request chunk load/unload depending on player_position and render_distance
-    /*! Emits several "chunk_load_requested" and "chunk_free_requested" signals
+    //! Request chunk load/unload depending on player_position and load_distance
+    /*! Emits "chunks_load_requested" and "chunks_free_requested" signals
     Will produce the same result until chunks will be loaded/freed from other script
     Does nothing if all needed chunks are loaded and all unneeded chunks are freed
     @param player_position Vector2 position of the player
-    Uses render_distance parameter to define the radius
+    Uses load_distance parameter to define the radius
     */
     void request_chunks_update(Vector2 player_position);
+    //! Get ids of rendered chunks
+    PoolIntArray get_rendered_chunks();
+    //! Get ids of chunks around player that needs to be rendered
+    /*!
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    Skips chunks that were already rendered
+    */
+    PoolIntArray get_chunks_to_render(Vector2 player_position);
+    //! Get ids of chunks that are rendered, but not needed anymore because player is too far
+    /*!
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    */
+    PoolIntArray get_chunks_to_hide(Vector2 player_position);
+    //! Request chunk render/hide depending on player_position and render_distance
+    /*! Emits "chunks_render_requested" and "chunks_hide_requested" signals
+    Will produce the same result until chunks will be rendered/hidden from other script
+    Does nothing if all needed chunks are rendered and all unneeded chunks are hidden
+    @param player_position Vector2 position of the player
+    Uses render_distance parameter to define the radius
+    */
+    void request_chunks_render(Vector2 player_position);
     ///@}
 
     // cells.cpp
@@ -353,6 +389,8 @@ public:
     bool is_entity_memorized(int id);
     //! Check if entity is on loaded chunk
     bool is_entity_chunk_loaded(int id);
+    //! Check if entity is on rendered chunk
+    bool is_entity_chunk_rendered(int id);
     //! Get position of the entity
     Vector2 get_entity_position(int id);
     //! Find ids of all entities in position

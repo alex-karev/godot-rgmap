@@ -130,11 +130,15 @@ RGMap</h2>
 </div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</p>
 <div class="fragment"><div class="line">var tileset = rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
 <div class="line">myTilemap.tile_set = tileset # Assign new TileSet to Tilemap</div>
-</div><!-- fragment --><p >RGMap has 2 signals that can be helpful for drawing and generating map:</p>
+</div><!-- fragment --><p >RGMap has 4 signals that can be helpful for drawing and generating map:</p>
 <div class="fragment"><div class="line">chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded</div>
 <div class="line">chunks_free_requested(PoolIntArray ids) # Returns ids of chunks that needs to be freed</div>
-</div><!-- fragment --><p >To emit these 2 signals call this function</p>
-<div class="fragment"><div class="line">request_chunks_update(player_position: Vector2) # Player_position is position of the player on RGMap grid</div>
+<div class="line">chunks_render_requested(PoolIntArray ids) # Returns ids of chunks that needs to be rendered</div>
+<div class="line">chunks_hide_requested(PoolIntArray ids) # Returns ids of rendered chunks that needs to be hidden</div>
+</div><!-- fragment --><p >The distances for loading and rendering chunks can be set as load_distance and render_distance variables of RGMap node. To emit these 4 signals call these functions:</p>
+<div class="fragment"><div class="line"># player_position is position of the player on RGMap grid</div>
+<div class="line">request_chunks_update(player_position: Vector2) # For chunks load/free signals</div>
+<div class="line">request_chunks_render(player_position: Vector2) # For chunks render/hide signals</div>
 </div><!-- fragment --><p >Don't forget to calculate FOV. It is better to do this in the end of the function connected to chunks_load_requested(PoolIntArray ids) signal:</p>
 <div class="fragment"><div class="line">func _on_RGMap_chunks_load_requested(ids):</div>
 <div class="line">    ...</div>
@@ -174,6 +178,11 @@ TODO</h1>
 <li>[X] Better error handling</li>
 <li>[X] Chunk system</li>
 <li>[X] Entity tracking system</li>
+<li>[ ] Write bash script for batch compiling binaries for Linux/Windows/Mac</li>
+<li>[ ] Change project structure and convert it to plugin (add plugin.gd)</li>
+<li>[ ] Custom properties of tiles</li>
+<li>[ ] Tutorial</li>
+<li>[ ] Add node for rendering RGMap in 2d</li>
 <li>[ ] Cutting and resizing map</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md8"></a>
