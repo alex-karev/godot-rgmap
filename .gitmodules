@@ -1,0 +1,4 @@
+[submodule "addons/godot-rgmap/native/godot-cpp"]
+	path = addons/godot-rgmap/native/godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+	branch = 3.x

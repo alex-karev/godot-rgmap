@@ -1,0 +1,4 @@
+*.os
+/.import/
+/gh-pages/
+addons/godot-rgmap/native/.sconsign.dblite

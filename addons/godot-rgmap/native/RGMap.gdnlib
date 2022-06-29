@@ -1,0 +1,18 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=false
+
+[entry]
+
+OSX.64="res://addons/godot-rgmap/native/bin/osx/librgmap.dylib"
+Windows.64="res://addons/godot-rgmap/native/bin/win64/librgmap.dll"
+X11.64="res://addons/godot-rgmap/native/bin/x11/librgmap.so"
+
+[dependencies]
+
+OSX.64=[  ]
+Windows.64=[  ]
+X11.64=[  ]
