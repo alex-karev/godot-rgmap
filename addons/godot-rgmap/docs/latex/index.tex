@@ -1,0 +1,181 @@
+\label{index_md__home_data_Documents_Gamedev_Godot_GDNative_godot_rgmap_README}%
+\Hypertarget{index_md__home_data_Documents_Gamedev_Godot_GDNative_godot_rgmap_README}%
+ A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV
+
+
+
+\hypertarget{index_autotoc_md1}{}\doxysection{Features}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\bfseries{FOV}} calculation using RPAS algorithm
+\item {\bfseries{Raycasting}} using Bresenham\textquotesingle{}s lines
+\item {\bfseries{Pathfinding}} using Godot built-\/in A$\ast$ class
+\item {\bfseries{Memorizing cells}} that have been visible at least once
+\item {\bfseries{Chunk system}} loadind/freeing chunks, dumping and restoring chunk data
+\item {\bfseries{Draw and fill}} functions for drawing primitives (lines, ellipse, rects, circles, arcs)
+\item {\bfseries{Managing tiles}} in RGMap class
+\item {\bfseries{Tile\+Set generator}} for Tilemaps based on data from RGMap
+\item {\bfseries{Merging maps.}} Placing one RGMap inside the other map
+\item {\bfseries{Entity tracking.}} Entities and their properties can also be considered while using FOV and pathfinding
+\item {\bfseries{Saving and loading}} data as a flat array
+\item {\bfseries{C++, GDNative}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{Why?}\label{index_autotoc_md2}
+To make managing maps for roguelikes easier by uniting all useful functions and properties in one class.
+
+\hypertarget{index_autotoc_md3}{}\doxysection{Usage}\label{index_autotoc_md3}
+A new node is added\+:\hypertarget{index_autotoc_md4}{}\doxysubsection{RGMap}\label{index_autotoc_md4}
+A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.
+
+Tiles should be added before creating a new map
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Add tiles:}
+\DoxyCodeLine{\# rgmap.add\_tile("{}core.game.ground"{}, "{}Ground"{}, true, true)}
+\DoxyCodeLine{\# Note: First 2 strings are 'name' and 'display name'. Other 2 booleans are 'passability' and 'transparency'}
+
+\end{DoxyCode}
+
+
+It is strongly advised to store information about all your tiles in some database (e.\+g. JSON) and add tiles like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var file = File.new()}
+\DoxyCodeLine{file.open("{}res://db.json"{}, File.READ)}
+\DoxyCodeLine{var txt = file.get\_as\_text()}
+\DoxyCodeLine{var json = parse\_json(txt)}
+\DoxyCodeLine{for tile\_name in json["{}tiles"{}].keys():}
+\DoxyCodeLine{    var data = json["{}tiles"{}][tile\_name]}
+\DoxyCodeLine{    rgmap.add\_tile(tile\_name, data["{}name"{}], data["{}passable"{}], data["{}transparent"{}])}
+
+\end{DoxyCode}
+
+
+If you want to create a 2d Tile\+Set for your Tilemap, you can use generate\+\_\+tileset function. It searches for images named as your tiles in a specified directory\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var tileset = rgmap.generate\_tileset("{}res://Textures/"{},"{}.png"{}) \# Generate new TileSet}
+\DoxyCodeLine{myTilemap.tile\_set = tileset \# Assign new TileSet to Tilemap}
+
+\end{DoxyCode}
+
+
+RGMap has 4 signals that can be helpful for drawing and generating map\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{chunks\_load\_requested(PoolIntArray ids) \# Returns ids of chunks that needs to be loaded}
+\DoxyCodeLine{chunks\_free\_requested(PoolIntArray ids) \# Returns ids of chunks that needs to be freed}
+\DoxyCodeLine{chunks\_render\_requested(PoolIntArray ids) \# Returns ids of chunks that needs to be rendered}
+\DoxyCodeLine{chunks\_hide\_requested(PoolIntArray ids) \# Returns ids of rendered chunks that needs to be hidden}
+
+\end{DoxyCode}
+
+
+The distances for loading and rendering chunks can be set as load\+\_\+distance and render\+\_\+distance variables of RGMap node. To emit these 4 signals call these functions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# player\_position is position of the player on RGMap grid}
+\DoxyCodeLine{request\_chunks\_update(player\_position: Vector2) \# For chunks load/free signals}
+\DoxyCodeLine{request\_chunks\_render(player\_position: Vector2) \# For chunks render/hide signals}
+
+\end{DoxyCode}
+
+
+Don\textquotesingle{}t forget to calculate FOV. It is better to do this in the end of the function connected to chunks\+\_\+load\+\_\+requested(\+Pool\+Int\+Array ids) signal\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{func \_on\_RGMap\_chunks\_load\_requested(ids):}
+\DoxyCodeLine{    ...}
+\DoxyCodeLine{    rgmap.calculate\_fov(controller.player\_position, 30) \# 30 is a radius}
+
+\end{DoxyCode}
+
+
+Please see \href{https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd}{\texttt{ Generator.\+gd}} for more detailed example
+
+There are a lot of functions available in RGMap node. You can read more about each function and variable here\+:
+
+\href{https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html}{\texttt{ https\+://alex-\/karev.\+github.\+io/godot-\/rgmap/classgodot\+\_\+1\+\_\+1\+RGMap.\+html}}
+
+Also, you can learn more from demo-\/project\hypertarget{index_autotoc_md5}{}\doxysection{Example}\label{index_autotoc_md5}
+You can find an example of usage in demo-\/project directory\hypertarget{index_autotoc_md6}{}\doxysection{Installation}\label{index_autotoc_md6}
+Requirements\+:
+
+
+\begin{DoxyItemize}
+\item Windows or Linux
+\item Godot 3.\+4.\+4 or later. May work on earlier versions, but not tested. No Godot 4 support at the moment
+\end{DoxyItemize}
+
+Install it the same way as a regular editor plugin. Copy the contents of {\ttfamily addons/godot-\/rgmap} into the same folder in your project.
+
+\begin{quote}
+Since it is just a new Native\+Script class, activation/deactivation from project settings doesn\textquotesingle{}t work. The nodes of this plugin are always available \end{quote}
+\begin{quote}
+Currently there are only precompiled binaries for Windows and Linux, but it can be compiled for any other platform (e.\+g. OSX). Follow instructions in {\itshape Building} section \end{quote}
+\hypertarget{index_autotoc_md7}{}\doxysection{Building}\label{index_autotoc_md7}
+You will need\+: C++ compiler and SCons installed in your system
+
+
+\begin{DoxyEnumerate}
+\item Generate and compile bindings\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd addons/godot-\/rgmap/native/godot-\/cpp}
+\DoxyCodeLine{scons platform=<platform> generate\_bindings=yes}
+\DoxyCodeLine{cd ..}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Compile project
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd addons/godot-\/rgmap/native}
+\DoxyCodeLine{scons platform=<platform>}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Create new Native\+Script and GDNative\+Library. Link it to binaries you have copied from /bin directory
+\end{DoxyEnumerate}
+
+See more about using GDNative modules here\+: \href{https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html\#using-the-gdnative-module}{\texttt{ https\+://docs.\+godotengine.\+org/en/stable/tutorials/scripting/gdnative/gdnative\+\_\+cpp\+\_\+example.\+html\#using-\/the-\/gdnative-\/module}}\hypertarget{index_autotoc_md8}{}\doxysection{TODO}\label{index_autotoc_md8}
+
+\begin{DoxyItemize}
+\item \mbox{[}X\mbox{]} Create demo project
+\item \mbox{[}X\mbox{]} Add gifs and images to README
+\item \mbox{[}X\mbox{]} Automatic generation of 2D Tileset and Tilemap based on RGTileset
+\item \mbox{[}X\mbox{]} Better error handling
+\item \mbox{[}X\mbox{]} Chunk system
+\item \mbox{[}X\mbox{]} Entity tracking system
+\item \mbox{[}X\mbox{]} Change project structure and convert it to plugin (add plugin.\+gd)
+\item \mbox{[} \mbox{]} Write bash script for batch compiling binaries for Linux/\+Windows/\+Mac
+\item \mbox{[} \mbox{]} Custom properties of tiles
+\item \mbox{[} \mbox{]} Tutorial
+\item \mbox{[} \mbox{]} Add node for rendering RGMap in 2d
+\item \mbox{[} \mbox{]} Cutting and resizing map
+\end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysection{References}\label{index_autotoc_md9}
+The code for some parts of this projects was inspired by/copied from these resources\+:
+\begin{DoxyItemize}
+\item RPAS implementation written in Python\+: \href{https://github.com/MoyTW/roguebasin_rpas}{\texttt{ https\+://github.\+com/\+Moy\+TW/roguebasin\+\_\+rpas}}
+\item Bresenham\textquotesingle{}s line\+: \href{http://www.roguebasin.com/index.php/Bresenham\%27s_Line_Algorithm}{\texttt{ http\+://www.\+roguebasin.\+com/index.\+php/\+Bresenham\%27s\+\_\+\+Line\+\_\+\+Algorithm}}
+\item Midpoint ellipse\+: \href{https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/midpoint-\/ellipse-\/drawing-\/algorithm/}}
+\item Doxygen theme\+: \href{https://jothepro.github.io/doxygen-awesome-css/}{\texttt{ https\+://jothepro.\+github.\+io/doxygen-\/awesome-\/css/}}
+\item Godot cpp API\+: \href{https://github.com/godotengine/godot-cpp}{\texttt{ https\+://github.\+com/godotengine/godot-\/cpp}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysection{Contributing}\label{index_autotoc_md10}
+You are welcome to fork this repo and to create pull requests\hypertarget{index_autotoc_md11}{}\doxysection{License}\label{index_autotoc_md11}
+Distributed under the MIT License. See LICENSE for more information 

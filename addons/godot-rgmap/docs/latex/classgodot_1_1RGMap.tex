@@ -1,0 +1,578 @@
+\hypertarget{classgodot_1_1RGMap}{}\doxysection{godot\+::RGMap Class Reference}
+\label{classgodot_1_1RGMap}\index{godot::RGMap@{godot::RGMap}}
+
+
+Class for managing maps for roguelike.  
+
+
+
+
+{\ttfamily \#include $<$rgmap.\+h$>$}
+
+Inheritance diagram for godot\+::RGMap\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgodot_1_1RGMap}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Signals}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_afd1aae74dc064d42ccf5b934472294cf}\label{classgodot_1_1RGMap_afd1aae74dc064d42ccf5b934472294cf}} 
+Pool\+Int\+Array {\bfseries chunks\+\_\+load\+\_\+requested} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when chunks need to be loaded. Emited on calling request\+\_\+chunks\+\_\+update function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a2d061a66f56eb6392e41f4f9028d16fc}\label{classgodot_1_1RGMap_a2d061a66f56eb6392e41f4f9028d16fc}} 
+Pool\+Int\+Array {\bfseries chunks\+\_\+free\+\_\+requested} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when chunks need to be freed. Emited on calling request\+\_\+chunks\+\_\+update function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_abf1c8ce2971af113a8513d1b018e07cc}\label{classgodot_1_1RGMap_abf1c8ce2971af113a8513d1b018e07cc}} 
+Pool\+Int\+Array {\bfseries chunks\+\_\+render\+\_\+requested} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when chunks need to be rendered. Emited on calling request\+\_\+chunks\+\_\+render function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ab011bf3701f536742a9b37530c327312}\label{classgodot_1_1RGMap_ab011bf3701f536742a9b37530c327312}} 
+Pool\+Int\+Array {\bfseries chunks\+\_\+hide\+\_\+requested} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when rendered chunks need to be hidden. Emited on calling request\+\_\+chunks\+\_\+render function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a8f3bb2de68b7d4a239516015a86db8db}\label{classgodot_1_1RGMap_a8f3bb2de68b7d4a239516015a86db8db}} 
+int {\bfseries chunk\+\_\+loaded} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when is loaded for the first time. Emited on calling load\+\_\+chunk function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a74f8456f280ddaa8a3f3b3161a6ad63f}\label{classgodot_1_1RGMap_a74f8456f280ddaa8a3f3b3161a6ad63f}} 
+int {\bfseries chunk\+\_\+freed} ()
+\begin{DoxyCompactList}\small\item\em {\bfseries{Signal.}} Emited when chunk is freed from memory. Emited on calling free\+\_\+chunk function \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Tiles}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a55c55e1a5e1386093860a634c33cee3d}\label{classgodot_1_1RGMap_a55c55e1a5e1386093860a634c33cee3d}} 
+void {\bfseries add\+\_\+tile} (String name, String display\+\_\+name, bool passable, bool transparent)
+\begin{DoxyCompactList}\small\item\em Add new tile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a0a6742a8d89a003db699ba02cd2f965a}\label{classgodot_1_1RGMap_a0a6742a8d89a003db699ba02cd2f965a}} 
+int {\bfseries get\+\_\+tiles\+\_\+count} ()
+\begin{DoxyCompactList}\small\item\em Get number of tiles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ac7e85ab8ca5c1b3580a773b35a8386fd}\label{classgodot_1_1RGMap_ac7e85ab8ca5c1b3580a773b35a8386fd}} 
+int {\bfseries get\+\_\+tile\+\_\+index} (String name)
+\begin{DoxyCompactList}\small\item\em Get tile index by name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a9d0347ce24c61097eaca4292816b7ce3}\label{classgodot_1_1RGMap_a9d0347ce24c61097eaca4292816b7ce3}} 
+String {\bfseries get\+\_\+tile\+\_\+name} (int index)
+\begin{DoxyCompactList}\small\item\em Get tile name (unique) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a30d5d2ff82cbb7b163b4f2f960180539}\label{classgodot_1_1RGMap_a30d5d2ff82cbb7b163b4f2f960180539}} 
+String {\bfseries get\+\_\+tile\+\_\+display\+\_\+name} (int index)
+\begin{DoxyCompactList}\small\item\em Get tile display name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ad407df53a5d381f958965c34acae88b1}\label{classgodot_1_1RGMap_ad407df53a5d381f958965c34acae88b1}} 
+bool {\bfseries is\+\_\+tile\+\_\+passable} (int index)
+\begin{DoxyCompactList}\small\item\em Check if tile is passable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a217ae3cae06583ad6e0eaf4c4a7ccf36}\label{classgodot_1_1RGMap_a217ae3cae06583ad6e0eaf4c4a7ccf36}} 
+bool {\bfseries is\+\_\+tile\+\_\+transparent} (int index)
+\begin{DoxyCompactList}\small\item\em Check if tile is transparent. \end{DoxyCompactList}\item 
+Ref$<$ Tile\+Set $>$ \mbox{\hyperlink{classgodot_1_1RGMap_a819587d899569b840a3f417aa9fd0c2f}{generate\+\_\+tileset}} (String texture\+\_\+path, String texture\+\_\+format)
+\begin{DoxyCompactList}\small\item\em Generate Tileset for using with 2d Tilemap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Chunks}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a17d00e1acf01120ad1324704960ea528}\label{classgodot_1_1RGMap_a17d00e1acf01120ad1324704960ea528}} 
+int {\bfseries get\+\_\+chunk\+\_\+index} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Get index of chunk which contains a given position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aa042aaa2c6cbc4f67473574c4861cbf2}\label{classgodot_1_1RGMap_aa042aaa2c6cbc4f67473574c4861cbf2}} 
+Vector2 {\bfseries chunk\+\_\+index\+\_\+int\+\_\+to\+\_\+v2} (int index)
+\begin{DoxyCompactList}\small\item\em Convert index of chunk from int to Vector2 format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a3ede385c9811d5c189943e42416af746}\label{classgodot_1_1RGMap_a3ede385c9811d5c189943e42416af746}} 
+int {\bfseries chunk\+\_\+index\+\_\+v2\+\_\+to\+\_\+int} (Vector2 index)
+\begin{DoxyCompactList}\small\item\em Convert index of chunk from Vector2 to int format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ac47d550255055871d8b15ea21ccd7227}\label{classgodot_1_1RGMap_ac47d550255055871d8b15ea21ccd7227}} 
+bool {\bfseries is\+\_\+chunk\+\_\+in\+\_\+bounds} (int index)
+\begin{DoxyCompactList}\small\item\em Check if chunk is in bounds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_af9b781ce0c7fe4ccefa66fdcace66a0f}\label{classgodot_1_1RGMap_af9b781ce0c7fe4ccefa66fdcace66a0f}} 
+bool {\bfseries is\+\_\+chunk\+\_\+loaded} (int index)
+\begin{DoxyCompactList}\small\item\em Check if chunk is loaded. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aff48c6694c9a7229c7603ec56fa19e8e}\label{classgodot_1_1RGMap_aff48c6694c9a7229c7603ec56fa19e8e}} 
+void {\bfseries load\+\_\+chunk} (int index, Pool\+Int\+Array data=Pool\+Int\+Array())
+\begin{DoxyCompactList}\small\item\em Load saved chunk to memory or generate a new chunk. \char`\"{}data\char`\"{} argument is optional. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a05f17a76987156e6694a858d3dee1c49}\label{classgodot_1_1RGMap_a05f17a76987156e6694a858d3dee1c49}} 
+Pool\+Int\+Array {\bfseries dump\+\_\+chunk\+\_\+data} (int index)
+\begin{DoxyCompactList}\small\item\em Returns all cell data for chunk as Pool\+Int\+Array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a97e1bbbce76aca2a37e08db6d793907e}\label{classgodot_1_1RGMap_a97e1bbbce76aca2a37e08db6d793907e}} 
+void {\bfseries free\+\_\+chunk} (int index)
+\begin{DoxyCompactList}\small\item\em Free chunk from memory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_af16dce1ae917a6a42c237d7e7eebda92}\label{classgodot_1_1RGMap_af16dce1ae917a6a42c237d7e7eebda92}} 
+void {\bfseries reset\+\_\+chunk} (int index)
+\begin{DoxyCompactList}\small\item\em Clear all cell data in chunk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a12e1b530faa11809a3fb965924166324}\label{classgodot_1_1RGMap_a12e1b530faa11809a3fb965924166324}} 
+bool {\bfseries is\+\_\+chunk\+\_\+rendered} (int index)
+\begin{DoxyCompactList}\small\item\em Check if chunk is rendered. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a05420fcbc688769a4f97f4e068036609}\label{classgodot_1_1RGMap_a05420fcbc688769a4f97f4e068036609}} 
+void {\bfseries set\+\_\+chunk\+\_\+rendered} (int index, bool value)
+\begin{DoxyCompactList}\small\item\em Set rendering status of chunk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aaff3bdcfb3484ab4807bf536aa126e11}\label{classgodot_1_1RGMap_aaff3bdcfb3484ab4807bf536aa126e11}} 
+Pool\+Int\+Array {\bfseries get\+\_\+loaded\+\_\+chunks} ()
+\begin{DoxyCompactList}\small\item\em Get ids of loaded chunks. \end{DoxyCompactList}\item 
+Pool\+Int\+Array \mbox{\hyperlink{classgodot_1_1RGMap_af81558e0a4b18590aea6f385f6fa345f}{get\+\_\+chunks\+\_\+to\+\_\+load}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Get ids of chunks around player that needs to be loaded. \end{DoxyCompactList}\item 
+Pool\+Int\+Array \mbox{\hyperlink{classgodot_1_1RGMap_ad292a1d8e79b597004643fbcf2e588f8}{get\+\_\+chunks\+\_\+to\+\_\+free}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Get ids of chunks that are loaded, but not needed anymore because player is too far. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgodot_1_1RGMap_a2c565c4b9124368ebdaae851afd13585}{request\+\_\+chunks\+\_\+update}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Request chunk load/unload depending on player\+\_\+position and load\+\_\+distance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a2e9616170d0d2bb4e1e5946c4f9f8d60}\label{classgodot_1_1RGMap_a2e9616170d0d2bb4e1e5946c4f9f8d60}} 
+Pool\+Int\+Array {\bfseries get\+\_\+rendered\+\_\+chunks} ()
+\begin{DoxyCompactList}\small\item\em Get ids of rendered chunks. \end{DoxyCompactList}\item 
+Pool\+Int\+Array \mbox{\hyperlink{classgodot_1_1RGMap_a742bfc37a17e36f017d52f2bac8b698f}{get\+\_\+chunks\+\_\+to\+\_\+render}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Get ids of chunks around player that needs to be rendered. \end{DoxyCompactList}\item 
+Pool\+Int\+Array \mbox{\hyperlink{classgodot_1_1RGMap_a251886c67ff84873042b83e836585203}{get\+\_\+chunks\+\_\+to\+\_\+hide}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Get ids of chunks that are rendered, but not needed anymore because player is too far. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgodot_1_1RGMap_af97b719797501ed8525d3aad37ed83d7}{request\+\_\+chunks\+\_\+render}} (Vector2 player\+\_\+position)
+\begin{DoxyCompactList}\small\item\em Request chunk render/hide depending on player\+\_\+position and render\+\_\+distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Cells}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ab201f09297e368756c390a122a94fc97}\label{classgodot_1_1RGMap_ab201f09297e368756c390a122a94fc97}} 
+int {\bfseries get\+\_\+local\+\_\+index} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Get local index of cell within a chunk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a0608386ad66cec9e4257808022da5038}\label{classgodot_1_1RGMap_a0608386ad66cec9e4257808022da5038}} 
+int {\bfseries get\+\_\+value} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Get value of cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a4113d609f2d8b8ae8986b5261d72589a}\label{classgodot_1_1RGMap_a4113d609f2d8b8ae8986b5261d72589a}} 
+String {\bfseries get\+\_\+name} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Get name of cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a4016e0965171c95fd867bd7eb01b65d9}\label{classgodot_1_1RGMap_a4016e0965171c95fd867bd7eb01b65d9}} 
+String {\bfseries get\+\_\+display\+\_\+name} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Get display name of cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a37429fe0e0426653916667725477e01b}\label{classgodot_1_1RGMap_a37429fe0e0426653916667725477e01b}} 
+bool {\bfseries is\+\_\+in\+\_\+bounds} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if cell is in bounds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a9722afa05ac0d4efe1146a9f8b70908b}\label{classgodot_1_1RGMap_a9722afa05ac0d4efe1146a9f8b70908b}} 
+bool {\bfseries is\+\_\+transparent} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if cell is transparent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a6bc13a61c915adcfcd1c74d75b9a786a}\label{classgodot_1_1RGMap_a6bc13a61c915adcfcd1c74d75b9a786a}} 
+bool {\bfseries is\+\_\+passable} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if cell is passable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a2ae7a1232b97d00c21a38a1073cb7b53}\label{classgodot_1_1RGMap_a2ae7a1232b97d00c21a38a1073cb7b53}} 
+bool {\bfseries is\+\_\+visible} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if cell is visible. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a735635c94c0913ffb0198dd51681986f}\label{classgodot_1_1RGMap_a735635c94c0913ffb0198dd51681986f}} 
+bool {\bfseries is\+\_\+memorized} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if cell is memorized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a90bbf21a0a0084bc3cada939c5b84848}\label{classgodot_1_1RGMap_a90bbf21a0a0084bc3cada939c5b84848}} 
+bool {\bfseries is\+\_\+pathfinding\+\_\+allowed} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Check if pathfinding on this cell is allowed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_abf819377354f5deaf670605175243442}\label{classgodot_1_1RGMap_abf819377354f5deaf670605175243442}} 
+void {\bfseries set\+\_\+value} (Vector2 position, int value)
+\begin{DoxyCompactList}\small\item\em Set value of cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a0aad3be6e33070ebedb8ea3eb81789cf}\label{classgodot_1_1RGMap_a0aad3be6e33070ebedb8ea3eb81789cf}} 
+void {\bfseries set\+\_\+visibility} (Vector2 position, bool value)
+\begin{DoxyCompactList}\small\item\em Set visibility of cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ad15eb7048c2b0bdefcc22a6215e4eb36}\label{classgodot_1_1RGMap_ad15eb7048c2b0bdefcc22a6215e4eb36}} 
+void {\bfseries set\+\_\+memorized} (Vector2 position, bool value)
+\begin{DoxyCompactList}\small\item\em Set memory state of cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ View and pathfinding}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_abc95ec5b234f69d9f372483f22b8f602}\label{classgodot_1_1RGMap_abc95ec5b234f69d9f372483f22b8f602}} 
+Pool\+Vector2\+Array {\bfseries rpas\+\_\+calc\+\_\+visible\+\_\+cells\+\_\+from} (Vector2 center, int radius)
+\begin{DoxyCompactList}\small\item\em Get list of cells visible from position within radius using RPAS algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a449daffbdf681516e8a340e060edd0ef}\label{classgodot_1_1RGMap_a449daffbdf681516e8a340e060edd0ef}} 
+void {\bfseries calculate\+\_\+fov} (Vector2 view\+\_\+position, int max\+\_\+distance)
+\begin{DoxyCompactList}\small\item\em Calculate visibility from given position and distance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a4a4b116053d6722cbb2bd325db94327e}\label{classgodot_1_1RGMap_a4a4b116053d6722cbb2bd325db94327e}} 
+void {\bfseries add\+\_\+pathfinding\+\_\+exception} (Vector2 position, bool value)
+\begin{DoxyCompactList}\small\item\em Allow/disallow patfinding for this cell ignoring passability. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a6ec099f81053cdd7782a9ccac45ea54d}\label{classgodot_1_1RGMap_a6ec099f81053cdd7782a9ccac45ea54d}} 
+void {\bfseries remove\+\_\+pathfinding\+\_\+exception} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Remove all pathfinding exceptions for this cell if they exist. \end{DoxyCompactList}\item 
+Pool\+Vector2\+Array \mbox{\hyperlink{classgodot_1_1RGMap_a637933f2b9bb946f4a7b295fddaaf452}{show\+\_\+pathfinding\+\_\+exceptions}} (bool exception\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Show all pathfinding exceptions of a type. \end{DoxyCompactList}\item 
+Pool\+Vector2\+Array \mbox{\hyperlink{classgodot_1_1RGMap_a0a0c87b9c381e59d241c298bbc7efd65}{find\+\_\+path}} (Vector2 start, Vector2 end, Rect2 pathfinding\+\_\+zone, bool exclude\+\_\+undiscovered=false)
+\begin{DoxyCompactList}\small\item\em Find path from start to end using A$\ast$ algorithm. \end{DoxyCompactList}\item 
+Pool\+Vector2\+Array \mbox{\hyperlink{classgodot_1_1RGMap_af5df74ee697c11151876e230fcfc2c09}{get\+\_\+line}} (Vector2 start, Vector2 end, bool allow\+\_\+diagonal=true)
+\begin{DoxyCompactList}\small\item\em Get a set of points in Bresenham\textquotesingle{}s line. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_af8078e95e12994ce402bd4a3880008db}\label{classgodot_1_1RGMap_af8078e95e12994ce402bd4a3880008db}} 
+Vector2 {\bfseries raycast\+\_\+vision} (Vector2 start, Vector2 end)
+\begin{DoxyCompactList}\small\item\em Cast ray from start to end and return position where vision is blocked by an obstacle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a71f82c2deaa4c5ea9ec5ca0e43176d4a}\label{classgodot_1_1RGMap_a71f82c2deaa4c5ea9ec5ca0e43176d4a}} 
+Vector2 {\bfseries raycast\+\_\+path} (Vector2 start, Vector2 end)
+\begin{DoxyCompactList}\small\item\em Cast ray from start to end and return position where path is blocked by an obstacle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgodot_1_1RGMap_aa0e99aed1a2d145536439b9a88b9ae30}{visibility\+\_\+between}} (Vector2 start, Vector2 end, int max\+\_\+distance)
+\begin{DoxyCompactList}\small\item\em Check if end point is visisble from start point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Editing}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a831fb561ec538f9dd241174079927b62}\label{classgodot_1_1RGMap_a831fb561ec538f9dd241174079927b62}} 
+void {\bfseries clean\+\_\+map} ()
+\begin{DoxyCompactList}\small\item\em Free all chunks and forget pathfinding exceptions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a6e4b777d25b43065a5e2092d084099ee}\label{classgodot_1_1RGMap_a6e4b777d25b43065a5e2092d084099ee}} 
+void {\bfseries place\+\_\+map} (\mbox{\hyperlink{classgodot_1_1RGMap}{RGMap}} $\ast$another\+\_\+map, Vector2 start)
+\begin{DoxyCompactList}\small\item\em Place another map inside this map. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_af9d1f6508a2ad834c7050d12759342fd}\label{classgodot_1_1RGMap_af9d1f6508a2ad834c7050d12759342fd}} 
+void {\bfseries draw\+\_\+line} (Vector2 start, Vector2 end, int value, bool allow\+\_\+diagonal=true)
+\begin{DoxyCompactList}\small\item\em Draw straight line using Bresenham\textquotesingle{}s line algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a17af65d748b00d68c9403e6c016508c6}\label{classgodot_1_1RGMap_a17af65d748b00d68c9403e6c016508c6}} 
+void {\bfseries draw\+\_\+rect} (Rect2 rect, int value)
+\begin{DoxyCompactList}\small\item\em Draw rect borders. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a04245c368f06c61fad83c181b91592a6}\label{classgodot_1_1RGMap_a04245c368f06c61fad83c181b91592a6}} 
+void {\bfseries fill\+\_\+rect} (Rect2 rect, int value)
+\begin{DoxyCompactList}\small\item\em Fill rect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgodot_1_1RGMap_ade0f1244d005d7440fe0d3731b863b36}{draw\+\_\+ellipse}} (Vector2 center, Vector2 radius, float start\+\_\+angle, float end\+\_\+angle, int value, bool allow\+\_\+diagonal=true)
+\begin{DoxyCompactList}\small\item\em Draw ellipse using Bresenham\textquotesingle{}s midpoint algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_acc0515cfaf9bbe8d65c9c374899fd8f8}\label{classgodot_1_1RGMap_acc0515cfaf9bbe8d65c9c374899fd8f8}} 
+void {\bfseries fill\+\_\+ellipse} (Vector2 center, Vector2 radius, float start\+\_\+angle, float end\+\_\+angle, int value)
+\begin{DoxyCompactList}\small\item\em Fill ellipse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a366bf4bff59dfef02e8997f1b67a1eb5}\label{classgodot_1_1RGMap_a366bf4bff59dfef02e8997f1b67a1eb5}} 
+void {\bfseries draw\+\_\+circle} (Vector2 center, float radius, int value, bool allow\+\_\+diagonal=true)
+\begin{DoxyCompactList}\small\item\em Draw circle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ade7a912c5bbcc60f398f16fd264dc464}\label{classgodot_1_1RGMap_ade7a912c5bbcc60f398f16fd264dc464}} 
+void {\bfseries fill\+\_\+circle} (Vector2 center, float radius, int value)
+\begin{DoxyCompactList}\small\item\em Fill circle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ae123137e6645f64ac5b8a5fba6598e0f}\label{classgodot_1_1RGMap_ae123137e6645f64ac5b8a5fba6598e0f}} 
+void {\bfseries draw\+\_\+arc} (Vector2 center, float radius, float start\+\_\+angle, float end\+\_\+angle, int value, bool allow\+\_\+diagonal=true)
+\begin{DoxyCompactList}\small\item\em Draw arc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ae51cf8952917fd840f67d62ce129df71}\label{classgodot_1_1RGMap_ae51cf8952917fd840f67d62ce129df71}} 
+void {\bfseries fill\+\_\+arc} (Vector2 center, float radius, float start\+\_\+angle, float end\+\_\+angle, int value)
+\begin{DoxyCompactList}\small\item\em Fill arc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Entities}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ae7a3643c8a808a0860b62dbd672d9311}\label{classgodot_1_1RGMap_ae7a3643c8a808a0860b62dbd672d9311}} 
+int {\bfseries add\+\_\+entity} (Vector2 position, bool passability, bool transparency)
+\begin{DoxyCompactList}\small\item\em Add new entity to the map. Returns id given to a new entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_adf896538adc5e7bcd5f8cb584fe0cf5c}\label{classgodot_1_1RGMap_adf896538adc5e7bcd5f8cb584fe0cf5c}} 
+void {\bfseries remove\+\_\+entity} (int id)
+\begin{DoxyCompactList}\small\item\em Remove entity from memory. The id of this entity will also be given to a new entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a8108573f1cf887b3f8263102ae2a3e39}\label{classgodot_1_1RGMap_a8108573f1cf887b3f8263102ae2a3e39}} 
+void {\bfseries move\+\_\+entity} (int id, Vector2 position)
+\begin{DoxyCompactList}\small\item\em Move entity to a new position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a9c399e3eecf2729291e145b8f330b18b}\label{classgodot_1_1RGMap_a9c399e3eecf2729291e145b8f330b18b}} 
+void {\bfseries set\+\_\+entity\+\_\+transparency} (int id, bool value)
+\begin{DoxyCompactList}\small\item\em Change entity transparency. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a30bc4ade51798b8208d17a33d890422d}\label{classgodot_1_1RGMap_a30bc4ade51798b8208d17a33d890422d}} 
+void {\bfseries set\+\_\+entity\+\_\+passability} (int id, bool value)
+\begin{DoxyCompactList}\small\item\em Change entity passability. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a4dff79eace0ca3c3468429d71bf7b1b0}\label{classgodot_1_1RGMap_a4dff79eace0ca3c3468429d71bf7b1b0}} 
+void {\bfseries set\+\_\+entity\+\_\+memorized} (int id, bool value)
+\begin{DoxyCompactList}\small\item\em Change memory status of entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a06d853a154fb9288f0eaa051cfd5c27f}\label{classgodot_1_1RGMap_a06d853a154fb9288f0eaa051cfd5c27f}} 
+bool {\bfseries is\+\_\+entity\+\_\+visible} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is visible. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aca51c1b240ff80577646ddbe74edf31b}\label{classgodot_1_1RGMap_aca51c1b240ff80577646ddbe74edf31b}} 
+bool {\bfseries is\+\_\+entity\+\_\+transparent} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is transparent;. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a712b3f1d95d44c000949829def9b6e91}\label{classgodot_1_1RGMap_a712b3f1d95d44c000949829def9b6e91}} 
+bool {\bfseries is\+\_\+entity\+\_\+passable} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is passable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_abe18e0c06bc081071a56d9d216186421}\label{classgodot_1_1RGMap_abe18e0c06bc081071a56d9d216186421}} 
+bool {\bfseries is\+\_\+entity\+\_\+memorized} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is memorized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a97be562b35c3daf51f49e134b93dbc9d}\label{classgodot_1_1RGMap_a97be562b35c3daf51f49e134b93dbc9d}} 
+bool {\bfseries is\+\_\+entity\+\_\+chunk\+\_\+loaded} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is on loaded chunk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a0a39e73b2e10796ffe72c590f3347989}\label{classgodot_1_1RGMap_a0a39e73b2e10796ffe72c590f3347989}} 
+bool {\bfseries is\+\_\+entity\+\_\+chunk\+\_\+rendered} (int id)
+\begin{DoxyCompactList}\small\item\em Check if entity is on rendered chunk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a000af6feda1d67bcc014fc52a5871e50}\label{classgodot_1_1RGMap_a000af6feda1d67bcc014fc52a5871e50}} 
+Vector2 {\bfseries get\+\_\+entity\+\_\+position} (int id)
+\begin{DoxyCompactList}\small\item\em Get position of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a1030a2d395f2773dba6950096d60fdf9}\label{classgodot_1_1RGMap_a1030a2d395f2773dba6950096d60fdf9}} 
+Pool\+Int\+Array {\bfseries get\+\_\+entities\+\_\+in\+\_\+position} (Vector2 position)
+\begin{DoxyCompactList}\small\item\em Find ids of all entities in position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a2742fb3f44caa25d078abe67feec9d77}\label{classgodot_1_1RGMap_a2742fb3f44caa25d078abe67feec9d77}} 
+Pool\+Int\+Array {\bfseries get\+\_\+entities\+\_\+in\+\_\+rect} (Rect2 rect)
+\begin{DoxyCompactList}\small\item\em Find ids of all entities in rect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a74c42c8fc68967a33b970c27457e9abf}\label{classgodot_1_1RGMap_a74c42c8fc68967a33b970c27457e9abf}} 
+Pool\+Int\+Array {\bfseries get\+\_\+entities\+\_\+in\+\_\+radius} (Vector2 position, int radius)
+\begin{DoxyCompactList}\small\item\em Find ids of all entities in radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a3101593907cf4928bbffc94a1e5f950f}\label{classgodot_1_1RGMap_a3101593907cf4928bbffc94a1e5f950f}} 
+Pool\+Int\+Array {\bfseries get\+\_\+entities\+\_\+in\+\_\+chunk} (int chunk\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Find ids of all entities in chunk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Saving and Loading}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a673f7f9e37f280588ccff46b1f46d38e}\label{classgodot_1_1RGMap_a673f7f9e37f280588ccff46b1f46d38e}} 
+Pool\+Int\+Array {\bfseries dump\+\_\+map\+\_\+data} ()
+\begin{DoxyCompactList}\small\item\em Save map data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aa2accf67955f8a3fb5fb30a649e6132d}\label{classgodot_1_1RGMap_aa2accf67955f8a3fb5fb30a649e6132d}} 
+void {\bfseries load\+\_\+map\+\_\+data} (Pool\+Int\+Array map\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Load map data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a3fba15a031ad1bd976b281cefe90bc79}\label{classgodot_1_1RGMap_a3fba15a031ad1bd976b281cefe90bc79}} 
+Vector2 {\bfseries chunk\+\_\+size} = Vector2(50,50)
+\begin{DoxyCompactList}\small\item\em Size of one chunk (Default\+: 50x50) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a4a8e96884242e6b83b2417d127a814a8}\label{classgodot_1_1RGMap_a4a8e96884242e6b83b2417d127a814a8}} 
+Vector2 {\bfseries size} = Vector2(3,3)
+\begin{DoxyCompactList}\small\item\em Size of the whole map in chunks (Default\+: 3x3) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgodot_1_1RGMap_ab097624100d11699293844ead170dab9}{load\+\_\+distance}} = 1
+\begin{DoxyCompactList}\small\item\em Number of chunks loaded around the player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgodot_1_1RGMap_aef65b060d5dbda0c47f00d2431921b49}{render\+\_\+distance}} = 1
+\begin{DoxyCompactList}\small\item\em Number of chunks rendered around the player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a092151ec6eda7be42513f17eb9ebfe1f}\label{classgodot_1_1RGMap_a092151ec6eda7be42513f17eb9ebfe1f}} 
+bool {\bfseries allow\+\_\+diagonal\+\_\+pathfinding} = true
+\begin{DoxyCompactList}\small\item\em Allow/\+Disallow diagonal pathfinding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ FOV}\par
+{\em Variables related to FOV calculation using RPAS algorithm }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ad6b261d97c61db7c511faa45905eea3d}\label{classgodot_1_1RGMap_ad6b261d97c61db7c511faa45905eea3d}} 
+float {\bfseries RPAS\+\_\+\+RADIUS\+\_\+\+FUDGE} = 1.\+0 / 3.\+0
+\begin{DoxyCompactList}\small\item\em How smooth the edges of the vision bubble are. Between 0 and 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_abfab661cb4533aee01402a3a7b1acb7b}\label{classgodot_1_1RGMap_abfab661cb4533aee01402a3a7b1acb7b}} 
+bool {\bfseries RPAS\+\_\+\+NOT\+\_\+\+VISIBLE\+\_\+\+BLOCKS\+\_\+\+VISION} = true
+\begin{DoxyCompactList}\small\item\em If this is false, some cells will unexpectedly be visible. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgodot_1_1RGMap_a98a2a7a44cf00487360159e89be37401}{RPAS\+\_\+\+RESTRICTIVENESS}} = 1
+\begin{DoxyCompactList}\small\item\em Determines how restrictive the algorithm is. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_ac743a18b1c2c2193e92aac307f1c1478}\label{classgodot_1_1RGMap_ac743a18b1c2c2193e92aac307f1c1478}} 
+bool {\bfseries RPAS\+\_\+\+VISIBLE\+\_\+\+ON\+\_\+\+EQUAL} = true
+\begin{DoxyCompactList}\small\item\em If false, an obstruction will obstruct its endpoints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Standard methods}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a07f1fef452ab37ad0bc6a5a46ed65834}\label{classgodot_1_1RGMap_a07f1fef452ab37ad0bc6a5a46ed65834}} 
+{\bfseries RGMap} ()
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_aa2f66b3c45e245abd84fca56ae7097a2}\label{classgodot_1_1RGMap_aa2f66b3c45e245abd84fca56ae7097a2}} 
+{\bfseries $\sim$\+RGMap} ()
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_a6a124ddb92eb57514b32f106babd40eb}\label{classgodot_1_1RGMap_a6a124ddb92eb57514b32f106babd40eb}} 
+void {\bfseries \+\_\+init} ()
+\item 
+\mbox{\Hypertarget{classgodot_1_1RGMap_af167d83fed1892421dd86f2089d45fef}\label{classgodot_1_1RGMap_af167d83fed1892421dd86f2089d45fef}} 
+static void {\bfseries \+\_\+register\+\_\+methods} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for managing maps for roguelike. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgodot_1_1RGMap_ade0f1244d005d7440fe0d3731b863b36}\label{classgodot_1_1RGMap_ade0f1244d005d7440fe0d3731b863b36}} 
+\index{godot::RGMap@{godot::RGMap}!draw\_ellipse@{draw\_ellipse}}
+\index{draw\_ellipse@{draw\_ellipse}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{draw\_ellipse()}{draw\_ellipse()}}
+{\footnotesize\ttfamily void RGMap\+::draw\+\_\+ellipse (\begin{DoxyParamCaption}\item[{Vector2}]{center,  }\item[{Vector2}]{radius,  }\item[{float}]{start\+\_\+angle,  }\item[{float}]{end\+\_\+angle,  }\item[{int}]{value,  }\item[{bool}]{allow\+\_\+diagonal = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Draw ellipse using Bresenham\textquotesingle{}s midpoint algorithm. 
+
+Tweaked version of code from here\+: \href{https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/midpoint-\/ellipse-\/drawing-\/algorithm/}} \mbox{\Hypertarget{classgodot_1_1RGMap_a0a0c87b9c381e59d241c298bbc7efd65}\label{classgodot_1_1RGMap_a0a0c87b9c381e59d241c298bbc7efd65}} 
+\index{godot::RGMap@{godot::RGMap}!find\_path@{find\_path}}
+\index{find\_path@{find\_path}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{find\_path()}{find\_path()}}
+{\footnotesize\ttfamily Pool\+Vector2\+Array RGMap\+::find\+\_\+path (\begin{DoxyParamCaption}\item[{Vector2}]{start,  }\item[{Vector2}]{end,  }\item[{Rect2}]{pathfinding\+\_\+zone,  }\item[{bool}]{exclude\+\_\+undiscovered = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Find path from start to end using A$\ast$ algorithm. 
+
+Returns Pool\+Vector2\+Array 
+\begin{DoxyParams}{Parameters}
+{\em start} & Start point \\
+\hline
+{\em end} & Target point \\
+\hline
+{\em pathfinding\+\_\+zone} & Rect2 zone where pathfinding is calculated \\
+\hline
+{\em exclude\+\_\+undiscovered} & True to exclude undiscovered cells (Fefault\+: False) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_a819587d899569b840a3f417aa9fd0c2f}\label{classgodot_1_1RGMap_a819587d899569b840a3f417aa9fd0c2f}} 
+\index{godot::RGMap@{godot::RGMap}!generate\_tileset@{generate\_tileset}}
+\index{generate\_tileset@{generate\_tileset}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{generate\_tileset()}{generate\_tileset()}}
+{\footnotesize\ttfamily Ref$<$ Tile\+Set $>$ RGMap\+::generate\+\_\+tileset (\begin{DoxyParamCaption}\item[{String}]{texture\+\_\+path,  }\item[{String}]{texture\+\_\+format }\end{DoxyParamCaption})}
+
+
+
+Generate Tileset for using with 2d Tilemap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+path} & A directory within the project where textures are stored (e.\+g \char`\"{}res\+://\+Textures/\char`\"{}) \\
+\hline
+{\em texture\+\_\+format} & A format of textures (e.\+g \char`\"{}.\+png\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_ad292a1d8e79b597004643fbcf2e588f8}\label{classgodot_1_1RGMap_ad292a1d8e79b597004643fbcf2e588f8}} 
+\index{godot::RGMap@{godot::RGMap}!get\_chunks\_to\_free@{get\_chunks\_to\_free}}
+\index{get\_chunks\_to\_free@{get\_chunks\_to\_free}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{get\_chunks\_to\_free()}{get\_chunks\_to\_free()}}
+{\footnotesize\ttfamily Pool\+Int\+Array RGMap\+::get\+\_\+chunks\+\_\+to\+\_\+free (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Get ids of chunks that are loaded, but not needed anymore because player is too far. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses load\+\_\+distance parameter to define the radius \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_a251886c67ff84873042b83e836585203}\label{classgodot_1_1RGMap_a251886c67ff84873042b83e836585203}} 
+\index{godot::RGMap@{godot::RGMap}!get\_chunks\_to\_hide@{get\_chunks\_to\_hide}}
+\index{get\_chunks\_to\_hide@{get\_chunks\_to\_hide}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{get\_chunks\_to\_hide()}{get\_chunks\_to\_hide()}}
+{\footnotesize\ttfamily Pool\+Int\+Array RGMap\+::get\+\_\+chunks\+\_\+to\+\_\+hide (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Get ids of chunks that are rendered, but not needed anymore because player is too far. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses render\+\_\+distance parameter to define the radius \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_af81558e0a4b18590aea6f385f6fa345f}\label{classgodot_1_1RGMap_af81558e0a4b18590aea6f385f6fa345f}} 
+\index{godot::RGMap@{godot::RGMap}!get\_chunks\_to\_load@{get\_chunks\_to\_load}}
+\index{get\_chunks\_to\_load@{get\_chunks\_to\_load}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{get\_chunks\_to\_load()}{get\_chunks\_to\_load()}}
+{\footnotesize\ttfamily Pool\+Int\+Array RGMap\+::get\+\_\+chunks\+\_\+to\+\_\+load (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Get ids of chunks around player that needs to be loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses load\+\_\+distance parameter to define the radius Skips chunks that were already loaded \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_a742bfc37a17e36f017d52f2bac8b698f}\label{classgodot_1_1RGMap_a742bfc37a17e36f017d52f2bac8b698f}} 
+\index{godot::RGMap@{godot::RGMap}!get\_chunks\_to\_render@{get\_chunks\_to\_render}}
+\index{get\_chunks\_to\_render@{get\_chunks\_to\_render}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{get\_chunks\_to\_render()}{get\_chunks\_to\_render()}}
+{\footnotesize\ttfamily Pool\+Int\+Array RGMap\+::get\+\_\+chunks\+\_\+to\+\_\+render (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Get ids of chunks around player that needs to be rendered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses render\+\_\+distance parameter to define the radius Skips chunks that were already rendered \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_af5df74ee697c11151876e230fcfc2c09}\label{classgodot_1_1RGMap_af5df74ee697c11151876e230fcfc2c09}} 
+\index{godot::RGMap@{godot::RGMap}!get\_line@{get\_line}}
+\index{get\_line@{get\_line}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{get\_line()}{get\_line()}}
+{\footnotesize\ttfamily Pool\+Vector2\+Array RGMap\+::get\+\_\+line (\begin{DoxyParamCaption}\item[{Vector2}]{start,  }\item[{Vector2}]{end,  }\item[{bool}]{allow\+\_\+diagonal = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Get a set of points in Bresenham\textquotesingle{}s line. 
+
+Based on Python implementation from here\+: \href{http://www.roguebasin.com/index.php/Bresenham\%27s_Line_Algorithm}{\texttt{ http\+://www.\+roguebasin.\+com/index.\+php/\+Bresenham\%27s\+\_\+\+Line\+\_\+\+Algorithm}} \mbox{\Hypertarget{classgodot_1_1RGMap_af97b719797501ed8525d3aad37ed83d7}\label{classgodot_1_1RGMap_af97b719797501ed8525d3aad37ed83d7}} 
+\index{godot::RGMap@{godot::RGMap}!request\_chunks\_render@{request\_chunks\_render}}
+\index{request\_chunks\_render@{request\_chunks\_render}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{request\_chunks\_render()}{request\_chunks\_render()}}
+{\footnotesize\ttfamily void RGMap\+::request\+\_\+chunks\+\_\+render (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Request chunk render/hide depending on player\+\_\+position and render\+\_\+distance. 
+
+Emits \char`\"{}chunks\+\_\+render\+\_\+requested\char`\"{} and \char`\"{}chunks\+\_\+hide\+\_\+requested\char`\"{} signals Will produce the same result until chunks will be rendered/hidden from other script Does nothing if all needed chunks are rendered and all unneeded chunks are hidden 
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses render\+\_\+distance parameter to define the radius \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_a2c565c4b9124368ebdaae851afd13585}\label{classgodot_1_1RGMap_a2c565c4b9124368ebdaae851afd13585}} 
+\index{godot::RGMap@{godot::RGMap}!request\_chunks\_update@{request\_chunks\_update}}
+\index{request\_chunks\_update@{request\_chunks\_update}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{request\_chunks\_update()}{request\_chunks\_update()}}
+{\footnotesize\ttfamily void RGMap\+::request\+\_\+chunks\+\_\+update (\begin{DoxyParamCaption}\item[{Vector2}]{player\+\_\+position }\end{DoxyParamCaption})}
+
+
+
+Request chunk load/unload depending on player\+\_\+position and load\+\_\+distance. 
+
+Emits \char`\"{}chunks\+\_\+load\+\_\+requested\char`\"{} and \char`\"{}chunks\+\_\+free\+\_\+requested\char`\"{} signals Will produce the same result until chunks will be loaded/freed from other script Does nothing if all needed chunks are loaded and all unneeded chunks are freed 
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+position} & Vector2 position of the player Uses load\+\_\+distance parameter to define the radius \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_a637933f2b9bb946f4a7b295fddaaf452}\label{classgodot_1_1RGMap_a637933f2b9bb946f4a7b295fddaaf452}} 
+\index{godot::RGMap@{godot::RGMap}!show\_pathfinding\_exceptions@{show\_pathfinding\_exceptions}}
+\index{show\_pathfinding\_exceptions@{show\_pathfinding\_exceptions}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{show\_pathfinding\_exceptions()}{show\_pathfinding\_exceptions()}}
+{\footnotesize\ttfamily Pool\+Vector2\+Array RGMap\+::show\+\_\+pathfinding\+\_\+exceptions (\begin{DoxyParamCaption}\item[{bool}]{exception\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Show all pathfinding exceptions of a type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em exception\+\_\+type} & true for allowed cells, false for disallowed cells \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgodot_1_1RGMap_aa0e99aed1a2d145536439b9a88b9ae30}\label{classgodot_1_1RGMap_aa0e99aed1a2d145536439b9a88b9ae30}} 
+\index{godot::RGMap@{godot::RGMap}!visibility\_between@{visibility\_between}}
+\index{visibility\_between@{visibility\_between}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{visibility\_between()}{visibility\_between()}}
+{\footnotesize\ttfamily bool RGMap\+::visibility\+\_\+between (\begin{DoxyParamCaption}\item[{Vector2}]{start,  }\item[{Vector2}]{end,  }\item[{int}]{max\+\_\+distance }\end{DoxyParamCaption})}
+
+
+
+Check if end point is visisble from start point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Start point \\
+\hline
+{\em end} & Target point \\
+\hline
+{\em max\+\_\+distance} & Maximum distance at which points are visible \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classgodot_1_1RGMap_ab097624100d11699293844ead170dab9}\label{classgodot_1_1RGMap_ab097624100d11699293844ead170dab9}} 
+\index{godot::RGMap@{godot::RGMap}!load\_distance@{load\_distance}}
+\index{load\_distance@{load\_distance}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{load\_distance}{load\_distance}}
+{\footnotesize\ttfamily int godot\+::\+RGMap\+::load\+\_\+distance = 1}
+
+
+
+Number of chunks loaded around the player. 
+
+Excluding the chunk where player stands Default\+: 1 (3x3 grid) \mbox{\Hypertarget{classgodot_1_1RGMap_aef65b060d5dbda0c47f00d2431921b49}\label{classgodot_1_1RGMap_aef65b060d5dbda0c47f00d2431921b49}} 
+\index{godot::RGMap@{godot::RGMap}!render\_distance@{render\_distance}}
+\index{render\_distance@{render\_distance}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{render\_distance}{render\_distance}}
+{\footnotesize\ttfamily int godot\+::\+RGMap\+::render\+\_\+distance = 1}
+
+
+
+Number of chunks rendered around the player. 
+
+Excluding the chunk where player stands Default\+: 1 (3x3 grid) \mbox{\Hypertarget{classgodot_1_1RGMap_a98a2a7a44cf00487360159e89be37401}\label{classgodot_1_1RGMap_a98a2a7a44cf00487360159e89be37401}} 
+\index{godot::RGMap@{godot::RGMap}!RPAS\_RESTRICTIVENESS@{RPAS\_RESTRICTIVENESS}}
+\index{RPAS\_RESTRICTIVENESS@{RPAS\_RESTRICTIVENESS}!godot::RGMap@{godot::RGMap}}
+\doxysubsubsection{\texorpdfstring{RPAS\_RESTRICTIVENESS}{RPAS\_RESTRICTIVENESS}}
+{\footnotesize\ttfamily int godot\+::\+RGMap\+::\+RPAS\+\_\+\+RESTRICTIVENESS = 1}
+
+
+
+Determines how restrictive the algorithm is. 
+
+0 -\/ if you have a line to the near, center, or far, it will return as visible ~\newline
+ 1 -\/ if you have a line to the center and at least one other corner it will return as visible ~\newline
+ 2 -\/ if you have a line to all the near, center, and far, it will return as visible 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/rgmap.\+h\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/cells.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/chunks.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/editing.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/entities.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/rgmap.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/rpas.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/tiles.\+cpp\item 
+/home/data/\+Documents/\+Gamedev/\+Godot/\+GDNative/godot-\/rgmap/addons/godot-\/rgmap/native/src/view.\+cpp\end{DoxyCompactItemize}
