@@ -1,7 +1,7 @@
-[submodule "godot-cpp"]
-	path = godot-cpp
+[submodule "addons/godot-rgmap/native/godot-cpp"]
+	path = addons/godot-rgmap/native/godot-cpp
 	url = https://github.com/godotengine/godot-cpp
 	branch = 3.x
-[submodule "docs/doxygen-awesome-css"]
-	path = docs/doxygen-awesome-css
+[submodule "addons/godot-rgmap/docs/doxygen-awesome-css"]
+	path = addons/godot-rgmap/docs/doxygen-awesome-css
 	url = https://github.com/jothepro/doxygen-awesome-css.git
