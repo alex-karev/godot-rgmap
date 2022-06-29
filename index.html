@@ -168,19 +168,22 @@ Example</h1>
 Installation</h1>
 <p >Requirements:</p>
 <ul>
-<li>Windows or Linux</li>
+<li>Windows/Linux/Mac</li>
 <li>Godot 3.4.4 or later. May work on earlier versions, but not tested. No Godot 4 support at the moment</li>
 </ul>
 <p >Install it the same way as a regular editor plugin. Copy the contents of <code>addons/godot-rgmap</code> into the same folder in your project.</p>
 <blockquote class="doxtable">
-<p >&zwj;Since it is just a new NativeScript class, activation/deactivation from project settings doesn't work. The nodes of this plugin are always available </p>
+<p >&zwj;Since it only adds a new NativeScript class, activation/deactivation of plugin from project settings doesn't work. The nodes added by this plugin are always available </p>
 </blockquote>
 <blockquote class="doxtable">
-<p >&zwj;Currently there are only precompiled binaries for Windows and Linux, but it can be compiled for any other platform (e.g. OSX). Follow instructions in <em>Building</em> section </p>
+<p >&zwj;Currently there are only precompiled binaries for Windows, Linux and OSX, but it can be compiled for any other platform (e.g. Android). Follow instructions in <em>Building</em> section </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Building</h1>
 <p >You will need: C++ compiler and SCons installed in your system</p>
+<blockquote class="doxtable">
+<p >&zwj;Linux users can simply run <code>compile.sh</code> in <code>/addons/godot-rgmap/native</code> directory </p>
+</blockquote>
 <ol type="1">
 <li>Generate and compile bindings:</li>
 </ol>
@@ -206,7 +209,7 @@ TODO</h1>
 <li>[X] Chunk system</li>
 <li>[X] Entity tracking system</li>
 <li>[X] Change project structure and convert it to plugin (add plugin.gd)</li>
-<li>[ ] Write bash script for batch compiling binaries for Linux/Windows/Mac</li>
+<li>[X] Write bash script for batch compiling binaries for Linux/Windows/Mac</li>
 <li>[ ] Custom properties of tiles</li>
 <li>[ ] Tutorial</li>
 <li>[ ] Add node for rendering RGMap in 2d</li>
