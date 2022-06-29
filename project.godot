@@ -24,6 +24,10 @@ config/name="RGMap - demo"
 run/main_scene="res://addons/godot-rgmap/demo/Main.tscn"
 config/icon="res://addons/godot-rgmap/demo/icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-rgmap/plugin.cfg" )
+
 [global]
 
 fps=false

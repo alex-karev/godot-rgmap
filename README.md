@@ -1,4 +1,4 @@
-# Godot <ins>R</ins>oguelike <ins>G</ins>ame <ins>M</ins>ap System (RGMap)
+# Godot Roguelike Game Map System (RGMap)
 
 A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV
 
@@ -97,13 +97,25 @@ Also, you can learn more from demo-project
 ## Example
 You can find an example of usage in demo-project directory
 
-## Compilation
+## Installation
+Requirements:
+
+* Windows or Linux
+* Godot 3.4.4 or later. May work on earlier versions, but not tested. No Godot 4 support at the moment
+
+Install it the same way as a regular editor plugin. Copy the contents of `addons/godot-rgmap` into the same folder in your project. 
+
+> Since it is just a new NativeScript class, zctivation/deactivation from project settings doesn't work. The nodes of this plugin are always available
+
+> Currently there are only precompiled binaries for Windows and Linux, but it can be compiled for any other platform (e.g. OSX). Follow instructions in *Building* section
+
+## Building
 You will need: C++ compiler and SCons installed in your system
 
 1. Generate and compile bindings:
 
 ```
-cd godot-cpp
+cd addons/godot-rgmap/native/godot-cpp
 scons platform=<platform> generate_bindings=yes
 cd ..
 ```
@@ -111,11 +123,10 @@ cd ..
 2. Compile project
 
 ```
-mkdir bin
+cd addons/godot-rgmap/native
 scons platform=<platform>
 ```
 
-3. Copy everything from /bin directory to your godot project
 4. Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory
 
 See more about using GDNative modules here: <https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module>
@@ -127,8 +138,8 @@ See more about using GDNative modules here: <https://docs.godotengine.org/en/sta
 - [X] Better error handling
 - [X] Chunk system
 - [X] Entity tracking system
+- [X] Change project structure and convert it to plugin (add plugin.gd)
 - [ ] Write bash script for batch compiling binaries for Linux/Windows/Mac
-- [ ] Change project structure and convert it to plugin (add plugin.gd)
 - [ ] Custom properties of tiles
 - [ ] Tutorial
 - [ ] Add node for rendering RGMap in 2d
