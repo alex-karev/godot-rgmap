@@ -4,8 +4,6 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 
 <img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo.gif">
 
-<img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif">
-
 ## Table of Contents
 
 1. [Features](#features)
@@ -17,6 +15,8 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 7. [References](#references)
 8. [Contributing](#contributing)
 9. [License](#license)
+
+<img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif">
 
 ## Features
 * **FOV** calculation using RPAS algorithm
@@ -97,12 +97,12 @@ func _on_RGMap_chunks_load_requested(ids):
     rgmap.calculate_fov(controller.player_position, 30) # 30 is a radius
 ```
 
-Please see [Generator.gd](https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd) 
+Please see [Generator.gd](https://github.com/alex-karev/godot-rgmap/blob/main/addons/godot-rgmap/demo/Generator.gd) 
 for more detailed example
 
-There are a lot of functions available in RGMap node. You can read more about each function and variable  here:
+There are a lot of functions available in RGMap node. You can read more about each function and variable in documentation:
 
-<https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html>
+[RGMap Class Documentation](https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html)
 
 Also, you can learn more from demo-project
 
@@ -150,7 +150,7 @@ scons platform=<platform>
 
 4. Edit `/addons/godot-rgmap/native/RGMap.gdnlib` manually or using Godot Editor. Link newly compiled binaries in `/addons/godot-rgmap/native/bin` directory
 
-See more about using GDNative modules here: <https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module>
+See more about using GDNative modules in [Godot Docs](https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module)
 
 ## TODO
 - [X] Create demo project
