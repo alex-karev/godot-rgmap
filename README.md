@@ -128,6 +128,7 @@ You will need: C++ compiler and SCons installed in your system
 
 ```
 git clone https://github.com/alex-karev/godot-rgmap.git
+cd godot-rgmap
 git submodule update --init --recursive
 ```
 
@@ -141,10 +142,9 @@ cd ..
 
 > After this step Linux users can simply run `compile.sh` in `/addons/godot-rgmap/native` directory to automatically compile binaries for Window, Linux and OSX
 
-3. Compile project
+3. Compile project by running scons in `/addons/godot-rgmap/native` directory
 
 ```
-cd addons/godot-rgmap/native
 scons platform=<platform>
 ```
 
