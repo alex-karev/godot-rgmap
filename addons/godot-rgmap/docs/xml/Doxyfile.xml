@@ -164,7 +164,7 @@
   <option  id='ALPHABETICAL_INDEX' default='no' type='bool'><value>NO</value></option>
   <option  id='IGNORE_PREFIX' default='yes' type='stringlist'>
   </option>
-  <option  id='GENERATE_HTML' default='no' type='bool'><value>NO</value></option>
+  <option  id='GENERATE_HTML' default='yes' type='bool'><value>YES</value></option>
   <option  id='HTML_OUTPUT' default='no' type='string'><value><![CDATA[./]]></value></option>
   <option  id='HTML_FILE_EXTENSION' default='yes' type='string'><value><![CDATA[.html]]></value></option>
   <option  id='HTML_HEADER' default='yes' type='string'><value><![CDATA[]]></value></option>
@@ -258,7 +258,7 @@
   <option  id='RTF_HYPERLINKS' default='yes' type='bool'><value>NO</value></option>
   <option  id='RTF_STYLESHEET_FILE' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='RTF_EXTENSIONS_FILE' default='yes' type='string'><value><![CDATA[]]></value></option>
-  <option  id='GENERATE_MAN' default='no' type='bool'><value>YES</value></option>
+  <option  id='GENERATE_MAN' default='yes' type='bool'><value>NO</value></option>
   <option  id='MAN_OUTPUT' default='yes' type='string'><value><![CDATA[man]]></value></option>
   <option  id='MAN_EXTENSION' default='yes' type='string'><value><![CDATA[.3]]></value></option>
   <option  id='MAN_SUBDIR' default='yes' type='string'><value><![CDATA[]]></value></option>
