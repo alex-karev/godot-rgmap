@@ -1,0 +1,2786 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="classgodot_1_1RGMap" kind="class" language="C++" prot="public">
+    <compoundname>godot::RGMap</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Reference</basecompoundref>
+    <includes refid="rgmap_8h" local="no">rgmap.h</includes>
+    <innerclass refid="structgodot_1_1RGMap_1_1CellAngles" prot="private">godot::RGMap::CellAngles</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1Chunk" prot="private">godot::RGMap::Chunk</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1Entity" prot="private">godot::RGMap::Entity</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1RGTile" prot="private">godot::RGMap::RGTile</innerclass>
+      <sectiondef kind="user-defined">
+      <header>FOV</header>
+      <description><para>Variables related to FOV calculation using RPAS algorithm </para>
+</description>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float godot::RGMap::RPAS_RADIUS_FUDGE</definition>
+        <argsstring></argsstring>
+        <name>RPAS_RADIUS_FUDGE</name>
+        <qualifiedname>godot::RGMap::RPAS_RADIUS_FUDGE</qualifiedname>
+        <initializer>= 1.0 / 3.0</initializer>
+        <briefdescription>
+<para>How smooth the edges of the vision bubble are. Between 0 and 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="121" column="11" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION</definition>
+        <argsstring></argsstring>
+        <name>RPAS_NOT_VISIBLE_BLOCKS_VISION</name>
+        <qualifiedname>godot::RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>If this is false, some cells will unexpectedly be visible. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="123" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int godot::RGMap::RPAS_RESTRICTIVENESS</definition>
+        <argsstring></argsstring>
+        <name>RPAS_RESTRICTIVENESS</name>
+        <qualifiedname>godot::RGMap::RPAS_RESTRICTIVENESS</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Determines how restrictive the algorithm is. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>0 - if you have a line to the near, center, or far, it will return as visible <linebreak/>
+ 1 - if you have a line to the center and at least one other corner it will return as visible <linebreak/>
+ 2 - if you have a line to all the near, center, and far, it will return as visible </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="130" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::RPAS_VISIBLE_ON_EQUAL</definition>
+        <argsstring></argsstring>
+        <name>RPAS_VISIBLE_ON_EQUAL</name>
+        <qualifiedname>godot::RGMap::RPAS_VISIBLE_ON_EQUAL</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>If false, an obstruction will obstruct its endpoints. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="132" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Signals</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1afd1aae74dc064d42ccf5b934472294cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray godot::RGMap::chunks_load_requested</definition>
+        <argsstring>()</argsstring>
+        <name>chunks_load_requested</name>
+        <qualifiedname>godot::RGMap::chunks_load_requested</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when chunks need to be loaded. Emited on calling request_chunks_update function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="141" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a2d061a66f56eb6392e41f4f9028d16fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray godot::RGMap::chunks_free_requested</definition>
+        <argsstring>()</argsstring>
+        <name>chunks_free_requested</name>
+        <qualifiedname>godot::RGMap::chunks_free_requested</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when chunks need to be freed. Emited on calling request_chunks_update function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="143" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="143" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1abf1c8ce2971af113a8513d1b018e07cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray godot::RGMap::chunks_render_requested</definition>
+        <argsstring>()</argsstring>
+        <name>chunks_render_requested</name>
+        <qualifiedname>godot::RGMap::chunks_render_requested</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when chunks need to be rendered. Emited on calling request_chunks_render function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="145" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="145" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ab011bf3701f536742a9b37530c327312" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray godot::RGMap::chunks_hide_requested</definition>
+        <argsstring>()</argsstring>
+        <name>chunks_hide_requested</name>
+        <qualifiedname>godot::RGMap::chunks_hide_requested</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when rendered chunks need to be hidden. Emited on calling request_chunks_render function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="147" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="147" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a8f3bb2de68b7d4a239516015a86db8db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int godot::RGMap::chunk_loaded</definition>
+        <argsstring>()</argsstring>
+        <name>chunk_loaded</name>
+        <qualifiedname>godot::RGMap::chunk_loaded</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when is loaded for the first time. Emited on calling load_chunk function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="149" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a74f8456f280ddaa8a3f3b3161a6ad63f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int godot::RGMap::chunk_freed</definition>
+        <argsstring>()</argsstring>
+        <name>chunk_freed</name>
+        <qualifiedname>godot::RGMap::chunk_freed</qualifiedname>
+        <briefdescription>
+<para><bold>Signal.</bold> Emited when chunk is freed from memory. Emited on calling free_chunk function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="151" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Standard methods</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a07f1fef452ab37ad0bc6a5a46ed65834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RGMap::RGMap</definition>
+        <argsstring>()</argsstring>
+        <name>RGMap</name>
+        <qualifiedname>godot::RGMap::RGMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="158" column="5" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aa2f66b3c45e245abd84fca56ae7097a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RGMap::~RGMap</definition>
+        <argsstring>()</argsstring>
+        <name>~RGMap</name>
+        <qualifiedname>godot::RGMap::~RGMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="159" column="5" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="125" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a6a124ddb92eb57514b32f106babd40eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::_init</definition>
+        <argsstring>()</argsstring>
+        <name>_init</name>
+        <qualifiedname>godot::RGMap::_init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="160" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="127" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af167d83fed1892421dd86f2089d45fef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::_register_methods</definition>
+        <argsstring>()</argsstring>
+        <name>_register_methods</name>
+        <qualifiedname>godot::RGMap::_register_methods</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="157" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="9" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Tiles</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a55c55e1a5e1386093860a634c33cee3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::add_tile</definition>
+        <argsstring>(String name, String display_name, bool passable, bool transparent)</argsstring>
+        <name>add_tile</name>
+        <qualifiedname>godot::RGMap::add_tile</qualifiedname>
+        <param>
+          <type>String</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>display_name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>passable</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transparent</declname>
+        </param>
+        <briefdescription>
+<para>Add new tile. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="168" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="6" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a0a6742a8d89a003db699ba02cd2f965a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::get_tiles_count</definition>
+        <argsstring>()</argsstring>
+        <name>get_tiles_count</name>
+        <qualifiedname>godot::RGMap::get_tiles_count</qualifiedname>
+        <briefdescription>
+<para>Get number of tiles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="170" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ac7e85ab8ca5c1b3580a773b35a8386fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::get_tile_index</definition>
+        <argsstring>(String name)</argsstring>
+        <name>get_tile_index</name>
+        <qualifiedname>godot::RGMap::get_tile_index</qualifiedname>
+        <param>
+          <type>String</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Get tile index by name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="172" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="18" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a9d0347ce24c61097eaca4292816b7ce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String RGMap::get_tile_name</definition>
+        <argsstring>(int index)</argsstring>
+        <name>get_tile_name</name>
+        <qualifiedname>godot::RGMap::get_tile_name</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Get tile name (unique) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="174" column="12" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a30d5d2ff82cbb7b163b4f2f960180539" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String RGMap::get_tile_display_name</definition>
+        <argsstring>(int index)</argsstring>
+        <name>get_tile_display_name</name>
+        <qualifiedname>godot::RGMap::get_tile_display_name</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Get tile display name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="176" column="12" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ad407df53a5d381f958965c34acae88b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_tile_passable</definition>
+        <argsstring>(int index)</argsstring>
+        <name>is_tile_passable</name>
+        <qualifiedname>godot::RGMap::is_tile_passable</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Check if tile is passable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="178" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a217ae3cae06583ad6e0eaf4c4a7ccf36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_tile_transparent</definition>
+        <argsstring>(int index)</argsstring>
+        <name>is_tile_transparent</name>
+        <qualifiedname>godot::RGMap::is_tile_transparent</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Check if tile is transparent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="180" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a819587d899569b840a3f417aa9fd0c2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Ref&lt; TileSet &gt;</type>
+        <definition>Ref&lt; TileSet &gt; RGMap::generate_tileset</definition>
+        <argsstring>(String texture_path, String texture_format)</argsstring>
+        <name>generate_tileset</name>
+        <qualifiedname>godot::RGMap::generate_tileset</qualifiedname>
+        <param>
+          <type>String</type>
+          <declname>texture_path</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>texture_format</declname>
+        </param>
+        <briefdescription>
+<para>Generate Tileset for using with 2d Tilemap. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texture_path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A directory within the project where textures are stored (e.g &quot;res://Textures/&quot;) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>texture_format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A format of textures (e.g &quot;.png&quot;) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="186" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp" bodystart="31" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Chunks</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a17d00e1acf01120ad1324704960ea528" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::get_chunk_index</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_chunk_index</name>
+        <qualifiedname>godot::RGMap::get_chunk_index</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Get index of chunk which contains a given position. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="194" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="11" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aa042aaa2c6cbc4f67473574c4861cbf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>Vector2 RGMap::chunk_index_int_to_v2</definition>
+        <argsstring>(int index)</argsstring>
+        <name>chunk_index_int_to_v2</name>
+        <qualifiedname>godot::RGMap::chunk_index_int_to_v2</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Convert index of chunk from int to Vector2 format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="196" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a3ede385c9811d5c189943e42416af746" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::chunk_index_v2_to_int</definition>
+        <argsstring>(Vector2 index)</argsstring>
+        <name>chunk_index_v2_to_int</name>
+        <qualifiedname>godot::RGMap::chunk_index_v2_to_int</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Convert index of chunk from Vector2 to int format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="198" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ac47d550255055871d8b15ea21ccd7227" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_chunk_in_bounds</definition>
+        <argsstring>(int index)</argsstring>
+        <name>is_chunk_in_bounds</name>
+        <qualifiedname>godot::RGMap::is_chunk_in_bounds</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Check if chunk is in bounds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="200" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af9b781ce0c7fe4ccefa66fdcace66a0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_chunk_loaded</definition>
+        <argsstring>(int index)</argsstring>
+        <name>is_chunk_loaded</name>
+        <qualifiedname>godot::RGMap::is_chunk_loaded</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Check if chunk is loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="202" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::load_chunk</definition>
+        <argsstring>(int index, PoolIntArray data=PoolIntArray())</argsstring>
+        <name>load_chunk</name>
+        <qualifiedname>godot::RGMap::load_chunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>PoolIntArray</type>
+          <declname>data</declname>
+          <defval>PoolIntArray()</defval>
+        </param>
+        <briefdescription>
+<para>Load saved chunk to memory or generate a new chunk. &quot;data&quot; argument is optional. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="204" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="32" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::dump_chunk_data</definition>
+        <argsstring>(int index)</argsstring>
+        <name>dump_chunk_data</name>
+        <qualifiedname>godot::RGMap::dump_chunk_data</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns all cell data for chunk as PoolIntArray. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="206" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="65" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a97e1bbbce76aca2a37e08db6d793907e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::free_chunk</definition>
+        <argsstring>(int index)</argsstring>
+        <name>free_chunk</name>
+        <qualifiedname>godot::RGMap::free_chunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Free chunk from memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="208" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="80" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af16dce1ae917a6a42c237d7e7eebda92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::reset_chunk</definition>
+        <argsstring>(int index)</argsstring>
+        <name>reset_chunk</name>
+        <qualifiedname>godot::RGMap::reset_chunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Clear all cell data in chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="210" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="94" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a12e1b530faa11809a3fb965924166324" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_chunk_rendered</definition>
+        <argsstring>(int index)</argsstring>
+        <name>is_chunk_rendered</name>
+        <qualifiedname>godot::RGMap::is_chunk_rendered</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Check if chunk is rendered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="212" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="105" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a05420fcbc688769a4f97f4e068036609" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_chunk_rendered</definition>
+        <argsstring>(int index, bool value)</argsstring>
+        <name>set_chunk_rendered</name>
+        <qualifiedname>godot::RGMap::set_chunk_rendered</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set rendering status of chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="214" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="112" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aaff3bdcfb3484ab4807bf536aa126e11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_loaded_chunks</definition>
+        <argsstring>()</argsstring>
+        <name>get_loaded_chunks</name>
+        <qualifiedname>godot::RGMap::get_loaded_chunks</qualifiedname>
+        <briefdescription>
+<para>Get ids of loaded chunks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="216" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="119" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af81558e0a4b18590aea6f385f6fa345f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_chunks_to_load</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>get_chunks_to_load</name>
+        <qualifiedname>godot::RGMap::get_chunks_to_load</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Get ids of chunks around player that needs to be loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses load_distance parameter to define the radius Skips chunks that were already loaded </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="223" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="140" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ad292a1d8e79b597004643fbcf2e588f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_chunks_to_free</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>get_chunks_to_free</name>
+        <qualifiedname>godot::RGMap::get_chunks_to_free</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Get ids of chunks that are loaded, but not needed anymore because player is too far. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses load_distance parameter to define the radius </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="229" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="148" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a2c565c4b9124368ebdaae851afd13585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::request_chunks_update</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>request_chunks_update</name>
+        <qualifiedname>godot::RGMap::request_chunks_update</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Request chunk load/unload depending on player_position and load_distance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Emits &quot;chunks_load_requested&quot; and &quot;chunks_free_requested&quot; signals Will produce the same result until chunks will be loaded/freed from other script Does nothing if all needed chunks are loaded and all unneeded chunks are freed <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses load_distance parameter to define the radius </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="237" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="163" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a2e9616170d0d2bb4e1e5946c4f9f8d60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_rendered_chunks</definition>
+        <argsstring>()</argsstring>
+        <name>get_rendered_chunks</name>
+        <qualifiedname>godot::RGMap::get_rendered_chunks</qualifiedname>
+        <briefdescription>
+<para>Get ids of rendered chunks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="239" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="170" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a742bfc37a17e36f017d52f2bac8b698f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_chunks_to_render</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>get_chunks_to_render</name>
+        <qualifiedname>godot::RGMap::get_chunks_to_render</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Get ids of chunks around player that needs to be rendered. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses render_distance parameter to define the radius Skips chunks that were already rendered </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="246" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="180" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a251886c67ff84873042b83e836585203" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_chunks_to_hide</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>get_chunks_to_hide</name>
+        <qualifiedname>godot::RGMap::get_chunks_to_hide</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Get ids of chunks that are rendered, but not needed anymore because player is too far. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses render_distance parameter to define the radius </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="252" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="190" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af97b719797501ed8525d3aad37ed83d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::request_chunks_render</definition>
+        <argsstring>(Vector2 player_position)</argsstring>
+        <name>request_chunks_render</name>
+        <qualifiedname>godot::RGMap::request_chunks_render</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>player_position</declname>
+        </param>
+        <briefdescription>
+<para>Request chunk render/hide depending on player_position and render_distance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Emits &quot;chunks_render_requested&quot; and &quot;chunks_hide_requested&quot; signals Will produce the same result until chunks will be rendered/hidden from other script Does nothing if all needed chunks are rendered and all unneeded chunks are hidden <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector2 position of the player Uses render_distance parameter to define the radius </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="260" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="206" bodyend="211"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Cells</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ab201f09297e368756c390a122a94fc97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::get_local_index</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_local_index</name>
+        <qualifiedname>godot::RGMap::get_local_index</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Get local index of cell within a chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="268" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="6" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a0608386ad66cec9e4257808022da5038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::get_value</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_value</name>
+        <qualifiedname>godot::RGMap::get_value</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Get value of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="270" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="19" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a4113d609f2d8b8ae8986b5261d72589a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String RGMap::get_name</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_name</name>
+        <qualifiedname>godot::RGMap::get_name</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Get name of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="272" column="12" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a4016e0965171c95fd867bd7eb01b65d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String RGMap::get_display_name</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_display_name</name>
+        <qualifiedname>godot::RGMap::get_display_name</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Get display name of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="274" column="12" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a37429fe0e0426653916667725477e01b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_in_bounds</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_in_bounds</name>
+        <qualifiedname>godot::RGMap::is_in_bounds</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if cell is in bounds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="276" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="14" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a9722afa05ac0d4efe1146a9f8b70908b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_transparent</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_transparent</name>
+        <qualifiedname>godot::RGMap::is_transparent</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if cell is transparent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="278" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="33" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a6bc13a61c915adcfcd1c74d75b9a786a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_passable</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_passable</name>
+        <qualifiedname>godot::RGMap::is_passable</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if cell is passable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="280" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a2ae7a1232b97d00c21a38a1073cb7b53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_visible</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_visible</name>
+        <qualifiedname>godot::RGMap::is_visible</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if cell is visible. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="282" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a735635c94c0913ffb0198dd51681986f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_memorized</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_memorized</name>
+        <qualifiedname>godot::RGMap::is_memorized</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if cell is memorized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="284" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="50" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a90bbf21a0a0084bc3cada939c5b84848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_pathfinding_allowed</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>is_pathfinding_allowed</name>
+        <qualifiedname>godot::RGMap::is_pathfinding_allowed</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Check if pathfinding on this cell is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="286" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="58" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1abf819377354f5deaf670605175243442" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_value</definition>
+        <argsstring>(Vector2 position, int value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>godot::RGMap::set_value</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set value of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="288" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="72" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a0aad3be6e33070ebedb8ea3eb81789cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_visibility</definition>
+        <argsstring>(Vector2 position, bool value)</argsstring>
+        <name>set_visibility</name>
+        <qualifiedname>godot::RGMap::set_visibility</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set visibility of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="290" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="82" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ad15eb7048c2b0bdefcc22a6215e4eb36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_memorized</definition>
+        <argsstring>(Vector2 position, bool value)</argsstring>
+        <name>set_memorized</name>
+        <qualifiedname>godot::RGMap::set_memorized</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set memory state of cell. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="292" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp" bodystart="90" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>View and pathfinding</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1abc95ec5b234f69d9f372483f22b8f602" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::rpas_calc_visible_cells_from</definition>
+        <argsstring>(Vector2 center, int radius)</argsstring>
+        <name>rpas_calc_visible_cells_from</name>
+        <qualifiedname>godot::RGMap::rpas_calc_visible_cells_from</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+<para>Get list of cells visible from position within radius using RPAS algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="300" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="34" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a449daffbdf681516e8a340e060edd0ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::calculate_fov</definition>
+        <argsstring>(Vector2 view_position, int max_distance)</argsstring>
+        <name>calculate_fov</name>
+        <qualifiedname>godot::RGMap::calculate_fov</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>view_position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_distance</declname>
+        </param>
+        <briefdescription>
+<para>Calculate visibility from given position and distance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="302" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="6" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a4a4b116053d6722cbb2bd325db94327e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::add_pathfinding_exception</definition>
+        <argsstring>(Vector2 position, bool value)</argsstring>
+        <name>add_pathfinding_exception</name>
+        <qualifiedname>godot::RGMap::add_pathfinding_exception</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Allow/disallow patfinding for this cell ignoring passability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="304" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a6ec099f81053cdd7782a9ccac45ea54d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::remove_pathfinding_exception</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>remove_pathfinding_exception</name>
+        <qualifiedname>godot::RGMap::remove_pathfinding_exception</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Remove all pathfinding exceptions for this cell if they exist. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="306" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a637933f2b9bb946f4a7b295fddaaf452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::show_pathfinding_exceptions</definition>
+        <argsstring>(bool exception_type)</argsstring>
+        <name>show_pathfinding_exceptions</name>
+        <qualifiedname>godot::RGMap::show_pathfinding_exceptions</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>exception_type</declname>
+        </param>
+        <briefdescription>
+<para>Show all pathfinding exceptions of a type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exception_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for allowed cells, false for disallowed cells </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="311" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="55" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a0a0c87b9c381e59d241c298bbc7efd65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::find_path</definition>
+        <argsstring>(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false)</argsstring>
+        <name>find_path</name>
+        <qualifiedname>godot::RGMap::find_path</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>Rect2</type>
+          <declname>pathfinding_zone</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>exclude_undiscovered</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Find path from start to end using A* algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns PoolVector2Array <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start point </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target point </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pathfinding_zone</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rect2 zone where pathfinding is calculated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exclude_undiscovered</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to exclude undiscovered cells (Fefault: False) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="320" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="65" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af5df74ee697c11151876e230fcfc2c09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::get_line</definition>
+        <argsstring>(Vector2 start, Vector2 end, bool allow_diagonal=true)</argsstring>
+        <name>get_line</name>
+        <qualifiedname>godot::RGMap::get_line</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_diagonal</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Get a set of points in Bresenham&apos;s line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Based on Python implementation from here: <ulink url="http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm">http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="323" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="137" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af8078e95e12994ce402bd4a3880008db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>Vector2 RGMap::raycast_vision</definition>
+        <argsstring>(Vector2 start, Vector2 end)</argsstring>
+        <name>raycast_vision</name>
+        <qualifiedname>godot::RGMap::raycast_vision</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Cast ray from start to end and return position where vision is blocked by an obstacle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="325" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="187" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a71f82c2deaa4c5ea9ec5ca0e43176d4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>Vector2 RGMap::raycast_path</definition>
+        <argsstring>(Vector2 start, Vector2 end)</argsstring>
+        <name>raycast_path</name>
+        <qualifiedname>godot::RGMap::raycast_path</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Cast ray from start to end and return position where path is blocked by an obstacle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="327" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="196" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aa0e99aed1a2d145536439b9a88b9ae30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::visibility_between</definition>
+        <argsstring>(Vector2 start, Vector2 end, int max_distance)</argsstring>
+        <name>visibility_between</name>
+        <qualifiedname>godot::RGMap::visibility_between</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_distance</declname>
+        </param>
+        <briefdescription>
+<para>Check if end point is visisble from start point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start point </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target point </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum distance at which points are visible </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="334" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp" bodystart="205" bodyend="213"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Editing</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::clean_map</definition>
+        <argsstring>()</argsstring>
+        <name>clean_map</name>
+        <qualifiedname>godot::RGMap::clean_map</qualifiedname>
+        <briefdescription>
+<para>Free all chunks and forget pathfinding exceptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="342" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="6" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a6e4b777d25b43065a5e2092d084099ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::place_map</definition>
+        <argsstring>(RGMap *another_map, Vector2 start)</argsstring>
+        <name>place_map</name>
+        <qualifiedname>godot::RGMap::place_map</qualifiedname>
+        <param>
+          <type><ref refid="classgodot_1_1RGMap" kindref="compound">RGMap</ref> *</type>
+          <declname>another_map</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <briefdescription>
+<para>Place another map inside this map. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="344" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="15" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af9d1f6508a2ad834c7050d12759342fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_line</definition>
+        <argsstring>(Vector2 start, Vector2 end, int value, bool allow_diagonal=true)</argsstring>
+        <name>draw_line</name>
+        <qualifiedname>godot::RGMap::draw_line</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_diagonal</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Draw straight line using Bresenham&apos;s line algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="346" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a17af65d748b00d68c9403e6c016508c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_rect</definition>
+        <argsstring>(Rect2 rect, int value)</argsstring>
+        <name>draw_rect</name>
+        <qualifiedname>godot::RGMap::draw_rect</qualifiedname>
+        <param>
+          <type>Rect2</type>
+          <declname>rect</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Draw rect borders. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="348" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a04245c368f06c61fad83c181b91592a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::fill_rect</definition>
+        <argsstring>(Rect2 rect, int value)</argsstring>
+        <name>fill_rect</name>
+        <qualifiedname>godot::RGMap::fill_rect</qualifiedname>
+        <param>
+          <type>Rect2</type>
+          <declname>rect</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Fill rect. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="350" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="45" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ade0f1244d005d7440fe0d3731b863b36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_ellipse</definition>
+        <argsstring>(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal=true)</argsstring>
+        <name>draw_ellipse</name>
+        <qualifiedname>godot::RGMap::draw_ellipse</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>start_angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end_angle</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_diagonal</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Draw ellipse using Bresenham&apos;s midpoint algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Tweaked version of code from here: <ulink url="https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/">https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="353" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="83" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1acc0515cfaf9bbe8d65c9c374899fd8f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::fill_ellipse</definition>
+        <argsstring>(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value)</argsstring>
+        <name>fill_ellipse</name>
+        <qualifiedname>godot::RGMap::fill_ellipse</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>start_angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end_angle</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Fill ellipse. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="355" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="155" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a366bf4bff59dfef02e8997f1b67a1eb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_circle</definition>
+        <argsstring>(Vector2 center, float radius, int value, bool allow_diagonal=true)</argsstring>
+        <name>draw_circle</name>
+        <qualifiedname>godot::RGMap::draw_circle</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_diagonal</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Draw circle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="357" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="163" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ade7a912c5bbcc60f398f16fd264dc464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::fill_circle</definition>
+        <argsstring>(Vector2 center, float radius, int value)</argsstring>
+        <name>fill_circle</name>
+        <qualifiedname>godot::RGMap::fill_circle</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Fill circle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="359" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="166" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ae123137e6645f64ac5b8a5fba6598e0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_arc</definition>
+        <argsstring>(Vector2 center, float radius, float start_angle, float end_angle, int value, bool allow_diagonal=true)</argsstring>
+        <name>draw_arc</name>
+        <qualifiedname>godot::RGMap::draw_arc</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>start_angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end_angle</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_diagonal</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Draw arc. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="361" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="169" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ae51cf8952917fd840f67d62ce129df71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::fill_arc</definition>
+        <argsstring>(Vector2 center, float radius, float start_angle, float end_angle, int value)</argsstring>
+        <name>fill_arc</name>
+        <qualifiedname>godot::RGMap::fill_arc</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>start_angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end_angle</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Fill arc. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="363" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Entities</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1ae7a3643c8a808a0860b62dbd672d9311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RGMap::add_entity</definition>
+        <argsstring>(Vector2 position, bool passability, bool transparency)</argsstring>
+        <name>add_entity</name>
+        <qualifiedname>godot::RGMap::add_entity</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>passability</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transparency</declname>
+        </param>
+        <briefdescription>
+<para>Add new entity to the map. Returns id given to a new entity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="371" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="6" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1adf896538adc5e7bcd5f8cb584fe0cf5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::remove_entity</definition>
+        <argsstring>(int id)</argsstring>
+        <name>remove_entity</name>
+        <qualifiedname>godot::RGMap::remove_entity</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Remove entity from memory. The id of this entity will also be given to a new entity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="373" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a8108573f1cf887b3f8263102ae2a3e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::move_entity</definition>
+        <argsstring>(int id, Vector2 position)</argsstring>
+        <name>move_entity</name>
+        <qualifiedname>godot::RGMap::move_entity</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Move entity to a new position. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="375" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a9c399e3eecf2729291e145b8f330b18b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_entity_transparency</definition>
+        <argsstring>(int id, bool value)</argsstring>
+        <name>set_entity_transparency</name>
+        <qualifiedname>godot::RGMap::set_entity_transparency</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Change entity transparency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="377" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a30bc4ade51798b8208d17a33d890422d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_entity_passability</definition>
+        <argsstring>(int id, bool value)</argsstring>
+        <name>set_entity_passability</name>
+        <qualifiedname>godot::RGMap::set_entity_passability</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Change entity passability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="379" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a4dff79eace0ca3c3468429d71bf7b1b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::set_entity_memorized</definition>
+        <argsstring>(int id, bool value)</argsstring>
+        <name>set_entity_memorized</name>
+        <qualifiedname>godot::RGMap::set_entity_memorized</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Change memory status of entity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="381" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a06d853a154fb9288f0eaa051cfd5c27f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_visible</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_visible</name>
+        <qualifiedname>godot::RGMap::is_entity_visible</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is visible. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="383" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aca51c1b240ff80577646ddbe74edf31b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_transparent</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_transparent</name>
+        <qualifiedname>godot::RGMap::is_entity_transparent</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is transparent;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="385" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a712b3f1d95d44c000949829def9b6e91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_passable</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_passable</name>
+        <qualifiedname>godot::RGMap::is_entity_passable</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is passable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="387" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1abe18e0c06bc081071a56d9d216186421" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_memorized</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_memorized</name>
+        <qualifiedname>godot::RGMap::is_entity_memorized</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is memorized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="389" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a97be562b35c3daf51f49e134b93dbc9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_chunk_loaded</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_chunk_loaded</name>
+        <qualifiedname>godot::RGMap::is_entity_chunk_loaded</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is on loaded chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="391" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="65" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a0a39e73b2e10796ffe72c590f3347989" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::is_entity_chunk_rendered</definition>
+        <argsstring>(int id)</argsstring>
+        <name>is_entity_chunk_rendered</name>
+        <qualifiedname>godot::RGMap::is_entity_chunk_rendered</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Check if entity is on rendered chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="393" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a000af6feda1d67bcc014fc52a5871e50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>Vector2 RGMap::get_entity_position</definition>
+        <argsstring>(int id)</argsstring>
+        <name>get_entity_position</name>
+        <qualifiedname>godot::RGMap::get_entity_position</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get position of the entity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="395" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a1030a2d395f2773dba6950096d60fdf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_entities_in_position</definition>
+        <argsstring>(Vector2 position)</argsstring>
+        <name>get_entities_in_position</name>
+        <qualifiedname>godot::RGMap::get_entities_in_position</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Find ids of all entities in position. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="397" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="79" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a2742fb3f44caa25d078abe67feec9d77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_entities_in_rect</definition>
+        <argsstring>(Rect2 rect)</argsstring>
+        <name>get_entities_in_rect</name>
+        <qualifiedname>godot::RGMap::get_entities_in_rect</qualifiedname>
+        <param>
+          <type>Rect2</type>
+          <declname>rect</declname>
+        </param>
+        <briefdescription>
+<para>Find ids of all entities in rect. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="399" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="89" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a74c42c8fc68967a33b970c27457e9abf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_entities_in_radius</definition>
+        <argsstring>(Vector2 position, int radius)</argsstring>
+        <name>get_entities_in_radius</name>
+        <qualifiedname>godot::RGMap::get_entities_in_radius</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+<para>Find ids of all entities in radius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="401" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="99" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a3101593907cf4928bbffc94a1e5f950f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_entities_in_chunk</definition>
+        <argsstring>(int chunk_index)</argsstring>
+        <name>get_entities_in_chunk</name>
+        <qualifiedname>godot::RGMap::get_entities_in_chunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>chunk_index</declname>
+        </param>
+        <briefdescription>
+<para>Find ids of all entities in chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="403" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp" bodystart="109" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Saving and Loading</header>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::dump_map_data</definition>
+        <argsstring>()</argsstring>
+        <name>dump_map_data</name>
+        <qualifiedname>godot::RGMap::dump_map_data</qualifiedname>
+        <briefdescription>
+<para>Save map data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="410" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="137" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::load_map_data</definition>
+        <argsstring>(PoolIntArray map_data)</argsstring>
+        <name>load_map_data</name>
+        <qualifiedname>godot::RGMap::load_map_data</qualifiedname>
+        <param>
+          <type>PoolIntArray</type>
+          <declname>map_data</declname>
+        </param>
+        <briefdescription>
+<para>Load map data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="412" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp" bodystart="152" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ace104bec116a1d52f5cadb8416510841" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; RGTile &gt;</type>
+        <definition>std::vector&lt;RGTile&gt; godot::RGMap::tiles</definition>
+        <argsstring></argsstring>
+        <name>tiles</name>
+        <qualifiedname>godot::RGMap::tiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="61" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a36dde61302a0c33b025b83f851899272" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Chunk &gt;</type>
+        <definition>std::vector&lt;Chunk&gt; godot::RGMap::chunks</definition>
+        <argsstring></argsstring>
+        <name>chunks</name>
+        <qualifiedname>godot::RGMap::chunks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="63" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a09ae64b7ec94df222ff4f83fe122daae" prot="private" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float godot::RGMap::FLOAT_EPSILON</definition>
+        <argsstring></argsstring>
+        <name>FLOAT_EPSILON</name>
+        <qualifiedname>godot::RGMap::FLOAT_EPSILON</qualifiedname>
+        <initializer>= 0.00001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="65" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1af4b1d5450c2f94fb745ac6cd4bb3a94b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; godot::RGMap::visibility</definition>
+        <argsstring></argsstring>
+        <name>visibility</name>
+        <qualifiedname>godot::RGMap::visibility</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="67" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a2d1938e89e871ea9f0fbecfd4fc83740" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; godot::RGMap::fov_obstacles</definition>
+        <argsstring></argsstring>
+        <name>fov_obstacles</name>
+        <qualifiedname>godot::RGMap::fov_obstacles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="69" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ac013ae5bfe9a146e452ebfbbe6145d32" prot="private" static="no" mutable="no">
+        <type>Rect2</type>
+        <definition>Rect2 godot::RGMap::fov_zone</definition>
+        <argsstring></argsstring>
+        <name>fov_zone</name>
+        <qualifiedname>godot::RGMap::fov_zone</qualifiedname>
+        <initializer>= Rect2(Vector2(0,0), Vector2(0,0))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="71" column="11" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ac8a7b737961652906583ee2c4aee5aa5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Vector2 &gt;</type>
+        <definition>std::vector&lt;Vector2&gt; godot::RGMap::pathfinding_exception_allowed</definition>
+        <argsstring></argsstring>
+        <name>pathfinding_exception_allowed</name>
+        <qualifiedname>godot::RGMap::pathfinding_exception_allowed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="72" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a8bbe87a02805d5b66c1f8b140dc78af6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Vector2 &gt;</type>
+        <definition>std::vector&lt;Vector2&gt; godot::RGMap::pathfinding_exception_disallowed</definition>
+        <argsstring></argsstring>
+        <name>pathfinding_exception_disallowed</name>
+        <qualifiedname>godot::RGMap::pathfinding_exception_disallowed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="73" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a1fa537362cef8d7accd126214a2a9b24" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int godot::RGMap::NUM_CHUNK_ARRAYS</definition>
+        <argsstring></argsstring>
+        <name>NUM_CHUNK_ARRAYS</name>
+        <qualifiedname>godot::RGMap::NUM_CHUNK_ARRAYS</qualifiedname>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="75" column="15" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a8268e337a7834bcb3a2b58f4da8a31ec" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Entity &gt;</type>
+        <definition>std::vector&lt;Entity&gt; godot::RGMap::entities</definition>
+        <argsstring></argsstring>
+        <name>entities</name>
+        <qualifiedname>godot::RGMap::entities</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="77" column="17" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" prot="public" static="no" mutable="no">
+        <type>Vector2</type>
+        <definition>Vector2 godot::RGMap::chunk_size</definition>
+        <argsstring></argsstring>
+        <name>chunk_size</name>
+        <qualifiedname>godot::RGMap::chunk_size</qualifiedname>
+        <initializer>= Vector2(50,50)</initializer>
+        <briefdescription>
+<para>Size of one chunk (Default: 50x50) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="97" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" prot="public" static="no" mutable="no">
+        <type>Vector2</type>
+        <definition>Vector2 godot::RGMap::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>godot::RGMap::size</qualifiedname>
+        <initializer>= Vector2(3,3)</initializer>
+        <briefdescription>
+<para>Size of the whole map in chunks (Default: 3x3) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="99" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int godot::RGMap::load_distance</definition>
+        <argsstring></argsstring>
+        <name>load_distance</name>
+        <qualifiedname>godot::RGMap::load_distance</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of chunks loaded around the player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Excluding the chunk where player stands Default: 1 (3x3 grid) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="105" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int godot::RGMap::render_distance</definition>
+        <argsstring></argsstring>
+        <name>render_distance</name>
+        <qualifiedname>godot::RGMap::render_distance</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of chunks rendered around the player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Excluding the chunk where player stands Default: 1 (3x3 grid) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="111" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::allow_diagonal_pathfinding</definition>
+        <argsstring></argsstring>
+        <name>allow_diagonal_pathfinding</name>
+        <qualifiedname>godot::RGMap::allow_diagonal_pathfinding</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Allow/Disallow diagonal pathfinding. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="113" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a939b6e72f72bd5f76479b632c2bfd04c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::rpas_visible_cells_in_quadrant_from</definition>
+        <argsstring>(Vector2 center, Vector2 quad, int radius)</argsstring>
+        <name>rpas_visible_cells_in_quadrant_from</name>
+        <qualifiedname>godot::RGMap::rpas_visible_cells_in_quadrant_from</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>quad</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="80" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a4eb9cb04723a13d6f5193ef429db5ba3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolVector2Array</type>
+        <definition>PoolVector2Array RGMap::rpas_visible_cells_in_octant_from</definition>
+        <argsstring>(Vector2 center, Vector2 quad, int radius, bool is_vertical)</argsstring>
+        <name>rpas_visible_cells_in_octant_from</name>
+        <qualifiedname>godot::RGMap::rpas_visible_cells_in_octant_from</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>quad</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_vertical</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="81" column="22" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="49" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a93a2984b1abb854100c21ee06af261cf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>Vector2 RGMap::rpas_cell_at</definition>
+        <argsstring>(Vector2 center, Vector2 quad, int step, int iteration, bool is_vertical)</argsstring>
+        <name>rpas_cell_at</name>
+        <qualifiedname>godot::RGMap::rpas_cell_at</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>quad</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_vertical</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="82" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="88" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a49ee2175a108e9a103bb69fda55c86aa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::rpas_cell_in_radius</definition>
+        <argsstring>(Vector2 center, Vector2 cell, int radius)</argsstring>
+        <name>rpas_cell_in_radius</name>
+        <qualifiedname>godot::RGMap::rpas_cell_in_radius</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>cell</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="83" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="99" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a1d1b8d045135ce287eb2fc647b5bd256" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::rpas_cell_is_visible</definition>
+        <argsstring>(CellAngles cell_angles, std::vector&lt; CellAngles &gt; &amp;obstructions)</argsstring>
+        <name>rpas_cell_is_visible</name>
+        <qualifiedname>godot::RGMap::rpas_cell_is_visible</qualifiedname>
+        <param>
+          <type>CellAngles</type>
+          <declname>cell_angles</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; CellAngles &gt; &amp;</type>
+          <declname>obstructions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="84" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="107" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1abda59c7c96c81646f3d0b34900e8ada3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::rpas_add_obstruction</definition>
+        <argsstring>(std::vector&lt; CellAngles &gt; &amp;obstructions, CellAngles new_obstruction)</argsstring>
+        <name>rpas_add_obstruction</name>
+        <qualifiedname>godot::RGMap::rpas_add_obstruction</qualifiedname>
+        <param>
+          <type>std::vector&lt; CellAngles &gt; &amp;</type>
+          <declname>obstructions</declname>
+        </param>
+        <param>
+          <type>CellAngles</type>
+          <declname>new_obstruction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="85" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="145" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1a8a17dedc90ef1670c8b2b3bbc009dd7b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RGMap::rpas_combine_obstructions</definition>
+        <argsstring>(CellAngles &amp;old_o, CellAngles &amp;new_o)</argsstring>
+        <name>rpas_combine_obstructions</name>
+        <qualifiedname>godot::RGMap::rpas_combine_obstructions</qualifiedname>
+        <param>
+          <type>CellAngles &amp;</type>
+          <declname>old_o</declname>
+        </param>
+        <param>
+          <type>CellAngles &amp;</type>
+          <declname>new_o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="86" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp" bodystart="161" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1af58fa6f65fa2dd7646402ec48eeadeeb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RGMap::draw_4_way_symmetry</definition>
+        <argsstring>(int xc, int yc, int x, int y, int value, float start_angle, float end_angle)</argsstring>
+        <name>draw_4_way_symmetry</name>
+        <qualifiedname>godot::RGMap::draw_4_way_symmetry</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>xc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>yc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>start_angle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end_angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="88" column="10" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp" bodystart="54" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1afaca9a0494bc1bda3f5d171b8e3bc271" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Chunk &amp;</type>
+        <definition>RGMap::Chunk &amp; RGMap::get_chunk</definition>
+        <argsstring>(int index)</argsstring>
+        <name>get_chunk</name>
+        <qualifiedname>godot::RGMap::get_chunk</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="91" column="11" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="6" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classgodot_1_1RGMap_1aa96e6d4bad41865cae782d6e97a7ea11" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PoolIntArray</type>
+        <definition>PoolIntArray RGMap::get_chunks_in_distance</definition>
+        <argsstring>(Vector2 point, int distance)</argsstring>
+        <name>get_chunks_in_distance</name>
+        <qualifiedname>godot::RGMap::get_chunks_in_distance</qualifiedname>
+        <param>
+          <type>Vector2</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="93" column="18" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp" bodystart="126" bodyend="138"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class for managing maps for roguelike. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Reference</label>
+      </node>
+      <node id="1">
+        <label>godot::RGMap</label>
+        <link refid="classgodot_1_1RGMap"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Reference</label>
+      </node>
+      <node id="1">
+        <label>godot::RGMap</label>
+        <link refid="classgodot_1_1RGMap"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="22" column="1" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="22" bodyend="414"/>
+    <listofallmembers>
+      <member refid="classgodot_1_1RGMap_1a6a124ddb92eb57514b32f106babd40eb" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>_init</name></member>
+      <member refid="classgodot_1_1RGMap_1af167d83fed1892421dd86f2089d45fef" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>_register_methods</name></member>
+      <member refid="classgodot_1_1RGMap_1ae7a3643c8a808a0860b62dbd672d9311" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>add_entity</name></member>
+      <member refid="classgodot_1_1RGMap_1a4a4b116053d6722cbb2bd325db94327e" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>add_pathfinding_exception</name></member>
+      <member refid="classgodot_1_1RGMap_1a55c55e1a5e1386093860a634c33cee3d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>add_tile</name></member>
+      <member refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>allow_diagonal_pathfinding</name></member>
+      <member refid="classgodot_1_1RGMap_1a449daffbdf681516e8a340e060edd0ef" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>calculate_fov</name></member>
+      <member refid="classgodot_1_1RGMap_1a74f8456f280ddaa8a3f3b3161a6ad63f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunk_freed</name></member>
+      <member refid="classgodot_1_1RGMap_1aa042aaa2c6cbc4f67473574c4861cbf2" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunk_index_int_to_v2</name></member>
+      <member refid="classgodot_1_1RGMap_1a3ede385c9811d5c189943e42416af746" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunk_index_v2_to_int</name></member>
+      <member refid="classgodot_1_1RGMap_1a8f3bb2de68b7d4a239516015a86db8db" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunk_loaded</name></member>
+      <member refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunk_size</name></member>
+      <member refid="classgodot_1_1RGMap_1a36dde61302a0c33b025b83f851899272" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>chunks</name></member>
+      <member refid="classgodot_1_1RGMap_1a2d061a66f56eb6392e41f4f9028d16fc" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunks_free_requested</name></member>
+      <member refid="classgodot_1_1RGMap_1ab011bf3701f536742a9b37530c327312" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunks_hide_requested</name></member>
+      <member refid="classgodot_1_1RGMap_1afd1aae74dc064d42ccf5b934472294cf" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunks_load_requested</name></member>
+      <member refid="classgodot_1_1RGMap_1abf1c8ce2971af113a8513d1b018e07cc" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>chunks_render_requested</name></member>
+      <member refid="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>clean_map</name></member>
+      <member refid="classgodot_1_1RGMap_1af58fa6f65fa2dd7646402ec48eeadeeb" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_4_way_symmetry</name></member>
+      <member refid="classgodot_1_1RGMap_1ae123137e6645f64ac5b8a5fba6598e0f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_arc</name></member>
+      <member refid="classgodot_1_1RGMap_1a366bf4bff59dfef02e8997f1b67a1eb5" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_circle</name></member>
+      <member refid="classgodot_1_1RGMap_1ade0f1244d005d7440fe0d3731b863b36" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_ellipse</name></member>
+      <member refid="classgodot_1_1RGMap_1af9d1f6508a2ad834c7050d12759342fd" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_line</name></member>
+      <member refid="classgodot_1_1RGMap_1a17af65d748b00d68c9403e6c016508c6" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>draw_rect</name></member>
+      <member refid="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>dump_chunk_data</name></member>
+      <member refid="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>dump_map_data</name></member>
+      <member refid="classgodot_1_1RGMap_1a8268e337a7834bcb3a2b58f4da8a31ec" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>entities</name></member>
+      <member refid="classgodot_1_1RGMap_1ae51cf8952917fd840f67d62ce129df71" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>fill_arc</name></member>
+      <member refid="classgodot_1_1RGMap_1ade7a912c5bbcc60f398f16fd264dc464" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>fill_circle</name></member>
+      <member refid="classgodot_1_1RGMap_1acc0515cfaf9bbe8d65c9c374899fd8f8" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>fill_ellipse</name></member>
+      <member refid="classgodot_1_1RGMap_1a04245c368f06c61fad83c181b91592a6" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>fill_rect</name></member>
+      <member refid="classgodot_1_1RGMap_1a0a0c87b9c381e59d241c298bbc7efd65" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>find_path</name></member>
+      <member refid="classgodot_1_1RGMap_1a09ae64b7ec94df222ff4f83fe122daae" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>FLOAT_EPSILON</name></member>
+      <member refid="classgodot_1_1RGMap_1a2d1938e89e871ea9f0fbecfd4fc83740" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>fov_obstacles</name></member>
+      <member refid="classgodot_1_1RGMap_1ac013ae5bfe9a146e452ebfbbe6145d32" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>fov_zone</name></member>
+      <member refid="classgodot_1_1RGMap_1a97e1bbbce76aca2a37e08db6d793907e" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>free_chunk</name></member>
+      <member refid="classgodot_1_1RGMap_1a819587d899569b840a3f417aa9fd0c2f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>generate_tileset</name></member>
+      <member refid="classgodot_1_1RGMap_1afaca9a0494bc1bda3f5d171b8e3bc271" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunk</name></member>
+      <member refid="classgodot_1_1RGMap_1a17d00e1acf01120ad1324704960ea528" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunk_index</name></member>
+      <member refid="classgodot_1_1RGMap_1aa96e6d4bad41865cae782d6e97a7ea11" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunks_in_distance</name></member>
+      <member refid="classgodot_1_1RGMap_1ad292a1d8e79b597004643fbcf2e588f8" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunks_to_free</name></member>
+      <member refid="classgodot_1_1RGMap_1a251886c67ff84873042b83e836585203" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunks_to_hide</name></member>
+      <member refid="classgodot_1_1RGMap_1af81558e0a4b18590aea6f385f6fa345f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunks_to_load</name></member>
+      <member refid="classgodot_1_1RGMap_1a742bfc37a17e36f017d52f2bac8b698f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_chunks_to_render</name></member>
+      <member refid="classgodot_1_1RGMap_1a4016e0965171c95fd867bd7eb01b65d9" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_display_name</name></member>
+      <member refid="classgodot_1_1RGMap_1a3101593907cf4928bbffc94a1e5f950f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_entities_in_chunk</name></member>
+      <member refid="classgodot_1_1RGMap_1a1030a2d395f2773dba6950096d60fdf9" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_entities_in_position</name></member>
+      <member refid="classgodot_1_1RGMap_1a74c42c8fc68967a33b970c27457e9abf" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_entities_in_radius</name></member>
+      <member refid="classgodot_1_1RGMap_1a2742fb3f44caa25d078abe67feec9d77" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_entities_in_rect</name></member>
+      <member refid="classgodot_1_1RGMap_1a000af6feda1d67bcc014fc52a5871e50" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_entity_position</name></member>
+      <member refid="classgodot_1_1RGMap_1af5df74ee697c11151876e230fcfc2c09" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_line</name></member>
+      <member refid="classgodot_1_1RGMap_1aaff3bdcfb3484ab4807bf536aa126e11" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_loaded_chunks</name></member>
+      <member refid="classgodot_1_1RGMap_1ab201f09297e368756c390a122a94fc97" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_local_index</name></member>
+      <member refid="classgodot_1_1RGMap_1a4113d609f2d8b8ae8986b5261d72589a" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_name</name></member>
+      <member refid="classgodot_1_1RGMap_1a2e9616170d0d2bb4e1e5946c4f9f8d60" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_rendered_chunks</name></member>
+      <member refid="classgodot_1_1RGMap_1a30d5d2ff82cbb7b163b4f2f960180539" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_tile_display_name</name></member>
+      <member refid="classgodot_1_1RGMap_1ac7e85ab8ca5c1b3580a773b35a8386fd" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_tile_index</name></member>
+      <member refid="classgodot_1_1RGMap_1a9d0347ce24c61097eaca4292816b7ce3" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_tile_name</name></member>
+      <member refid="classgodot_1_1RGMap_1a0a6742a8d89a003db699ba02cd2f965a" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_tiles_count</name></member>
+      <member refid="classgodot_1_1RGMap_1a0608386ad66cec9e4257808022da5038" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>get_value</name></member>
+      <member refid="classgodot_1_1RGMap_1ac47d550255055871d8b15ea21ccd7227" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_chunk_in_bounds</name></member>
+      <member refid="classgodot_1_1RGMap_1af9b781ce0c7fe4ccefa66fdcace66a0f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_chunk_loaded</name></member>
+      <member refid="classgodot_1_1RGMap_1a12e1b530faa11809a3fb965924166324" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_chunk_rendered</name></member>
+      <member refid="classgodot_1_1RGMap_1a97be562b35c3daf51f49e134b93dbc9d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_chunk_loaded</name></member>
+      <member refid="classgodot_1_1RGMap_1a0a39e73b2e10796ffe72c590f3347989" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_chunk_rendered</name></member>
+      <member refid="classgodot_1_1RGMap_1abe18e0c06bc081071a56d9d216186421" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_memorized</name></member>
+      <member refid="classgodot_1_1RGMap_1a712b3f1d95d44c000949829def9b6e91" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_passable</name></member>
+      <member refid="classgodot_1_1RGMap_1aca51c1b240ff80577646ddbe74edf31b" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_transparent</name></member>
+      <member refid="classgodot_1_1RGMap_1a06d853a154fb9288f0eaa051cfd5c27f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_entity_visible</name></member>
+      <member refid="classgodot_1_1RGMap_1a37429fe0e0426653916667725477e01b" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_in_bounds</name></member>
+      <member refid="classgodot_1_1RGMap_1a735635c94c0913ffb0198dd51681986f" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_memorized</name></member>
+      <member refid="classgodot_1_1RGMap_1a6bc13a61c915adcfcd1c74d75b9a786a" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_passable</name></member>
+      <member refid="classgodot_1_1RGMap_1a90bbf21a0a0084bc3cada939c5b84848" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_pathfinding_allowed</name></member>
+      <member refid="classgodot_1_1RGMap_1ad407df53a5d381f958965c34acae88b1" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_tile_passable</name></member>
+      <member refid="classgodot_1_1RGMap_1a217ae3cae06583ad6e0eaf4c4a7ccf36" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_tile_transparent</name></member>
+      <member refid="classgodot_1_1RGMap_1a9722afa05ac0d4efe1146a9f8b70908b" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_transparent</name></member>
+      <member refid="classgodot_1_1RGMap_1a2ae7a1232b97d00c21a38a1073cb7b53" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>is_visible</name></member>
+      <member refid="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>load_chunk</name></member>
+      <member refid="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>load_distance</name></member>
+      <member refid="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>load_map_data</name></member>
+      <member refid="classgodot_1_1RGMap_1a8108573f1cf887b3f8263102ae2a3e39" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>move_entity</name></member>
+      <member refid="classgodot_1_1RGMap_1a1fa537362cef8d7accd126214a2a9b24" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>NUM_CHUNK_ARRAYS</name></member>
+      <member refid="classgodot_1_1RGMap_1ac8a7b737961652906583ee2c4aee5aa5" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>pathfinding_exception_allowed</name></member>
+      <member refid="classgodot_1_1RGMap_1a8bbe87a02805d5b66c1f8b140dc78af6" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>pathfinding_exception_disallowed</name></member>
+      <member refid="classgodot_1_1RGMap_1a6e4b777d25b43065a5e2092d084099ee" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>place_map</name></member>
+      <member refid="classgodot_1_1RGMap_1a71f82c2deaa4c5ea9ec5ca0e43176d4a" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>raycast_path</name></member>
+      <member refid="classgodot_1_1RGMap_1af8078e95e12994ce402bd4a3880008db" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>raycast_vision</name></member>
+      <member refid="classgodot_1_1RGMap_1adf896538adc5e7bcd5f8cb584fe0cf5c" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>remove_entity</name></member>
+      <member refid="classgodot_1_1RGMap_1a6ec099f81053cdd7782a9ccac45ea54d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>remove_pathfinding_exception</name></member>
+      <member refid="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>render_distance</name></member>
+      <member refid="classgodot_1_1RGMap_1af97b719797501ed8525d3aad37ed83d7" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>request_chunks_render</name></member>
+      <member refid="classgodot_1_1RGMap_1a2c565c4b9124368ebdaae851afd13585" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>request_chunks_update</name></member>
+      <member refid="classgodot_1_1RGMap_1af16dce1ae917a6a42c237d7e7eebda92" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>reset_chunk</name></member>
+      <member refid="classgodot_1_1RGMap_1a07f1fef452ab37ad0bc6a5a46ed65834" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>RGMap</name></member>
+      <member refid="classgodot_1_1RGMap_1abda59c7c96c81646f3d0b34900e8ada3" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_add_obstruction</name></member>
+      <member refid="classgodot_1_1RGMap_1abc95ec5b234f69d9f372483f22b8f602" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_calc_visible_cells_from</name></member>
+      <member refid="classgodot_1_1RGMap_1a93a2984b1abb854100c21ee06af261cf" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_cell_at</name></member>
+      <member refid="classgodot_1_1RGMap_1a49ee2175a108e9a103bb69fda55c86aa" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_cell_in_radius</name></member>
+      <member refid="classgodot_1_1RGMap_1a1d1b8d045135ce287eb2fc647b5bd256" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_cell_is_visible</name></member>
+      <member refid="classgodot_1_1RGMap_1a8a17dedc90ef1670c8b2b3bbc009dd7b" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_combine_obstructions</name></member>
+      <member refid="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>RPAS_NOT_VISIBLE_BLOCKS_VISION</name></member>
+      <member refid="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>RPAS_RADIUS_FUDGE</name></member>
+      <member refid="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>RPAS_RESTRICTIVENESS</name></member>
+      <member refid="classgodot_1_1RGMap_1a4eb9cb04723a13d6f5193ef429db5ba3" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_visible_cells_in_octant_from</name></member>
+      <member refid="classgodot_1_1RGMap_1a939b6e72f72bd5f76479b632c2bfd04c" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>rpas_visible_cells_in_quadrant_from</name></member>
+      <member refid="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>RPAS_VISIBLE_ON_EQUAL</name></member>
+      <member refid="classgodot_1_1RGMap_1a05420fcbc688769a4f97f4e068036609" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_chunk_rendered</name></member>
+      <member refid="classgodot_1_1RGMap_1a4dff79eace0ca3c3468429d71bf7b1b0" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_entity_memorized</name></member>
+      <member refid="classgodot_1_1RGMap_1a30bc4ade51798b8208d17a33d890422d" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_entity_passability</name></member>
+      <member refid="classgodot_1_1RGMap_1a9c399e3eecf2729291e145b8f330b18b" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_entity_transparency</name></member>
+      <member refid="classgodot_1_1RGMap_1ad15eb7048c2b0bdefcc22a6215e4eb36" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_memorized</name></member>
+      <member refid="classgodot_1_1RGMap_1abf819377354f5deaf670605175243442" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_value</name></member>
+      <member refid="classgodot_1_1RGMap_1a0aad3be6e33070ebedb8ea3eb81789cf" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>set_visibility</name></member>
+      <member refid="classgodot_1_1RGMap_1a637933f2b9bb946f4a7b295fddaaf452" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>show_pathfinding_exceptions</name></member>
+      <member refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>size</name></member>
+      <member refid="classgodot_1_1RGMap_1ace104bec116a1d52f5cadb8416510841" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>tiles</name></member>
+      <member refid="classgodot_1_1RGMap_1af4b1d5450c2f94fb745ac6cd4bb3a94b" prot="private" virt="non-virtual"><scope>godot::RGMap</scope><name>visibility</name></member>
+      <member refid="classgodot_1_1RGMap_1aa0e99aed1a2d145536439b9a88b9ae30" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>visibility_between</name></member>
+      <member refid="classgodot_1_1RGMap_1aa2f66b3c45e245abd84fca56ae7097a2" prot="public" virt="non-virtual"><scope>godot::RGMap</scope><name>~RGMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

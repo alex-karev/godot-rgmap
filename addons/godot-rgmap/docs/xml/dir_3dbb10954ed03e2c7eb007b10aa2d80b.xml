@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="dir_3dbb10954ed03e2c7eb007b10aa2d80b" kind="dir">
+    <compoundname>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native</compoundname>
+    <innerdir refid="dir_f16365bb7e289cec0411dcf808705715">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/"/>
+  </compounddef>
+</doxygen>

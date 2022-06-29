@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="rgmap_8cpp" kind="file" language="C++">
+    <compoundname>rgmap.cpp</compoundname>
+    <includes refid="rgmap_8h" local="yes">rgmap.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp</label>
+        <link refid="rgmap_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>rgmap.h</label>
+        <link refid="rgmap_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>AStar2D.hpp</label>
+      </node>
+      <node id="6">
+        <label>Array.hpp</label>
+      </node>
+      <node id="3">
+        <label>Godot.hpp</label>
+      </node>
+      <node id="4">
+        <label>Node.hpp</label>
+      </node>
+      <node id="8">
+        <label>Rect2.hpp</label>
+      </node>
+      <node id="11">
+        <label>ResourceLoader.hpp</label>
+      </node>
+      <node id="10">
+        <label>Texture.hpp</label>
+      </node>
+      <node id="9">
+        <label>TileSet.hpp</label>
+      </node>
+      <node id="5">
+        <label>Vector2.hpp</label>
+      </node>
+      <node id="14">
+        <label>algorithm</label>
+      </node>
+      <node id="12">
+        <label>cmath</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;rgmap.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">godot;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>Register<sp/>Godot<sp/>properties<sp/>and<sp/>methods</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RGMap::_register_methods()<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Properties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>Vector2&gt;(</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">RGMap::size</ref>,<sp/>Vector2(3,3));</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>Vector2&gt;(</highlight><highlight class="stringliteral">&quot;chunk_size&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">RGMap::chunk_size</ref>,<sp/>Vector2(50,50));</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>int&gt;(</highlight><highlight class="stringliteral">&quot;load_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" kindref="member">RGMap::load_distance</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>int&gt;(</highlight><highlight class="stringliteral">&quot;render_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" kindref="member">RGMap::render_distance</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>bool&gt;(</highlight><highlight class="stringliteral">&quot;allow_diagonal_pathfinding&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" kindref="member">RGMap::allow_diagonal_pathfinding</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>float&gt;(</highlight><highlight class="stringliteral">&quot;RPAS_RADIUS_FUDGE&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" kindref="member">RGMap::RPAS_RADIUS_FUDGE</ref>,<sp/>1.0<sp/>/<sp/>3.0);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>bool&gt;(</highlight><highlight class="stringliteral">&quot;RPAS_NOT_VISIBLE_BLOCKS_VISION&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" kindref="member">RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>int&gt;(</highlight><highlight class="stringliteral">&quot;RPAS_RESTRICTIVENESS&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" kindref="member">RGMap::RPAS_RESTRICTIVENESS</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>register_property&lt;RGMap,<sp/>bool&gt;(</highlight><highlight class="stringliteral">&quot;RPAS_VISIBLE_ON_EQUAL&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" kindref="member">RGMap::RPAS_VISIBLE_ON_EQUAL</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunks_load_requested&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ids&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_POOL_INT_ARRAY);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunks_free_requested&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ids&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_POOL_INT_ARRAY);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunks_render_requested&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ids&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_POOL_INT_ARRAY);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunks_hide_requested&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ids&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_POOL_INT_ARRAY);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunk_loaded&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;index&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_INT);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signal&lt;RGMap&gt;((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;chunk_freed&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;index&quot;</highlight><highlight class="normal">,<sp/>GODOT_VARIANT_TYPE_INT);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tiles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;add_tile&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a55c55e1a5e1386093860a634c33cee3d" kindref="member">RGMap::add_tile</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_tiles_count&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a0a6742a8d89a003db699ba02cd2f965a" kindref="member">RGMap::get_tiles_count</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_tile_index&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ac7e85ab8ca5c1b3580a773b35a8386fd" kindref="member">RGMap::get_tile_index</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_tile_name&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a9d0347ce24c61097eaca4292816b7ce3" kindref="member">RGMap::get_tile_name</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_tile_display_name&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a30d5d2ff82cbb7b163b4f2f960180539" kindref="member">RGMap::get_tile_display_name</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_tile_passable&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ad407df53a5d381f958965c34acae88b1" kindref="member">RGMap::is_tile_passable</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_tile_transparent&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a217ae3cae06583ad6e0eaf4c4a7ccf36" kindref="member">RGMap::is_tile_transparent</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;generate_tileset&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a819587d899569b840a3f417aa9fd0c2f" kindref="member">RGMap::generate_tileset</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_chunk_index&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a17d00e1acf01120ad1324704960ea528" kindref="member">RGMap::get_chunk_index</ref>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;chunk_index_int_to_v2&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aa042aaa2c6cbc4f67473574c4861cbf2" kindref="member">RGMap::chunk_index_int_to_v2</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;chunk_index_v2_to_int&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a3ede385c9811d5c189943e42416af746" kindref="member">RGMap::chunk_index_v2_to_int</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_chunk_in_bounds&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ac47d550255055871d8b15ea21ccd7227" kindref="member">RGMap::is_chunk_in_bounds</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_chunk_loaded&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af9b781ce0c7fe4ccefa66fdcace66a0f" kindref="member">RGMap::is_chunk_loaded</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;load_chunk&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" kindref="member">RGMap::load_chunk</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;dump_chunk_data&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" kindref="member">RGMap::dump_chunk_data</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;free_chunk&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a97e1bbbce76aca2a37e08db6d793907e" kindref="member">RGMap::free_chunk</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;reset_chunk&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af16dce1ae917a6a42c237d7e7eebda92" kindref="member">RGMap::reset_chunk</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_chunk_rendered&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a12e1b530faa11809a3fb965924166324" kindref="member">RGMap::is_chunk_rendered</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_chunk_rendered&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a05420fcbc688769a4f97f4e068036609" kindref="member">RGMap::set_chunk_rendered</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_loaded_chunks&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aaff3bdcfb3484ab4807bf536aa126e11" kindref="member">RGMap::get_loaded_chunks</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_chunks_to_load&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af81558e0a4b18590aea6f385f6fa345f" kindref="member">RGMap::get_chunks_to_load</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_chunks_to_free&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ad292a1d8e79b597004643fbcf2e588f8" kindref="member">RGMap::get_chunks_to_free</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;request_chunks_update&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a2c565c4b9124368ebdaae851afd13585" kindref="member">RGMap::request_chunks_update</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_rendered_chunks&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a2e9616170d0d2bb4e1e5946c4f9f8d60" kindref="member">RGMap::get_rendered_chunks</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_chunks_to_render&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a742bfc37a17e36f017d52f2bac8b698f" kindref="member">RGMap::get_chunks_to_render</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_chunks_to_hide&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a251886c67ff84873042b83e836585203" kindref="member">RGMap::get_chunks_to_hide</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;request_chunks_render&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af97b719797501ed8525d3aad37ed83d7" kindref="member">RGMap::request_chunks_render</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cells</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_local_index&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ab201f09297e368756c390a122a94fc97" kindref="member">RGMap::get_local_index</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_value&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a0608386ad66cec9e4257808022da5038" kindref="member">RGMap::get_value</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_name&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a4113d609f2d8b8ae8986b5261d72589a" kindref="member">RGMap::get_name</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_display_name&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a4016e0965171c95fd867bd7eb01b65d9" kindref="member">RGMap::get_display_name</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_transparent&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a9722afa05ac0d4efe1146a9f8b70908b" kindref="member">RGMap::is_transparent</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_passable&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a6bc13a61c915adcfcd1c74d75b9a786a" kindref="member">RGMap::is_passable</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_visible&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a2ae7a1232b97d00c21a38a1073cb7b53" kindref="member">RGMap::is_visible</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_memorized&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a735635c94c0913ffb0198dd51681986f" kindref="member">RGMap::is_memorized</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_in_bounds&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a37429fe0e0426653916667725477e01b" kindref="member">RGMap::is_in_bounds</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_pathfinding_allowed&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a90bbf21a0a0084bc3cada939c5b84848" kindref="member">RGMap::is_pathfinding_allowed</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_value&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1abf819377354f5deaf670605175243442" kindref="member">RGMap::set_value</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_visibility&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a0aad3be6e33070ebedb8ea3eb81789cf" kindref="member">RGMap::set_visibility</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_memorized&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ad15eb7048c2b0bdefcc22a6215e4eb36" kindref="member">RGMap::set_memorized</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>View/Pathfinding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;rpas_calc_visible_cells_from&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1abc95ec5b234f69d9f372483f22b8f602" kindref="member">RGMap::rpas_calc_visible_cells_from</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;calculate_fov&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a449daffbdf681516e8a340e060edd0ef" kindref="member">RGMap::calculate_fov</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;add_pathfinding_exception&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a4a4b116053d6722cbb2bd325db94327e" kindref="member">RGMap::add_pathfinding_exception</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;remove_pathfinding_exception&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a6ec099f81053cdd7782a9ccac45ea54d" kindref="member">RGMap::remove_pathfinding_exception</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;show_pathfinding_exceptions&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a637933f2b9bb946f4a7b295fddaaf452" kindref="member">RGMap::show_pathfinding_exceptions</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;find_path&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a0a0c87b9c381e59d241c298bbc7efd65" kindref="member">RGMap::find_path</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_line&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af5df74ee697c11151876e230fcfc2c09" kindref="member">RGMap::get_line</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;raycast_vision&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af8078e95e12994ce402bd4a3880008db" kindref="member">RGMap::raycast_vision</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;raycast_path&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a71f82c2deaa4c5ea9ec5ca0e43176d4a" kindref="member">RGMap::raycast_path</ref>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;visibility_between&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aa0e99aed1a2d145536439b9a88b9ae30" kindref="member">RGMap::visibility_between</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Editing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;place_map&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a6e4b777d25b43065a5e2092d084099ee" kindref="member">RGMap::place_map</ref>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;draw_line&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1af9d1f6508a2ad834c7050d12759342fd" kindref="member">RGMap::draw_line</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;draw_rect&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a17af65d748b00d68c9403e6c016508c6" kindref="member">RGMap::draw_rect</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;fill_rect&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a04245c368f06c61fad83c181b91592a6" kindref="member">RGMap::fill_rect</ref>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;draw_ellipse&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ade0f1244d005d7440fe0d3731b863b36" kindref="member">RGMap::draw_ellipse</ref>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;fill_ellipse&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1acc0515cfaf9bbe8d65c9c374899fd8f8" kindref="member">RGMap::fill_ellipse</ref>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;draw_circle&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a366bf4bff59dfef02e8997f1b67a1eb5" kindref="member">RGMap::draw_circle</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;fill_circle&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ade7a912c5bbcc60f398f16fd264dc464" kindref="member">RGMap::fill_circle</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;draw_arc&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ae123137e6645f64ac5b8a5fba6598e0f" kindref="member">RGMap::draw_arc</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;fill_arc&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ae51cf8952917fd840f67d62ce129df71" kindref="member">RGMap::fill_arc</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;clean_map&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" kindref="member">RGMap::clean_map</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Entities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;add_entity&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1ae7a3643c8a808a0860b62dbd672d9311" kindref="member">RGMap::add_entity</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;remove_entity&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1adf896538adc5e7bcd5f8cb584fe0cf5c" kindref="member">RGMap::remove_entity</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;move_entity&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a8108573f1cf887b3f8263102ae2a3e39" kindref="member">RGMap::move_entity</ref>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_entity_transparency&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a9c399e3eecf2729291e145b8f330b18b" kindref="member">RGMap::set_entity_transparency</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_entity_passability&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a30bc4ade51798b8208d17a33d890422d" kindref="member">RGMap::set_entity_passability</ref>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;set_entity_memorized&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a4dff79eace0ca3c3468429d71bf7b1b0" kindref="member">RGMap::set_entity_memorized</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_visible&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a06d853a154fb9288f0eaa051cfd5c27f" kindref="member">RGMap::is_entity_visible</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_transparent&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aca51c1b240ff80577646ddbe74edf31b" kindref="member">RGMap::is_entity_transparent</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_passable&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a712b3f1d95d44c000949829def9b6e91" kindref="member">RGMap::is_entity_passable</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_memorized&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1abe18e0c06bc081071a56d9d216186421" kindref="member">RGMap::is_entity_memorized</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_chunk_loaded&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a97be562b35c3daf51f49e134b93dbc9d" kindref="member">RGMap::is_entity_chunk_loaded</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;is_entity_chunk_rendered&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a0a39e73b2e10796ffe72c590f3347989" kindref="member">RGMap::is_entity_chunk_rendered</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_entity_position&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a000af6feda1d67bcc014fc52a5871e50" kindref="member">RGMap::get_entity_position</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_entities_in_position&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a1030a2d395f2773dba6950096d60fdf9" kindref="member">RGMap::get_entities_in_position</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_entities_in_rect&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a2742fb3f44caa25d078abe67feec9d77" kindref="member">RGMap::get_entities_in_rect</ref>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_entities_in_radius&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a74c42c8fc68967a33b970c27457e9abf" kindref="member">RGMap::get_entities_in_radius</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;get_entities_in_chunk&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a3101593907cf4928bbffc94a1e5f950f" kindref="member">RGMap::get_entities_in_chunk</ref>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Save/Load</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;dump_map_data&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" kindref="member">RGMap::dump_map_data</ref>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>register_method(</highlight><highlight class="stringliteral">&quot;load_map_data&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" kindref="member">RGMap::load_map_data</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/>Initialization<sp/>and<sp/>Utils</highlight></codeline>
+<codeline lineno="122"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">RGMap::RGMap()<sp/>{}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">RGMap::~RGMap()<sp/>{}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RGMap::_init()<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref><sp/>=<sp/>Vector2(3,3);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref><sp/>=<sp/>Vector2(50,50);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" kindref="member">allow_diagonal_pathfinding</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>Saving<sp/>and<sp/>Loading</highlight></codeline>
+<codeline lineno="135"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" kindref="member">RGMap::dump_map_data</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/>map_data;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Save<sp/>size<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>map_data.append(<ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref>.x);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>map_data.append(<ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref>.y);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>map_data.append(<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.x);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>map_data.append(<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.y);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dump<sp/>chunk<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Chunk<sp/>chunk<sp/>:<sp/>chunks)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map_data.append(chunk.index);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map_data.append_array(<ref refid="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" kindref="member">dump_chunk_data</ref>(chunk.index));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_data;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" kindref="member">RGMap::load_map_data</ref>(PoolIntArray<sp/>map_data)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clean<sp/>loaded<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" kindref="member">clean_map</ref>();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref>.x<sp/>=<sp/>map_data[0];</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref>.y<sp/>=<sp/>map_data[1];</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.x<sp/>=<sp/>map_data[2];</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.y<sp/>=<sp/>map_data[3];</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>number<sp/>of<sp/>chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chunks_number<sp/>=<sp/>(map_data.size()-4)/(<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.x*<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.y*NUM_CHUNK_ARRAYS+1);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>chunks_number;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PoolIntArray<sp/>chunk_data;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>4<sp/>+<sp/>i*(1+<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.x*<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.y*NUM_CHUNK_ARRAYS);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>chunk<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=0;<sp/>k<sp/>&lt;<sp/><ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.x*<ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref>.y*NUM_CHUNK_ARRAYS;<sp/>++k)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value<sp/>=<sp/>map_data[start<sp/>+<sp/>k<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>chunk_data.append(value);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>chunk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>map_data[start];</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" kindref="member">load_chunk</ref>(index,<sp/>chunk_data);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp"/>
+  </compounddef>
+</doxygen>

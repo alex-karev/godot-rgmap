@@ -105,7 +105,7 @@ Requirements:
 
 Install it the same way as a regular editor plugin. Copy the contents of `addons/godot-rgmap` into the same folder in your project. 
 
-> Since it is just a new NativeScript class, zctivation/deactivation from project settings doesn't work. The nodes of this plugin are always available
+> Since it is just a new NativeScript class, activation/deactivation from project settings doesn't work. The nodes of this plugin are always available
 
 > Currently there are only precompiled binaries for Windows and Linux, but it can be compiled for any other platform (e.g. OSX). Follow instructions in *Building* section
 

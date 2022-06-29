@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="structgodot_1_1RGMap_1_1RGTile" kind="struct" language="C++" prot="private">
+    <compoundname>godot::RGMap::RGTile</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1RGTile_1afbc0eab1a5fbdad9e98cf2f78b22f11a" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String godot::RGMap::RGTile::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>godot::RGMap::RGTile::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="34" column="16" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1RGTile_1a42eec52245916ac39eeeea863e96d7f2" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String godot::RGMap::RGTile::display_name</definition>
+        <argsstring></argsstring>
+        <name>display_name</name>
+        <qualifiedname>godot::RGMap::RGTile::display_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="35" column="16" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1RGTile_1a97692965423dab469a67b3a54dddd042" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::RGTile::passable</definition>
+        <argsstring></argsstring>
+        <name>passable</name>
+        <qualifiedname>godot::RGMap::RGTile::passable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="36" column="14" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1RGTile_1a766f2e820b1557d5f3e1b1af625bcfa1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::RGTile::transparent</definition>
+        <argsstring></argsstring>
+        <name>transparent</name>
+        <qualifiedname>godot::RGMap::RGTile::transparent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="37" column="14" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="33" column="5" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="33" bodyend="38"/>
+    <listofallmembers>
+      <member refid="structgodot_1_1RGMap_1_1RGTile_1a42eec52245916ac39eeeea863e96d7f2" prot="public" virt="non-virtual"><scope>godot::RGMap::RGTile</scope><name>display_name</name></member>
+      <member refid="structgodot_1_1RGMap_1_1RGTile_1afbc0eab1a5fbdad9e98cf2f78b22f11a" prot="public" virt="non-virtual"><scope>godot::RGMap::RGTile</scope><name>name</name></member>
+      <member refid="structgodot_1_1RGMap_1_1RGTile_1a97692965423dab469a67b3a54dddd042" prot="public" virt="non-virtual"><scope>godot::RGMap::RGTile</scope><name>passable</name></member>
+      <member refid="structgodot_1_1RGMap_1_1RGTile_1a766f2e820b1557d5f3e1b1af625bcfa1" prot="public" virt="non-virtual"><scope>godot::RGMap::RGTile</scope><name>transparent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

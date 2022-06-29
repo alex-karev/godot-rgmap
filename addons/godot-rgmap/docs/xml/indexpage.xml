@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Godot Roguelike Game Map System (RGMap)</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md__home_data_Documents_Gamedev_Godot_GDNative_godot_rgmap_README"/> A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV</para>
+<para><image type="html" name="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo.gif" inline="yes"></image>
+</para>
+<para><image type="html" name="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif" inline="yes"></image>
+</para>
+<sect1 id="index_1autotoc_md1">
+<title>Features</title>
+<para><itemizedlist>
+<listitem><para><bold>FOV</bold> calculation using RPAS algorithm</para>
+</listitem><listitem><para><bold>Raycasting</bold> using Bresenham&apos;s lines</para>
+</listitem><listitem><para><bold>Pathfinding</bold> using Godot built-in A* class</para>
+</listitem><listitem><para><bold>Memorizing cells</bold> that have been visible at least once</para>
+</listitem><listitem><para><bold>Chunk system</bold> loadind/freeing chunks, dumping and restoring chunk data</para>
+</listitem><listitem><para><bold>Draw and fill</bold> functions for drawing primitives (lines, ellipse, rects, circles, arcs)</para>
+</listitem><listitem><para><bold>Managing tiles</bold> in RGMap class</para>
+</listitem><listitem><para><bold>TileSet generator</bold> for Tilemaps based on data from RGMap</para>
+</listitem><listitem><para><bold>Merging maps.</bold> Placing one RGMap inside the other map</para>
+</listitem><listitem><para><bold>Entity tracking.</bold> Entities and their properties can also be considered while using FOV and pathfinding</para>
+</listitem><listitem><para><bold>Saving and loading</bold> data as a flat array</para>
+</listitem><listitem><para><bold>C++, GDNative</bold></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md2">
+<title>Why?</title>
+<para>To make managing maps for roguelikes easier by uniting all useful functions and properties in one class.</para>
+<para><image type="html" name="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/addons/godot-rgmap/screenshots/code.png" inline="yes"></image>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md3">
+<title>Usage</title>
+<para>A new node is added:</para>
+<sect2 id="index_1autotoc_md4">
+<title>RGMap</title>
+<para>A node for managing map. Use it for editing maps, calculating for, pathfinding, etc.</para>
+<para>Tiles should be added before creating a new map</para>
+<para><programlisting><codeline><highlight class="normal">#<sp/>Add<sp/>tiles:</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>rgmap.add_tile(&quot;core.game.ground&quot;,<sp/>&quot;Ground&quot;,<sp/>true,<sp/>true)</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Note:<sp/>First<sp/>2<sp/>strings<sp/>are<sp/>&apos;name&apos;<sp/>and<sp/>&apos;display<sp/>name&apos;.<sp/>Other<sp/>2<sp/>booleans<sp/>are<sp/>&apos;passability&apos;<sp/>and<sp/>&apos;transparency&apos;</highlight></codeline>
+</programlisting></para>
+<para>It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:</para>
+<para><programlisting><codeline><highlight class="normal">var<sp/>file<sp/>=<sp/>File.new()</highlight></codeline>
+<codeline><highlight class="normal">file.open(&quot;res://db.json&quot;,<sp/>File.READ)</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>txt<sp/>=<sp/>file.get_as_text()</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>json<sp/>=<sp/>parse_json(txt)</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>tile_name<sp/>in<sp/>json[&quot;tiles&quot;].keys():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>var<sp/>data<sp/>=<sp/>json[&quot;tiles&quot;][tile_name]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rgmap.add_tile(tile_name,<sp/>data[&quot;name&quot;],<sp/>data[&quot;passable&quot;],<sp/>data[&quot;transparent&quot;])</highlight></codeline>
+</programlisting></para>
+<para>If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</para>
+<para><programlisting><codeline><highlight class="normal">var<sp/>tileset<sp/>=<sp/>rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;)<sp/>#<sp/>Generate<sp/>new<sp/>TileSet</highlight></codeline>
+<codeline><highlight class="normal">myTilemap.tile_set<sp/>=<sp/>tileset<sp/>#<sp/>Assign<sp/>new<sp/>TileSet<sp/>to<sp/>Tilemap</highlight></codeline>
+</programlisting></para>
+<para>RGMap has 4 signals that can be helpful for drawing and generating map:</para>
+<para><programlisting><codeline><highlight class="normal">chunks_load_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>loaded</highlight></codeline>
+<codeline><highlight class="normal">chunks_free_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>freed</highlight></codeline>
+<codeline><highlight class="normal">chunks_render_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>rendered</highlight></codeline>
+<codeline><highlight class="normal">chunks_hide_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>rendered<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>hidden</highlight></codeline>
+</programlisting></para>
+<para>The distances for loading and rendering chunks can be set as load_distance and render_distance variables of RGMap node. To emit these 4 signals call these functions:</para>
+<para><programlisting><codeline><highlight class="normal">#<sp/>player_position<sp/>is<sp/>position<sp/>of<sp/>the<sp/>player<sp/>on<sp/>RGMap<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal">request_chunks_update(player_position:<sp/>Vector2)<sp/>#<sp/>For<sp/>chunks<sp/>load/free<sp/>signals</highlight></codeline>
+<codeline><highlight class="normal">request_chunks_render(player_position:<sp/>Vector2)<sp/>#<sp/>For<sp/>chunks<sp/>render/hide<sp/>signals</highlight></codeline>
+</programlisting></para>
+<para>Don&apos;t forget to calculate FOV. It is better to do this in the end of the function connected to chunks_load_requested(PoolIntArray ids) signal:</para>
+<para><programlisting><codeline><highlight class="normal">func<sp/>_on_RGMap_chunks_load_requested(ids):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rgmap.calculate_fov(controller.player_position,<sp/>30)<sp/>#<sp/>30<sp/>is<sp/>a<sp/>radius</highlight></codeline>
+</programlisting></para>
+<para>Please see <ulink url="https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd">Generator.gd</ulink> for more detailed example</para>
+<para>There are a lot of functions available in RGMap node. You can read more about each function and variable here:</para>
+<para><ulink url="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</ulink></para>
+<para>Also, you can learn more from demo-project</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md5">
+<title>Example</title>
+<para>You can find an example of usage in demo-project directory</para>
+</sect1>
+<sect1 id="index_1autotoc_md6">
+<title>Installation</title>
+<para>Requirements:</para>
+<para><itemizedlist>
+<listitem><para>Windows or Linux</para>
+</listitem><listitem><para>Godot 3.4.4 or later. May work on earlier versions, but not tested. No Godot 4 support at the moment</para>
+</listitem></itemizedlist>
+</para>
+<para>Install it the same way as a regular editor plugin. Copy the contents of <computeroutput>addons/godot-rgmap</computeroutput> into the same folder in your project.</para>
+<para><blockquote><para><zwj/>Since it is just a new NativeScript class, activation/deactivation from project settings doesn&apos;t work. The nodes of this plugin are always available </para>
+</blockquote><blockquote><para><zwj/>Currently there are only precompiled binaries for Windows and Linux, but it can be compiled for any other platform (e.g. OSX). Follow instructions in <emphasis>Building</emphasis> section </para>
+</blockquote></para>
+</sect1>
+<sect1 id="index_1autotoc_md7">
+<title>Building</title>
+<para>You will need: C++ compiler and SCons installed in your system</para>
+<para><orderedlist>
+<listitem><para>Generate and compile bindings:</para>
+</listitem></orderedlist>
+</para>
+<para><programlisting><codeline><highlight class="normal">cd<sp/>addons/godot-rgmap/native/godot-cpp</highlight></codeline>
+<codeline><highlight class="normal">scons<sp/>platform=&lt;platform&gt;<sp/>generate_bindings=yes</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+</programlisting></para>
+<para><orderedlist>
+<listitem><para>Compile project</para>
+</listitem></orderedlist>
+</para>
+<para><programlisting><codeline><highlight class="normal">cd<sp/>addons/godot-rgmap/native</highlight></codeline>
+<codeline><highlight class="normal">scons<sp/>platform=&lt;platform&gt;</highlight></codeline>
+</programlisting></para>
+<para><orderedlist>
+<listitem><para>Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory</para>
+</listitem></orderedlist>
+</para>
+<para>See more about using GDNative modules here: <ulink url="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module</ulink></para>
+</sect1>
+<sect1 id="index_1autotoc_md8">
+<title>TODO</title>
+<para><itemizedlist>
+<listitem><para>[X] Create demo project</para>
+</listitem><listitem><para>[X] Add gifs and images to README</para>
+</listitem><listitem><para>[X] Automatic generation of 2D Tileset and Tilemap based on RGTileset</para>
+</listitem><listitem><para>[X] Better error handling</para>
+</listitem><listitem><para>[X] Chunk system</para>
+</listitem><listitem><para>[X] Entity tracking system</para>
+</listitem><listitem><para>[X] Change project structure and convert it to plugin (add plugin.gd)</para>
+</listitem><listitem><para>[ ] Write bash script for batch compiling binaries for Linux/Windows/Mac</para>
+</listitem><listitem><para>[ ] Custom properties of tiles</para>
+</listitem><listitem><para>[ ] Tutorial</para>
+</listitem><listitem><para>[ ] Add node for rendering RGMap in 2d</para>
+</listitem><listitem><para>[ ] Cutting and resizing map</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md9">
+<title>References</title>
+<para>The code for some parts of this projects was inspired by/copied from these resources:<itemizedlist>
+<listitem><para>RPAS implementation written in Python: <ulink url="https://github.com/MoyTW/roguebasin_rpas">https://github.com/MoyTW/roguebasin_rpas</ulink></para>
+</listitem><listitem><para>Bresenham&apos;s line: <ulink url="http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm">http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm</ulink></para>
+</listitem><listitem><para>Midpoint ellipse: <ulink url="https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/">https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/</ulink></para>
+</listitem><listitem><para>Doxygen theme: <ulink url="https://jothepro.github.io/doxygen-awesome-css/">https://jothepro.github.io/doxygen-awesome-css/</ulink></para>
+</listitem><listitem><para>Godot cpp API: <ulink url="https://github.com/godotengine/godot-cpp">https://github.com/godotengine/godot-cpp</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md10">
+<title>Contributing</title>
+<para>You are welcome to fork this repo and to create pull requests</para>
+</sect1>
+<sect1 id="index_1autotoc_md11">
+<title>License</title>
+<para>Distributed under the MIT License. See LICENSE for more information </para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/README.md"/>
+  </compounddef>
+</doxygen>

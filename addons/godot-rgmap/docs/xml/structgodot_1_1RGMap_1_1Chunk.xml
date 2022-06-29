@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="structgodot_1_1RGMap_1_1Chunk" kind="struct" language="C++" prot="private">
+    <compoundname>godot::RGMap::Chunk</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1Chunk_1ac928dc4640ea3284513031035ed0cb46" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int godot::RGMap::Chunk::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>godot::RGMap::Chunk::index</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="43" column="13" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1Chunk_1a762bff10471ac2f417833e71765ac74b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; godot::RGMap::Chunk::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>godot::RGMap::Chunk::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="45" column="21" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1Chunk_1ad87bd69b873a0dbc48fce10853d120ba" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; godot::RGMap::Chunk::memory</definition>
+        <argsstring></argsstring>
+        <name>memory</name>
+        <qualifiedname>godot::RGMap::Chunk::memory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="46" column="21" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgodot_1_1RGMap_1_1Chunk_1aa500cf02272ed5b9406ccba61e6cf2ce" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool godot::RGMap::Chunk::rendered</definition>
+        <argsstring></argsstring>
+        <name>rendered</name>
+        <qualifiedname>godot::RGMap::Chunk::rendered</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="47" column="14" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="41" column="5" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="41" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structgodot_1_1RGMap_1_1Chunk_1ac928dc4640ea3284513031035ed0cb46" prot="public" virt="non-virtual"><scope>godot::RGMap::Chunk</scope><name>index</name></member>
+      <member refid="structgodot_1_1RGMap_1_1Chunk_1ad87bd69b873a0dbc48fce10853d120ba" prot="public" virt="non-virtual"><scope>godot::RGMap::Chunk</scope><name>memory</name></member>
+      <member refid="structgodot_1_1RGMap_1_1Chunk_1aa500cf02272ed5b9406ccba61e6cf2ce" prot="public" virt="non-virtual"><scope>godot::RGMap::Chunk</scope><name>rendered</name></member>
+      <member refid="structgodot_1_1RGMap_1_1Chunk_1a762bff10471ac2f417833e71765ac74b" prot="public" virt="non-virtual"><scope>godot::RGMap::Chunk</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

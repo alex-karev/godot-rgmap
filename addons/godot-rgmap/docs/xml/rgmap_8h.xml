@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="rgmap_8h" kind="file" language="C++">
+    <compoundname>rgmap.h</compoundname>
+    <includes local="no">Godot.hpp</includes>
+    <includes local="no">Node.hpp</includes>
+    <includes local="no">Vector2.hpp</includes>
+    <includes local="no">Array.hpp</includes>
+    <includes local="no">AStar2D.hpp</includes>
+    <includes local="no">Rect2.hpp</includes>
+    <includes local="no">TileSet.hpp</includes>
+    <includes local="no">Texture.hpp</includes>
+    <includes local="no">ResourceLoader.hpp</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">algorithm</includes>
+    <includedby refid="cells_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/cells.cpp</includedby>
+    <includedby refid="chunks_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/chunks.cpp</includedby>
+    <includedby refid="editing_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/editing.cpp</includedby>
+    <includedby refid="entities_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/entities.cpp</includedby>
+    <includedby refid="gdlibrary_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp</includedby>
+    <includedby refid="rgmap_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.cpp</includedby>
+    <includedby refid="rpas_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rpas.cpp</includedby>
+    <includedby refid="tiles_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/tiles.cpp</includedby>
+    <includedby refid="view_8cpp" local="yes">/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/view.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h</label>
+        <link refid="rgmap_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>AStar2D.hpp</label>
+      </node>
+      <node id="5">
+        <label>Array.hpp</label>
+      </node>
+      <node id="2">
+        <label>Godot.hpp</label>
+      </node>
+      <node id="3">
+        <label>Node.hpp</label>
+      </node>
+      <node id="7">
+        <label>Rect2.hpp</label>
+      </node>
+      <node id="10">
+        <label>ResourceLoader.hpp</label>
+      </node>
+      <node id="9">
+        <label>Texture.hpp</label>
+      </node>
+      <node id="8">
+        <label>TileSet.hpp</label>
+      </node>
+      <node id="4">
+        <label>Vector2.hpp</label>
+      </node>
+      <node id="13">
+        <label>algorithm</label>
+      </node>
+      <node id="11">
+        <label>cmath</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgodot_1_1RGMap" prot="public">godot::RGMap</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1CellAngles" prot="private">godot::RGMap::CellAngles</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1RGTile" prot="private">godot::RGMap::RGTile</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1Chunk" prot="private">godot::RGMap::Chunk</innerclass>
+    <innerclass refid="structgodot_1_1RGMap_1_1Entity" prot="private">godot::RGMap::Entity</innerclass>
+    <innernamespace refid="namespacegodot">godot</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="rgmap_8h_1a525335710b53cb064ca56b936120431e" prot="public" static="no">
+        <name>_USE_MATH_DEFINES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" line="4" column="9" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>RGMAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RGMAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_USE_MATH_DEFINES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Godot.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Node.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Vector2.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;AStar2D.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Rect2.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TileSet.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Texture.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ResourceLoader.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">godot<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classgodot_1_1RGMap" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classgodot_1_1RGMap" kindref="compound">RGMap</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Reference<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>GODOT_CLASS(<ref refid="classgodot_1_1RGMap" kindref="compound">RGMap</ref>,<sp/>Node)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Structure<sp/>needed<sp/>for<sp/>RPAS<sp/>algorithm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">CellAngles{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>near;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>center;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>far;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Structure<sp/>that<sp/>stores<sp/>data<sp/>about<sp/>one<sp/>type<sp/>of<sp/>tile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RGTile<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>name;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>display_name;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passable;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>transparent;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Structure<sp/>of<sp/>one<sp/>chunk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Chunk<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Index<sp/>of<sp/>chunk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flat<sp/>arrays<sp/>that<sp/>contain<sp/>all<sp/>data<sp/>about<sp/>the<sp/>cells</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/>values;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/>memory;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rendered<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Structure<sp/>of<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Entity<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector2<sp/>position<sp/>=<sp/>Vector2(0,0);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passability<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>transparency<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>memorized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rewrite<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>tiles<sp/>in<sp/>a<sp/>game</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;RGTile&gt;<sp/>tiles;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>all<sp/>chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Chunk&gt;<sp/>chunks;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Epsilon<sp/>for<sp/>float<sp/>error<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>FLOAT_EPSILON<sp/>=<sp/>0.00001;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Visibility<sp/>of<sp/>cells<sp/>within<sp/>fov<sp/>radius.<sp/>Temporary<sp/>variable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/>visibility;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Opaque<sp/>obstacles<sp/>for<sp/>FOV.<sp/>Temporary<sp/>variable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/>fov_obstacles;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Current<sp/>fov<sp/>zone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>Rect2<sp/>fov_zone<sp/>=<sp/>Rect2(Vector2(0,0),<sp/>Vector2(0,0));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Vector2&gt;<sp/>pathfinding_exception_allowed;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Vector2&gt;<sp/>pathfinding_exception_disallowed;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>Arrays<sp/>stored<sp/>in<sp/>Chunk<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NUM_CHUNK_ARRAYS<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Array<sp/>with<sp/>all<sp/>registered<sp/>entities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Entity&gt;<sp/>entities;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Functions<sp/>for<sp/>Restrictive<sp/>Precise<sp/>Angle<sp/>Shadowcasting.<sp/>More<sp/>details<sp/>in<sp/>rpas.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/>rpas_visible_cells_in_quadrant_from(Vector2<sp/>center,<sp/>Vector2<sp/>quad,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/>rpas_visible_cells_in_octant_from(Vector2<sp/>center,<sp/>Vector2<sp/>quad,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_vertical);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/>rpas_cell_at(Vector2<sp/>center,<sp/>Vector2<sp/>quad,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iteration,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_vertical);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rpas_cell_in_radius(Vector2<sp/>center,<sp/>Vector2<sp/>cell,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rpas_cell_is_visible(CellAngles<sp/>cell_angles,<sp/>std::vector&lt;CellAngles&gt;&amp;<sp/>obstructions);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rpas_add_obstruction(std::vector&lt;CellAngles&gt;<sp/>&amp;<sp/>obstructions,<sp/>CellAngles<sp/>new_obstruction);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rpas_combine_obstructions(CellAngles<sp/>&amp;old_o,<sp/>CellAngles<sp/>&amp;new_o);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>points<sp/>based<sp/>on<sp/>4-way<sp/>symmetry<sp/>(for<sp/>Bresenham&apos;s<sp/>ellipse<sp/>algorithm)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>draw_4_way_symmetry(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>xc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_angle,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_angle);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>loaded<sp/>chunk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>Chunk&amp;<sp/>get_chunk(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>indexes<sp/>of<sp/>chunks<sp/>forming<sp/>a<sp/>square<sp/>grid<sp/>with<sp/>a<sp/>given<sp/>point<sp/>in<sp/>its<sp/>center</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/>get_chunks_in_distance(Vector2<sp/>point,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97" refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kindref="member">chunk_size</ref><sp/>=<sp/>Vector2(50,50);</highlight></codeline>
+<codeline lineno="99" refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kindref="member">size</ref><sp/>=<sp/>Vector2(3,3);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" kindref="member">load_distance</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" kindref="member">render_distance</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="113" refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" kindref="member">allow_diagonal_pathfinding</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"></codeline>
+<codeline lineno="121" refid="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" kindref="member">RPAS_RADIUS_FUDGE</ref><sp/>=<sp/>1.0<sp/>/<sp/>3.0;<sp/></highlight></codeline>
+<codeline lineno="123" refid="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" kindref="member">RPAS_NOT_VISIBLE_BLOCKS_VISION</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" kindref="member">RPAS_RESTRICTIVENESS</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="132" refid="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" kindref="member">RPAS_VISIBLE_ON_EQUAL</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note:<sp/>these<sp/>functions<sp/>placed<sp/>here<sp/>to<sp/>ease<sp/>documentation<sp/>generation<sp/>with<sp/>Doxygen</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>me<sp/>if<sp/>you<sp/>know<sp/>a<sp/>better<sp/>way<sp/>to<sp/>do<sp/>so</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classgodot_1_1RGMap_1afd1aae74dc064d42ccf5b934472294cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1afd1aae74dc064d42ccf5b934472294cf" kindref="member">chunks_load_requested</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PoolIntArray();}</highlight></codeline>
+<codeline lineno="143" refid="classgodot_1_1RGMap_1a2d061a66f56eb6392e41f4f9028d16fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a2d061a66f56eb6392e41f4f9028d16fc" kindref="member">chunks_free_requested</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PoolIntArray();}</highlight></codeline>
+<codeline lineno="145" refid="classgodot_1_1RGMap_1abf1c8ce2971af113a8513d1b018e07cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1abf1c8ce2971af113a8513d1b018e07cc" kindref="member">chunks_render_requested</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PoolIntArray();}</highlight></codeline>
+<codeline lineno="147" refid="classgodot_1_1RGMap_1ab011bf3701f536742a9b37530c327312" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1ab011bf3701f536742a9b37530c327312" kindref="member">chunks_hide_requested</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PoolIntArray();}</highlight></codeline>
+<codeline lineno="149" refid="classgodot_1_1RGMap_1a8f3bb2de68b7d4a239516015a86db8db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a8f3bb2de68b7d4a239516015a86db8db" kindref="member">chunk_loaded</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;}</highlight></codeline>
+<codeline lineno="151" refid="classgodot_1_1RGMap_1a74f8456f280ddaa8a3f3b3161a6ad63f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a74f8456f280ddaa8a3f3b3161a6ad63f" kindref="member">chunk_freed</ref>()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;}</highlight></codeline>
+<codeline lineno="153"></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_register_methods();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap" kindref="compound">RGMap</ref>();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgodot_1_1RGMap" kindref="compound">~RGMap</ref>();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_init();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tiles.cpp</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a55c55e1a5e1386093860a634c33cee3d" kindref="member">add_tile</ref>(String<sp/>name,<sp/>String<sp/>display_name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passable,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>transparent);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a0a6742a8d89a003db699ba02cd2f965a" kindref="member">get_tiles_count</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ac7e85ab8ca5c1b3580a773b35a8386fd" kindref="member">get_tile_index</ref>(String<sp/>name);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classgodot_1_1RGMap_1a9d0347ce24c61097eaca4292816b7ce3" kindref="member">get_tile_name</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classgodot_1_1RGMap_1a30d5d2ff82cbb7b163b4f2f960180539" kindref="member">get_tile_display_name</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ad407df53a5d381f958965c34acae88b1" kindref="member">is_tile_passable</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a217ae3cae06583ad6e0eaf4c4a7ccf36" kindref="member">is_tile_transparent</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>Ref&lt;TileSet&gt;<sp/><ref refid="classgodot_1_1RGMap_1a819587d899569b840a3f417aa9fd0c2f" kindref="member">generate_tileset</ref>(String<sp/>texture_path,<sp/>String<sp/>texture_format);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>chunks.cpp</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a17d00e1acf01120ad1324704960ea528" kindref="member">get_chunk_index</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1aa042aaa2c6cbc4f67473574c4861cbf2" kindref="member">chunk_index_int_to_v2</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a3ede385c9811d5c189943e42416af746" kindref="member">chunk_index_v2_to_int</ref>(Vector2<sp/>index);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ac47d550255055871d8b15ea21ccd7227" kindref="member">is_chunk_in_bounds</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1af9b781ce0c7fe4ccefa66fdcace66a0f" kindref="member">is_chunk_loaded</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" kindref="member">load_chunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>PoolIntArray<sp/>data<sp/>=<sp/>PoolIntArray());</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" kindref="member">dump_chunk_data</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a97e1bbbce76aca2a37e08db6d793907e" kindref="member">free_chunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1af16dce1ae917a6a42c237d7e7eebda92" kindref="member">reset_chunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a12e1b530faa11809a3fb965924166324" kindref="member">is_chunk_rendered</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a05420fcbc688769a4f97f4e068036609" kindref="member">set_chunk_rendered</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1aaff3bdcfb3484ab4807bf536aa126e11" kindref="member">get_loaded_chunks</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1af81558e0a4b18590aea6f385f6fa345f" kindref="member">get_chunks_to_load</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1ad292a1d8e79b597004643fbcf2e588f8" kindref="member">get_chunks_to_free</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a2c565c4b9124368ebdaae851afd13585" kindref="member">request_chunks_update</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a2e9616170d0d2bb4e1e5946c4f9f8d60" kindref="member">get_rendered_chunks</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a742bfc37a17e36f017d52f2bac8b698f" kindref="member">get_chunks_to_render</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a251886c67ff84873042b83e836585203" kindref="member">get_chunks_to_hide</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1af97b719797501ed8525d3aad37ed83d7" kindref="member">request_chunks_render</ref>(Vector2<sp/>player_position);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cells.cpp</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ab201f09297e368756c390a122a94fc97" kindref="member">get_local_index</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a0608386ad66cec9e4257808022da5038" kindref="member">get_value</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classgodot_1_1RGMap_1a4113d609f2d8b8ae8986b5261d72589a" kindref="member">get_name</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classgodot_1_1RGMap_1a4016e0965171c95fd867bd7eb01b65d9" kindref="member">get_display_name</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a37429fe0e0426653916667725477e01b" kindref="member">is_in_bounds</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a9722afa05ac0d4efe1146a9f8b70908b" kindref="member">is_transparent</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a6bc13a61c915adcfcd1c74d75b9a786a" kindref="member">is_passable</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a2ae7a1232b97d00c21a38a1073cb7b53" kindref="member">is_visible</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a735635c94c0913ffb0198dd51681986f" kindref="member">is_memorized</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a90bbf21a0a0084bc3cada939c5b84848" kindref="member">is_pathfinding_allowed</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1abf819377354f5deaf670605175243442" kindref="member">set_value</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a0aad3be6e33070ebedb8ea3eb81789cf" kindref="member">set_visibility</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ad15eb7048c2b0bdefcc22a6215e4eb36" kindref="member">set_memorized</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>view.cpp</highlight></codeline>
+<codeline lineno="297"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/><ref refid="classgodot_1_1RGMap_1abc95ec5b234f69d9f372483f22b8f602" kindref="member">rpas_calc_visible_cells_from</ref>(Vector2<sp/>center,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a449daffbdf681516e8a340e060edd0ef" kindref="member">calculate_fov</ref>(Vector2<sp/>view_position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_distance);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a4a4b116053d6722cbb2bd325db94327e" kindref="member">add_pathfinding_exception</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a6ec099f81053cdd7782a9ccac45ea54d" kindref="member">remove_pathfinding_exception</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/><ref refid="classgodot_1_1RGMap_1a637933f2b9bb946f4a7b295fddaaf452" kindref="member">show_pathfinding_exceptions</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exception_type);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/><ref refid="classgodot_1_1RGMap_1a0a0c87b9c381e59d241c298bbc7efd65" kindref="member">find_path</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end,<sp/>Rect2<sp/>pathfinding_zone,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exclude_undiscovered=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolVector2Array<sp/><ref refid="classgodot_1_1RGMap_1af5df74ee697c11151876e230fcfc2c09" kindref="member">get_line</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_diagonal<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1af8078e95e12994ce402bd4a3880008db" kindref="member">raycast_vision</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1a71f82c2deaa4c5ea9ec5ca0e43176d4a" kindref="member">raycast_path</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aa0e99aed1a2d145536439b9a88b9ae30" kindref="member">visibility_between</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_distance);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>editing.cpp</highlight></codeline>
+<codeline lineno="339"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" kindref="member">clean_map</ref>();</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a6e4b777d25b43065a5e2092d084099ee" kindref="member">place_map</ref>(<ref refid="classgodot_1_1RGMap" kindref="compound">RGMap</ref>*<sp/>another_map,<sp/>Vector2<sp/>start);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1af9d1f6508a2ad834c7050d12759342fd" kindref="member">draw_line</ref>(Vector2<sp/>start,<sp/>Vector2<sp/>end,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_diagonal<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a17af65d748b00d68c9403e6c016508c6" kindref="member">draw_rect</ref>(Rect2<sp/>rect,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a04245c368f06c61fad83c181b91592a6" kindref="member">fill_rect</ref>(Rect2<sp/>rect,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ade0f1244d005d7440fe0d3731b863b36" kindref="member">draw_ellipse</ref>(Vector2<sp/>center,<sp/>Vector2<sp/>radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_angle,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_angle,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_diagonal<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1acc0515cfaf9bbe8d65c9c374899fd8f8" kindref="member">fill_ellipse</ref>(Vector2<sp/>center,<sp/>Vector2<sp/>radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_angle,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_angle,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a366bf4bff59dfef02e8997f1b67a1eb5" kindref="member">draw_circle</ref>(Vector2<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_diagonal<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ade7a912c5bbcc60f398f16fd264dc464" kindref="member">fill_circle</ref>(Vector2<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ae123137e6645f64ac5b8a5fba6598e0f" kindref="member">draw_arc</ref>(Vector2<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_angle,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_angle,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_diagonal<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ae51cf8952917fd840f67d62ce129df71" kindref="member">fill_arc</ref>(Vector2<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_angle,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_angle,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>entities.cpp</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1ae7a3643c8a808a0860b62dbd672d9311" kindref="member">add_entity</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passability,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>transparency);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1adf896538adc5e7bcd5f8cb584fe0cf5c" kindref="member">remove_entity</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a8108573f1cf887b3f8263102ae2a3e39" kindref="member">move_entity</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a9c399e3eecf2729291e145b8f330b18b" kindref="member">set_entity_transparency</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a30bc4ade51798b8208d17a33d890422d" kindref="member">set_entity_passability</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a4dff79eace0ca3c3468429d71bf7b1b0" kindref="member">set_entity_memorized</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a06d853a154fb9288f0eaa051cfd5c27f" kindref="member">is_entity_visible</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aca51c1b240ff80577646ddbe74edf31b" kindref="member">is_entity_transparent</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a712b3f1d95d44c000949829def9b6e91" kindref="member">is_entity_passable</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1abe18e0c06bc081071a56d9d216186421" kindref="member">is_entity_memorized</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a97be562b35c3daf51f49e134b93dbc9d" kindref="member">is_entity_chunk_loaded</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1a0a39e73b2e10796ffe72c590f3347989" kindref="member">is_entity_chunk_rendered</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector2<sp/><ref refid="classgodot_1_1RGMap_1a000af6feda1d67bcc014fc52a5871e50" kindref="member">get_entity_position</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a1030a2d395f2773dba6950096d60fdf9" kindref="member">get_entities_in_position</ref>(Vector2<sp/>position);</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a2742fb3f44caa25d078abe67feec9d77" kindref="member">get_entities_in_rect</ref>(Rect2<sp/>rect);</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a74c42c8fc68967a33b970c27457e9abf" kindref="member">get_entities_in_radius</ref>(Vector2<sp/>position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius);</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a3101593907cf4928bbffc94a1e5f950f" kindref="member">get_entities_in_chunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chunk_index);</highlight></codeline>
+<codeline lineno="405"></codeline>
+<codeline lineno="408"></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/>PoolIntArray<sp/><ref refid="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" kindref="member">dump_map_data</ref>();</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" kindref="member">load_map_data</ref>(PoolIntArray<sp/>map_data);</highlight></codeline>
+<codeline lineno="414"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/rgmap.h"/>
+  </compounddef>
+</doxygen>

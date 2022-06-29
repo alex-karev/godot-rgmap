@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="gdlibrary_8cpp" kind="file" language="C++">
+    <compoundname>gdlibrary.cpp</compoundname>
+    <includes refid="rgmap_8h" local="yes">rgmap.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp</label>
+        <link refid="gdlibrary_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>rgmap.h</label>
+        <link refid="rgmap_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>AStar2D.hpp</label>
+      </node>
+      <node id="6">
+        <label>Array.hpp</label>
+      </node>
+      <node id="3">
+        <label>Godot.hpp</label>
+      </node>
+      <node id="4">
+        <label>Node.hpp</label>
+      </node>
+      <node id="8">
+        <label>Rect2.hpp</label>
+      </node>
+      <node id="11">
+        <label>ResourceLoader.hpp</label>
+      </node>
+      <node id="10">
+        <label>Texture.hpp</label>
+      </node>
+      <node id="9">
+        <label>TileSet.hpp</label>
+      </node>
+      <node id="5">
+        <label>Vector2.hpp</label>
+      </node>
+      <node id="14">
+        <label>algorithm</label>
+      </node>
+      <node id="12">
+        <label>cmath</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="gdlibrary_8cpp_1ab42a3b7bb5d56f4f9ff559feb709744b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void GDN_EXPORT</type>
+        <definition>void GDN_EXPORT godot_gdnative_init</definition>
+        <argsstring>(godot_gdnative_init_options *o)</argsstring>
+        <name>godot_gdnative_init</name>
+        <param>
+          <type>godot_gdnative_init_options *</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" line="3" column="28" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" bodystart="3" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="function" id="gdlibrary_8cpp_1aad7df3093cee19e5bebdf73d5f201510" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void GDN_EXPORT</type>
+        <definition>void GDN_EXPORT godot_gdnative_terminate</definition>
+        <argsstring>(godot_gdnative_terminate_options *o)</argsstring>
+        <name>godot_gdnative_terminate</name>
+        <param>
+          <type>godot_gdnative_terminate_options *</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" line="7" column="28" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="gdlibrary_8cpp_1ae6704e9487b3d9d53853f95c58e4ad42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void GDN_EXPORT</type>
+        <definition>void GDN_EXPORT godot_nativescript_init</definition>
+        <argsstring>(void *handle)</argsstring>
+        <name>godot_nativescript_init</name>
+        <param>
+          <type>void *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" line="11" column="28" bodyfile="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp" bodystart="11" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;rgmap.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>GDN_EXPORT<sp/>godot_gdnative_init(godot_gdnative_init_options<sp/>*o)<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>godot::Godot::gdnative_init(o);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>GDN_EXPORT<sp/>godot_gdnative_terminate(godot_gdnative_terminate_options<sp/>*o)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>godot::Godot::gdnative_terminate(o);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>GDN_EXPORT<sp/>godot_nativescript_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*handle)<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>godot::Godot::nativescript_init(handle);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>godot::register_class&lt;godot::RGMap&gt;();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src/gdlibrary.cpp"/>
+  </compounddef>
+</doxygen>

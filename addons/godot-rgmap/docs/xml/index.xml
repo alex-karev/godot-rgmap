@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.3" xml:lang="en-US">
+  <compound refid="structgodot_1_1RGMap_1_1CellAngles" kind="struct"><name>godot::RGMap::CellAngles</name>
+    <member refid="structgodot_1_1RGMap_1_1CellAngles_1af1a398f285f58942d48d0f51d1d60140" kind="variable"><name>near</name></member>
+    <member refid="structgodot_1_1RGMap_1_1CellAngles_1a4df431df66f448de8b63a64313d9a7db" kind="variable"><name>center</name></member>
+    <member refid="structgodot_1_1RGMap_1_1CellAngles_1a2d94503a8823ba36b7e4099a1350e404" kind="variable"><name>far</name></member>
+  </compound>
+  <compound refid="structgodot_1_1RGMap_1_1Chunk" kind="struct"><name>godot::RGMap::Chunk</name>
+    <member refid="structgodot_1_1RGMap_1_1Chunk_1ac928dc4640ea3284513031035ed0cb46" kind="variable"><name>index</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Chunk_1a762bff10471ac2f417833e71765ac74b" kind="variable"><name>values</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Chunk_1ad87bd69b873a0dbc48fce10853d120ba" kind="variable"><name>memory</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Chunk_1aa500cf02272ed5b9406ccba61e6cf2ce" kind="variable"><name>rendered</name></member>
+  </compound>
+  <compound refid="structgodot_1_1RGMap_1_1Entity" kind="struct"><name>godot::RGMap::Entity</name>
+    <member refid="structgodot_1_1RGMap_1_1Entity_1a415858af3f366b8f7ec5b1caa95dc207" kind="variable"><name>position</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Entity_1a0fcbd7aaf10988ce3a1378295dbd10f1" kind="variable"><name>passability</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Entity_1afff27fb9366c63506c71b013b648262c" kind="variable"><name>transparency</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Entity_1adfd4f983c5b8bce13e1853dce91fd48f" kind="variable"><name>memorized</name></member>
+    <member refid="structgodot_1_1RGMap_1_1Entity_1a061f580c5da2ea878092acceb487bbfd" kind="variable"><name>rewrite</name></member>
+  </compound>
+  <compound refid="classgodot_1_1RGMap" kind="class"><name>godot::RGMap</name>
+    <member refid="classgodot_1_1RGMap_1ad6b261d97c61db7c511faa45905eea3d" kind="variable"><name>RPAS_RADIUS_FUDGE</name></member>
+    <member refid="classgodot_1_1RGMap_1abfab661cb4533aee01402a3a7b1acb7b" kind="variable"><name>RPAS_NOT_VISIBLE_BLOCKS_VISION</name></member>
+    <member refid="classgodot_1_1RGMap_1a98a2a7a44cf00487360159e89be37401" kind="variable"><name>RPAS_RESTRICTIVENESS</name></member>
+    <member refid="classgodot_1_1RGMap_1ac743a18b1c2c2193e92aac307f1c1478" kind="variable"><name>RPAS_VISIBLE_ON_EQUAL</name></member>
+    <member refid="classgodot_1_1RGMap_1afd1aae74dc064d42ccf5b934472294cf" kind="function"><name>chunks_load_requested</name></member>
+    <member refid="classgodot_1_1RGMap_1a2d061a66f56eb6392e41f4f9028d16fc" kind="function"><name>chunks_free_requested</name></member>
+    <member refid="classgodot_1_1RGMap_1abf1c8ce2971af113a8513d1b018e07cc" kind="function"><name>chunks_render_requested</name></member>
+    <member refid="classgodot_1_1RGMap_1ab011bf3701f536742a9b37530c327312" kind="function"><name>chunks_hide_requested</name></member>
+    <member refid="classgodot_1_1RGMap_1a8f3bb2de68b7d4a239516015a86db8db" kind="function"><name>chunk_loaded</name></member>
+    <member refid="classgodot_1_1RGMap_1a74f8456f280ddaa8a3f3b3161a6ad63f" kind="function"><name>chunk_freed</name></member>
+    <member refid="classgodot_1_1RGMap_1a07f1fef452ab37ad0bc6a5a46ed65834" kind="function"><name>RGMap</name></member>
+    <member refid="classgodot_1_1RGMap_1aa2f66b3c45e245abd84fca56ae7097a2" kind="function"><name>~RGMap</name></member>
+    <member refid="classgodot_1_1RGMap_1a6a124ddb92eb57514b32f106babd40eb" kind="function"><name>_init</name></member>
+    <member refid="classgodot_1_1RGMap_1af167d83fed1892421dd86f2089d45fef" kind="function"><name>_register_methods</name></member>
+    <member refid="classgodot_1_1RGMap_1a55c55e1a5e1386093860a634c33cee3d" kind="function"><name>add_tile</name></member>
+    <member refid="classgodot_1_1RGMap_1a0a6742a8d89a003db699ba02cd2f965a" kind="function"><name>get_tiles_count</name></member>
+    <member refid="classgodot_1_1RGMap_1ac7e85ab8ca5c1b3580a773b35a8386fd" kind="function"><name>get_tile_index</name></member>
+    <member refid="classgodot_1_1RGMap_1a9d0347ce24c61097eaca4292816b7ce3" kind="function"><name>get_tile_name</name></member>
+    <member refid="classgodot_1_1RGMap_1a30d5d2ff82cbb7b163b4f2f960180539" kind="function"><name>get_tile_display_name</name></member>
+    <member refid="classgodot_1_1RGMap_1ad407df53a5d381f958965c34acae88b1" kind="function"><name>is_tile_passable</name></member>
+    <member refid="classgodot_1_1RGMap_1a217ae3cae06583ad6e0eaf4c4a7ccf36" kind="function"><name>is_tile_transparent</name></member>
+    <member refid="classgodot_1_1RGMap_1a819587d899569b840a3f417aa9fd0c2f" kind="function"><name>generate_tileset</name></member>
+    <member refid="classgodot_1_1RGMap_1a17d00e1acf01120ad1324704960ea528" kind="function"><name>get_chunk_index</name></member>
+    <member refid="classgodot_1_1RGMap_1aa042aaa2c6cbc4f67473574c4861cbf2" kind="function"><name>chunk_index_int_to_v2</name></member>
+    <member refid="classgodot_1_1RGMap_1a3ede385c9811d5c189943e42416af746" kind="function"><name>chunk_index_v2_to_int</name></member>
+    <member refid="classgodot_1_1RGMap_1ac47d550255055871d8b15ea21ccd7227" kind="function"><name>is_chunk_in_bounds</name></member>
+    <member refid="classgodot_1_1RGMap_1af9b781ce0c7fe4ccefa66fdcace66a0f" kind="function"><name>is_chunk_loaded</name></member>
+    <member refid="classgodot_1_1RGMap_1aff48c6694c9a7229c7603ec56fa19e8e" kind="function"><name>load_chunk</name></member>
+    <member refid="classgodot_1_1RGMap_1a05f17a76987156e6694a858d3dee1c49" kind="function"><name>dump_chunk_data</name></member>
+    <member refid="classgodot_1_1RGMap_1a97e1bbbce76aca2a37e08db6d793907e" kind="function"><name>free_chunk</name></member>
+    <member refid="classgodot_1_1RGMap_1af16dce1ae917a6a42c237d7e7eebda92" kind="function"><name>reset_chunk</name></member>
+    <member refid="classgodot_1_1RGMap_1a12e1b530faa11809a3fb965924166324" kind="function"><name>is_chunk_rendered</name></member>
+    <member refid="classgodot_1_1RGMap_1a05420fcbc688769a4f97f4e068036609" kind="function"><name>set_chunk_rendered</name></member>
+    <member refid="classgodot_1_1RGMap_1aaff3bdcfb3484ab4807bf536aa126e11" kind="function"><name>get_loaded_chunks</name></member>
+    <member refid="classgodot_1_1RGMap_1af81558e0a4b18590aea6f385f6fa345f" kind="function"><name>get_chunks_to_load</name></member>
+    <member refid="classgodot_1_1RGMap_1ad292a1d8e79b597004643fbcf2e588f8" kind="function"><name>get_chunks_to_free</name></member>
+    <member refid="classgodot_1_1RGMap_1a2c565c4b9124368ebdaae851afd13585" kind="function"><name>request_chunks_update</name></member>
+    <member refid="classgodot_1_1RGMap_1a2e9616170d0d2bb4e1e5946c4f9f8d60" kind="function"><name>get_rendered_chunks</name></member>
+    <member refid="classgodot_1_1RGMap_1a742bfc37a17e36f017d52f2bac8b698f" kind="function"><name>get_chunks_to_render</name></member>
+    <member refid="classgodot_1_1RGMap_1a251886c67ff84873042b83e836585203" kind="function"><name>get_chunks_to_hide</name></member>
+    <member refid="classgodot_1_1RGMap_1af97b719797501ed8525d3aad37ed83d7" kind="function"><name>request_chunks_render</name></member>
+    <member refid="classgodot_1_1RGMap_1ab201f09297e368756c390a122a94fc97" kind="function"><name>get_local_index</name></member>
+    <member refid="classgodot_1_1RGMap_1a0608386ad66cec9e4257808022da5038" kind="function"><name>get_value</name></member>
+    <member refid="classgodot_1_1RGMap_1a4113d609f2d8b8ae8986b5261d72589a" kind="function"><name>get_name</name></member>
+    <member refid="classgodot_1_1RGMap_1a4016e0965171c95fd867bd7eb01b65d9" kind="function"><name>get_display_name</name></member>
+    <member refid="classgodot_1_1RGMap_1a37429fe0e0426653916667725477e01b" kind="function"><name>is_in_bounds</name></member>
+    <member refid="classgodot_1_1RGMap_1a9722afa05ac0d4efe1146a9f8b70908b" kind="function"><name>is_transparent</name></member>
+    <member refid="classgodot_1_1RGMap_1a6bc13a61c915adcfcd1c74d75b9a786a" kind="function"><name>is_passable</name></member>
+    <member refid="classgodot_1_1RGMap_1a2ae7a1232b97d00c21a38a1073cb7b53" kind="function"><name>is_visible</name></member>
+    <member refid="classgodot_1_1RGMap_1a735635c94c0913ffb0198dd51681986f" kind="function"><name>is_memorized</name></member>
+    <member refid="classgodot_1_1RGMap_1a90bbf21a0a0084bc3cada939c5b84848" kind="function"><name>is_pathfinding_allowed</name></member>
+    <member refid="classgodot_1_1RGMap_1abf819377354f5deaf670605175243442" kind="function"><name>set_value</name></member>
+    <member refid="classgodot_1_1RGMap_1a0aad3be6e33070ebedb8ea3eb81789cf" kind="function"><name>set_visibility</name></member>
+    <member refid="classgodot_1_1RGMap_1ad15eb7048c2b0bdefcc22a6215e4eb36" kind="function"><name>set_memorized</name></member>
+    <member refid="classgodot_1_1RGMap_1abc95ec5b234f69d9f372483f22b8f602" kind="function"><name>rpas_calc_visible_cells_from</name></member>
+    <member refid="classgodot_1_1RGMap_1a449daffbdf681516e8a340e060edd0ef" kind="function"><name>calculate_fov</name></member>
+    <member refid="classgodot_1_1RGMap_1a4a4b116053d6722cbb2bd325db94327e" kind="function"><name>add_pathfinding_exception</name></member>
+    <member refid="classgodot_1_1RGMap_1a6ec099f81053cdd7782a9ccac45ea54d" kind="function"><name>remove_pathfinding_exception</name></member>
+    <member refid="classgodot_1_1RGMap_1a637933f2b9bb946f4a7b295fddaaf452" kind="function"><name>show_pathfinding_exceptions</name></member>
+    <member refid="classgodot_1_1RGMap_1a0a0c87b9c381e59d241c298bbc7efd65" kind="function"><name>find_path</name></member>
+    <member refid="classgodot_1_1RGMap_1af5df74ee697c11151876e230fcfc2c09" kind="function"><name>get_line</name></member>
+    <member refid="classgodot_1_1RGMap_1af8078e95e12994ce402bd4a3880008db" kind="function"><name>raycast_vision</name></member>
+    <member refid="classgodot_1_1RGMap_1a71f82c2deaa4c5ea9ec5ca0e43176d4a" kind="function"><name>raycast_path</name></member>
+    <member refid="classgodot_1_1RGMap_1aa0e99aed1a2d145536439b9a88b9ae30" kind="function"><name>visibility_between</name></member>
+    <member refid="classgodot_1_1RGMap_1a831fb561ec538f9dd241174079927b62" kind="function"><name>clean_map</name></member>
+    <member refid="classgodot_1_1RGMap_1a6e4b777d25b43065a5e2092d084099ee" kind="function"><name>place_map</name></member>
+    <member refid="classgodot_1_1RGMap_1af9d1f6508a2ad834c7050d12759342fd" kind="function"><name>draw_line</name></member>
+    <member refid="classgodot_1_1RGMap_1a17af65d748b00d68c9403e6c016508c6" kind="function"><name>draw_rect</name></member>
+    <member refid="classgodot_1_1RGMap_1a04245c368f06c61fad83c181b91592a6" kind="function"><name>fill_rect</name></member>
+    <member refid="classgodot_1_1RGMap_1ade0f1244d005d7440fe0d3731b863b36" kind="function"><name>draw_ellipse</name></member>
+    <member refid="classgodot_1_1RGMap_1acc0515cfaf9bbe8d65c9c374899fd8f8" kind="function"><name>fill_ellipse</name></member>
+    <member refid="classgodot_1_1RGMap_1a366bf4bff59dfef02e8997f1b67a1eb5" kind="function"><name>draw_circle</name></member>
+    <member refid="classgodot_1_1RGMap_1ade7a912c5bbcc60f398f16fd264dc464" kind="function"><name>fill_circle</name></member>
+    <member refid="classgodot_1_1RGMap_1ae123137e6645f64ac5b8a5fba6598e0f" kind="function"><name>draw_arc</name></member>
+    <member refid="classgodot_1_1RGMap_1ae51cf8952917fd840f67d62ce129df71" kind="function"><name>fill_arc</name></member>
+    <member refid="classgodot_1_1RGMap_1ae7a3643c8a808a0860b62dbd672d9311" kind="function"><name>add_entity</name></member>
+    <member refid="classgodot_1_1RGMap_1adf896538adc5e7bcd5f8cb584fe0cf5c" kind="function"><name>remove_entity</name></member>
+    <member refid="classgodot_1_1RGMap_1a8108573f1cf887b3f8263102ae2a3e39" kind="function"><name>move_entity</name></member>
+    <member refid="classgodot_1_1RGMap_1a9c399e3eecf2729291e145b8f330b18b" kind="function"><name>set_entity_transparency</name></member>
+    <member refid="classgodot_1_1RGMap_1a30bc4ade51798b8208d17a33d890422d" kind="function"><name>set_entity_passability</name></member>
+    <member refid="classgodot_1_1RGMap_1a4dff79eace0ca3c3468429d71bf7b1b0" kind="function"><name>set_entity_memorized</name></member>
+    <member refid="classgodot_1_1RGMap_1a06d853a154fb9288f0eaa051cfd5c27f" kind="function"><name>is_entity_visible</name></member>
+    <member refid="classgodot_1_1RGMap_1aca51c1b240ff80577646ddbe74edf31b" kind="function"><name>is_entity_transparent</name></member>
+    <member refid="classgodot_1_1RGMap_1a712b3f1d95d44c000949829def9b6e91" kind="function"><name>is_entity_passable</name></member>
+    <member refid="classgodot_1_1RGMap_1abe18e0c06bc081071a56d9d216186421" kind="function"><name>is_entity_memorized</name></member>
+    <member refid="classgodot_1_1RGMap_1a97be562b35c3daf51f49e134b93dbc9d" kind="function"><name>is_entity_chunk_loaded</name></member>
+    <member refid="classgodot_1_1RGMap_1a0a39e73b2e10796ffe72c590f3347989" kind="function"><name>is_entity_chunk_rendered</name></member>
+    <member refid="classgodot_1_1RGMap_1a000af6feda1d67bcc014fc52a5871e50" kind="function"><name>get_entity_position</name></member>
+    <member refid="classgodot_1_1RGMap_1a1030a2d395f2773dba6950096d60fdf9" kind="function"><name>get_entities_in_position</name></member>
+    <member refid="classgodot_1_1RGMap_1a2742fb3f44caa25d078abe67feec9d77" kind="function"><name>get_entities_in_rect</name></member>
+    <member refid="classgodot_1_1RGMap_1a74c42c8fc68967a33b970c27457e9abf" kind="function"><name>get_entities_in_radius</name></member>
+    <member refid="classgodot_1_1RGMap_1a3101593907cf4928bbffc94a1e5f950f" kind="function"><name>get_entities_in_chunk</name></member>
+    <member refid="classgodot_1_1RGMap_1a673f7f9e37f280588ccff46b1f46d38e" kind="function"><name>dump_map_data</name></member>
+    <member refid="classgodot_1_1RGMap_1aa2accf67955f8a3fb5fb30a649e6132d" kind="function"><name>load_map_data</name></member>
+    <member refid="classgodot_1_1RGMap_1ace104bec116a1d52f5cadb8416510841" kind="variable"><name>tiles</name></member>
+    <member refid="classgodot_1_1RGMap_1a36dde61302a0c33b025b83f851899272" kind="variable"><name>chunks</name></member>
+    <member refid="classgodot_1_1RGMap_1a09ae64b7ec94df222ff4f83fe122daae" kind="variable"><name>FLOAT_EPSILON</name></member>
+    <member refid="classgodot_1_1RGMap_1af4b1d5450c2f94fb745ac6cd4bb3a94b" kind="variable"><name>visibility</name></member>
+    <member refid="classgodot_1_1RGMap_1a2d1938e89e871ea9f0fbecfd4fc83740" kind="variable"><name>fov_obstacles</name></member>
+    <member refid="classgodot_1_1RGMap_1ac013ae5bfe9a146e452ebfbbe6145d32" kind="variable"><name>fov_zone</name></member>
+    <member refid="classgodot_1_1RGMap_1ac8a7b737961652906583ee2c4aee5aa5" kind="variable"><name>pathfinding_exception_allowed</name></member>
+    <member refid="classgodot_1_1RGMap_1a8bbe87a02805d5b66c1f8b140dc78af6" kind="variable"><name>pathfinding_exception_disallowed</name></member>
+    <member refid="classgodot_1_1RGMap_1a1fa537362cef8d7accd126214a2a9b24" kind="variable"><name>NUM_CHUNK_ARRAYS</name></member>
+    <member refid="classgodot_1_1RGMap_1a8268e337a7834bcb3a2b58f4da8a31ec" kind="variable"><name>entities</name></member>
+    <member refid="classgodot_1_1RGMap_1a3fba15a031ad1bd976b281cefe90bc79" kind="variable"><name>chunk_size</name></member>
+    <member refid="classgodot_1_1RGMap_1a4a8e96884242e6b83b2417d127a814a8" kind="variable"><name>size</name></member>
+    <member refid="classgodot_1_1RGMap_1ab097624100d11699293844ead170dab9" kind="variable"><name>load_distance</name></member>
+    <member refid="classgodot_1_1RGMap_1aef65b060d5dbda0c47f00d2431921b49" kind="variable"><name>render_distance</name></member>
+    <member refid="classgodot_1_1RGMap_1a092151ec6eda7be42513f17eb9ebfe1f" kind="variable"><name>allow_diagonal_pathfinding</name></member>
+    <member refid="classgodot_1_1RGMap_1a939b6e72f72bd5f76479b632c2bfd04c" kind="function"><name>rpas_visible_cells_in_quadrant_from</name></member>
+    <member refid="classgodot_1_1RGMap_1a4eb9cb04723a13d6f5193ef429db5ba3" kind="function"><name>rpas_visible_cells_in_octant_from</name></member>
+    <member refid="classgodot_1_1RGMap_1a93a2984b1abb854100c21ee06af261cf" kind="function"><name>rpas_cell_at</name></member>
+    <member refid="classgodot_1_1RGMap_1a49ee2175a108e9a103bb69fda55c86aa" kind="function"><name>rpas_cell_in_radius</name></member>
+    <member refid="classgodot_1_1RGMap_1a1d1b8d045135ce287eb2fc647b5bd256" kind="function"><name>rpas_cell_is_visible</name></member>
+    <member refid="classgodot_1_1RGMap_1abda59c7c96c81646f3d0b34900e8ada3" kind="function"><name>rpas_add_obstruction</name></member>
+    <member refid="classgodot_1_1RGMap_1a8a17dedc90ef1670c8b2b3bbc009dd7b" kind="function"><name>rpas_combine_obstructions</name></member>
+    <member refid="classgodot_1_1RGMap_1af58fa6f65fa2dd7646402ec48eeadeeb" kind="function"><name>draw_4_way_symmetry</name></member>
+    <member refid="classgodot_1_1RGMap_1afaca9a0494bc1bda3f5d171b8e3bc271" kind="function"><name>get_chunk</name></member>
+    <member refid="classgodot_1_1RGMap_1aa96e6d4bad41865cae782d6e97a7ea11" kind="function"><name>get_chunks_in_distance</name></member>
+  </compound>
+  <compound refid="structgodot_1_1RGMap_1_1RGTile" kind="struct"><name>godot::RGMap::RGTile</name>
+    <member refid="structgodot_1_1RGMap_1_1RGTile_1afbc0eab1a5fbdad9e98cf2f78b22f11a" kind="variable"><name>name</name></member>
+    <member refid="structgodot_1_1RGMap_1_1RGTile_1a42eec52245916ac39eeeea863e96d7f2" kind="variable"><name>display_name</name></member>
+    <member refid="structgodot_1_1RGMap_1_1RGTile_1a97692965423dab469a67b3a54dddd042" kind="variable"><name>passable</name></member>
+    <member refid="structgodot_1_1RGMap_1_1RGTile_1a766f2e820b1557d5f3e1b1af625bcfa1" kind="variable"><name>transparent</name></member>
+  </compound>
+  <compound refid="namespacegodot" kind="namespace"><name>godot</name>
+  </compound>
+  <compound refid="cells_8cpp" kind="file"><name>cells.cpp</name>
+  </compound>
+  <compound refid="chunks_8cpp" kind="file"><name>chunks.cpp</name>
+  </compound>
+  <compound refid="editing_8cpp" kind="file"><name>editing.cpp</name>
+  </compound>
+  <compound refid="entities_8cpp" kind="file"><name>entities.cpp</name>
+  </compound>
+  <compound refid="gdlibrary_8cpp" kind="file"><name>gdlibrary.cpp</name>
+    <member refid="gdlibrary_8cpp_1ab42a3b7bb5d56f4f9ff559feb709744b" kind="function"><name>godot_gdnative_init</name></member>
+    <member refid="gdlibrary_8cpp_1aad7df3093cee19e5bebdf73d5f201510" kind="function"><name>godot_gdnative_terminate</name></member>
+    <member refid="gdlibrary_8cpp_1ae6704e9487b3d9d53853f95c58e4ad42" kind="function"><name>godot_nativescript_init</name></member>
+  </compound>
+  <compound refid="rgmap_8cpp" kind="file"><name>rgmap.cpp</name>
+  </compound>
+  <compound refid="rgmap_8h" kind="file"><name>rgmap.h</name>
+    <member refid="rgmap_8h_1a525335710b53cb064ca56b936120431e" kind="define"><name>_USE_MATH_DEFINES</name></member>
+  </compound>
+  <compound refid="rpas_8cpp" kind="file"><name>rpas.cpp</name>
+  </compound>
+  <compound refid="tiles_8cpp" kind="file"><name>tiles.cpp</name>
+  </compound>
+  <compound refid="view_8cpp" kind="file"><name>view.cpp</name>
+  </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="dir_3dbb10954ed03e2c7eb007b10aa2d80b" kind="dir"><name>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native</name>
+  </compound>
+  <compound refid="dir_f16365bb7e289cec0411dcf808705715" kind="dir"><name>/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/addons/godot-rgmap/native/src</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

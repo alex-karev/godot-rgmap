@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Godot<sp/>Roguelike<sp/>Game<sp/>Map<sp/>System<sp/>(RGMap)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>library<sp/>for<sp/>managing<sp/>maps<sp/>for<sp/>roguelike<sp/>games<sp/>in<sp/>Godot<sp/>Engine.<sp/>It<sp/>helps<sp/>with<sp/>map<sp/>generation,<sp/>storing<sp/>map<sp/>data,<sp/>and<sp/>using<sp/>pathfinding,<sp/>raycasting,<sp/>and<sp/>FOV</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;img<sp/>src=&quot;https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo.gif&quot;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;img<sp/>src=&quot;https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif&quot;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Features</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**FOV**<sp/>calculation<sp/>using<sp/>RPAS<sp/>algorithm</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Raycasting**<sp/>using<sp/>Bresenham&apos;s<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Pathfinding**<sp/>using<sp/>Godot<sp/>built-in<sp/>A*<sp/>class</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Memorizing<sp/>cells**<sp/>that<sp/>have<sp/>been<sp/>visible<sp/>at<sp/>least<sp/>once</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Chunk<sp/>system**<sp/>loadind/freeing<sp/>chunks,<sp/>dumping<sp/>and<sp/>restoring<sp/>chunk<sp/>data</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Draw<sp/>and<sp/>fill**<sp/>functions<sp/>for<sp/>drawing<sp/>primitives<sp/>(lines,<sp/>ellipse,<sp/>rects,<sp/>circles,<sp/>arcs)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Managing<sp/>tiles**<sp/>in<sp/>RGMap<sp/>class</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**TileSet<sp/>generator**<sp/>for<sp/>Tilemaps<sp/>based<sp/>on<sp/>data<sp/>from<sp/>RGMap</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Merging<sp/>maps.**<sp/>Placing<sp/>one<sp/>RGMap<sp/>inside<sp/>the<sp/>other<sp/>map</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Entity<sp/>tracking.**<sp/>Entities<sp/>and<sp/>their<sp/>properties<sp/>can<sp/>also<sp/>be<sp/>considered<sp/>while<sp/>using<sp/>FOV<sp/>and<sp/>pathfinding<sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**Saving<sp/>and<sp/>loading**<sp/>data<sp/>as<sp/>a<sp/>flat<sp/>array</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>**C++,<sp/>GDNative**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Why?</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>make<sp/>managing<sp/>maps<sp/>for<sp/>roguelikes<sp/>easier<sp/>by<sp/>uniting<sp/>all<sp/>useful<sp/>functions<sp/>and<sp/>properties<sp/>in<sp/>one<sp/>class.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;img<sp/>src=&quot;https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/addons/godot-rgmap/screenshots/code.png&quot;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Usage</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>new<sp/>node<sp/>is<sp/>added:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>RGMap</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>node<sp/>for<sp/>managing<sp/>map.<sp/>Use<sp/>it<sp/>for<sp/>editing<sp/>maps,<sp/>calculating<sp/>for,<sp/>pathfinding,<sp/>etc.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tiles<sp/>should<sp/>be<sp/>added<sp/>before<sp/>creating<sp/>a<sp/>new<sp/>map</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Add<sp/>tiles:</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>rgmap.add_tile(&quot;core.game.ground&quot;,<sp/>&quot;Ground&quot;,<sp/>true,<sp/>true)</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Note:<sp/>First<sp/>2<sp/>strings<sp/>are<sp/>&apos;name&apos;<sp/>and<sp/>&apos;display<sp/>name&apos;.<sp/>Other<sp/>2<sp/>booleans<sp/>are<sp/>&apos;passability&apos;<sp/>and<sp/>&apos;transparency&apos;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>is<sp/>strongly<sp/>advised<sp/>to<sp/>store<sp/>information<sp/>about<sp/>all<sp/>your<sp/>tiles<sp/>in<sp/>some<sp/>database<sp/>(e.g.<sp/>JSON)<sp/>and<sp/>add<sp/>tiles<sp/>like<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>file<sp/>=<sp/>File.new()</highlight></codeline>
+<codeline><highlight class="normal">file.open(&quot;res://db.json&quot;,<sp/>File.READ)</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>txt<sp/>=<sp/>file.get_as_text()</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>json<sp/>=<sp/>parse_json(txt)</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>tile_name<sp/>in<sp/>json[&quot;tiles&quot;].keys():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>var<sp/>data<sp/>=<sp/>json[&quot;tiles&quot;][tile_name]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rgmap.add_tile(tile_name,<sp/>data[&quot;name&quot;],<sp/>data[&quot;passable&quot;],<sp/>data[&quot;transparent&quot;])</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>want<sp/>to<sp/>create<sp/>a<sp/>2d<sp/>TileSet<sp/>for<sp/>your<sp/>Tilemap,<sp/>you<sp/>can<sp/>use<sp/>generate_tileset<sp/>function.<sp/></highlight></codeline>
+<codeline><highlight class="normal">It<sp/>searches<sp/>for<sp/>images<sp/>named<sp/>as<sp/>your<sp/>tiles<sp/>in<sp/>a<sp/>specified<sp/>directory:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">var<sp/>tileset<sp/>=<sp/>rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;)<sp/>#<sp/>Generate<sp/>new<sp/>TileSet</highlight></codeline>
+<codeline><highlight class="normal">myTilemap.tile_set<sp/>=<sp/>tileset<sp/>#<sp/>Assign<sp/>new<sp/>TileSet<sp/>to<sp/>Tilemap</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">RGMap<sp/>has<sp/>4<sp/>signals<sp/>that<sp/>can<sp/>be<sp/>helpful<sp/>for<sp/>drawing<sp/>and<sp/>generating<sp/>map:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">chunks_load_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>loaded</highlight></codeline>
+<codeline><highlight class="normal">chunks_free_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>freed</highlight></codeline>
+<codeline><highlight class="normal">chunks_render_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>rendered</highlight></codeline>
+<codeline><highlight class="normal">chunks_hide_requested(PoolIntArray<sp/>ids)<sp/>#<sp/>Returns<sp/>ids<sp/>of<sp/>rendered<sp/>chunks<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>hidden</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>distances<sp/>for<sp/>loading<sp/>and<sp/>rendering<sp/>chunks<sp/>can<sp/>be<sp/>set<sp/>as<sp/>load_distance<sp/>and<sp/>render_distance<sp/>variables<sp/>of<sp/>RGMap<sp/>node.<sp/></highlight></codeline>
+<codeline><highlight class="normal">To<sp/>emit<sp/>these<sp/>4<sp/>signals<sp/>call<sp/>these<sp/>functions:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>player_position<sp/>is<sp/>position<sp/>of<sp/>the<sp/>player<sp/>on<sp/>RGMap<sp/>grid</highlight></codeline>
+<codeline><highlight class="normal">request_chunks_update(player_position:<sp/>Vector2)<sp/>#<sp/>For<sp/>chunks<sp/>load/free<sp/>signals</highlight></codeline>
+<codeline><highlight class="normal">request_chunks_render(player_position:<sp/>Vector2)<sp/>#<sp/>For<sp/>chunks<sp/>render/hide<sp/>signals</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Don&apos;t<sp/>forget<sp/>to<sp/>calculate<sp/>FOV.<sp/>It<sp/>is<sp/>better<sp/>to<sp/>do<sp/>this<sp/>in<sp/>the<sp/>end<sp/>of<sp/>the<sp/>function<sp/>connected<sp/>to<sp/>chunks_load_requested(PoolIntArray<sp/>ids)<sp/>signal:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">func<sp/>_on_RGMap_chunks_load_requested(ids):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rgmap.calculate_fov(controller.player_position,<sp/>30)<sp/>#<sp/>30<sp/>is<sp/>a<sp/>radius</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>see<sp/>[Generator.gd](https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd)<sp/></highlight></codeline>
+<codeline><highlight class="normal">for<sp/>more<sp/>detailed<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>a<sp/>lot<sp/>of<sp/>functions<sp/>available<sp/>in<sp/>RGMap<sp/>node.<sp/>You<sp/>can<sp/>read<sp/>more<sp/>about<sp/>each<sp/>function<sp/>and<sp/>variable<sp/><sp/>here:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Also,<sp/>you<sp/>can<sp/>learn<sp/>more<sp/>from<sp/>demo-project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Example</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>can<sp/>find<sp/>an<sp/>example<sp/>of<sp/>usage<sp/>in<sp/>demo-project<sp/>directory</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Installation</highlight></codeline>
+<codeline><highlight class="normal">Requirements:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Windows<sp/>or<sp/>Linux</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Godot<sp/>3.4.4<sp/>or<sp/>later.<sp/>May<sp/>work<sp/>on<sp/>earlier<sp/>versions,<sp/>but<sp/>not<sp/>tested.<sp/>No<sp/>Godot<sp/>4<sp/>support<sp/>at<sp/>the<sp/>moment</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Install<sp/>it<sp/>the<sp/>same<sp/>way<sp/>as<sp/>a<sp/>regular<sp/>editor<sp/>plugin.<sp/>Copy<sp/>the<sp/>contents<sp/>of<sp/>`addons/godot-rgmap`<sp/>into<sp/>the<sp/>same<sp/>folder<sp/>in<sp/>your<sp/>project.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Since<sp/>it<sp/>is<sp/>just<sp/>a<sp/>new<sp/>NativeScript<sp/>class,<sp/>activation/deactivation<sp/>from<sp/>project<sp/>settings<sp/>doesn&apos;t<sp/>work.<sp/>The<sp/>nodes<sp/>of<sp/>this<sp/>plugin<sp/>are<sp/>always<sp/>available</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Currently<sp/>there<sp/>are<sp/>only<sp/>precompiled<sp/>binaries<sp/>for<sp/>Windows<sp/>and<sp/>Linux,<sp/>but<sp/>it<sp/>can<sp/>be<sp/>compiled<sp/>for<sp/>any<sp/>other<sp/>platform<sp/>(e.g.<sp/>OSX).<sp/>Follow<sp/>instructions<sp/>in<sp/>*Building*<sp/>section</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Building</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>will<sp/>need:<sp/>C++<sp/>compiler<sp/>and<sp/>SCons<sp/>installed<sp/>in<sp/>your<sp/>system</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Generate<sp/>and<sp/>compile<sp/>bindings:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>addons/godot-rgmap/native/godot-cpp</highlight></codeline>
+<codeline><highlight class="normal">scons<sp/>platform=&lt;platform&gt;<sp/>generate_bindings=yes</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>Compile<sp/>project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>addons/godot-rgmap/native</highlight></codeline>
+<codeline><highlight class="normal">scons<sp/>platform=&lt;platform&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">4.<sp/>Create<sp/>new<sp/>NativeScript<sp/>and<sp/>GDNativeLibrary.<sp/>Link<sp/>it<sp/>to<sp/>binaries<sp/>you<sp/>have<sp/>copied<sp/>from<sp/>/bin<sp/>directory</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>more<sp/>about<sp/>using<sp/>GDNative<sp/>modules<sp/>here:<sp/>&lt;https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>TODO</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Create<sp/>demo<sp/>project</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Add<sp/>gifs<sp/>and<sp/>images<sp/>to<sp/>README</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Automatic<sp/>generation<sp/>of<sp/>2D<sp/>Tileset<sp/>and<sp/>Tilemap<sp/>based<sp/>on<sp/>RGTileset</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Better<sp/>error<sp/>handling</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Chunk<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Entity<sp/>tracking<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[X]<sp/>Change<sp/>project<sp/>structure<sp/>and<sp/>convert<sp/>it<sp/>to<sp/>plugin<sp/>(add<sp/>plugin.gd)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Write<sp/>bash<sp/>script<sp/>for<sp/>batch<sp/>compiling<sp/>binaries<sp/>for<sp/>Linux/Windows/Mac</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Custom<sp/>properties<sp/>of<sp/>tiles</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Tutorial</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Add<sp/>node<sp/>for<sp/>rendering<sp/>RGMap<sp/>in<sp/>2d</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Cutting<sp/>and<sp/>resizing<sp/>map</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>References</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>code<sp/>for<sp/>some<sp/>parts<sp/>of<sp/>this<sp/>projects<sp/>was<sp/>inspired<sp/>by/copied<sp/>from<sp/>these<sp/>resources:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>RPAS<sp/>implementation<sp/>written<sp/>in<sp/>Python:<sp/>&lt;https://github.com/MoyTW/roguebasin_rpas&gt;</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Bresenham&apos;s<sp/>line:<sp/>&lt;http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm&gt;</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Midpoint<sp/>ellipse:<sp/>&lt;https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/&gt;</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Doxygen<sp/>theme:<sp/>&lt;https://jothepro.github.io/doxygen-awesome-css/&gt;</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Godot<sp/>cpp<sp/>API:<sp/>&lt;https://github.com/godotengine/godot-cpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contributing</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>are<sp/>welcome<sp/>to<sp/>fork<sp/>this<sp/>repo<sp/>and<sp/>to<sp/>create<sp/>pull<sp/>requests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">Distributed<sp/>under<sp/>the<sp/>MIT<sp/>License.<sp/>See<sp/>LICENSE<sp/>for<sp/>more<sp/>information</highlight></codeline>
+    </programlisting>
+    <location file="/home/data/Documents/Gamedev/Godot/GDNative/godot-rgmap/README.md"/>
+  </compounddef>
+</doxygen>
