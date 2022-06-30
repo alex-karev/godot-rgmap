@@ -89,7 +89,6 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md__home_data_Documents_Gamedev_Godot_GDNative_godot_rgmap_README"></a> A library for managing maps for roguelike games in Godot Engine. It helps with map generation, storing map data, and using pathfinding, raycasting, and FOV</p>
 <p ><img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo.gif" alt="" class="inline"/></p>
-<p ><img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Table of Contents</h1>
 <ol type="1">
@@ -103,6 +102,7 @@ Table of Contents</h1>
 <li>Contributing</li>
 <li>License</li>
 </ol>
+<p ><img src="https://github.com/alex-karev/godot-rgmap/raw/main/addons/godot-rgmap/screenshots/demo2.gif" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <ul>
@@ -157,9 +157,9 @@ RGMap</h2>
 <div class="fragment"><div class="line">func _on_RGMap_chunks_load_requested(ids):</div>
 <div class="line">    ...</div>
 <div class="line">    rgmap.calculate_fov(controller.player_position, 30) # 30 is a radius</div>
-</div><!-- fragment --><p >Please see <a href="https://github.com/alex-karev/godot-rgmap/blob/main/demo-project/Generator.gd">Generator.gd</a> for more detailed example</p>
-<p >There are a lot of functions available in RGMap node. You can read more about each function and variable here:</p>
-<p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html</a></p>
+</div><!-- fragment --><p >Please see <a href="https://github.com/alex-karev/godot-rgmap/blob/main/addons/godot-rgmap/demo/Generator.gd">Generator.gd</a> for more detailed example</p>
+<p >There are a lot of functions available in RGMap node. You can read more about each function and variable in documentation:</p>
+<p ><a href="https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html">RGMap Class Documentation</a></p>
 <p >Also, you can learn more from demo-project</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 Example</h1>
@@ -181,24 +181,29 @@ Installation</h1>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Building</h1>
 <p >You will need: C++ compiler and SCons installed in your system</p>
-<blockquote class="doxtable">
-<p >&zwj;Linux users can simply run <code>compile.sh</code> in <code>/addons/godot-rgmap/native</code> directory </p>
-</blockquote>
 <ol type="1">
+<li>Clone this repo and download submodules (godot-cpp):</li>
+</ol>
+<div class="fragment"><div class="line">git clone https://github.com/alex-karev/godot-rgmap.git</div>
+<div class="line">cd godot-rgmap</div>
+<div class="line">git submodule update --init --recursive</div>
+</div><!-- fragment --><ol type="1">
 <li>Generate and compile bindings:</li>
 </ol>
 <div class="fragment"><div class="line">cd addons/godot-rgmap/native/godot-cpp</div>
-<div class="line">scons platform=&lt;platform&gt; generate_bindings=yes</div>
+<div class="line">scons platform=&lt;platform&gt; generate_bindings=yes target=release </div>
 <div class="line">cd ..</div>
-</div><!-- fragment --><ol type="1">
-<li>Compile project</li>
+</div><!-- fragment --><blockquote class="doxtable">
+<p >&zwj;After this step Linux users can simply run <code>compile.sh</code> in <code>/addons/godot-rgmap/native</code> directory to automatically compile binaries for Window, Linux and OSX </p>
+</blockquote>
+<ol type="1">
+<li>Compile project by running scons in <code>/addons/godot-rgmap/native</code> directory</li>
 </ol>
-<div class="fragment"><div class="line">cd addons/godot-rgmap/native</div>
-<div class="line">scons platform=&lt;platform&gt;</div>
+<div class="fragment"><div class="line">scons platform=&lt;platform&gt;</div>
 </div><!-- fragment --><ol type="1">
-<li>Create new NativeScript and GDNativeLibrary. Link it to binaries you have copied from /bin directory</li>
+<li>Edit <code>/addons/godot-rgmap/native/RGMap.gdnlib</code> manually or using Godot Editor. Link newly compiled binaries in <code>/addons/godot-rgmap/native/bin</code> directory</li>
 </ol>
-<p >See more about using GDNative modules here: <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module</a></p>
+<p >See more about using GDNative modules in <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html#using-the-gdnative-module">Godot Docs</a></p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 TODO</h1>
 <ul>
