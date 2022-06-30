@@ -26,6 +26,8 @@ void RGMap::_register_methods() {
     register_signal<RGMap>((char *)"chunk_loaded", "index", GODOT_VARIANT_TYPE_INT);
     register_signal<RGMap>((char *)"chunk_freed", "index", GODOT_VARIANT_TYPE_INT);
 
+    register_method("_ready", &RGMap::_ready);
+
     // Functions
     // Tiles
     register_method("add_tile", &RGMap::add_tile);
@@ -130,6 +132,10 @@ void RGMap::_init() {
     allow_diagonal_pathfinding = true;
 }
 
+void RGMap::_ready() {
+    chunks.resize(size.x*size.y);
+}
+
 /*
     Saving and Loading
 */
@@ -142,9 +148,9 @@ PoolIntArray RGMap::dump_map_data() {
     map_data.append(chunk_size.x);
     map_data.append(chunk_size.y);
     // Dump chunk data
-    for (Chunk chunk : chunks) {
-        map_data.append(chunk.index);
-        map_data.append_array(dump_chunk_data(chunk.index));
+    for (int index : loaded_chunks) {
+        map_data.append(index);
+        map_data.append_array(dump_chunk_data(index));
     }
     return map_data;
 }

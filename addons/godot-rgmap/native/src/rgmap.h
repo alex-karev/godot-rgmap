@@ -39,11 +39,10 @@ class RGMap : public Reference {
 
     // Structure of one chunk
     struct Chunk {
-        // Index of chunk
-        int index = -1;
         // Flat arrays that contain all data about the cells
         std::vector<int> values;
         std::vector<int> memory;
+        bool loaded = false;
         bool rendered = false;
     };
 
@@ -75,6 +74,10 @@ private:
     const int NUM_CHUNK_ARRAYS = 2;
     // Array with all registered entities
     std::vector<Entity> entities;
+    // Ids of loaded chunks
+    std::vector<int> loaded_chunks;
+    // Ids of rendered chunks
+    std::vector<int> rendered_chunks;
 
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -158,6 +161,7 @@ public:
     RGMap();
     ~RGMap();
     void _init();
+    void _ready();
     ///@}
 
     // tiles.cpp
