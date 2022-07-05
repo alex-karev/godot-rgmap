@@ -45,6 +45,7 @@ Tiles should be added before creating a new map
 # var tile_id = rgmap.add_tile("core.game.ground", "Ground") # 'name' and 'display name'
 # rgmap.set_tile_passability(tile_id, false) # Entities can not pass through this tile 
 # rgmap.set_tile_transparency(tile_id, true) # This tile will be ignored while calculating FOV and checking visibility
+# rgmap.set_tile_texture(tile_id, load("res://Textures/tile.png")) # Preload texture. Only needed for generating 2d TileSet
 ```
 
 It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:
@@ -59,13 +60,13 @@ for tile_name in json["tiles"].keys():
     var tile_id = rgmap.add_tile(tile_name, data["name"])
     rgmap.set_tile_passability(tile_id, data["passable"])
     rgmap.set_tile_transparency(tile_id, data["transparent"])
+    rgmap.set_tile_texture(tile_id, load("res://Textures/"+tile_name+".png"))
 ```
 
 If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. 
-It searches for images named as your tiles in a specified directory:
 
 ```
-var tileset = rgmap.generate_tileset("res://Textures/",".png") # Generate new TileSet
+var tileset = rgmap.generate_tileset() # Generate new TileSet
 myTilemap.tile_set = tileset # Assign new TileSet to Tilemap
 ```
 

@@ -22,16 +22,19 @@ func _ready():
 	rgmap.add_tile("ocean", "Ocean")
 	rgmap.set_tile_passability(0, false)
 	rgmap.set_tile_transparency(0, true)
+	rgmap.set_tile_texture(0, load("res://addons/godot-rgmap/demo/Textures/ocean.png"))
+	rgmap.set_tile_material(0, load("res://addons/godot-rgmap/demo/water.material"))
 	rgmap.add_tile("grass", "Grass")
 	rgmap.set_tile_passability(1, true)
 	rgmap.set_tile_transparency(1, true)
+	rgmap.set_tile_texture(1, load("res://addons/godot-rgmap/demo/Textures/grass.png"))
 	rgmap.add_tile("wall", "Wall")
 	rgmap.set_tile_passability(2, false)
 	rgmap.set_tile_transparency(2, false)
-	
-	
+	rgmap.set_tile_texture(2, load("res://addons/godot-rgmap/demo/Textures/wall.png"))
+
 	# Generate 2d TileSet for Tilemap
-	var tileset = rgmap.generate_tileset("res://addons/godot-rgmap/demo/Textures/",".png")
+	var tileset = rgmap.generate_tileset()
 	$Tilemap.tile_set = tileset
 
 	# Generate noize

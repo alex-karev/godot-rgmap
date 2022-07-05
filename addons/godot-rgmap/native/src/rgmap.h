@@ -11,8 +11,9 @@
 #include <Rect2.hpp>
 #include <TileSet.hpp>
 #include <Texture.hpp>
+#include <ShaderMaterial.hpp>
+#include <Color.hpp>
 #include <Dictionary.hpp>
-#include <ResourceLoader.hpp>
 #include <cmath>
 #include <vector>
 #include <algorithm>
@@ -37,6 +38,12 @@ class RGMap : public Reference {
         bool passable = false;
         bool transparent = false;
         Dictionary custom_properties;
+        int z_index = 0;
+        Ref<Texture> texture;
+        Ref<Texture> normal_map;
+        Vector2 texture_offset = Vector2(0,0);
+        Ref<ShaderMaterial> material;
+        Color modulate = Color(1.0,1.0,1.0);
     };
 
     // Structure of one chunk
@@ -196,10 +203,20 @@ public:
     @param default_value Default value for that property. Can be any type
     */
     void add_tile_property(String property_name, Variant default_value);
+    //! Set tile's drawing index
+    void set_tile_z_index(int index, int z_index);
+    //! Set tile's texture offset
+    void set_tile_texture_offset(int index, Vector2 offset);
+    //! Set tile's texture
+    void set_tile_texture(int index, Ref<Texture> texture);
+    //! Set tile's normal map
+    void set_tile_normal_map(int index, Ref<Texture> texture);
+    //! Set tile's material
+    void set_tile_material(int index, Ref<Material> material);
+    //! Set tile's modulation color
+    void set_tile_modulate(int index, Color color);
     //! Set value of custom property for specified tile
     void set_tile_property(int index, String property_name, Variant new_value);
-    //! Get value of custom tile property
-    Variant get_tile_property(int index, String property_name);
     //! Get number of tiles
     int get_tiles_count();
     //! Get tile index by name
@@ -212,12 +229,22 @@ public:
     bool is_tile_passable(int index);
     //! Check if tile is transparent
     bool is_tile_transparent(int index);
+    //! Get tile's drawing index
+    int get_tile_z_index(int index);
+    //! Get tile's texture offset
+    Vector2 get_tile_texture_offset(int index);
+    //! Get tile's texture
+    Ref<Texture> get_tile_texture(int index);
+    //! Get tile's normal map
+    Ref<Texture> get_tile_normal_map(int index);
+    //! Get tile's material
+    Ref<Material> get_tile_material(int index);
+    //! Get tile's modulation color
+    Color get_tile_modulate(int index);
+    //! Get value of custom tile property
+    Variant get_tile_property(int index, String property_name);
     //! Generate Tileset for using with 2d Tilemap
-    /*!
-    @param texture_path A directory within the project where textures are stored (e.g "res://Textures/")
-    @param texture_format A format of textures (e.g ".png")
-    */
-    Ref<TileSet> generate_tileset(String texture_path, String texture_format);
+    Ref<TileSet> generate_tileset();
     ///@{
 
     // chunks.cpp
