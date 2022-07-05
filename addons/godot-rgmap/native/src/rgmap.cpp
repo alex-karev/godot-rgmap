@@ -120,6 +120,7 @@ void RGMap::_register_methods() {
     register_method("draw_arc", &RGMap::draw_arc);
     register_method("fill_arc", &RGMap::fill_arc);
     register_method("clean_map", &RGMap::clean_map);
+    register_method("resize_map", &RGMap::resize_map);
     // Entities
     register_method("add_entity", &RGMap::add_entity);
     register_method("remove_entity", &RGMap::remove_entity);

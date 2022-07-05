@@ -447,6 +447,8 @@ public:
 
     //! Free all chunks and forget pathfinding exceptions
     void clean_map();
+    //! Change size and chunk size of the map.
+    void resize_map(Vector2 new_size, Vector2 new_chunk_size);
     //! Place another map inside this map
     void place_map(RGMap* another_map, Vector2 start);
     //! Draw straight line using Bresenham's line algorithm
