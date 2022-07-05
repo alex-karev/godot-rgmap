@@ -18,13 +18,20 @@ void RGMap::place_map(RGMap* another_map, Vector2 start) {
             Vector2 cell = start + Vector2(x,y);
             if  (!is_in_bounds(cell)) { continue; }
             set_value(cell, another_map->get_value(Vector2(x,y)));
-            set_memorized(cell, another_map->is_memorized(Vector2(x,y)));
+            set_discovered(cell, another_map->is_discovered(Vector2(x,y)));
         }
     }
 }
 
-void RGMap::draw_line(Vector2 start, Vector2 end, int value, bool allow_diagonal) {
-    PoolVector2Array line = get_line(start, end, allow_diagonal);
+void RGMap::draw_line(Vector2 start, Vector2 end, int value) {
+    PoolVector2Array line = get_line(start, end);
+    for (int i = 0; i < line.size(); ++i){
+        Vector2 point = line[i];
+        set_value(point, value);
+    }
+}
+void RGMap::draw_line_orthogonal(Vector2 start, Vector2 end, int value) {
+    PoolVector2Array line = get_line_orthogonal(start, end);
     for (int i = 0; i < line.size(); ++i){
         Vector2 point = line[i];
         set_value(point, value);
@@ -80,7 +87,7 @@ void RGMap::draw_4_way_symmetry(int xc, int yc, int x, int y, int value, float s
     }
 }
 
-void RGMap::draw_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal) {
+void RGMap::draw_ellipse_bresenham(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal) {
     int rx = radius.x;
     int ry = radius.y;
     int xc = center.x;
@@ -152,22 +159,35 @@ void RGMap::draw_ellipse(Vector2 center, Vector2 radius, float start_angle, floa
     }
 }
 
+void RGMap::draw_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value) {
+    draw_ellipse_bresenham(center, radius, start_angle, end_angle, value, true);
+}
+void RGMap::draw_ellipse_orthogonal(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value) {
+    draw_ellipse_bresenham(center, radius, start_angle, end_angle, value, false);
+}
+
 void RGMap::fill_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value) {
     for (int rx = radius.x; rx >= 0; --rx) {
-        draw_ellipse(center, Vector2(rx,radius.y), start_angle, end_angle, value, true);
+        draw_ellipse(center, Vector2(rx,radius.y), start_angle, end_angle, value);
     }
     // Unfilled center quickfix
     set_value(center, value);
 }
 
-void RGMap::draw_circle(Vector2 center, float radius, int value, bool allow_diagonal) {
-    draw_ellipse(center, Vector2(radius,radius), -M_PI, M_PI, value, allow_diagonal);
+void RGMap::draw_circle(Vector2 center, float radius, int value) {
+    draw_ellipse_bresenham(center, Vector2(radius,radius), -M_PI, M_PI, value, true);
+}
+void RGMap::draw_circle_orthogonal(Vector2 center, float radius, int value) {
+    draw_ellipse_bresenham(center, Vector2(radius,radius), -M_PI, M_PI, value, false);
 }
 void RGMap::fill_circle(Vector2 center, float radius, int value) {
     fill_ellipse(center, Vector2(radius,radius), -M_PI, M_PI, value);
 }
-void RGMap::draw_arc(Vector2 center, float radius, float start_angle, float end_angle, int value, bool allow_diagonal) {
-    draw_ellipse(center, Vector2(radius,radius), start_angle, end_angle, value, allow_diagonal);
+void RGMap::draw_arc(Vector2 center, float radius, float start_angle, float end_angle, int value) {
+    draw_ellipse_bresenham(center, Vector2(radius,radius), start_angle, end_angle, value, true);
+}
+void RGMap::draw_arc_orthogonal(Vector2 center, float radius, float start_angle, float end_angle, int value) {
+    draw_ellipse_bresenham(center, Vector2(radius,radius), start_angle, end_angle, value, false);
 }
 void RGMap::fill_arc(Vector2 center, float radius, float start_angle, float end_angle, int value) {
     fill_ellipse(center, Vector2(radius,radius), start_angle, end_angle, value);

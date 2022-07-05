@@ -17,12 +17,18 @@ func _ready():
 	# Note: Signals are already connected in editor
 	# Alternatively they can be connected like this:
 	#rgmap.connect("chunk_load_requested", self, "_on_RGMap_chunk_load_requested")
-	#rgmap.connect("chunk_free_requested", self, "_on_RGMap_chunk_load_requested")
 	
 	# Add tiles to RGTileset
-	rgmap.add_tile("ocean", "Ocean", false, true)
-	rgmap.add_tile("grass", "Grass", true, true) # true for passable and true for transparent
-	rgmap.add_tile("wall", "Wall", false, false)
+	rgmap.add_tile("ocean", "Ocean")
+	rgmap.set_tile_passability(0, false)
+	rgmap.set_tile_transparency(0, true)
+	rgmap.add_tile("grass", "Grass")
+	rgmap.set_tile_passability(1, true)
+	rgmap.set_tile_transparency(1, true)
+	rgmap.add_tile("wall", "Wall")
+	rgmap.set_tile_passability(2, false)
+	rgmap.set_tile_transparency(2, false)
+	
 	
 	# Generate 2d TileSet for Tilemap
 	var tileset = rgmap.generate_tileset("res://addons/godot-rgmap/demo/Textures/",".png")
@@ -85,7 +91,7 @@ func _on_RGMap_chunks_load_requested(ids):
 				else:
 					rgmap.set_value(pos, wall_index)
 	# Recalculate FOV after loading all chunks
-	rgmap.calculate_fov(controller.player_position, 60)
+	rgmap.calculate_fov(controller.player_position)
 	# Request chunk rendering
 	rgmap.request_chunks_render(controller.player_position)
 
@@ -126,7 +132,7 @@ func draw():
 				# Set values
 				if rgmap.is_visible(pos):
 					$Fog.set_cellv(pos, -1)
-				elif rgmap.is_memorized(pos):
+				elif rgmap.is_discovered(pos):
 					$Fog.set_cellv(pos, 1)
 				else:
 					$Fog.set_cellv(pos, 0)
@@ -134,7 +140,7 @@ func draw():
 	for id in trees:
 		var tree = get_node("Tree"+str(id))
 		if rgmap.is_entity_chunk_rendered(id) \
-		and rgmap.is_entity_memorized(id):
+		and rgmap.is_entity_discovered(id):
 			tree.show()
 		else: 
 			tree.hide()

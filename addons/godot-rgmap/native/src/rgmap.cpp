@@ -13,6 +13,7 @@ void RGMap::_register_methods() {
     register_property<RGMap, int>("load_distance", &RGMap::load_distance, 1);
     register_property<RGMap, int>("render_distance", &RGMap::render_distance, 1);
     register_property<RGMap, bool>("allow_diagonal_pathfinding", &RGMap::allow_diagonal_pathfinding, true);
+    register_property<RGMap, int>("fov_radius", &RGMap::fov_radius, 15);
     register_property<RGMap, float>("RPAS_RADIUS_FUDGE", &RGMap::RPAS_RADIUS_FUDGE, 1.0 / 3.0);
     register_property<RGMap, bool>("RPAS_NOT_VISIBLE_BLOCKS_VISION", &RGMap::RPAS_NOT_VISIBLE_BLOCKS_VISION, true);
     register_property<RGMap, int>("RPAS_RESTRICTIVENESS", &RGMap::RPAS_RESTRICTIVENESS, 1);
@@ -31,6 +32,11 @@ void RGMap::_register_methods() {
     // Functions
     // Tiles
     register_method("add_tile", &RGMap::add_tile);
+    register_method("set_tile_passability", &RGMap::set_tile_passability);
+    register_method("set_tile_transparency", &RGMap::set_tile_transparency);
+    register_method("add_tile_property", &RGMap::add_tile_property);
+    register_method("set_tile_property", &RGMap::set_tile_property);
+    register_method("get_tile_property", &RGMap::get_tile_property);
     register_method("get_tiles_count", &RGMap::get_tiles_count);
     register_method("get_tile_index", &RGMap::get_tile_index);
     register_method("get_tile_name", &RGMap::get_tile_name);
@@ -63,15 +69,16 @@ void RGMap::_register_methods() {
     register_method("get_value", &RGMap::get_value);
     register_method("get_name", &RGMap::get_name);
     register_method("get_display_name", &RGMap::get_display_name);
+    register_method("get_property", &RGMap::get_property);
     register_method("is_transparent", &RGMap::is_transparent);
     register_method("is_passable", &RGMap::is_passable);
     register_method("is_visible", &RGMap::is_visible);
-    register_method("is_memorized", &RGMap::is_memorized);
+    register_method("is_discovered", &RGMap::is_discovered);
     register_method("is_in_bounds", &RGMap::is_in_bounds);
     register_method("is_pathfinding_allowed", &RGMap::is_pathfinding_allowed);
     register_method("set_value", &RGMap::set_value);
     register_method("set_visibility", &RGMap::set_visibility);
-    register_method("set_memorized", &RGMap::set_memorized);
+    register_method("set_discovered", &RGMap::set_discovered);
     // View/Pathfinding
     register_method("rpas_calc_visible_cells_from", &RGMap::rpas_calc_visible_cells_from);
     register_method("calculate_fov", &RGMap::calculate_fov);
@@ -79,19 +86,25 @@ void RGMap::_register_methods() {
     register_method("remove_pathfinding_exception", &RGMap::remove_pathfinding_exception);
     register_method("show_pathfinding_exceptions", &RGMap::show_pathfinding_exceptions);
     register_method("find_path", &RGMap::find_path);
+    register_method("find_discovered_path", &RGMap::find_discovered_path);
     register_method("get_line", &RGMap::get_line);
+    register_method("get_line_orthogonal", &RGMap::get_line_orthogonal);
     register_method("raycast_vision", &RGMap::raycast_vision);
     register_method("raycast_path", &RGMap::raycast_path);
     register_method("visibility_between", &RGMap::visibility_between);
     // Editing
     register_method("place_map", &RGMap::place_map);
     register_method("draw_line", &RGMap::draw_line);
+    register_method("draw_line_orthogonal", &RGMap::draw_line_orthogonal);
     register_method("draw_rect", &RGMap::draw_rect);
     register_method("fill_rect", &RGMap::fill_rect);
+    register_method("draw_ellipse_orthogonal", &RGMap::draw_ellipse);
     register_method("draw_ellipse", &RGMap::draw_ellipse);
     register_method("fill_ellipse", &RGMap::fill_ellipse);
+    register_method("draw_circle_orthogonal", &RGMap::draw_circle);
     register_method("draw_circle", &RGMap::draw_circle);
     register_method("fill_circle", &RGMap::fill_circle);
+    register_method("draw_arc_orthogonal", &RGMap::draw_arc);
     register_method("draw_arc", &RGMap::draw_arc);
     register_method("fill_arc", &RGMap::fill_arc);
     register_method("clean_map", &RGMap::clean_map);
@@ -101,11 +114,11 @@ void RGMap::_register_methods() {
     register_method("move_entity", &RGMap::move_entity);
     register_method("set_entity_transparency", &RGMap::set_entity_transparency);
     register_method("set_entity_passability", &RGMap::set_entity_passability);
-    register_method("set_entity_memorized", &RGMap::set_entity_memorized);
+    register_method("set_entity_discovered", &RGMap::set_entity_discovered);
     register_method("is_entity_visible", &RGMap::is_entity_visible);
     register_method("is_entity_transparent", &RGMap::is_entity_transparent);
     register_method("is_entity_passable", &RGMap::is_entity_passable);
-    register_method("is_entity_memorized", &RGMap::is_entity_memorized);
+    register_method("is_entity_discovered", &RGMap::is_entity_discovered);
     register_method("is_entity_chunk_loaded", &RGMap::is_entity_chunk_loaded);
     register_method("is_entity_chunk_rendered", &RGMap::is_entity_chunk_rendered);
     register_method("get_entity_position", &RGMap::get_entity_position);
@@ -116,7 +129,6 @@ void RGMap::_register_methods() {
     // Save/Load
     register_method("dump_map_data", &RGMap::dump_map_data);
     register_method("load_map_data", &RGMap::load_map_data);
-
 }
 
 /*

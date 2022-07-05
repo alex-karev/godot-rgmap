@@ -30,6 +30,9 @@ String RGMap::get_name(Vector2 position) {
 String RGMap::get_display_name(Vector2 position) {
     return get_tile_display_name(get_value(position));
 }
+Variant RGMap::get_property(Vector2 position, String property_name) {
+    return get_tile_property(get_value(position), property_name);
+}
 bool RGMap::is_transparent(Vector2 position) {
     if (fov_zone.has_point(position)) {
         Vector2 local_position = position - fov_zone.position;
@@ -47,7 +50,7 @@ bool RGMap::is_visible(Vector2 position) {
     int index = int(local_position.x + local_position.y*fov_zone.size.x);
     return visibility[index];
     }
-bool RGMap::is_memorized(Vector2 position) {
+bool RGMap::is_discovered(Vector2 position) {
     int chunk_index = get_chunk_index(position);
     if (chunk_index < 0 || chunk_index > size.x*size.y) {return false;}
     if (!is_chunk_loaded(chunk_index)) {return false;}
@@ -87,7 +90,7 @@ void RGMap::set_visibility(Vector2 position, bool value) {
     visibility[index] = (value) ? 1 : 0;
 }
 
-void RGMap::set_memorized(Vector2 position, bool value) {
+void RGMap::set_discovered(Vector2 position, bool value) {
     int chunk_index = get_chunk_index(position);
     ERR_FAIL_INDEX(chunk_index, size.x*size.y);
     if (!is_chunk_loaded(chunk_index)) {return;}

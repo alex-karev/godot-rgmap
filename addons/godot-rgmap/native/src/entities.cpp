@@ -9,9 +9,9 @@ int RGMap::add_entity(Vector2 position, bool passability, bool transparency) {
         Entity& entity = entities[i];
         if (entity.rewrite) {
             entity.position = position;
-            entity.passability = passability;
-            entity.transparency = transparency;
-            entity.memorized = false;
+            entity.passable = passability;
+            entity.transparent = transparency;
+            entity.discovered = false;
             entity.rewrite = false;
             return i;
         }
@@ -19,9 +19,9 @@ int RGMap::add_entity(Vector2 position, bool passability, bool transparency) {
     // Create new entity
     Entity entity;
     entity.position = position;
-    entity.passability = passability;
-    entity.transparency = transparency;
-    entity.memorized = false;
+    entity.passable = passability;
+    entity.transparent = transparency;
+    entity.discovered = false;
     entities.push_back(entity);
     return entities.size()-1;
 }
@@ -35,15 +35,15 @@ void RGMap::move_entity(int id, Vector2 position) {
 }
 void RGMap::set_entity_transparency(int id, bool value) {
     ERR_FAIL_INDEX(id, entities.size());
-    entities[id].transparency = value;
+    entities[id].transparent = value;
 }
 void RGMap::set_entity_passability(int id, bool value) {
     ERR_FAIL_INDEX(id, entities.size());
-    entities[id].passability = value;
+    entities[id].passable = value;
 }
-void RGMap::set_entity_memorized(int id, bool value) {
+void RGMap::set_entity_discovered(int id, bool value) {
     ERR_FAIL_INDEX(id, entities.size());
-    entities[id].memorized = value;
+    entities[id].discovered = value;
 }
 bool RGMap::is_entity_visible(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), false);
@@ -52,15 +52,15 @@ bool RGMap::is_entity_visible(int id) {
 }
 bool RGMap::is_entity_transparent(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), true);
-    return entities[id].transparency;
+    return entities[id].transparent;
 }
 bool RGMap::is_entity_passable(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), true);
-    return entities[id].passability;
+    return entities[id].passable;
 }
-bool RGMap::is_entity_memorized(int id) {
+bool RGMap::is_entity_discovered(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), false);
-    return entities[id].memorized;
+    return entities[id].discovered;
 }
 bool RGMap::is_entity_chunk_loaded(int id) {
     ERR_FAIL_INDEX_V(id, entities.size(), false);

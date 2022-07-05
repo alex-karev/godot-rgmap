@@ -33,13 +33,13 @@ func _process(delta):
 	var target = Vector2(floor(mousepos.x/16), floor(mousepos.y/16))
 	$Cursor.position = target*16+Vector2(8,8)
 	# Check if target is known and passable
-	if !rgmap.is_memorized(target):
+	if !rgmap.is_discovered(target):
 		$Cursor.play("cross")
 	else: 
 		$Cursor.play("default")
 		# On mouse click calculate path: and start timer
 		if Input.is_action_just_pressed("move") and ready:
-			for point in rgmap.find_path(player_position, target, visible_zone, true):
+			for point in rgmap.find_discovered_path(player_position, target, visible_zone, true):
 				player_path.append(point)
 			ready = false
 			$Cursor.hide()

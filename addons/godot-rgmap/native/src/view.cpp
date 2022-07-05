@@ -3,10 +3,10 @@ using namespace godot;
 
 // All functions related to view and pathfinding
 
-void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
+void RGMap::calculate_fov(Vector2 view_position) {
     // Define fov zone and resize visibility array
-    fov_zone.size = Vector2(1,1)*(max_distance*2+2);
-    fov_zone.position = view_position - Vector2(1,1)*max_distance - Vector2(1,1);
+    fov_zone.size = Vector2(1,1)*(fov_radius*2+2);
+    fov_zone.position = view_position - Vector2(1,1)*fov_radius - Vector2(1,1);
     visibility.resize(fov_zone.size.x*fov_zone.size.y);
     // Clear visibility values
     for (int i=0; i<visibility.size(); ++i){
@@ -21,17 +21,17 @@ void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
     }
     for (int i = 0; i < fov_entities.size(); ++i) {
             Entity& entity = entities[fov_entities[i]];
-            if (!entity.transparency) {
+            if (!entity.transparent) {
                 Vector2 local_position = entity.position-fov_zone.position;
                 int cell_index = local_position.x+local_position.y*fov_zone.size.x;
                 fov_obstacles[cell_index] = 1;
             }
     }
     // Get visible cells
-    PoolVector2Array visible_cells = rpas_calc_visible_cells_from(view_position, max_distance);
+    PoolVector2Array visible_cells = rpas_calc_visible_cells_from(view_position, fov_radius);
     for (int i=0; i < visible_cells.size(); ++i) {
         set_visibility(visible_cells[i], true);
-        set_memorized(visible_cells[i], true);
+        set_discovered(visible_cells[i], true);
     }
     // Memorize entities
     for (int i = 0; i < fov_entities.size(); ++i) {
@@ -39,7 +39,7 @@ void RGMap::calculate_fov(Vector2 view_position, int max_distance) {
         Vector2 local_position = entity.position-fov_zone.position;
         int cell_index = local_position.x+local_position.y*fov_zone.size.x;
         if (visibility[cell_index] == 1) {
-            entity.memorized = true;
+            entity.discovered = true;
         }
     }
 }
@@ -62,7 +62,7 @@ PoolVector2Array RGMap::show_pathfinding_exceptions(bool exception_type) {
     }
     return exceptions;
 }
-PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered) {
+PoolVector2Array RGMap::_find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered) {
     PoolVector2Array path;
     // Convert Rect2 values to integers
     pathfinding_zone.position = Vector2(floor(pathfinding_zone.position.x), floor(pathfinding_zone.position.y));
@@ -99,14 +99,14 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
         // Disable point if pathfinding not allowed
         if (!is_pathfinding_allowed(point)) {astar->set_point_disabled(i, true);}
         // Disable undiscovered points
-        if (exclude_undiscovered == true && !is_memorized(point)) {astar->set_point_disabled(i, true);}
+        if (exclude_undiscovered == true && !is_discovered(point)) {astar->set_point_disabled(i, true);}
     }
     // Get entities in pathfinding zone
     PoolIntArray pathfinding_entities = get_entities_in_rect(pathfinding_zone);
     // Disable points if entities are on the way
     for (int k = 0; k < pathfinding_entities.size(); ++k) {
         Entity& entity = entities[pathfinding_entities[k]];
-        if (!entity.passability) {
+        if (!entity.passable) {
             Vector2 local_position = entity.position-pathfinding_zone.position;
             int point_index = local_position.x+local_position.y*pathfinding_zone.size.x;
             astar->set_point_disabled(point_index, true);
@@ -133,8 +133,13 @@ PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_
     }
     return path;
 }
-
-PoolVector2Array RGMap::get_line(Vector2 start, Vector2 end, bool allow_diagonal) {
+PoolVector2Array RGMap::find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
+    return _find_path(start, end, pathfinding_zone, false);
+}
+PoolVector2Array RGMap::find_discovered_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone) {
+    return _find_path(start, end, pathfinding_zone, true);
+}
+PoolVector2Array RGMap::get_line_bresenham(Vector2 start, Vector2 end, bool allow_diagonal) {
     PoolVector2Array line;
     // Setup initial conditions
     int x1 = start.x;
@@ -183,6 +188,8 @@ PoolVector2Array RGMap::get_line(Vector2 start, Vector2 end, bool allow_diagonal
     if (swapped) { line.invert(); }
     return line;
 }
+PoolVector2Array RGMap::get_line(Vector2 start, Vector2 end) {return get_line_bresenham(start, end, true);}
+PoolVector2Array RGMap::get_line_orthogonal(Vector2 start, Vector2 end) {return get_line_bresenham(start, end, false);}
 
 Vector2 RGMap::raycast_vision(Vector2 start, Vector2 end) {
     PoolVector2Array line = get_line(start, end);

@@ -22,7 +22,7 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **FOV** calculation using RPAS algorithm
 * **Raycasting** using Bresenham's lines
 * **Pathfinding** using Godot built-in A* class
-* **Memorizing cells** that have been visible at least once
+* **Discovering cells** that have been visible at least once
 * **Chunk system** loadind/freeing chunks, dumping and restoring chunk data
 * **Draw and fill** functions for drawing primitives (lines, ellipse, rects, circles, arcs)
 * **Managing tiles** in RGMap class
@@ -31,11 +31,6 @@ A library for managing maps for roguelike games in Godot Engine. It helps with m
 * **Entity tracking.** Entities and their properties can also be considered while using FOV and pathfinding 
 * **Saving and loading** data as a flat array
 * **C++, GDNative**
-
-## Why?
-To make managing maps for roguelikes easier by uniting all useful functions and properties in one class.
-
-<img src="https://raw.githubusercontent.com/alex-karev/godot-rgmap/main/addons/godot-rgmap/screenshots/code.png">
 
 ## Usage
 A new node is added:
@@ -47,8 +42,9 @@ Tiles should be added before creating a new map
 
 ```
 # Add tiles:
-# rgmap.add_tile("core.game.ground", "Ground", true, true)
-# Note: First 2 strings are 'name' and 'display name'. Other 2 booleans are 'passability' and 'transparency'
+# var tile_id = rgmap.add_tile("core.game.ground", "Ground") # 'name' and 'display name'
+# rgmap.set_tile_passability(tile_id, false) # Entities can not pass through this tile 
+# rgmap.set_tile_transparency(tile_id, true) # This tile will be ignored while calculating FOV and checking visibility
 ```
 
 It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:
@@ -60,7 +56,9 @@ var txt = file.get_as_text()
 var json = parse_json(txt)
 for tile_name in json["tiles"].keys():
     var data = json["tiles"][tile_name]
-    rgmap.add_tile(tile_name, data["name"], data["passable"], data["transparent"])
+    var tile_id = rgmap.add_tile(tile_name, data["name"])
+    rgmap.set_tile_passability(tile_id, data["passable"])
+    rgmap.set_tile_transparency(tile_id, data["transparent"])
 ```
 
 If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. 
@@ -94,13 +92,13 @@ Don't forget to calculate FOV. It is better to do this in the end of the functio
 ```
 func _on_RGMap_chunks_load_requested(ids):
     ...
-    rgmap.calculate_fov(controller.player_position, 30) # 30 is a radius
+    rgmap.calculate_fov(controller.player_position)
 ```
 
 Please see [Generator.gd](https://github.com/alex-karev/godot-rgmap/blob/main/addons/godot-rgmap/demo/Generator.gd) 
 for more detailed example
 
-There are a lot of functions available in RGMap node. You can read more about each function and variable in documentation:
+There are a lot of functions available in RGMap node. You can read more about each function and property in documentation:
 
 [RGMap Class Documentation](https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html)
 
@@ -161,10 +159,10 @@ See more about using GDNative modules in [Godot Docs](https://docs.godotengine.o
 - [X] Entity tracking system
 - [X] Change project structure and convert it to plugin (add plugin.gd)
 - [X] Write bash script for batch compiling binaries for Linux/Windows/Mac
-- [ ] Custom properties of tiles
-- [ ] Tutorial
+- [X] Custom properties of tiles
 - [ ] Add node for rendering RGMap in 2d
 - [ ] Cutting and resizing map
+- [ ] Tutorial
 
 ## References
 The code for some parts of this projects was inspired by/copied from these resources:

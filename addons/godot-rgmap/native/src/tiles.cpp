@@ -3,13 +3,40 @@ using namespace godot;
 
 // All functions related to tiles
 
-void RGMap::add_tile(String name, String display_name, bool passable, bool transparent) {
+int RGMap::add_tile(String name, String display_name) {
     RGTile tile;
     tile.name = name;
     tile.display_name = display_name;
-    tile.passable = passable;
-    tile.transparent = transparent;
+    Array custom_property_names = custom_tile_properties.keys();
+    Array custom_property_default_values = custom_tile_properties.values();
+    for (int i = 0; i < custom_tile_properties.size(); ++i) {
+        tile.custom_properties[custom_property_names[i]] = custom_property_default_values[i];
+    }
     tiles.push_back(tile);
+    return tiles.size()-1;
+}
+void RGMap::set_tile_transparency(int index, bool value) {
+    ERR_FAIL_INDEX(index, tiles.size());
+    tiles[index].transparent = value;
+}
+void RGMap::set_tile_passability(int index, bool value) {
+    ERR_FAIL_INDEX(index, tiles.size());
+    tiles[index].passable = value;
+}
+void RGMap::add_tile_property(String property_name, Variant default_value) {
+    custom_tile_properties[property_name] = default_value;
+    for (int i = 0; i < tiles.size(); ++i) {
+        tiles[i].custom_properties[property_name] = default_value;
+    }
+}
+void RGMap::set_tile_property(int index, String property_name, Variant new_value) {
+    ERR_FAIL_INDEX(index, tiles.size());
+    tiles[index].custom_properties[property_name] = new_value;
+}
+Variant RGMap::get_tile_property(int index, String property_name) {
+    Variant empty;
+    ERR_FAIL_INDEX_V(index, tiles.size(), empty);
+    return tiles[index].custom_properties[property_name];
 }
 int RGMap::get_tiles_count() {
     return tiles.size();

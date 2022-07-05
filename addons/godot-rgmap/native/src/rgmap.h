@@ -11,6 +11,7 @@
 #include <Rect2.hpp>
 #include <TileSet.hpp>
 #include <Texture.hpp>
+#include <Dictionary.hpp>
 #include <ResourceLoader.hpp>
 #include <cmath>
 #include <vector>
@@ -33,8 +34,9 @@ class RGMap : public Reference {
     struct RGTile {
         String name;
         String display_name;
-        bool passable;
-        bool transparent;
+        bool passable = false;
+        bool transparent = false;
+        Dictionary custom_properties;
     };
 
     // Structure of one chunk
@@ -49,9 +51,9 @@ class RGMap : public Reference {
     // Structure of entity
     struct Entity {
         Vector2 position = Vector2(0,0);
-        bool passability = true;
-        bool transparency = true;
-        bool memorized = false;
+        bool passable = true;
+        bool transparent = true;
+        bool discovered = false;
         bool rewrite = false;
     };
 
@@ -78,6 +80,8 @@ private:
     std::vector<int> loaded_chunks;
     // Ids of rendered chunks
     std::vector<int> rendered_chunks;
+    // Dictionary with custom tile property names as keys and their default values
+    Dictionary custom_tile_properties;
 
     // Functions for Restrictive Precise Angle Shadowcasting. More details in rpas.cpp
     PoolVector2Array rpas_visible_cells_in_quadrant_from(Vector2 center, Vector2 quad, int radius);
@@ -90,10 +94,16 @@ private:
     // Draw points based on 4-way symmetry (for Bresenham's ellipse algorithm)
     void draw_4_way_symmetry(int xc, int yc, int x, int y, int value, float start_angle, float end_angle);
 
+    // Get a set of points in Bresenham's line
+    PoolVector2Array get_line_bresenham(Vector2 start, Vector2 end, bool allow_diagonal);
+    // Draw ellipse using Bresenham's midpoint algorithm
+    void draw_ellipse_bresenham(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal);
     // Get loaded chunk
     Chunk& get_chunk(int index);
     // Get indexes of chunks forming a square grid with a given point in its center
     PoolIntArray get_chunks_in_distance(Vector2 point, int distance);
+    // Find path from start to end using A* algorithm
+    PoolVector2Array _find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false);
 
 public:
     //! Size of one chunk (Default: 50x50)
@@ -120,6 +130,8 @@ public:
     */
     ///@{
 
+    //! Radius in which cells are visible for player
+    int fov_radius = 15;
     //! How smooth the edges of the vision bubble are. Between 0 and 1.
     float RPAS_RADIUS_FUDGE = 1.0 / 3.0; 
     //! If this is false, some cells will unexpectedly be visible
@@ -168,8 +180,26 @@ public:
     /** @name Tiles */
     ///@{
 
-    //! Add new tile
-    void add_tile(String name, String display_name, bool passable, bool transparent);
+    //! Add new tile. Returns unique tile index
+    /*!
+    @param name Unique name of the tile. Needed for searching tiles by name
+    @param display_name Name that will be shown to the player. Can be a duplicate
+    */
+    int add_tile(String name, String display_name);
+    //! Set transparency of the tile
+    void set_tile_transparency(int index, bool value);
+    //! Set passability of the tile
+    void set_tile_passability(int index, bool value);
+    //! Add custom property field for all tiles
+    /*!
+    @param property_name Name of new property field that will be added to all tiles
+    @param default_value Default value for that property. Can be any type
+    */
+    void add_tile_property(String property_name, Variant default_value);
+    //! Set value of custom property for specified tile
+    void set_tile_property(int index, String property_name, Variant new_value);
+    //! Get value of custom tile property
+    Variant get_tile_property(int index, String property_name);
     //! Get number of tiles
     int get_tiles_count();
     //! Get tile index by name
@@ -276,6 +306,8 @@ public:
     String get_name(Vector2 position);
     //! Get display name of cell
     String get_display_name(Vector2 position);
+    //! Get custom property value of cell's tile
+    Variant get_property(Vector2 position, String property_name);
     //! Check if cell is in bounds
     bool is_in_bounds(Vector2 position);
     //! Check if cell is transparent
@@ -284,16 +316,16 @@ public:
     bool is_passable(Vector2 position);
     //! Check if cell is visible
     bool is_visible(Vector2 position);
-    //! Check if cell is memorized
-    bool is_memorized(Vector2 position);
+    //! Check if cell is discovered
+    bool is_discovered(Vector2 position);
     //! Check if pathfinding on this cell is allowed
     bool is_pathfinding_allowed(Vector2 position);
     //! Set value of cell
     void set_value(Vector2 position, int value);
     //! Set visibility of cell
     void set_visibility(Vector2 position, bool value);
-    //! Set memory state of cell
-    void set_memorized(Vector2 position, bool value);
+    //! Set cell discovered/undiscovered
+    void set_discovered(Vector2 position, bool value);
     ///@}
 
     // view.cpp
@@ -302,8 +334,8 @@ public:
 
     //! Get list of cells visible from position within radius using RPAS algorithm
     PoolVector2Array rpas_calc_visible_cells_from(Vector2 center, int radius);
-    //! Calculate visibility from given position and distance
-    void calculate_fov(Vector2 view_position, int max_distance);
+    //! Calculate visibility from given position
+    void calculate_fov(Vector2 view_position);
     //! Allow/disallow patfinding for this cell ignoring passability
     void add_pathfinding_exception(Vector2 position, bool value);
     //! Remove all pathfinding exceptions for this cell if they exist
@@ -319,12 +351,21 @@ public:
     @param start Start point
     @param end Target point
     @param pathfinding_zone Rect2 zone where pathfinding is calculated
-    @param exclude_undiscovered True to exclude undiscovered cells (Fefault: False)
     */
-    PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false);
+    PoolVector2Array find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
+    //! Find path from start to end using A* algorithm including only discovered cells
+    /*!
+    Returns PoolVector2Array
+    @param start Start point
+    @param end Target point
+    @param pathfinding_zone Rect2 zone where pathfinding is calculated
+    */
+    PoolVector2Array find_discovered_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone);
     //! Get a set of points in Bresenham's line
     /*! Based on Python implementation from here: http://www.roguebasin.com/index.php/Bresenham%27s_Line_Algorithm */
-    PoolVector2Array get_line(Vector2 start, Vector2 end, bool allow_diagonal = true);
+    PoolVector2Array get_line(Vector2 start, Vector2 end);
+    //! Get a set of points in Bresenham's line (No diagonals allowed)
+    PoolVector2Array get_line_orthogonal(Vector2 start, Vector2 end);
     //! Cast ray from start to end and return position where vision is blocked by an obstacle
     Vector2 raycast_vision(Vector2 start, Vector2 end);
     //! Cast ray from start to end and return position where path is blocked by an obstacle
@@ -347,22 +388,30 @@ public:
     //! Place another map inside this map
     void place_map(RGMap* another_map, Vector2 start);
     //! Draw straight line using Bresenham's line algorithm
-    void draw_line(Vector2 start, Vector2 end, int value, bool allow_diagonal = true);
+    void draw_line(Vector2 start, Vector2 end, int value);
+    //! Draw orthogonal straight line (No diagonals allowed)
+    void draw_line_orthogonal(Vector2 start, Vector2 end, int value);
     //! Draw rect borders
     void draw_rect(Rect2 rect, int value);
     //! Fill rect
     void fill_rect(Rect2 rect, int value);
     //! Draw ellipse using Bresenham's midpoint algorithm
     /*! Tweaked version of code from here: https://www.geeksforgeeks.org/midpoint-ellipse-drawing-algorithm/ */
-    void draw_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal = true);
+    void draw_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value);
+    //! Draw orthogonal ellipse (No diagonals allowed)
+    void draw_ellipse_orthogonal(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value);
     //! Fill ellipse
     void fill_ellipse(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value);
     //! Draw circle
-    void draw_circle(Vector2 center, float radius, int value, bool allow_diagonal = true);
+    void draw_circle(Vector2 center, float radius, int value);
+    //! Draw circle (No diagonals allowed)
+    void draw_circle_orthogonal(Vector2 center, float radius, int value);
     //! Fill circle
     void fill_circle(Vector2 center, float radius, int value);
     //! Draw arc
-    void draw_arc(Vector2 center, float radius, float start_angle, float end_angle, int value, bool allow_diagonal = true);
+    void draw_arc(Vector2 center, float radius, float start_angle, float end_angle, int value);
+    //! Draw orthogonal arc (No diagonals allowed)
+    void draw_arc_orthogonal(Vector2 center, float radius, float start_angle, float end_angle, int value);
     //! Fill arc
     void fill_arc(Vector2 center, float radius, float start_angle, float end_angle, int value);
     ///@}
@@ -382,15 +431,15 @@ public:
     //! Change entity passability
     void set_entity_passability(int id, bool value);
     //! Change memory status of entity
-    void set_entity_memorized(int id, bool value);
+    void set_entity_discovered(int id, bool value);
     //! Check if entity is visible
     bool is_entity_visible(int id);
     //! Check if entity is transparent;
     bool is_entity_transparent(int id);
     //! Check if entity is passable
     bool is_entity_passable(int id);
-    //! Check if entity is memorized
-    bool is_entity_memorized(int id);
+    //! Check if entity is discovered
+    bool is_entity_discovered(int id);
     //! Check if entity is on loaded chunk
     bool is_entity_chunk_loaded(int id);
     //! Check if entity is on rendered chunk
