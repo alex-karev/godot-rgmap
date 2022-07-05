@@ -101,7 +101,7 @@ for more detailed example
 
 There are a lot of functions available in RGMap node. You can read more about each function and property in documentation:
 
-[RGMap Class Documentation](https://alex-karev.github.io/godot-rgmap/classgodot_1_1RGMap.html)
+[RGMap Class Documentation](https://alex-karev.github.io/godot-rgmap/rgmap_api.html)
 
 Also, you can learn more from demo-project
 

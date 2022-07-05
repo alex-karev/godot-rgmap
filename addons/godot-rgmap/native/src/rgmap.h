@@ -19,6 +19,23 @@
 #include <algorithm>
 
 namespace godot {
+/*! @page rgmap_api RGMap Class API
+    Signal:
+    - @ref Signals
+
+    Properties:
+    - @ref Map
+    - @ref FOV
+
+    Functions:
+    - @ref Tiles
+    - @ref Chunks
+    - @ref Cells
+    - @ref View_Pathfinding
+    - @ref Editing
+    - @ref Entities
+    - @ref Save_Load
+*/
 
 //! Class for managing maps for roguelike
 class RGMap : public Reference {
@@ -113,6 +130,11 @@ private:
     PoolVector2Array _find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false);
 
 public:
+    /** @name Map Properties
+    * @anchor Map
+    */
+    ///@{
+
     //! Size of one chunk (Default: 50x50)
     Vector2 chunk_size = Vector2(50,50);
     //! Size of the whole map in chunks (Default: 3x3)
@@ -131,9 +153,10 @@ public:
     int render_distance = 1;
     //! Allow/Disallow diagonal pathfinding
     bool allow_diagonal_pathfinding = true;
+    ///@}
 
-    /** @name FOV
-    * Variables related to FOV calculation using RPAS algorithm
+    /** @name FOV Properties
+    * @anchor FOV
     */
     ///@{
 
@@ -156,7 +179,9 @@ public:
 
     // Note: these functions placed here to ease documentation generation with Doxygen
     // Tell me if you know a better way to do so
-    /** @name Signals */
+    /** @name Signals 
+    * @anchor Signals
+    */
     ///@{
 
     //! **Signal.** Emited when chunks need to be loaded. Emited on calling request_chunks_load function
@@ -184,7 +209,9 @@ public:
     ///@}
 
     // tiles.cpp
-    /** @name Tiles */
+    /** @name Tiles 
+    * @anchor Tiles
+    */
     ///@{
 
     //! Add new tile. Returns unique tile index
@@ -248,7 +275,9 @@ public:
     ///@{
 
     // chunks.cpp
-    /** @name Chunks */
+    /** @name Chunks 
+    * @anchor Chunks
+    */
     ///@{
     
     //! Get index of chunk which contains a given position
@@ -322,7 +351,9 @@ public:
     ///@}
 
     // cells.cpp
-    /** @name Cells */
+    /** @name Cells 
+    * @anchor Cells
+    */
     ///@{
 
     //! Get local index of cell within a chunk
@@ -356,7 +387,9 @@ public:
     ///@}
 
     // view.cpp
-    /** @name View and pathfinding */
+    /** @name View and pathfinding 
+    * @anchor View_Pathfinding
+    */
     ///@{
 
     //! Get list of cells visible from position within radius using RPAS algorithm
@@ -407,7 +440,9 @@ public:
     ///@}
 
     // editing.cpp
-    /** @name Editing*/
+    /** @name Editing
+    * @anchor Editing
+    */
     ///@{
 
     //! Free all chunks and forget pathfinding exceptions
@@ -444,7 +479,9 @@ public:
     ///@}
 
     // entities.cpp
-    /** @name Entities*/
+    /** @name Entities
+    * @anchor Entities
+    */
     ///@{
 
     //! Add new entity to the map. Returns id given to a new entity
@@ -483,7 +520,9 @@ public:
     PoolIntArray get_entities_in_chunk(int chunk_index);
     ///@}
 
-    /** @name Saving and Loading*/
+    /** @name Saving and Loading
+    * @anchor Save_Load
+    */
     ///@{
 
     //! Save map data
