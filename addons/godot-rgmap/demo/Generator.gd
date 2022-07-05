@@ -68,7 +68,7 @@ func _ready():
 			add_child(tree)
 			tree.hide()
 
-# Generate new chunks. Emited after request_chunks_update of RGMap function was called
+# Generate new chunks. Emited after request_chunks_load of RGMap function was called
 func _on_RGMap_chunks_load_requested(ids):
 	# Define tile ids
 	var ocean_index = rgmap.get_tile_index("ocean")
@@ -95,7 +95,7 @@ func _on_RGMap_chunks_load_requested(ids):
 	# Request chunk rendering
 	rgmap.request_chunks_render(controller.player_position)
 
-# Remove unneeded chunks. Emited after request_chunks_update of RGMap function was called
+# Remove unneeded chunks. Emited after request_chunks_load of RGMap function was called
 func _on_RGMap_chunks_free_requested(ids):
 	for id in ids:
 		# Free chunk

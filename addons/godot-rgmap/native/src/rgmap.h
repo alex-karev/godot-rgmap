@@ -152,9 +152,9 @@ public:
     /** @name Signals */
     ///@{
 
-    //! **Signal.** Emited when chunks need to be loaded. Emited on calling request_chunks_update function
+    //! **Signal.** Emited when chunks need to be loaded. Emited on calling request_chunks_load function
     PoolIntArray chunks_load_requested() {return PoolIntArray();}
-    //! **Signal.** Emited when chunks need to be freed. Emited on calling request_chunks_update function
+    //! **Signal.** Emited when chunks need to be freed. Emited on calling request_chunks_load function
     PoolIntArray chunks_free_requested() {return PoolIntArray();}
     //! **Signal.** Emited when chunks need to be rendered. Emited on calling request_chunks_render function
     PoolIntArray chunks_render_requested() {return PoolIntArray();}
@@ -268,7 +268,7 @@ public:
     @param player_position Vector2 position of the player
     Uses load_distance parameter to define the radius
     */
-    void request_chunks_update(Vector2 player_position);
+    void request_chunks_load(Vector2 player_position);
     //! Get ids of rendered chunks
     PoolIntArray get_rendered_chunks();
     //! Get ids of chunks around player that needs to be rendered

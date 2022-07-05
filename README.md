@@ -83,7 +83,7 @@ To emit these 4 signals call these functions:
 
 ```
 # player_position is position of the player on RGMap grid
-request_chunks_update(player_position: Vector2) # For chunks load/free signals
+request_chunks_load(player_position: Vector2) # For chunks load/free signals
 request_chunks_render(player_position: Vector2) # For chunks render/hide signals
 ```
 

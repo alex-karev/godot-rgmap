@@ -14,7 +14,7 @@ func _ready():
 	$Camera.position = player_position*16
 	update_visible_zone()
 	# Request chunk update
-	rgmap.request_chunks_update(player_position)
+	rgmap.request_chunks_load(player_position)
 
 # Update visible_zone Rect2
 func update_visible_zone():
@@ -53,7 +53,7 @@ func _on_Update_timeout():
 		$Player.position = player_position*16+Vector2.ONE*8
 		player_path.pop_front()
 		# Update map
-		rgmap.request_chunks_update(player_position)
+		rgmap.request_chunks_load(player_position)
 		# Restart timer
 		$Update.start()
 	else:

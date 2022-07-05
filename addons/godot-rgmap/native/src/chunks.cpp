@@ -156,7 +156,7 @@ PoolIntArray RGMap::get_chunks_to_free(Vector2 player_position) {
     }
     return to_free;
 }
-void RGMap::request_chunks_update(Vector2 player_position) {
+void RGMap::request_chunks_load(Vector2 player_position) {
     PoolIntArray to_load = get_chunks_to_load(player_position);
     emit_signal("chunks_load_requested", to_load);
     PoolIntArray to_free = get_chunks_to_free(player_position);

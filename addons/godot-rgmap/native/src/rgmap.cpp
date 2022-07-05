@@ -59,7 +59,7 @@ void RGMap::_register_methods() {
     register_method("get_loaded_chunks", &RGMap::get_loaded_chunks);
     register_method("get_chunks_to_load", &RGMap::get_chunks_to_load);
     register_method("get_chunks_to_free", &RGMap::get_chunks_to_free);
-    register_method("request_chunks_update", &RGMap::request_chunks_update);
+    register_method("request_chunks_load", &RGMap::request_chunks_load);
     register_method("get_rendered_chunks", &RGMap::get_rendered_chunks);
     register_method("get_chunks_to_render", &RGMap::get_chunks_to_render);
     register_method("get_chunks_to_hide", &RGMap::get_chunks_to_hide);
