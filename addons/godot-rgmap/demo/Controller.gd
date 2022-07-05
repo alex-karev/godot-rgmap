@@ -38,7 +38,7 @@ func _process(delta):
 	else: 
 		$Cursor.play("default")
 		# On mouse click calculate path: and start timer
-		if Input.is_action_just_pressed("move") and ready:
+		if Input.is_mouse_button_pressed(BUTTON_LEFT) and ready:
 			for point in rgmap.find_discovered_path(player_position, target, visible_zone, true):
 				player_path.append(point)
 			ready = false

@@ -124,8 +124,6 @@ private:
     void draw_ellipse_bresenham(Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal);
     // Get loaded chunk
     Chunk& get_chunk(int index);
-    // Get indexes of chunks forming a square grid with a given point in its center
-    PoolIntArray get_chunks_in_distance(Vector2 point, int distance);
     // Find path from start to end using A* algorithm
     PoolVector2Array _find_path(Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false);
 
@@ -304,6 +302,8 @@ public:
     void set_chunk_rendered(int index, bool value);
     //! Get ids of loaded chunks
     PoolIntArray get_loaded_chunks();
+    //! Get indexes of chunks forming a square grid with a given point in its center
+    PoolIntArray get_chunks_in_distance(Vector2 point, int distance);
     //! Get ids of chunks around player that needs to be loaded 
     /*!
     @param player_position Vector2 position of the player
