@@ -7,14 +7,14 @@ void RGMap::clean_map() {
     for (int index : loaded_chunks) {
         free_chunk(index);
     }
-    load_chunks.clear();
-    load_chunks.shrink_to_fit();
+    loaded_chunks.clear();
+    loaded_chunks.shrink_to_fit();
     pathfinding_exception_allowed.clear();
     pathfinding_exception_allowed.shrink_to_fit();
     pathfinding_exception_disallowed.clear();
     pathfinding_exception_disallowed.shrink_to_fit();
 }
-void resize_map(Vector2 new_size, Vector2 new_chunk_size) {
+void RGMap::resize_map(Vector2 new_size, Vector2 new_chunk_size) {
     clean_map();
     size = new_size;
     chunk_size = new_chunk_size;

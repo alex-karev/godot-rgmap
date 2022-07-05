@@ -32,7 +32,7 @@ func _ready():
 	rgmap.set_tile_passability(2, false)
 	rgmap.set_tile_transparency(2, false)
 	rgmap.set_tile_texture(2, load("res://addons/godot-rgmap/demo/Textures/wall.png"))
-
+	
 	# Generate 2d TileSet for Tilemap
 	var tileset = rgmap.generate_tileset()
 	$Tilemap.tile_set = tileset
