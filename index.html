@@ -130,6 +130,7 @@ RGMap</h2>
 <div class="line"># var tile_id = rgmap.add_tile(&quot;core.game.ground&quot;, &quot;Ground&quot;) # &#39;name&#39; and &#39;display name&#39;</div>
 <div class="line"># rgmap.set_tile_passability(tile_id, false) # Entities can not pass through this tile </div>
 <div class="line"># rgmap.set_tile_transparency(tile_id, true) # This tile will be ignored while calculating FOV and checking visibility</div>
+<div class="line"># rgmap.set_tile_texture(tile_id, load(&quot;res://Textures/tile.png&quot;)) # Preload texture. Only needed for generating 2d TileSet</div>
 </div><!-- fragment --><p >It is strongly advised to store information about all your tiles in some database (e.g. JSON) and add tiles like this:</p>
 <div class="fragment"><div class="line">var file = File.new()</div>
 <div class="line">file.open(&quot;res://db.json&quot;, File.READ)</div>
@@ -140,8 +141,9 @@ RGMap</h2>
 <div class="line">    var tile_id = rgmap.add_tile(tile_name, data[&quot;name&quot;])</div>
 <div class="line">    rgmap.set_tile_passability(tile_id, data[&quot;passable&quot;])</div>
 <div class="line">    rgmap.set_tile_transparency(tile_id, data[&quot;transparent&quot;])</div>
-</div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function. It searches for images named as your tiles in a specified directory:</p>
-<div class="fragment"><div class="line">var tileset = rgmap.generate_tileset(&quot;res://Textures/&quot;,&quot;.png&quot;) # Generate new TileSet</div>
+<div class="line">    rgmap.set_tile_texture(tile_id, load(&quot;res://Textures/&quot;+tile_name+&quot;.png&quot;))</div>
+</div><!-- fragment --><p >If you want to create a 2d TileSet for your Tilemap, you can use generate_tileset function.</p>
+<div class="fragment"><div class="line">var tileset = rgmap.generate_tileset() # Generate new TileSet</div>
 <div class="line">myTilemap.tile_set = tileset # Assign new TileSet to Tilemap</div>
 </div><!-- fragment --><p >RGMap has 4 signals that can be helpful for drawing and generating map:</p>
 <div class="fragment"><div class="line">chunks_load_requested(PoolIntArray ids) # Returns ids of chunks that needs to be loaded</div>

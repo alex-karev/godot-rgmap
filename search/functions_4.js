@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['generate_5ftileset_0',['generate_tileset',['../classgodot_1_1RGMap.html#a819587d899569b840a3f417aa9fd0c2f',1,'godot::RGMap']]],
+  ['generate_5ftileset_0',['generate_tileset',['../classgodot_1_1RGMap.html#afe61caef2061dbd1aa2508d9345e4d3a',1,'godot::RGMap']]],
   ['get_5fchunk_5findex_1',['get_chunk_index',['../classgodot_1_1RGMap.html#a17d00e1acf01120ad1324704960ea528',1,'godot::RGMap']]],
   ['get_5fchunks_5fto_5ffree_2',['get_chunks_to_free',['../classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8',1,'godot::RGMap']]],
   ['get_5fchunks_5fto_5fhide_3',['get_chunks_to_hide',['../classgodot_1_1RGMap.html#a251886c67ff84873042b83e836585203',1,'godot::RGMap']]],
@@ -21,8 +21,14 @@ var searchData=
   ['get_5frendered_5fchunks_18',['get_rendered_chunks',['../classgodot_1_1RGMap.html#a2e9616170d0d2bb4e1e5946c4f9f8d60',1,'godot::RGMap']]],
   ['get_5ftile_5fdisplay_5fname_19',['get_tile_display_name',['../classgodot_1_1RGMap.html#a30d5d2ff82cbb7b163b4f2f960180539',1,'godot::RGMap']]],
   ['get_5ftile_5findex_20',['get_tile_index',['../classgodot_1_1RGMap.html#ac7e85ab8ca5c1b3580a773b35a8386fd',1,'godot::RGMap']]],
-  ['get_5ftile_5fname_21',['get_tile_name',['../classgodot_1_1RGMap.html#a9d0347ce24c61097eaca4292816b7ce3',1,'godot::RGMap']]],
-  ['get_5ftile_5fproperty_22',['get_tile_property',['../classgodot_1_1RGMap.html#a60ffc7f010f148bab249275452f61346',1,'godot::RGMap']]],
-  ['get_5ftiles_5fcount_23',['get_tiles_count',['../classgodot_1_1RGMap.html#a0a6742a8d89a003db699ba02cd2f965a',1,'godot::RGMap']]],
-  ['get_5fvalue_24',['get_value',['../classgodot_1_1RGMap.html#a0608386ad66cec9e4257808022da5038',1,'godot::RGMap']]]
+  ['get_5ftile_5fmaterial_21',['get_tile_material',['../classgodot_1_1RGMap.html#abd8e019226eba6c70d06a52323298302',1,'godot::RGMap']]],
+  ['get_5ftile_5fmodulate_22',['get_tile_modulate',['../classgodot_1_1RGMap.html#a8def6f81cbfe02c9ee70f9a91937fd18',1,'godot::RGMap']]],
+  ['get_5ftile_5fname_23',['get_tile_name',['../classgodot_1_1RGMap.html#a9d0347ce24c61097eaca4292816b7ce3',1,'godot::RGMap']]],
+  ['get_5ftile_5fnormal_5fmap_24',['get_tile_normal_map',['../classgodot_1_1RGMap.html#a3954b83d86b7175cdd835b4f72bf067b',1,'godot::RGMap']]],
+  ['get_5ftile_5fproperty_25',['get_tile_property',['../classgodot_1_1RGMap.html#a60ffc7f010f148bab249275452f61346',1,'godot::RGMap']]],
+  ['get_5ftile_5ftexture_26',['get_tile_texture',['../classgodot_1_1RGMap.html#a60b6371dff3ddf1b7d543d521c1db072',1,'godot::RGMap']]],
+  ['get_5ftile_5ftexture_5foffset_27',['get_tile_texture_offset',['../classgodot_1_1RGMap.html#abe66acb0337a5c7539da258acf0a4de0',1,'godot::RGMap']]],
+  ['get_5ftile_5fz_5findex_28',['get_tile_z_index',['../classgodot_1_1RGMap.html#a022bce7d8510177eb9ae9b204d277a7b',1,'godot::RGMap']]],
+  ['get_5ftiles_5fcount_29',['get_tiles_count',['../classgodot_1_1RGMap.html#a0a6742a8d89a003db699ba02cd2f965a',1,'godot::RGMap']]],
+  ['get_5fvalue_30',['get_value',['../classgodot_1_1RGMap.html#a0608386ad66cec9e4257808022da5038',1,'godot::RGMap']]]
 ];
