@@ -7,5 +7,6 @@ var searchData=
   ['request_5fchunks_5fload_4',['request_chunks_load',['../classgodot_1_1RGMap.html#a57499beedb8070d62924069c0d3b1a16',1,'godot::RGMap']]],
   ['request_5fchunks_5frender_5',['request_chunks_render',['../classgodot_1_1RGMap.html#af97b719797501ed8525d3aad37ed83d7',1,'godot::RGMap']]],
   ['reset_5fchunk_6',['reset_chunk',['../classgodot_1_1RGMap.html#af16dce1ae917a6a42c237d7e7eebda92',1,'godot::RGMap']]],
-  ['rpas_5fcalc_5fvisible_5fcells_5ffrom_7',['rpas_calc_visible_cells_from',['../classgodot_1_1RGMap.html#abc95ec5b234f69d9f372483f22b8f602',1,'godot::RGMap']]]
+  ['resize_5fmap_7',['resize_map',['../classgodot_1_1RGMap.html#a8b36370e8865884a59a52a3d9506791b',1,'godot::RGMap']]],
+  ['rpas_5fcalc_5fvisible_5fcells_5ffrom_8',['rpas_calc_visible_cells_from',['../classgodot_1_1RGMap.html#abc95ec5b234f69d9f372483f22b8f602',1,'godot::RGMap']]]
 ];

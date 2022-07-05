@@ -91,6 +91,7 @@ var classgodot_1_1RGMap =
     [ "request_chunks_load", "classgodot_1_1RGMap.html#a57499beedb8070d62924069c0d3b1a16", null ],
     [ "request_chunks_render", "classgodot_1_1RGMap.html#af97b719797501ed8525d3aad37ed83d7", null ],
     [ "reset_chunk", "classgodot_1_1RGMap.html#af16dce1ae917a6a42c237d7e7eebda92", null ],
+    [ "resize_map", "classgodot_1_1RGMap.html#a8b36370e8865884a59a52a3d9506791b", null ],
     [ "rpas_calc_visible_cells_from", "classgodot_1_1RGMap.html#abc95ec5b234f69d9f372483f22b8f602", null ],
     [ "set_chunk_rendered", "classgodot_1_1RGMap.html#a05420fcbc688769a4f97f4e068036609", null ],
     [ "set_discovered", "classgodot_1_1RGMap.html#aacd1b2b4c71bf8a8628a050ee0793f9e", null ],
