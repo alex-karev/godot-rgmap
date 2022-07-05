@@ -34,6 +34,7 @@ var classgodot_1_1RGMap =
     [ "free_chunk", "classgodot_1_1RGMap.html#a97e1bbbce76aca2a37e08db6d793907e", null ],
     [ "generate_tileset", "classgodot_1_1RGMap.html#afe61caef2061dbd1aa2508d9345e4d3a", null ],
     [ "get_chunk_index", "classgodot_1_1RGMap.html#a17d00e1acf01120ad1324704960ea528", null ],
+    [ "get_chunks_in_distance", "classgodot_1_1RGMap.html#aa96e6d4bad41865cae782d6e97a7ea11", null ],
     [ "get_chunks_to_free", "classgodot_1_1RGMap.html#ad292a1d8e79b597004643fbcf2e588f8", null ],
     [ "get_chunks_to_hide", "classgodot_1_1RGMap.html#a251886c67ff84873042b83e836585203", null ],
     [ "get_chunks_to_load", "classgodot_1_1RGMap.html#af81558e0a4b18590aea6f385f6fa345f", null ],
