@@ -39,6 +39,7 @@ var NAVTREE =
       [ "Contributing", "index.html#autotoc_md10", null ],
       [ "License", "index.html#autotoc_md11", null ]
     ] ],
+    [ "RGMap Class API", "rgmap_api.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

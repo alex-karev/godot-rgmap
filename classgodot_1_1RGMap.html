@@ -86,7 +86,6 @@ $(document).ready(function(){initNavTree('classgodot_1_1RGMap.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classgodot_1_1RGMap-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">godot::RGMap Class Reference</div></div>
 </div><!--header-->
@@ -106,6 +105,8 @@ Inheritance diagram for godot::RGMap:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Signals</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Signals"></a></p>
+</div></td></tr>
 <tr class="memitem:afd1aae74dc064d42ccf5b934472294cf"><td class="memItemLeft" align="right" valign="top"><a id="afd1aae74dc064d42ccf5b934472294cf" name="afd1aae74dc064d42ccf5b934472294cf"></a>
 PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>chunks_load_requested</b> ()</td></tr>
 <tr class="memdesc:afd1aae74dc064d42ccf5b934472294cf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunks need to be loaded. Emited on calling request_chunks_load function <br /></td></tr>
@@ -131,6 +132,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_freed</b> ()</td
 <tr class="memdesc:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk is freed from memory. Emited on calling free_chunk function <br /></td></tr>
 <tr class="separator:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Tiles</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Tiles"></a></p>
+</div></td></tr>
 <tr class="memitem:accbffeced26dc532cd21e853bdb1830c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#accbffeced26dc532cd21e853bdb1830c">add_tile</a> (String name, String display_name)</td></tr>
 <tr class="memdesc:accbffeced26dc532cd21e853bdb1830c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new tile. Returns unique tile index.  <a href="classgodot_1_1RGMap.html#accbffeced26dc532cd21e853bdb1830c">More...</a><br /></td></tr>
 <tr class="separator:accbffeced26dc532cd21e853bdb1830c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,6 +233,8 @@ Ref&lt; TileSet &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gener
 <tr class="memdesc:afe61caef2061dbd1aa2508d9345e4d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Tileset for using with 2d Tilemap. <br /></td></tr>
 <tr class="separator:afe61caef2061dbd1aa2508d9345e4d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Chunks</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Chunks"></a></p>
+</div></td></tr>
 <tr class="memitem:a17d00e1acf01120ad1324704960ea528"><td class="memItemLeft" align="right" valign="top"><a id="a17d00e1acf01120ad1324704960ea528" name="a17d00e1acf01120ad1324704960ea528"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_chunk_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a17d00e1acf01120ad1324704960ea528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of chunk which contains a given position. <br /></td></tr>
@@ -301,6 +306,8 @@ PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_rendered_
 <tr class="memdesc:af97b719797501ed8525d3aad37ed83d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request chunk render/hide depending on player_position and render_distance.  <a href="classgodot_1_1RGMap.html#af97b719797501ed8525d3aad37ed83d7">More...</a><br /></td></tr>
 <tr class="separator:af97b719797501ed8525d3aad37ed83d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Cells</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Cells"></a></p>
+</div></td></tr>
 <tr class="memitem:ab201f09297e368756c390a122a94fc97"><td class="memItemLeft" align="right" valign="top"><a id="ab201f09297e368756c390a122a94fc97" name="ab201f09297e368756c390a122a94fc97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_local_index</b> (Vector2 position)</td></tr>
 <tr class="memdesc:ab201f09297e368756c390a122a94fc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local index of cell within a chunk. <br /></td></tr>
@@ -358,6 +365,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_discovered</b> (V
 <tr class="memdesc:aacd1b2b4c71bf8a8628a050ee0793f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set cell discovered/undiscovered. <br /></td></tr>
 <tr class="separator:aacd1b2b4c71bf8a8628a050ee0793f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">View and pathfinding</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="View_Pathfinding"></a></p>
+</div></td></tr>
 <tr class="memitem:abc95ec5b234f69d9f372483f22b8f602"><td class="memItemLeft" align="right" valign="top"><a id="abc95ec5b234f69d9f372483f22b8f602" name="abc95ec5b234f69d9f372483f22b8f602"></a>
 PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>rpas_calc_visible_cells_from</b> (Vector2 center, int radius)</td></tr>
 <tr class="memdesc:abc95ec5b234f69d9f372483f22b8f602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of cells visible from position within radius using RPAS algorithm. <br /></td></tr>
@@ -402,6 +411,8 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_path</b> (
 <tr class="memdesc:aa0e99aed1a2d145536439b9a88b9ae30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if end point is visisble from start point.  <a href="classgodot_1_1RGMap.html#aa0e99aed1a2d145536439b9a88b9ae30">More...</a><br /></td></tr>
 <tr class="separator:aa0e99aed1a2d145536439b9a88b9ae30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Editing</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Editing"></a></p>
+</div></td></tr>
 <tr class="memitem:a831fb561ec538f9dd241174079927b62"><td class="memItemLeft" align="right" valign="top"><a id="a831fb561ec538f9dd241174079927b62" name="a831fb561ec538f9dd241174079927b62"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td></tr>
 <tr class="memdesc:a831fb561ec538f9dd241174079927b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all chunks and forget pathfinding exceptions. <br /></td></tr>
@@ -462,6 +473,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_arc</b> (Vector2
 <tr class="memdesc:ae51cf8952917fd840f67d62ce129df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill arc. <br /></td></tr>
 <tr class="separator:ae51cf8952917fd840f67d62ce129df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Entities</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Entities"></a></p>
+</div></td></tr>
 <tr class="memitem:ae7a3643c8a808a0860b62dbd672d9311"><td class="memItemLeft" align="right" valign="top"><a id="ae7a3643c8a808a0860b62dbd672d9311" name="ae7a3643c8a808a0860b62dbd672d9311"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>add_entity</b> (Vector2 position, bool passability, bool transparency)</td></tr>
 <tr class="memdesc:ae7a3643c8a808a0860b62dbd672d9311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new entity to the map. Returns id given to a new entity. <br /></td></tr>
@@ -531,6 +544,8 @@ PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>get_entities_
 <tr class="memdesc:a3101593907cf4928bbffc94a1e5f950f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find ids of all entities in chunk. <br /></td></tr>
 <tr class="separator:a3101593907cf4928bbffc94a1e5f950f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Saving and Loading</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Save_Load"></a></p>
+</div></td></tr>
 <tr class="memitem:a673f7f9e37f280588ccff46b1f46d38e"><td class="memItemLeft" align="right" valign="top"><a id="a673f7f9e37f280588ccff46b1f46d38e" name="a673f7f9e37f280588ccff46b1f46d38e"></a>
 PoolIntArray&#160;</td><td class="memItemRight" valign="bottom"><b>dump_map_data</b> ()</td></tr>
 <tr class="memdesc:a673f7f9e37f280588ccff46b1f46d38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save map data. <br /></td></tr>
@@ -542,6 +557,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>load_map_data</b> (Po
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Map Properties</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="Map"></a></p>
+</div></td></tr>
 <tr class="memitem:a3fba15a031ad1bd976b281cefe90bc79"><td class="memItemLeft" align="right" valign="top"><a id="a3fba15a031ad1bd976b281cefe90bc79" name="a3fba15a031ad1bd976b281cefe90bc79"></a>
 Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_size</b> = Vector2(50,50)</td></tr>
 <tr class="memdesc:a3fba15a031ad1bd976b281cefe90bc79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of one chunk (Default: 50x50) <br /></td></tr>
@@ -560,8 +578,8 @@ Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = Vector2
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>allow_diagonal_pathfinding</b> = true</td></tr>
 <tr class="memdesc:a092151ec6eda7be42513f17eb9ebfe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/Disallow diagonal pathfinding. <br /></td></tr>
 <tr class="separator:a092151ec6eda7be42513f17eb9ebfe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">FOV</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Variables related to FOV calculation using RPAS algorithm </p>
+<tr><td colspan="2"><div class="groupHeader">FOV Properties</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p ><a class="anchor" id="FOV"></a></p>
 </div></td></tr>
 <tr class="memitem:aef1b25a8ae91e087b05f505227b1c3ec"><td class="memItemLeft" align="right" valign="top"><a id="aef1b25a8ae91e087b05f505227b1c3ec" name="aef1b25a8ae91e087b05f505227b1c3ec"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fov_radius</b> = 15</td></tr>
