@@ -131,10 +131,28 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>chunk_freed</b> ()</td
 <tr class="memdesc:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Signal.</b> Emited when chunk is freed from memory. Emited on calling free_chunk function <br /></td></tr>
 <tr class="separator:a74f8456f280ddaa8a3f3b3161a6ad63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Tiles</div></td></tr>
-<tr class="memitem:a55c55e1a5e1386093860a634c33cee3d"><td class="memItemLeft" align="right" valign="top"><a id="a55c55e1a5e1386093860a634c33cee3d" name="a55c55e1a5e1386093860a634c33cee3d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_tile</b> (String name, String display_name, bool passable, bool transparent)</td></tr>
-<tr class="memdesc:a55c55e1a5e1386093860a634c33cee3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new tile. <br /></td></tr>
-<tr class="separator:a55c55e1a5e1386093860a634c33cee3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbffeced26dc532cd21e853bdb1830c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#accbffeced26dc532cd21e853bdb1830c">add_tile</a> (String name, String display_name)</td></tr>
+<tr class="memdesc:accbffeced26dc532cd21e853bdb1830c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add new tile. Returns unique tile index.  <a href="classgodot_1_1RGMap.html#accbffeced26dc532cd21e853bdb1830c">More...</a><br /></td></tr>
+<tr class="separator:accbffeced26dc532cd21e853bdb1830c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89848670cda5e3e3468fdeabd28e129e"><td class="memItemLeft" align="right" valign="top"><a id="a89848670cda5e3e3468fdeabd28e129e" name="a89848670cda5e3e3468fdeabd28e129e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_tile_transparency</b> (int index, bool value)</td></tr>
+<tr class="memdesc:a89848670cda5e3e3468fdeabd28e129e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set transparency of the tile. <br /></td></tr>
+<tr class="separator:a89848670cda5e3e3468fdeabd28e129e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982409c29be17e838febdf049a94c327"><td class="memItemLeft" align="right" valign="top"><a id="a982409c29be17e838febdf049a94c327" name="a982409c29be17e838febdf049a94c327"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_tile_passability</b> (int index, bool value)</td></tr>
+<tr class="memdesc:a982409c29be17e838febdf049a94c327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set passability of the tile. <br /></td></tr>
+<tr class="separator:a982409c29be17e838febdf049a94c327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38cbca900f8b5749e90006657487996a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a38cbca900f8b5749e90006657487996a">add_tile_property</a> (String property_name, Variant default_value)</td></tr>
+<tr class="memdesc:a38cbca900f8b5749e90006657487996a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add custom property field for all tiles.  <a href="classgodot_1_1RGMap.html#a38cbca900f8b5749e90006657487996a">More...</a><br /></td></tr>
+<tr class="separator:a38cbca900f8b5749e90006657487996a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addaa5aff222a7ff571e24b6eebc2d2d9"><td class="memItemLeft" align="right" valign="top"><a id="addaa5aff222a7ff571e24b6eebc2d2d9" name="addaa5aff222a7ff571e24b6eebc2d2d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_tile_property</b> (int index, String property_name, Variant new_value)</td></tr>
+<tr class="memdesc:addaa5aff222a7ff571e24b6eebc2d2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set value of custom property for specified tile. <br /></td></tr>
+<tr class="separator:addaa5aff222a7ff571e24b6eebc2d2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ffc7f010f148bab249275452f61346"><td class="memItemLeft" align="right" valign="top"><a id="a60ffc7f010f148bab249275452f61346" name="a60ffc7f010f148bab249275452f61346"></a>
+Variant&#160;</td><td class="memItemRight" valign="bottom"><b>get_tile_property</b> (int index, String property_name)</td></tr>
+<tr class="memdesc:a60ffc7f010f148bab249275452f61346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get value of custom tile property. <br /></td></tr>
+<tr class="separator:a60ffc7f010f148bab249275452f61346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a6742a8d89a003db699ba02cd2f965a"><td class="memItemLeft" align="right" valign="top"><a id="a0a6742a8d89a003db699ba02cd2f965a" name="a0a6742a8d89a003db699ba02cd2f965a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_tiles_count</b> ()</td></tr>
 <tr class="memdesc:a0a6742a8d89a003db699ba02cd2f965a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of tiles. <br /></td></tr>
@@ -250,6 +268,10 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> (Vecto
 String&#160;</td><td class="memItemRight" valign="bottom"><b>get_display_name</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a4016e0965171c95fd867bd7eb01b65d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get display name of cell. <br /></td></tr>
 <tr class="separator:a4016e0965171c95fd867bd7eb01b65d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcefaa147adb46ba33f76f0997cd63f1"><td class="memItemLeft" align="right" valign="top"><a id="adcefaa147adb46ba33f76f0997cd63f1" name="adcefaa147adb46ba33f76f0997cd63f1"></a>
+Variant&#160;</td><td class="memItemRight" valign="bottom"><b>get_property</b> (Vector2 position, String property_name)</td></tr>
+<tr class="memdesc:adcefaa147adb46ba33f76f0997cd63f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get custom property value of cell's tile. <br /></td></tr>
+<tr class="separator:adcefaa147adb46ba33f76f0997cd63f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37429fe0e0426653916667725477e01b"><td class="memItemLeft" align="right" valign="top"><a id="a37429fe0e0426653916667725477e01b" name="a37429fe0e0426653916667725477e01b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_in_bounds</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a37429fe0e0426653916667725477e01b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell is in bounds. <br /></td></tr>
@@ -266,10 +288,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_passable</b> (Vect
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_visible</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a2ae7a1232b97d00c21a38a1073cb7b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell is visible. <br /></td></tr>
 <tr class="separator:a2ae7a1232b97d00c21a38a1073cb7b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a735635c94c0913ffb0198dd51681986f"><td class="memItemLeft" align="right" valign="top"><a id="a735635c94c0913ffb0198dd51681986f" name="a735635c94c0913ffb0198dd51681986f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_memorized</b> (Vector2 position)</td></tr>
-<tr class="memdesc:a735635c94c0913ffb0198dd51681986f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell is memorized. <br /></td></tr>
-<tr class="separator:a735635c94c0913ffb0198dd51681986f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10564db785d8a482e96458eeb0999d63"><td class="memItemLeft" align="right" valign="top"><a id="a10564db785d8a482e96458eeb0999d63" name="a10564db785d8a482e96458eeb0999d63"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_discovered</b> (Vector2 position)</td></tr>
+<tr class="memdesc:a10564db785d8a482e96458eeb0999d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if cell is discovered. <br /></td></tr>
+<tr class="separator:a10564db785d8a482e96458eeb0999d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90bbf21a0a0084bc3cada939c5b84848"><td class="memItemLeft" align="right" valign="top"><a id="a90bbf21a0a0084bc3cada939c5b84848" name="a90bbf21a0a0084bc3cada939c5b84848"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_pathfinding_allowed</b> (Vector2 position)</td></tr>
 <tr class="memdesc:a90bbf21a0a0084bc3cada939c5b84848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if pathfinding on this cell is allowed. <br /></td></tr>
@@ -282,19 +304,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_value</b> (Vector
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_visibility</b> (Vector2 position, bool value)</td></tr>
 <tr class="memdesc:a0aad3be6e33070ebedb8ea3eb81789cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set visibility of cell. <br /></td></tr>
 <tr class="separator:a0aad3be6e33070ebedb8ea3eb81789cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad15eb7048c2b0bdefcc22a6215e4eb36"><td class="memItemLeft" align="right" valign="top"><a id="ad15eb7048c2b0bdefcc22a6215e4eb36" name="ad15eb7048c2b0bdefcc22a6215e4eb36"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_memorized</b> (Vector2 position, bool value)</td></tr>
-<tr class="memdesc:ad15eb7048c2b0bdefcc22a6215e4eb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set memory state of cell. <br /></td></tr>
-<tr class="separator:ad15eb7048c2b0bdefcc22a6215e4eb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd1b2b4c71bf8a8628a050ee0793f9e"><td class="memItemLeft" align="right" valign="top"><a id="aacd1b2b4c71bf8a8628a050ee0793f9e" name="aacd1b2b4c71bf8a8628a050ee0793f9e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_discovered</b> (Vector2 position, bool value)</td></tr>
+<tr class="memdesc:aacd1b2b4c71bf8a8628a050ee0793f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set cell discovered/undiscovered. <br /></td></tr>
+<tr class="separator:aacd1b2b4c71bf8a8628a050ee0793f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">View and pathfinding</div></td></tr>
 <tr class="memitem:abc95ec5b234f69d9f372483f22b8f602"><td class="memItemLeft" align="right" valign="top"><a id="abc95ec5b234f69d9f372483f22b8f602" name="abc95ec5b234f69d9f372483f22b8f602"></a>
 PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>rpas_calc_visible_cells_from</b> (Vector2 center, int radius)</td></tr>
 <tr class="memdesc:abc95ec5b234f69d9f372483f22b8f602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of cells visible from position within radius using RPAS algorithm. <br /></td></tr>
 <tr class="separator:abc95ec5b234f69d9f372483f22b8f602"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a449daffbdf681516e8a340e060edd0ef"><td class="memItemLeft" align="right" valign="top"><a id="a449daffbdf681516e8a340e060edd0ef" name="a449daffbdf681516e8a340e060edd0ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_fov</b> (Vector2 view_position, int max_distance)</td></tr>
-<tr class="memdesc:a449daffbdf681516e8a340e060edd0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate visibility from given position and distance. <br /></td></tr>
-<tr class="separator:a449daffbdf681516e8a340e060edd0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30779cd4917f9308cc9955fe51a147f1"><td class="memItemLeft" align="right" valign="top"><a id="a30779cd4917f9308cc9955fe51a147f1" name="a30779cd4917f9308cc9955fe51a147f1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_fov</b> (Vector2 view_position)</td></tr>
+<tr class="memdesc:a30779cd4917f9308cc9955fe51a147f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate visibility from given position. <br /></td></tr>
+<tr class="separator:a30779cd4917f9308cc9955fe51a147f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a4b116053d6722cbb2bd325db94327e"><td class="memItemLeft" align="right" valign="top"><a id="a4a4b116053d6722cbb2bd325db94327e" name="a4a4b116053d6722cbb2bd325db94327e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>add_pathfinding_exception</b> (Vector2 position, bool value)</td></tr>
 <tr class="memdesc:a4a4b116053d6722cbb2bd325db94327e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow/disallow patfinding for this cell ignoring passability. <br /></td></tr>
@@ -306,12 +328,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_pathfinding_ex
 <tr class="memitem:a637933f2b9bb946f4a7b295fddaaf452"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">show_pathfinding_exceptions</a> (bool exception_type)</td></tr>
 <tr class="memdesc:a637933f2b9bb946f4a7b295fddaaf452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show all pathfinding exceptions of a type.  <a href="classgodot_1_1RGMap.html#a637933f2b9bb946f4a7b295fddaaf452">More...</a><br /></td></tr>
 <tr class="separator:a637933f2b9bb946f4a7b295fddaaf452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a0c87b9c381e59d241c298bbc7efd65"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a0a0c87b9c381e59d241c298bbc7efd65">find_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone, bool exclude_undiscovered=false)</td></tr>
-<tr class="memdesc:a0a0c87b9c381e59d241c298bbc7efd65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm.  <a href="classgodot_1_1RGMap.html#a0a0c87b9c381e59d241c298bbc7efd65">More...</a><br /></td></tr>
-<tr class="separator:a0a0c87b9c381e59d241c298bbc7efd65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5df74ee697c11151876e230fcfc2c09"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">get_line</a> (Vector2 start, Vector2 end, bool allow_diagonal=true)</td></tr>
-<tr class="memdesc:af5df74ee697c11151876e230fcfc2c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of points in Bresenham's line.  <a href="classgodot_1_1RGMap.html#af5df74ee697c11151876e230fcfc2c09">More...</a><br /></td></tr>
-<tr class="separator:af5df74ee697c11151876e230fcfc2c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">find_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone)</td></tr>
+<tr class="memdesc:ad98a2a51e8c3662659ece5ed13ddd073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm.  <a href="classgodot_1_1RGMap.html#ad98a2a51e8c3662659ece5ed13ddd073">More...</a><br /></td></tr>
+<tr class="separator:ad98a2a51e8c3662659ece5ed13ddd073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18fa6f57ccf1892fe662c8c24780720"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ae18fa6f57ccf1892fe662c8c24780720">find_discovered_path</a> (Vector2 start, Vector2 end, Rect2 pathfinding_zone)</td></tr>
+<tr class="memdesc:ae18fa6f57ccf1892fe662c8c24780720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find path from start to end using A* algorithm including only discovered cells.  <a href="classgodot_1_1RGMap.html#ae18fa6f57ccf1892fe662c8c24780720">More...</a><br /></td></tr>
+<tr class="separator:ae18fa6f57ccf1892fe662c8c24780720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d34b40d1bd6e079caac2f452cdeaf59"><td class="memItemLeft" align="right" valign="top">PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a8d34b40d1bd6e079caac2f452cdeaf59">get_line</a> (Vector2 start, Vector2 end)</td></tr>
+<tr class="memdesc:a8d34b40d1bd6e079caac2f452cdeaf59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of points in Bresenham's line.  <a href="classgodot_1_1RGMap.html#a8d34b40d1bd6e079caac2f452cdeaf59">More...</a><br /></td></tr>
+<tr class="separator:a8d34b40d1bd6e079caac2f452cdeaf59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac17398f019a579c3b39fccccbf7a2a9c"><td class="memItemLeft" align="right" valign="top"><a id="ac17398f019a579c3b39fccccbf7a2a9c" name="ac17398f019a579c3b39fccccbf7a2a9c"></a>
+PoolVector2Array&#160;</td><td class="memItemRight" valign="bottom"><b>get_line_orthogonal</b> (Vector2 start, Vector2 end)</td></tr>
+<tr class="memdesc:ac17398f019a579c3b39fccccbf7a2a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of points in Bresenham's line (No diagonals allowed) <br /></td></tr>
+<tr class="separator:ac17398f019a579c3b39fccccbf7a2a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8078e95e12994ce402bd4a3880008db"><td class="memItemLeft" align="right" valign="top"><a id="af8078e95e12994ce402bd4a3880008db" name="af8078e95e12994ce402bd4a3880008db"></a>
 Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>raycast_vision</b> (Vector2 start, Vector2 end)</td></tr>
 <tr class="memdesc:af8078e95e12994ce402bd4a3880008db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast ray from start to end and return position where vision is blocked by an obstacle. <br /></td></tr>
@@ -332,10 +361,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clean_map</b> ()</td>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>place_map</b> (<a class="el" href="classgodot_1_1RGMap.html">RGMap</a> *another_map, Vector2 start)</td></tr>
 <tr class="memdesc:a6e4b777d25b43065a5e2092d084099ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place another map inside this map. <br /></td></tr>
 <tr class="separator:a6e4b777d25b43065a5e2092d084099ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d1f6508a2ad834c7050d12759342fd"><td class="memItemLeft" align="right" valign="top"><a id="af9d1f6508a2ad834c7050d12759342fd" name="af9d1f6508a2ad834c7050d12759342fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_line</b> (Vector2 start, Vector2 end, int value, bool allow_diagonal=true)</td></tr>
-<tr class="memdesc:af9d1f6508a2ad834c7050d12759342fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw straight line using Bresenham's line algorithm. <br /></td></tr>
-<tr class="separator:af9d1f6508a2ad834c7050d12759342fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe365ce9f6c1afaca2a4618e6cce9e0d"><td class="memItemLeft" align="right" valign="top"><a id="afe365ce9f6c1afaca2a4618e6cce9e0d" name="afe365ce9f6c1afaca2a4618e6cce9e0d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_line</b> (Vector2 start, Vector2 end, int value)</td></tr>
+<tr class="memdesc:afe365ce9f6c1afaca2a4618e6cce9e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw straight line using Bresenham's line algorithm. <br /></td></tr>
+<tr class="separator:afe365ce9f6c1afaca2a4618e6cce9e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0783a2d6cee190b2a12d21c422ee07b1"><td class="memItemLeft" align="right" valign="top"><a id="a0783a2d6cee190b2a12d21c422ee07b1" name="a0783a2d6cee190b2a12d21c422ee07b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_line_orthogonal</b> (Vector2 start, Vector2 end, int value)</td></tr>
+<tr class="memdesc:a0783a2d6cee190b2a12d21c422ee07b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw orthogonal straight line (No diagonals allowed) <br /></td></tr>
+<tr class="separator:a0783a2d6cee190b2a12d21c422ee07b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17af65d748b00d68c9403e6c016508c6"><td class="memItemLeft" align="right" valign="top"><a id="a17af65d748b00d68c9403e6c016508c6" name="a17af65d748b00d68c9403e6c016508c6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_rect</b> (Rect2 rect, int value)</td></tr>
 <tr class="memdesc:a17af65d748b00d68c9403e6c016508c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw rect borders. <br /></td></tr>
@@ -344,25 +377,37 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_rect</b> (Rect2 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_rect</b> (Rect2 rect, int value)</td></tr>
 <tr class="memdesc:a04245c368f06c61fad83c181b91592a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill rect. <br /></td></tr>
 <tr class="separator:a04245c368f06c61fad83c181b91592a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade0f1244d005d7440fe0d3731b863b36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#ade0f1244d005d7440fe0d3731b863b36">draw_ellipse</a> (Vector2 center, Vector2 radius, float start_angle, float end_angle, int value, bool allow_diagonal=true)</td></tr>
-<tr class="memdesc:ade0f1244d005d7440fe0d3731b863b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw ellipse using Bresenham's midpoint algorithm.  <a href="classgodot_1_1RGMap.html#ade0f1244d005d7440fe0d3731b863b36">More...</a><br /></td></tr>
-<tr class="separator:ade0f1244d005d7440fe0d3731b863b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cc7a6973a757ce0d580e566f28562e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgodot_1_1RGMap.html#a6cc7a6973a757ce0d580e566f28562e3">draw_ellipse</a> (Vector2 center, Vector2 radius, float start_angle, float end_angle, int value)</td></tr>
+<tr class="memdesc:a6cc7a6973a757ce0d580e566f28562e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw ellipse using Bresenham's midpoint algorithm.  <a href="classgodot_1_1RGMap.html#a6cc7a6973a757ce0d580e566f28562e3">More...</a><br /></td></tr>
+<tr class="separator:a6cc7a6973a757ce0d580e566f28562e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2cca107b149767335502d28b2d3468d"><td class="memItemLeft" align="right" valign="top"><a id="ab2cca107b149767335502d28b2d3468d" name="ab2cca107b149767335502d28b2d3468d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_ellipse_orthogonal</b> (Vector2 center, Vector2 radius, float start_angle, float end_angle, int value)</td></tr>
+<tr class="memdesc:ab2cca107b149767335502d28b2d3468d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw orthogonal ellipse (No diagonals allowed) <br /></td></tr>
+<tr class="separator:ab2cca107b149767335502d28b2d3468d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc0515cfaf9bbe8d65c9c374899fd8f8"><td class="memItemLeft" align="right" valign="top"><a id="acc0515cfaf9bbe8d65c9c374899fd8f8" name="acc0515cfaf9bbe8d65c9c374899fd8f8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_ellipse</b> (Vector2 center, Vector2 radius, float start_angle, float end_angle, int value)</td></tr>
 <tr class="memdesc:acc0515cfaf9bbe8d65c9c374899fd8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill ellipse. <br /></td></tr>
 <tr class="separator:acc0515cfaf9bbe8d65c9c374899fd8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a366bf4bff59dfef02e8997f1b67a1eb5"><td class="memItemLeft" align="right" valign="top"><a id="a366bf4bff59dfef02e8997f1b67a1eb5" name="a366bf4bff59dfef02e8997f1b67a1eb5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_circle</b> (Vector2 center, float radius, int value, bool allow_diagonal=true)</td></tr>
-<tr class="memdesc:a366bf4bff59dfef02e8997f1b67a1eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw circle. <br /></td></tr>
-<tr class="separator:a366bf4bff59dfef02e8997f1b67a1eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b25344554418201d4ad78fabd66bfc3"><td class="memItemLeft" align="right" valign="top"><a id="a1b25344554418201d4ad78fabd66bfc3" name="a1b25344554418201d4ad78fabd66bfc3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_circle</b> (Vector2 center, float radius, int value)</td></tr>
+<tr class="memdesc:a1b25344554418201d4ad78fabd66bfc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw circle. <br /></td></tr>
+<tr class="separator:a1b25344554418201d4ad78fabd66bfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70f582226f788f5161cbeb231eea8d50"><td class="memItemLeft" align="right" valign="top"><a id="a70f582226f788f5161cbeb231eea8d50" name="a70f582226f788f5161cbeb231eea8d50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_circle_orthogonal</b> (Vector2 center, float radius, int value)</td></tr>
+<tr class="memdesc:a70f582226f788f5161cbeb231eea8d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw circle (No diagonals allowed) <br /></td></tr>
+<tr class="separator:a70f582226f788f5161cbeb231eea8d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade7a912c5bbcc60f398f16fd264dc464"><td class="memItemLeft" align="right" valign="top"><a id="ade7a912c5bbcc60f398f16fd264dc464" name="ade7a912c5bbcc60f398f16fd264dc464"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_circle</b> (Vector2 center, float radius, int value)</td></tr>
 <tr class="memdesc:ade7a912c5bbcc60f398f16fd264dc464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill circle. <br /></td></tr>
 <tr class="separator:ade7a912c5bbcc60f398f16fd264dc464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae123137e6645f64ac5b8a5fba6598e0f"><td class="memItemLeft" align="right" valign="top"><a id="ae123137e6645f64ac5b8a5fba6598e0f" name="ae123137e6645f64ac5b8a5fba6598e0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_arc</b> (Vector2 center, float radius, float start_angle, float end_angle, int value, bool allow_diagonal=true)</td></tr>
-<tr class="memdesc:ae123137e6645f64ac5b8a5fba6598e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw arc. <br /></td></tr>
-<tr class="separator:ae123137e6645f64ac5b8a5fba6598e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d099883a3b306c16f09056a59c5247a"><td class="memItemLeft" align="right" valign="top"><a id="a9d099883a3b306c16f09056a59c5247a" name="a9d099883a3b306c16f09056a59c5247a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_arc</b> (Vector2 center, float radius, float start_angle, float end_angle, int value)</td></tr>
+<tr class="memdesc:a9d099883a3b306c16f09056a59c5247a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw arc. <br /></td></tr>
+<tr class="separator:a9d099883a3b306c16f09056a59c5247a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89398b26b0f0fdb14e46f87c7ac5fe6e"><td class="memItemLeft" align="right" valign="top"><a id="a89398b26b0f0fdb14e46f87c7ac5fe6e" name="a89398b26b0f0fdb14e46f87c7ac5fe6e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_arc_orthogonal</b> (Vector2 center, float radius, float start_angle, float end_angle, int value)</td></tr>
+<tr class="memdesc:a89398b26b0f0fdb14e46f87c7ac5fe6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw orthogonal arc (No diagonals allowed) <br /></td></tr>
+<tr class="separator:a89398b26b0f0fdb14e46f87c7ac5fe6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae51cf8952917fd840f67d62ce129df71"><td class="memItemLeft" align="right" valign="top"><a id="ae51cf8952917fd840f67d62ce129df71" name="ae51cf8952917fd840f67d62ce129df71"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fill_arc</b> (Vector2 center, float radius, float start_angle, float end_angle, int value)</td></tr>
 <tr class="memdesc:ae51cf8952917fd840f67d62ce129df71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill arc. <br /></td></tr>
@@ -388,10 +433,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_transparen
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_passability</b> (int id, bool value)</td></tr>
 <tr class="memdesc:a30bc4ade51798b8208d17a33d890422d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change entity passability. <br /></td></tr>
 <tr class="separator:a30bc4ade51798b8208d17a33d890422d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="memItemLeft" align="right" valign="top"><a id="a4dff79eace0ca3c3468429d71bf7b1b0" name="a4dff79eace0ca3c3468429d71bf7b1b0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_memorized</b> (int id, bool value)</td></tr>
-<tr class="memdesc:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change memory status of entity. <br /></td></tr>
-<tr class="separator:a4dff79eace0ca3c3468429d71bf7b1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87d812c59815b5e797c113412cca4c68"><td class="memItemLeft" align="right" valign="top"><a id="a87d812c59815b5e797c113412cca4c68" name="a87d812c59815b5e797c113412cca4c68"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_entity_discovered</b> (int id, bool value)</td></tr>
+<tr class="memdesc:a87d812c59815b5e797c113412cca4c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change memory status of entity. <br /></td></tr>
+<tr class="separator:a87d812c59815b5e797c113412cca4c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06d853a154fb9288f0eaa051cfd5c27f"><td class="memItemLeft" align="right" valign="top"><a id="a06d853a154fb9288f0eaa051cfd5c27f" name="a06d853a154fb9288f0eaa051cfd5c27f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_visible</b> (int id)</td></tr>
 <tr class="memdesc:a06d853a154fb9288f0eaa051cfd5c27f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is visible. <br /></td></tr>
@@ -404,10 +449,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_transparent
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_passable</b> (int id)</td></tr>
 <tr class="memdesc:a712b3f1d95d44c000949829def9b6e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is passable. <br /></td></tr>
 <tr class="separator:a712b3f1d95d44c000949829def9b6e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe18e0c06bc081071a56d9d216186421"><td class="memItemLeft" align="right" valign="top"><a id="abe18e0c06bc081071a56d9d216186421" name="abe18e0c06bc081071a56d9d216186421"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_memorized</b> (int id)</td></tr>
-<tr class="memdesc:abe18e0c06bc081071a56d9d216186421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is memorized. <br /></td></tr>
-<tr class="separator:abe18e0c06bc081071a56d9d216186421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0893042bdadb656ace4398abd19a2bf0"><td class="memItemLeft" align="right" valign="top"><a id="a0893042bdadb656ace4398abd19a2bf0" name="a0893042bdadb656ace4398abd19a2bf0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_discovered</b> (int id)</td></tr>
+<tr class="memdesc:a0893042bdadb656ace4398abd19a2bf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is discovered. <br /></td></tr>
+<tr class="separator:a0893042bdadb656ace4398abd19a2bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97be562b35c3daf51f49e134b93dbc9d"><td class="memItemLeft" align="right" valign="top"><a id="a97be562b35c3daf51f49e134b93dbc9d" name="a97be562b35c3daf51f49e134b93dbc9d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_entity_chunk_loaded</b> (int id)</td></tr>
 <tr class="memdesc:a97be562b35c3daf51f49e134b93dbc9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if entity is on loaded chunk. <br /></td></tr>
@@ -469,6 +514,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>allow_diagonal_pathfi
 <tr><td colspan="2"><div class="groupHeader">FOV</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Variables related to FOV calculation using RPAS algorithm </p>
 </div></td></tr>
+<tr class="memitem:aef1b25a8ae91e087b05f505227b1c3ec"><td class="memItemLeft" align="right" valign="top"><a id="aef1b25a8ae91e087b05f505227b1c3ec" name="aef1b25a8ae91e087b05f505227b1c3ec"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fov_radius</b> = 15</td></tr>
+<tr class="memdesc:aef1b25a8ae91e087b05f505227b1c3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Radius in which cells are visible for player. <br /></td></tr>
+<tr class="separator:aef1b25a8ae91e087b05f505227b1c3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6b261d97c61db7c511faa45905eea3d"><td class="memItemLeft" align="right" valign="top"><a id="ad6b261d97c61db7c511faa45905eea3d" name="ad6b261d97c61db7c511faa45905eea3d"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>RPAS_RADIUS_FUDGE</b> = 1.0 / 3.0</td></tr>
 <tr class="memdesc:ad6b261d97c61db7c511faa45905eea3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">How smooth the edges of the vision bubble are. Between 0 and 1. <br /></td></tr>
@@ -505,8 +554,82 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class for managing maps for roguelike. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ade0f1244d005d7440fe0d3731b863b36" name="ade0f1244d005d7440fe0d3731b863b36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade0f1244d005d7440fe0d3731b863b36">&#9670;&nbsp;</a></span>draw_ellipse()</h2>
+<a id="accbffeced26dc532cd21e853bdb1830c" name="accbffeced26dc532cd21e853bdb1830c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbffeced26dc532cd21e853bdb1830c">&#9670;&nbsp;</a></span>add_tile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RGMap::add_tile </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>display_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add new tile. Returns unique tile index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Unique name of the tile. Needed for searching tiles by name </td></tr>
+    <tr><td class="paramname">display_name</td><td>Name that will be shown to the player. Can be a duplicate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a38cbca900f8b5749e90006657487996a" name="a38cbca900f8b5749e90006657487996a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38cbca900f8b5749e90006657487996a">&#9670;&nbsp;</a></span>add_tile_property()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RGMap::add_tile_property </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>property_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Variant&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add custom property field for all tiles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">property_name</td><td>Name of new property field that will be added to all tiles </td></tr>
+    <tr><td class="paramname">default_value</td><td>Default value for that property. Can be any type </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6cc7a6973a757ce0d580e566f28562e3" name="a6cc7a6973a757ce0d580e566f28562e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cc7a6973a757ce0d580e566f28562e3">&#9670;&nbsp;</a></span>draw_ellipse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -539,13 +662,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>allow_diagonal</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -560,8 +677,52 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 
 </div>
 </div>
-<a id="a0a0c87b9c381e59d241c298bbc7efd65" name="a0a0c87b9c381e59d241c298bbc7efd65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a0c87b9c381e59d241c298bbc7efd65">&#9670;&nbsp;</a></span>find_path()</h2>
+<a id="ae18fa6f57ccf1892fe662c8c24780720" name="ae18fa6f57ccf1892fe662c8c24780720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18fa6f57ccf1892fe662c8c24780720">&#9670;&nbsp;</a></span>find_discovered_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PoolVector2Array RGMap::find_discovered_path </td>
+          <td>(</td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Rect2&#160;</td>
+          <td class="paramname"><em>pathfinding_zone</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find path from start to end using A* algorithm including only discovered cells. </p>
+<p >Returns PoolVector2Array </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start point </td></tr>
+    <tr><td class="paramname">end</td><td>Target point </td></tr>
+    <tr><td class="paramname">pathfinding_zone</td><td>Rect2 zone where pathfinding is calculated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad98a2a51e8c3662659ece5ed13ddd073" name="ad98a2a51e8c3662659ece5ed13ddd073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98a2a51e8c3662659ece5ed13ddd073">&#9670;&nbsp;</a></span>find_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -582,13 +743,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Rect2&#160;</td>
-          <td class="paramname"><em>pathfinding_zone</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>exclude_undiscovered</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>pathfinding_zone</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -604,7 +759,6 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
     <tr><td class="paramname">start</td><td>Start point </td></tr>
     <tr><td class="paramname">end</td><td>Target point </td></tr>
     <tr><td class="paramname">pathfinding_zone</td><td>Rect2 zone where pathfinding is calculated </td></tr>
-    <tr><td class="paramname">exclude_undiscovered</td><td>True to exclude undiscovered cells (Fefault: False) </td></tr>
   </table>
   </dd>
 </dl>
@@ -752,8 +906,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
 
 </div>
 </div>
-<a id="af5df74ee697c11151876e230fcfc2c09" name="af5df74ee697c11151876e230fcfc2c09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5df74ee697c11151876e230fcfc2c09">&#9670;&nbsp;</a></span>get_line()</h2>
+<a id="a8d34b40d1bd6e079caac2f452cdeaf59" name="a8d34b40d1bd6e079caac2f452cdeaf59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d34b40d1bd6e079caac2f452cdeaf59">&#9670;&nbsp;</a></span>get_line()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -768,13 +922,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>_register_meth
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Vector2&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>allow_diagonal</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

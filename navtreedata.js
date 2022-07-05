@@ -28,17 +28,16 @@ var NAVTREE =
     [ "Godot Roguelike Game Map System (RGMap)", "index.html", [
       [ "Table of Contents", "index.html#autotoc_md1", null ],
       [ "Features", "index.html#autotoc_md2", null ],
-      [ "Why?", "index.html#autotoc_md3", null ],
-      [ "Usage", "index.html#autotoc_md4", [
-        [ "RGMap", "index.html#autotoc_md5", null ]
+      [ "Usage", "index.html#autotoc_md3", [
+        [ "RGMap", "index.html#autotoc_md4", null ]
       ] ],
-      [ "Example", "index.html#autotoc_md6", null ],
-      [ "Installation", "index.html#autotoc_md7", null ],
-      [ "Building", "index.html#autotoc_md8", null ],
-      [ "TODO", "index.html#autotoc_md9", null ],
-      [ "References", "index.html#autotoc_md10", null ],
-      [ "Contributing", "index.html#autotoc_md11", null ],
-      [ "License", "index.html#autotoc_md12", null ]
+      [ "Example", "index.html#autotoc_md5", null ],
+      [ "Installation", "index.html#autotoc_md6", null ],
+      [ "Building", "index.html#autotoc_md7", null ],
+      [ "TODO", "index.html#autotoc_md8", null ],
+      [ "References", "index.html#autotoc_md9", null ],
+      [ "Contributing", "index.html#autotoc_md10", null ],
+      [ "License", "index.html#autotoc_md11", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

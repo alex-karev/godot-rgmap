@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_5fdistance_0',['load_distance',['../classgodot_1_1RGMap.html#ab097624100d11699293844ead170dab9',1,'godot::RGMap']]]
+  ['fov_5fradius_0',['fov_radius',['../classgodot_1_1RGMap.html#aef1b25a8ae91e087b05f505227b1c3ec',1,'godot::RGMap']]]
 ];
