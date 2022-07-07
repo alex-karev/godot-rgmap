@@ -46,7 +46,7 @@ func _ready():
 	controller.player_position = (rgmap.size*rgmap.chunk_size/2).floor()
 	# Add some trees
 	var rng = RandomNumberGenerator.new()
-	for i in range(500):
+	for i in range(2000):
 		var x = rng.randi_range(-100,100)
 		var y = rng.randi_range(-100,100)
 		var tree_pos = controller.player_position+Vector2(x,y)
@@ -62,15 +62,7 @@ func _ready():
 			# Save this id if you want to access it later
 			# For example: rgmap.move_entity(4, Vector2(0,0)) 
 			# Will move entity with id 4 to Vector2(0,0)
-			# ---
-			# Create new sprite
-			var tree = Sprite.new()
-			tree.name = "Tree"+str(tree_id)
-			tree.texture = load("res://addons/godot-rgmap/demo/Textures/tree.png")
-			tree.position = tree_pos*16+Vector2.ONE*8
-			add_child(tree)
-			tree.hide()
-
+	
 # Generate new chunks. Emited after request_chunks_load of RGMap function was called
 func _on_RGMap_chunks_load_requested(ids):
 	# Define tile ids
@@ -120,11 +112,6 @@ func _on_RGMap_chunks_render_requested(ids):
 		# Update rendering status
 		rgmap.set_chunk_rendered(id, true)
 	# Draw fog and sprites
-	draw()
-
-# Draw fog and sprites
-func draw():
-	# Draw tiles
 	for id in rgmap.get_rendered_chunks():
 		# Find top left corner of chunk
 		var start = rgmap.chunk_index_int_to_v2(id)*rgmap.chunk_size
@@ -139,14 +126,17 @@ func draw():
 					$Fog.set_cellv(pos, 1)
 				else:
 					$Fog.set_cellv(pos, 0)
-	# Show/hide entities
-	for id in trees:
-		var tree = get_node("Tree"+str(id))
-		if rgmap.is_entity_chunk_rendered(id) \
-		and rgmap.is_entity_discovered(id):
-			tree.show()
-		else: 
-			tree.hide()
+		# Show entities
+		for tree_id in rgmap.get_entities_in_chunk(id):
+			var node_name = "Tree"+str(tree_id)
+			if not has_node(node_name) \
+			and rgmap.is_entity_discovered(tree_id):
+				# Create new sprite
+				var tree = Sprite.new()
+				tree.name = node_name
+				tree.texture = load("res://addons/godot-rgmap/demo/Textures/tree.png")
+				tree.position = rgmap.get_entity_position(tree_id)*16+Vector2.ONE*8
+				add_child(tree)	
 			
 # Hide chunks that are not needed to be rendered. Emited after request_chunks_render of RGMap function was called
 func _on_RGMap_chunks_hide_requested(ids):
@@ -162,3 +152,8 @@ func _on_RGMap_chunks_hide_requested(ids):
 				$Fog.set_cellv(pos, -1)
 		# Update rendering status
 		rgmap.set_chunk_rendered(id, false)
+		# Free entities
+		for tree_id in rgmap.get_entities_in_chunk(id):
+			var node_name = "Tree"+str(tree_id)
+			if has_node(node_name):
+				get_node(node_name).queue_free()

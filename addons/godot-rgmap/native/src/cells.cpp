@@ -58,20 +58,6 @@ bool RGMap::is_discovered(Vector2 position) {
     int index = get_local_index(position);
     return chunk.memory[index] == 1;
     }
-bool RGMap::is_pathfinding_allowed(Vector2 position) {
-    int chunk_index = get_chunk_index(position);
-    if (chunk_index >= size.x*size.y || chunk_index < 0) {return false;}
-    // Check exceptions
-    if(std::find(pathfinding_exception_allowed.begin(), pathfinding_exception_allowed.end(), position) != pathfinding_exception_allowed.end()) {
-        return true;
-    }
-    if (std::find(pathfinding_exception_disallowed.begin(), pathfinding_exception_disallowed.end(), position) != pathfinding_exception_disallowed.end()) {
-        return false;
-    }
-    // Check if cell is passable
-    if (is_passable(position)) {return true;}
-    return false;
-}
 void RGMap::set_value(Vector2 position, int value) {
     int chunk_index = get_chunk_index(position);
     ERR_FAIL_INDEX(chunk_index, size.x*size.y);

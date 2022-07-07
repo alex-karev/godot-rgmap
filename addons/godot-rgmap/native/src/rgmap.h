@@ -68,6 +68,7 @@ class RGMap : public Reference {
         // Flat arrays that contain all data about the cells
         std::vector<int> values;
         std::vector<int> memory;
+        std::vector<int> entities;
         bool loaded = false;
         bool rendered = false;
     };
@@ -376,8 +377,6 @@ public:
     bool is_visible(Vector2 position);
     //! Check if cell is discovered
     bool is_discovered(Vector2 position);
-    //! Check if pathfinding on this cell is allowed
-    bool is_pathfinding_allowed(Vector2 position);
     //! Set value of cell
     void set_value(Vector2 position, int value);
     //! Set visibility of cell
@@ -405,6 +404,8 @@ public:
     @param exception_type true for allowed cells, false for disallowed cells
     */
     PoolVector2Array show_pathfinding_exceptions(bool exception_type);
+    //! Check if pathfinding on this cell is allowed
+    bool is_pathfinding_allowed(Vector2 position);
     //! Find path from start to end using A* algorithm
     /*!
     Returns PoolVector2Array

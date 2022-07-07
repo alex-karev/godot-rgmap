@@ -88,7 +88,6 @@ void RGMap::_register_methods() {
     register_method("is_visible", &RGMap::is_visible);
     register_method("is_discovered", &RGMap::is_discovered);
     register_method("is_in_bounds", &RGMap::is_in_bounds);
-    register_method("is_pathfinding_allowed", &RGMap::is_pathfinding_allowed);
     register_method("set_value", &RGMap::set_value);
     register_method("set_visibility", &RGMap::set_visibility);
     register_method("set_discovered", &RGMap::set_discovered);
@@ -98,6 +97,7 @@ void RGMap::_register_methods() {
     register_method("add_pathfinding_exception", &RGMap::add_pathfinding_exception);
     register_method("remove_pathfinding_exception", &RGMap::remove_pathfinding_exception);
     register_method("show_pathfinding_exceptions", &RGMap::show_pathfinding_exceptions);
+    register_method("is_pathfinding_allowed", &RGMap::is_pathfinding_allowed);
     register_method("find_path", &RGMap::find_path);
     register_method("find_discovered_path", &RGMap::find_discovered_path);
     register_method("get_line", &RGMap::get_line);

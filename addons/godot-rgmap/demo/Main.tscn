@@ -75,7 +75,6 @@ script = ExtResource( 5 )
 size = Vector2( 1000, 1000 )
 chunk_size = Vector2( 15, 15 )
 load_distance = 10
-fov_radius = 30
 
 [node name="Generator" type="Node2D" parent="."]
 script = ExtResource( 6 )

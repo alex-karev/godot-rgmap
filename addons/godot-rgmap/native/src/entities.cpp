@@ -4,33 +4,50 @@ using namespace godot;
 // All functions related to entities
 
 int RGMap::add_entity(Vector2 position, bool passability, bool transparency) {
-    // Rewrite data for entities marked as rewrite
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity& entity = entities[i];
-        if (entity.rewrite) {
-            entity.position = position;
-            entity.passable = passability;
-            entity.transparent = transparency;
-            entity.discovered = false;
-            entity.rewrite = false;
-            return i;
-        }
+    // Find entity id
+    int id = 0;
+    while (id < entities.size()) {
+        if (entities[id].rewrite) { break; }
+        id++;
     }
-    // Create new entity
-    Entity entity;
+    // Create new entity if not exists
+    if (id == entities.size()) {
+        Entity new_entity;
+        entities.push_back(new_entity);
+    }
+    // Set entity properties
+    Entity& entity = entities[id];
     entity.position = position;
     entity.passable = passability;
     entity.transparent = transparency;
     entity.discovered = false;
-    entities.push_back(entity);
-    return entities.size()-1;
+    // Associate entity with chunk
+    int chunk_index = get_chunk_index(position);
+    Chunk& chunk = chunks[chunk_index];
+    chunk.entities.push_back(id);
+    return id;
 }
 void RGMap::remove_entity(int id) {
     ERR_FAIL_INDEX(id, entities.size());
     entities[id].rewrite = true;
+    // Diassociate entity with chunk
+    int chunk_index = get_chunk_index(entities[id].position);
+    Chunk& chunk = chunks[chunk_index];
+    chunk.entities.erase(std::remove(chunk.entities.begin(), chunk.entities.end(), id), chunk.entities.end());
 }
 void RGMap::move_entity(int id, Vector2 position) {
     ERR_FAIL_INDEX(id, entities.size());
+    // Check if chunk is different
+    int old_chunk_index = get_chunk_index(entities[id].position);
+    int new_chunk_index = get_chunk_index(position);
+    // Diassociate entity with old chunk and associate with new chunk
+    if (old_chunk_index != new_chunk_index) {
+        Chunk& old_chunk = chunks[old_chunk_index];
+        old_chunk.entities.erase(std::remove(old_chunk.entities.begin(), old_chunk.entities.end(), id), old_chunk.entities.end());
+        Chunk& new_chunk = chunks[new_chunk_index];
+        new_chunk.entities.push_back(id);
+    }
+    // Change position
     entities[id].position = position;
 }
 void RGMap::set_entity_transparency(int id, bool value) {
@@ -78,44 +95,59 @@ Vector2 RGMap::get_entity_position(int id) {
 }
 PoolIntArray RGMap::get_entities_in_position(Vector2 position) {
     PoolIntArray ids;
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity& entity = entities[i];
+    int chunk_index = get_chunk_index(position);
+    Chunk& chunk = chunks[chunk_index];
+    for (int id : chunk.entities) {
+        Entity& entity = entities[id];
         if (!entity.rewrite && entity.position == position) {
-            ids.append(i);
+            ids.append(id);
         }
     }
     return ids;
 }
 PoolIntArray RGMap::get_entities_in_rect(Rect2 rect) {
     PoolIntArray ids;
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity& entity = entities[i];
-        if (!entity.rewrite && rect.has_point(entity.position)) {
-            ids.append(i);
+    std::vector<int> chunk_ids;
+    for (int x = 0; x < floor(rect.size.x); ++x) {
+        for (int y = 0; y < floor(rect.size.y); ++y) {
+            Vector2 pos = rect.position.floor()+Vector2(x,y);
+            int chunk_index = get_chunk_index(pos);
+            if(std::find(chunk_ids.begin(), chunk_ids.end(), chunk_index) == chunk_ids.end()) {
+                chunk_ids.push_back(chunk_index);
+            }
+        }
+    }
+    for (int chunk_index : chunk_ids) {
+        Chunk& chunk = chunks[chunk_index];
+        for (int id : chunk.entities) {
+            Entity& entity = entities[id];
+            if (rect.has_point(entity.position)) {
+                ids.append(id);
+            } 
         }
     }
     return ids;
 }
 PoolIntArray RGMap::get_entities_in_radius(Vector2 position, int radius) {
     PoolIntArray ids;
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity& entity = entities[i];
-        if (!entity.rewrite && entity.position.distance_to(position) <= radius) {
-            ids.append(i);
+    Vector2 rect_position = position-Vector2(radius,radius);
+    Vector2 rect_size = Vector2(radius*2+1,radius*2+1);
+    Rect2 rect = Rect2(rect_position, rect_size);
+    PoolIntArray in_rect = get_entities_in_rect(rect);
+    for (int i = 0; i < in_rect.size(); ++i) {
+        int id = in_rect[i];
+        Entity& entity = entities[id];
+        if (entity.position.distance_to(position) <= radius) {
+            ids.append(id);
         }
     }
     return ids;
 }
 PoolIntArray RGMap::get_entities_in_chunk(int chunk_index) {
     PoolIntArray ids;
-    Vector2 start = chunk_index_int_to_v2(chunk_index)*chunk_size;
-    Vector2 end = start+chunk_size;
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity& entity = entities[i];
-        Vector2 position = entity.position;
-        if (!entity.rewrite && position.x >= start.x && position.x < end.x && position.y >= start.x && position.y < end.y) {
-            ids.append(i);
-        }
+    Chunk& chunk = chunks[chunk_index];
+    for (int id : chunk.entities) {
+        ids.append(id);
     }
     return ids;
 }
