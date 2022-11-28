@@ -3,7 +3,7 @@ extends Node2D
 export(NodePath) var rgmap_path
 export(NodePath) var rgtileset_path
 export(NodePath) var controller_path
-var rgmap: RGMap
+var rgmap
 var noise: OpenSimplexNoise
 var controller
 var trees = PoolIntArray([])

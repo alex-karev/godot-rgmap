@@ -28,6 +28,10 @@ config/icon="res://addons/godot-rgmap/demo/icon.png"
 
 enabled=PoolStringArray( "res://addons/godot-rgmap/plugin.cfg" )
 
+[gdnative]
+
+singletons=[  ]
+
 [global]
 
 fps=false

@@ -162,7 +162,6 @@ See more about using GDNative modules in [Godot Docs](https://docs.godotengine.o
 - [X] Write bash script for batch compiling binaries for Linux/Windows/Mac
 - [X] Custom properties of tiles
 - [X] Resizing map
-- [ ] Add node for rendering RGMap in 2d
 - [ ] Tutorial
 
 ## References

@@ -38,7 +38,7 @@ namespace godot {
 */
 
 //! Class for managing maps for roguelike
-class RGMap : public Reference {
+class RGMap : public Node {
     GODOT_CLASS(RGMap, Node)
 
     // Structure needed for RPAS algorithm
